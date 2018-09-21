@@ -1,17 +1,16 @@
 fileFormatVersion: 2
-guid: 89d2d085fb7e42246b6fede54b3ceb00
-timeCreated: 1537490847
+guid: 231f5a5ebaed8384b9ee07566a8b51ae
+timeCreated: 1537505615
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: lambert1
+    2100000: Modular_Kit_003_Default_Prototype1
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Unit_Scale_Cube_1x1x1
-    9500000: //RootNode
+    4300000: Wall_Base_001_SM
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -86,7 +85,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
