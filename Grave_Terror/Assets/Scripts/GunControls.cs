@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GunControls : MonoBehaviour {
 
+ 
+
 	// checks if player is or isnt firing
 	public bool isFiring = false;
 	// referencing bulletMovement script
