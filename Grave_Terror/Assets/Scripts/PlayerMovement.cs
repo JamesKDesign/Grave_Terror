@@ -12,12 +12,12 @@ public class PlayerMovement : MonoBehaviour {
 	[SerializeField] private float sprintAcceleration;
 	[SerializeField] private float sprintStamina;
 	[SerializeField] private float staminaRegeneration;
+	public GunControls newGun;
+	public GunControls newGun2;
 	private bool sprintActive = true;
-
-		Rigidbody playerRigidbody;                                         // Reference to the player's rigidbody.
+    Rigidbody playerRigidbody;                                         // Reference to the player's rigidbody.
 	Vector3 offset;  
-	 private Vector3 movement;                                           // The vector to store the direction of the player's movement.
-
+	 //private Vector3 movement;                                           // The vector to store the direction of the player's movement.
 	 private float currentMovSpeed;
 
 	private void Awake() {
@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour {
 		floorMask = LayerMask.GetMask("Floor");
 		 // Set up references.
 		playerRigidbody = GetComponent<Rigidbody> ();
+		//playerController = GetComponent<CharacterController>();
 	}
 
     // Physics update only
@@ -34,18 +35,23 @@ public class PlayerMovement : MonoBehaviour {
 		float h = Input.GetAxisRaw("Horizontal");
 		float v = Input.GetAxisRaw("Vertical");
          // Move the player around the scene.
-		Move(h, v);
+		//Move(h, v);
 		 // Turn the player to face the mouse cursor.
 		Turning();
+	}
+
+	private void Update() {
+		Move();
 	}
 
     #region Movement
 	/// <summary> Sets the players movement and normalises it by the speed variable
 	/// and by every frame, we then add that movement to the players rigidbody </summary>
-	private void Move(float h, float v) {
-		movement.Set(h, 0f, v);
+	private void Move() {
+		//movement.Set(h, 0f, v);
 		// Sprint 
 		if (Input.GetKey(KeyCode.LeftShift) && sprintActive == true) {
+			
 			currentMovSpeed = sprintSpeed;
 			sprintStamina--; 
 			// Stamina tank
@@ -59,10 +65,34 @@ public class PlayerMovement : MonoBehaviour {
 			currentMovSpeed = walkSpeed;
 		}
 
-		movement = movement.normalized * currentMovSpeed * sprintAcceleration * Time.deltaTime;
+		// Basic player movement (No physics)
+		if (Input.GetKey(KeyCode.W)) {
+			transform.position += new Vector3( walkSpeed * Time.deltaTime, 0, 0);
+		}
+		if (Input.GetKey(KeyCode.A)) { 
+			transform.position += new Vector3( 0, 0, walkSpeed * Time.deltaTime);
+		}
+		if (Input.GetKey(KeyCode.S)) {
+			transform.position += new Vector3( -walkSpeed * Time.deltaTime, 0, 0);
+		}
+		if (Input.GetKey(KeyCode.D)) {
+			transform.position += new Vector3(0, 0, - walkSpeed * Time.deltaTime);
+		}
+
+        // firing Machine Gun 
+		if (Input.GetKey(KeyCode.Mouse0)) {
+			newGun.isFiring = true;
+			newGun2.isFiring = true;
+		}
+		if (Input.GetKeyUp(KeyCode.Mouse0)) {
+			newGun.isFiring = false;
+			newGun2.isFiring = false;
+		}
+		
+		//movement = movement.normalized * currentMovSpeed * sprintAcceleration * Time.deltaTime;
 
 		// Move the player to it's current position plus the movement.
-		playerRigidbody.MovePosition(transform.position + movement);
+		//playerRigidbody.MovePosition(transform.position + movement);
 	}
 	#endregion
 
@@ -84,6 +114,7 @@ public class PlayerMovement : MonoBehaviour {
 
 			Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
 			playerRigidbody.MoveRotation(newRotation);
+			
 
 			Vector3 position = transform.position + offset;
 			// smoothing of the rotation of player
