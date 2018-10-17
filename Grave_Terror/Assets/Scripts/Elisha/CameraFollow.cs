@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
 
-    private Camera camera;                                    // Camera reference
-	[SerializeField] private float DampTime;                  // time for the camera to refocus
-    [SerializeField] private float ScreenBuffer;              // Space between the top/bottom most target and the screen edge
-    [SerializeField] private float MinSize;                   // The smallest size the camera can be
-    [SerializeField] private Transform[] Targets;             // All the targets the camera needs to have within its view
-    [SerializeField] private float ZoomSpeed;                 // How fast the zoom in and zoom out of the camera will be 
-    [SerializeField] private Vector3 MoveVelocity;            // velocity
-    [SerializeField] private Vector3 DesiredPosition;         // The position the camera is moving towards based off the players movements
+    private Camera camera;
+    // time for the camera to refocus
+    [SerializeField] private float DampTime;
+    // Space between the top/bottom most target and the screen edge
+    [SerializeField] private float ScreenBuffer;              
+    [SerializeField] private float MinSize;
+    // All the targets the camera needs to have within its view
+    [SerializeField] private Transform[] Targets;             
+    [SerializeField] private float ZoomSpeed;                 
+    [SerializeField] private Vector3 MoveVelocity;
+    // The position the camera is moving towards based off the players movements
+    private Vector3 DesiredPosition;                          
 
-
-    //-----------------------------------------------------------------
     // Awake initialises any variables before the game actually starts
-	//-----------------------------------------------------------------
     private void Awake ()
     {
 		// Camera is child to CameraRig 
@@ -24,9 +25,7 @@ public class CameraFollow : MonoBehaviour {
         SetStartPositionAndSize();
     }
 
-    //-------------------------------------------------------------------------------
     // FixedUpdate runs functions or variwables that are associated with physics only
-	//-------------------------------------------------------------------------------
     private void Update ()
     {
         // func call moves the camera towards the desired position
@@ -36,9 +35,7 @@ public class CameraFollow : MonoBehaviour {
         Zoom ();
     }
 
-    //-------------------
     // Camera move logic
-	//-------------------
     private void Move ()
     {
         // Finds the average position of the targets to then move accordingly 
@@ -48,9 +45,7 @@ public class CameraFollow : MonoBehaviour {
         transform.position = Vector3.SmoothDamp(transform.position, DesiredPosition, ref MoveVelocity, DampTime);
     }
 
-    //----------------------------------------
 	// Finds average position of both players
-	//----------------------------------------
     private void FindAveragePosition ()
     {
 		// Creates a empty new vector3
@@ -81,9 +76,7 @@ public class CameraFollow : MonoBehaviour {
         DesiredPosition = averagePos;
     }
 
-    //------------------------
     // Camera zoom in and out
-	//------------------------
     private void Zoom ()
     {
         // Find the required size based on the desired position and smoothly transition to that size
@@ -91,9 +84,7 @@ public class CameraFollow : MonoBehaviour {
         camera.fieldOfView = Mathf.SmoothDamp (camera.fieldOfView, requiredSize, ref ZoomSpeed, DampTime);
     }
 
-    //------------------------------------------------------
-    //Finds the size at which the camera distance should be
-	//------------------------------------------------------
+    // Finds the size at which the camera distance should be
     private float FindRequiredSize ()
     {
         // Find the position the camera rig is moving towards in its local space
@@ -134,9 +125,8 @@ public class CameraFollow : MonoBehaviour {
         return size;
     }
 
-	//----------------------
-    //Camera start position
-	//----------------------
+	
+    // Camera start position
     public void SetStartPositionAndSize ()
     {
         // Find the desired position

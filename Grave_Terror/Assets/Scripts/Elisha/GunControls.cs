@@ -20,8 +20,6 @@ public class GunControls : MonoBehaviour {
 	[SerializeField] private Transform firePoint;
 	private float damagePerShot;
 	private float bulletRange;
-	// reference to enemy health script
-	EnemyHealth enemyHealth;
 
 	void Awake() {
 
@@ -42,7 +40,7 @@ public class GunControls : MonoBehaviour {
 				BulletMovement newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletMovement;
 				// Have the speed from the bullet equal the bullet speed from the gun 
 				newBullet.Speed = bulletSpeed;
-				Destroy(newBullet.gameObject, 1.0f);
+				Destroy(newBullet.gameObject, 2.0f);
 			}
 		}
 		else // If the above statement is false
