@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		rb = GetComponent<Rigidbody>();
+		behaviours.Add(new EnemyPathing(this));
 	}
 	
 	// Update is called once per frame
@@ -63,9 +63,8 @@ public class Enemy : MonoBehaviour
 		suggestedDirection *= (movementSpeed * Time.fixedDeltaTime);
 
 		//rotate towards where we are going
-		transform.rotation.SetLookRotation(suggestedDirection);
-
-		rb.velocity = suggestedDirection;
+		if(suggestedDirection != Vector3.zero)
+			transform.rotation.SetLookRotation(suggestedDirection);
 	}
 
 	private void FixedUpdate()
@@ -78,7 +77,7 @@ public class Enemy : MonoBehaviour
 	{
 		alive = true;
 		//Tell the EnemyController we are alive
-		EnemyController.instance.RegisterEnemy(this);
+		//EnemyController.instance.RegisterEnemy(this);
 	}
 	//Actor died
 	void Dead()
@@ -88,7 +87,7 @@ public class Enemy : MonoBehaviour
 		{
 			alive = false;
 
-			EnemyController.instance.DeregisterEnemy(this);
+			//EnemyController.instance.DeregisterEnemy(this);
 			spawner.Despawn(gameObject);
 		}
 	}

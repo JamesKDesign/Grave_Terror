@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33689603713358558}
   - component: {fileID: 23765982198791596}
   - component: {fileID: 136295145469444810}
+  - component: {fileID: 114826888883066696}
   m_Layer: 0
   m_Name: Enemy_Mummy_001_SK
   m_TagString: Untagged
@@ -83,6 +84,24 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1049179074810732}
   m_Mesh: {fileID: 4300000, guid: 4a73e6a413fbbcb44a5f7d67009b7d4f, type: 3}
+--- !u!114 &114826888883066696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1049179074810732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0dd1e9bc5d3aaa409b9790913cafcf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner: {fileID: 0}
+  target: {fileID: 0}
+  state: 0
+  alive: 0
+  attackDamage: 0
+  attackRange: 0
+  movementSpeed: 10
 --- !u!136 &136295145469444810
 CapsuleCollider:
   m_ObjectHideFlags: 1
