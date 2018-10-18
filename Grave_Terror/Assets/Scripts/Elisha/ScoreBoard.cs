@@ -1,12 +1,12 @@
-﻿ using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreManager : MonoBehaviour {
+public class ScoreBoard : MonoBehaviour {
 
-    public static int score = 0;
     public Text text;
+    public static int score = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -17,11 +17,7 @@ public class ScoreManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        ChunkScore();
-    }
+        text.text = "Kills: " + score;
 
-    void ChunkScore()
-    {
-        text.text = "Chunk: " + score;
-    }
+	}
 }

@@ -21,15 +21,15 @@ public class BulletMovement : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collide)
     {
-        if(collide.gameObject.tag == "Enemy")
-        {
-            enemy = collide.gameObject;
-            ScoreManager.score += 1;
-            Destroy(enemy.gameObject);
-        }
-        else
-        {
-            Debug.Log("Collision failed");
-        }
+        //if(collide.gameObject.tag == "Enemy")
+        //{
+        //    enemy = collide.gameObject;
+        //    ScoreManager.score += 1;
+        //    Destroy(enemy.gameObject);
+        //}
+        //else
+        //{
+        //    Debug.Log("Collision failed");
+        //}
     }
 }
