@@ -5,9 +5,8 @@ using UnityEngine.AI;
 
 public enum E_STATE
 {
-	IDLE,
-	PATHING,
-	ENGAGING
+	NORMAL,
+	IGNITED
 }
 
 [RequireComponent(typeof(CharacterController))]
@@ -16,14 +15,14 @@ public class Enemy : MonoBehaviour
 	[HideInInspector] //THe spawner that created us
 	public Spawner spawner;
 
+	private EnemyHealth health;
+
 	public GameObject target;
 
 	private CharacterController cc;
 
 	[HideInInspector] //Current state
-	public E_STATE state = E_STATE.IDLE;
-	[HideInInspector] //Copy to the path in behaviour pathing (if valid)
-	public NavMeshPath path = null;
+	public E_STATE state = E_STATE.NORMAL;
 
 	//Is this actor alive?
 	[HideInInspector]
@@ -37,6 +36,9 @@ public class Enemy : MonoBehaviour
 	[Tooltip("Actor travel speed")]
 	public float movementSpeed;
 
+	[HideInInspector]
+	public float fireDamageOverTime = 0.0f;
+
 	//Public so the controller can easily access it
 	[HideInInspector]
 	public List<BaseBehaviour> behaviours = new List<BaseBehaviour>(4);
@@ -45,21 +47,34 @@ public class Enemy : MonoBehaviour
 	public Vector3 velocity;
 	private Vector3 acceleration;
 
-	public float drag = 0.98f;
-	public float mass = 100.0f;
+	public float drag = 0.97f;
+	public float mass = 10.0f;
 
 	// Use this for initialization
 	void Start ()
 	{
 		behaviours.Add(new EnemyPathing(this, 0.67f));
 		behaviours.Add(new EnemyFlocking(this, 0.33f));
+		behaviours.Add(new EnemyWander(this, 0.33f));
 
 		cc = GetComponent<CharacterController>();
+
+		health = GetComponent<EnemyHealth>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
+		switch (state)
+		{
+			case E_STATE.NORMAL:
+				break;
+
+			case E_STATE.IGNITED:
+				health.DamageHealth(fireDamageOverTime * Time.deltaTime);
+				break;
+		}
+
 		//Cycle through all behaviours
 		acceleration = Vector3.zero;
 		foreach (BaseBehaviour b in behaviours)
@@ -117,5 +132,12 @@ public class Enemy : MonoBehaviour
 		{
 			b.Reset();
 		}
+	}
+
+	//Ignite this enemy
+	public void Ignite(float _fire_strength = 10.0f)
+	{
+		state = E_STATE.IGNITED;
+		fireDamageOverTime = _fire_strength;
 	}
 }

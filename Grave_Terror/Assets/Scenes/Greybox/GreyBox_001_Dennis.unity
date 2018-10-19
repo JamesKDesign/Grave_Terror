@@ -6175,7 +6175,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 431160808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.8, y: 0.5, z: 7.7}
+  m_LocalPosition: {x: 0.67, y: 0.5, z: -11.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1551862153}
@@ -11454,7 +11454,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &558490602
 Prefab:
@@ -16655,7 +16655,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4101462399420026, guid: 0ad4f4c9310a25f458e46345f998f327, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 23434483535960854, guid: 0ad4f4c9310a25f458e46345f998f327,
         type: 2}
@@ -22355,7 +22355,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1370709854}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4, y: 0.5, z: -10.57}
+  m_LocalPosition: {x: -31.44, y: 0.5, z: 11.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1551862153}
@@ -31761,10 +31761,11 @@ MonoBehaviour:
   alive: 0
   attackDamage: 0
   attackRange: 0
-  movementSpeed: 10
+  movementSpeed: 7
+  fireDamageOverTime: 0
   velocity: {x: 0, y: 0, z: 0}
-  drag: 0.98
-  mass: 12.29
+  drag: 0.97
+  mass: 7
 --- !u!23 &1783528993
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32254,7 +32255,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1813451267}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.1, y: 0.5, z: 58.2}
+  m_LocalPosition: {x: 2, y: 0.5, z: 45.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1551862153}

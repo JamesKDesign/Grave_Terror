@@ -19,9 +19,9 @@ public class EnemyFlocking : BaseBehaviour
 		int i = 0;
 		for(; i < sensor.nearby.Count; ++i)
 		{
-			averagePos += sensor.nearby[i].transform.position;
+			//averagePos += sensor.nearby[i].transform.position;
 			averageVel += sensor.nearby[i].velocity;
-			averageNUL += sensor.nearby[i].transform.position - enemy.transform.position;
+			averageNUL += sensor.nearby[i].transform.position;
 		}
 		//Position
 		averagePos /= (float)i;
@@ -30,7 +30,8 @@ public class EnemyFlocking : BaseBehaviour
 		averageVel /= (float)i;
 		//Unnamed seperator
 		averageNUL /= (float)i;
+		averageNUL = averageNUL - enemy.transform.position;
 
-		return Vector3.Normalize(averageVel + averagePos - averageNUL);
+		return Vector3.Normalize(averageVel + averageNUL);
 	}
 }

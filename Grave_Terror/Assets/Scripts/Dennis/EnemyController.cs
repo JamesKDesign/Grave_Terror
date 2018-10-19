@@ -119,79 +119,6 @@ public class EnemyController : MonoBehaviour
 		//Hordes
 		foreach (Enemy e in enemies)
 		{
-			switch(e.state)
-			{
-				case E_STATE.IDLE:
-					{
-						//Create a pathing behaviour for the leader
-						EnemyPathing pathing = new EnemyPathing(e);
-						pathing.weight = 1.0f;
-
-						//assign the behaviour to the actor
-						e.behaviours.Add(pathing);
-
-						e.path = new NavMeshPath();
-
-						//Calculate a path to that location
-						NavMesh.CalculatePath(e.transform.position, averagePos, NavMesh.AllAreas, e.path);
-
-						e.state = E_STATE.PATHING;
-					}
-				break;
-				//Pathing to the player
-				case E_STATE.PATHING:
-					{
-						//Alt method needed
-						if (refreshTimer >= 1.0f)
-						{
-							NavMesh.CalculatePath(e.transform.position, averagePos, NavMesh.AllAreas, e.path);
-							e.ResetBehaviours();
-						}
-
-						//Raycast from the leader towards both players
-						NavMeshHit hit;
-						if (!NavMesh.Raycast(e.transform.position, player1.transform.position, out hit, NavMesh.AllAreas))
-						{
-							e.state = E_STATE.ENGAGING;
-							e.target = player1;
-							//Temp weight change
-							e.behaviours.RemoveAt(0);
-							//e.behaviours.Add(new EnemyPursue(e));
-							//Temp end
-							break;
-						}
-						//2nd player
-						if (!NavMesh.Raycast(e.transform.position, player2.transform.position, out hit, NavMesh.AllAreas))
-						{
-							e.state = E_STATE.ENGAGING;
-							e.target = player2;
-							//Temp weight change
-							e.behaviours.RemoveAt(0);
-							//e.behaviours.Add(new EnemyPursue(e));
-							//Temp end
-							break;
-						}
-					}
-					break;
-				//Directly heading to player
-				case E_STATE.ENGAGING:
-					{
-						NavMeshHit hit;
-						//If theres an obstruction go back to pathfinding
-						if (NavMesh.Raycast(e.transform.position, e.target.transform.position, out hit, NavMesh.AllAreas))
-						{
-							e.state = E_STATE.PATHING;
-							e.ResetBehaviours();
-							e.target = null;
-							//Temp weight change
-							e.behaviours.Add(new EnemyPathing(e));
-							e.behaviours.RemoveAt(0);
-							//Temp end
-							break;
-						}
-					}
-					break;
-			}
 		}
 		if (refreshTimer >= 1.0f)
 		{
@@ -211,11 +138,5 @@ public class EnemyController : MonoBehaviour
 	{
 		//Remove the enemy from the collective
 		enemies.Remove(_enemy);
-	}
-
-	public void DispatchAll()
-	{
-		foreach (Enemy e in enemies)
-			e.state = E_STATE.ENGAGING;
 	}
 }
