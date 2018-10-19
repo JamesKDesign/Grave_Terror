@@ -5,12 +5,20 @@ using UnityEngine;
 public class EnemyProximitySensor : MonoBehaviour
 {
 
+	public List<Enemy> nearby = new List<Enemy>(20);
+
 	private void OnTriggerEnter(Collider other)
 	{
-		//add the object that entered to a list if it is an enemy
+		if (other.CompareTag("Enemy"))
+			nearby.Add(other.gameObject.GetComponent<Enemy>());
 	}
 	private void OnTriggerExit(Collider other)
 	{
-		//remove the object from the list if it is an enemy
+		if (other.CompareTag("Enemy"))
+			nearby.Remove(other.gameObject.GetComponent<Enemy>());
+	}
+	public void EntityDied(Enemy _enemy)
+	{
+		nearby.Remove(_enemy);
 	}
 }

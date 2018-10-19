@@ -8,7 +8,7 @@ public class EnemyEvade : BaseBehaviour
 	//___
 
 	//Initialization
-	public EnemyEvade(Enemy _enemy) : base(_enemy)
+	public EnemyEvade(Enemy _enemy, float _weight = 1.0f) : base(_enemy, _weight)
 	{
 
 	}

@@ -10,9 +10,10 @@ public class BaseBehaviour
 	public Enemy enemy;
 
 	//Initialization
-	public BaseBehaviour(Enemy _enemy)
+	public BaseBehaviour(Enemy _enemy, float _weight = 0.0f)
 	{
 		enemy = _enemy;
+		weight = _weight;
 	}
 
 	//Called by the attached enemy

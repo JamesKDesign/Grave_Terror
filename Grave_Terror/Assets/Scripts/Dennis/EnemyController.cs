@@ -156,7 +156,7 @@ public class EnemyController : MonoBehaviour
 							e.target = player1;
 							//Temp weight change
 							e.behaviours.RemoveAt(0);
-							e.behaviours.Add(new EnemyPursue(e));
+							//e.behaviours.Add(new EnemyPursue(e));
 							//Temp end
 							break;
 						}
@@ -167,7 +167,7 @@ public class EnemyController : MonoBehaviour
 							e.target = player2;
 							//Temp weight change
 							e.behaviours.RemoveAt(0);
-							e.behaviours.Add(new EnemyPursue(e));
+							//e.behaviours.Add(new EnemyPursue(e));
 							//Temp end
 							break;
 						}

@@ -11,7 +11,7 @@ public class EnemyPathing : BaseBehaviour
 	private Vector3 lastHeading = Vector3.zero;
 
 	//Initialization
-	public EnemyPathing(Enemy _enemy) : base(_enemy)
+	public EnemyPathing(Enemy _enemy, float _weight = 1.0f) : base(_enemy, _weight)
 	{
 		FFG = FlowFieldGenerator.GetInstance();
 	}

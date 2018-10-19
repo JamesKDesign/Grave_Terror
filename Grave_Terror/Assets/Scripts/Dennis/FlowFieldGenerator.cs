@@ -160,6 +160,9 @@ public class FlowFieldGenerator : MonoBehaviour
 
 		//We're working backwards so get the target position and convert it to segment position
 		Vector2Int seg = instance.GetSegmentIndex(_target_pos);
+		//Keep the old grid
+		if (FlowFieldGenerator.instance.grid[seg.x, seg.y] == null)
+			return;
 
 		Queue<Segment> queue = new Queue<Segment>(32);
 		queue.Enqueue(FlowFieldGenerator.instance.grid[seg.x, seg.y]);
@@ -296,7 +299,7 @@ public class FlowFieldGenerator : MonoBehaviour
 			{
 				if (grid[x, y] != null)
 				{
-					Gizmos.DrawCube(bottomLeft.position + new Vector3((float)x + 0.5f, 0.05f, (float)y + 0.5f), new Vector3(0.95f, 0.05f, 0.95f));
+					Gizmos.DrawWireCube(bottomLeft.position + new Vector3((float)x + 0.5f, 0.05f, (float)y + 0.5f), new Vector3(0.95f, 0.05f, 0.95f));
 					Debug.DrawRay(bottomLeft.position + new Vector3((float)x + 0.5f, 0.1f, (float)y + 0.5f), grid[x, y].direction * 0.5f, Color.green);
 					//Debug.DrawRay(bottomLeft.position + new Vector3((float)x + 0.5f, 0.1f, (float)y + 0.5f), Vector3.up * grid[x, y].distance, Color.red);
 				}

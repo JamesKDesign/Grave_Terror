@@ -9,6 +9,8 @@ public enum E_STATE
 	PATHING,
 	ENGAGING
 }
+
+[RequireComponent(typeof(CharacterController))]
 public class Enemy : MonoBehaviour
 {
 	[HideInInspector] //THe spawner that created us
@@ -16,7 +18,7 @@ public class Enemy : MonoBehaviour
 
 	public GameObject target;
 
-	private Rigidbody rb;
+	private CharacterController cc;
 
 	[HideInInspector] //Current state
 	public E_STATE state = E_STATE.IDLE;
@@ -39,37 +41,54 @@ public class Enemy : MonoBehaviour
 	[HideInInspector]
 	public List<BaseBehaviour> behaviours = new List<BaseBehaviour>(4);
 
-	private Vector3 suggestedDirection;
+	[HideInInspector]
+	public Vector3 velocity;
+	private Vector3 acceleration;
+
+	public float drag = 0.98f;
+	public float mass = 100.0f;
 
 	// Use this for initialization
 	void Start ()
 	{
-		behaviours.Add(new EnemyPathing(this));
+		behaviours.Add(new EnemyPathing(this, 0.67f));
+		behaviours.Add(new EnemyFlocking(this, 0.33f));
+
+		cc = GetComponent<CharacterController>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
 		//Cycle through all behaviours
-		suggestedDirection = Vector3.zero;
+		acceleration = Vector3.zero;
 		foreach (BaseBehaviour b in behaviours)
 		{
-			suggestedDirection += b.Update();
+			acceleration += b.Update() * b.weight;
 		}
 		//No up velocity
-		suggestedDirection.y = 0.0f;
+		acceleration.y = 0.0f;
 		//Normalize it and multiply it by our speed
-		suggestedDirection.Normalize();
-		suggestedDirection *= (movementSpeed * Time.fixedDeltaTime);
+		acceleration.Normalize();
+		acceleration *= movementSpeed;
+
+		velocity += acceleration / mass;
+		velocity *= drag;
 
 		//rotate towards where we are going
-		if(suggestedDirection != Vector3.zero)
-			transform.rotation.SetLookRotation(suggestedDirection);
+		if(velocity != Vector3.zero)
+			transform.rotation.SetLookRotation(velocity);
+
+		//Cap max velocity
+		if (velocity.magnitude > movementSpeed)
+		{
+			velocity = Vector3.Normalize(velocity) * movementSpeed;
+		}
 	}
 
 	private void FixedUpdate()
 	{
-		transform.Translate(suggestedDirection);
+		cc.Move(velocity * Time.deltaTime);
 	}
 
 	//Newly spawned or just respawned
