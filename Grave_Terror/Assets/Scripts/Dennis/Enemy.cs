@@ -99,7 +99,7 @@ public class Enemy : MonoBehaviour
 		//EnemyController.instance.RegisterEnemy(this);
 	}
 	//Actor died
-	void Dead()
+	public void Dead()
 	{
 		//Prevents this from being called twice
 		if (alive)

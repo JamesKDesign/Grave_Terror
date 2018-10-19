@@ -12,12 +12,13 @@ public class PlayerShooting : MonoBehaviour {
     public float damage;
     public float impactForce = 30f;
     public XboxController controller;
+    public float range;
 
     // Raycasting
     private void FixedUpdate()
     {
         counter += Time.deltaTime;
-        if (XCI.GetAxis(XboxAxis.RightTrigger, controller) > 0.5f)
+        if (XCI.GetAxis(XboxAxis.RightTrigger, controller) > 0.1f)
         {
             if(counter > delay)
             {
@@ -28,13 +29,17 @@ public class PlayerShooting : MonoBehaviour {
 
                 RaycastHit hit;
                 Ray rayCast = new Ray(transform.position, transform.forward);
-                if (Physics.Raycast(rayCast, out hit, 100f))
+                if (Physics.Raycast(rayCast, out hit, range))
                 {
                     // enemy health damaged
                     EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
                     if (target != null)
                     {
                         target.DamageHealth(damage);
+                    }
+                    else
+                    {
+                        Debug.Log("Shooting isnt killing");
                     }
 
                     // force push back
