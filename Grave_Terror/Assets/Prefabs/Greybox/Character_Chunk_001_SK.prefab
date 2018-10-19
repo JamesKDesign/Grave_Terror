@@ -68,6 +68,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4999255264303762}
+  - component: {fileID: 114889860614521354}
   m_Layer: 0
   m_Name: Bullet_Node
   m_TagString: Untagged
@@ -85,10 +86,10 @@ GameObject:
   - component: {fileID: 4911305549900222}
   - component: {fileID: 33244968807065782}
   - component: {fileID: 23717002580127812}
-  - component: {fileID: 54831002647953764}
   - component: {fileID: 136518977285043036}
-  - component: {fileID: 114476110796294584}
-  - component: {fileID: 114824164216737078}
+  - component: {fileID: 143694602848223656}
+  - component: {fileID: 114119730485686798}
+  - component: {fileID: 114621304826191894}
   m_Layer: 0
   m_Name: Character_Chunk_001_SK
   m_TagString: Player
@@ -144,7 +145,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1683214390377150}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13, y: 0, z: 7}
+  m_LocalPosition: {x: -3.38, y: 0.43, z: 6.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4786727305861326}
@@ -158,13 +159,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1637353600790884}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.601, y: 0, z: -0.224}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 1.6, y: 0, z: -0.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4287392037928334}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!23 &23451168333518366
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -288,22 +289,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1391454800240660}
   m_Mesh: {fileID: 4300000, guid: 97ad03cfd7b3f1746bc81a803ad5900f, type: 3}
---- !u!54 &54831002647953764
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1683214390377150}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
---- !u!114 &114476110796294584
+--- !u!114 &114119730485686798
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -311,36 +297,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 1683214390377150}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a14785a2faac554090a75bb6f44af35, type: 3}
+  m_Script: {fileID: 11500000, guid: d15a8b89466cdbe4888132c79d722252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 0
+  health: 100
+  reviveRadius: 10
+  sizzle: {fileID: 0}
+  maxHealth: 0
+  reviveTimer: 5
+  deathTimer: 15
+--- !u!114 &114621304826191894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1683214390377150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b231892fc7f665749bd2c4d91c81b744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 15
   floorMask: 0
   camRayLength: 100
   rotationSmoothing: 7
-  sprintSpeed: 0
-  sprintAcceleration: 0
-  sprintStamina: 0
-  staminaRegeneration: 0
-  newGun: {fileID: 0}
-  newGun2: {fileID: 0}
---- !u!114 &114824164216737078
+  controller: 0
+  previousRotation: {x: 0, y: 0, z: 1}
+--- !u!114 &114889860614521354
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1683214390377150}
+  m_GameObject: {fileID: 1637353600790884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b979d576180317145b1c517168da1ad9, type: 3}
+  m_Script: {fileID: 11500000, guid: af2e6bcaaa309d145bd7b48963505117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFiring: 1
-  bullet: {fileID: 114134683771577954, guid: 1a3e84ea416334b4c9e7c805d9ecba8b, type: 2}
-  bulletSpeed: 10
-  shotCounter: 10
-  timer: 0.1
-  firePoint: {fileID: 4999255264303762}
+  projectile: {fileID: 1842224786304258, guid: 1a3e84ea416334b4c9e7c805d9ecba8b, type: 2}
+  Blood: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
+  delay: 0.1
+  counter: 0
+  damage: 50
+  impactForce: 30
+  controller: 1
 --- !u!136 &136518977285043036
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -353,4 +353,21 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!143 &143694602848223656
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1683214390377150}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2.59
+  m_Radius: 0.62
+  m_SlopeLimit: 45
+  m_StepOffset: 0.66
+  m_SkinWidth: 2.6
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}

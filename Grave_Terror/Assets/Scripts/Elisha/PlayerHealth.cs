@@ -24,67 +24,25 @@ public class PlayerHealth : MonoBehaviour {
     {
         health -= amount;
 
-        while(isAlive)
+        if (health <= 0)
         {
-            if (health <= 0)
-            {
 
-                Death();
-            //    deathTimer -= Time.deltaTime;
-
-            //    if (deathTimer <= 0)
-            //    {
-            //        Death();
-            //    }
-            //    else
-            //    {
-            //        downedState();
-            //        if (Vector3.Distance(transform.position, sizzle.position) <= reviveRadius)
-            //        {
-            //            reviveTimer -= Time.deltaTime;
-            //            if (reviveTimer <= 0)
-            //            {
-            //                health = maxHealth;
-            //                break;
-            //            }
-            //            break;
-            //        }
-            //        break;
-            //    } 
-            //}
-            //else
-            //{
-            //    continue;
-            }
-            break;
+          Death();
+           
         }
+  
     }
 
     // when down player will hardly be able to move
     private void downedState()
     {
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.position += new Vector3(1 * Time.deltaTime, 0, 0);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position += new Vector3(0, 0, 1 * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position += new Vector3(-1 * Time.deltaTime, 0, 0);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += new Vector3(0, 0, -1 * Time.deltaTime);
-        }
+      
     }
 
     // player death
     public void Death()
     {
         isAlive = false;
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }

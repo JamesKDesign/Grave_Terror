@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4578941658954218}
   - component: {fileID: 33258322385135052}
   - component: {fileID: 23221506463140504}
-  - component: {fileID: 114812068859480492}
   - component: {fileID: 96119446202505920}
+  - component: {fileID: 114420364811157398}
   m_Layer: 0
   m_Name: Projectile_Bullet
   m_TagString: Untagged
@@ -171,7 +171,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
---- !u!114 &114812068859480492
+--- !u!114 &114420364811157398
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -179,7 +179,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1842224786304258}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8be9b834968607c40b3410ae37c0207c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c9df3d006dc73d4c8c0ccf83034107b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
+  Speed: 200
+  enemy: {fileID: 1071145814203772, guid: 96d55da248366c4418f07210367098d3, type: 2}

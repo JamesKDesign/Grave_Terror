@@ -9,10 +9,12 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private int floorMask;
     [SerializeField] private float camRayLength = 100f;
     [SerializeField] private float rotationSmoothing = 7f;             
-    Rigidbody playerRigidbody;                                         
-	Vector3 offset;  
-	public GunControls newGun;
-	public GunControls newGun2;
+    //Rigidbody playerRigidbody;
+    CharacterController playerController;
+	Vector3 offset;
+
+    public XboxController controller;
+    private Camera camera;
 
     //public XboxController controller;
     //bool controlWorks = true;
@@ -23,7 +25,8 @@ public class PlayerMovement : MonoBehaviour {
 		 // Create a layer mask for the floor layer.
 		floorMask = LayerMask.GetMask("Floor");
 		 // Set up references.
-		playerRigidbody = GetComponent<Rigidbody> ();
+		//playerRigidbody = GetComponent<Rigidbody> ();
+        playerController = GetComponent<CharacterController>();
 	}
 
     // Physics update only
@@ -39,84 +42,67 @@ public class PlayerMovement : MonoBehaviour {
 	// Sets the players movement and normalises it by the speed variable and by every frame, we then add that movement to the players rigidbody 
 	private void Move() {
 
-        //float axisX = XCI.GetAxis(XboxAxis.LeftStickX, controller);
-        //float axisZ = XCI.GetAxis(XboxAxis.LeftStickY, controller);
-        //if (controlWorks)
+        float axisX = XCI.GetAxis(XboxAxis.LeftStickX, controller);
+        float axisZ = XCI.GetAxis(XboxAxis.LeftStickY, controller);
+      
+        transform.position += new Vector3(axisX * walkSpeed * Time.deltaTime, 0, axisZ * walkSpeed * Time.deltaTime);
+ 
+        //// Basic player movement (No physics)
+        //if (Input.GetKey(KeyCode.W))
         //{
-        //    transform.position += new Vector3(axisX * walkSpeed * Time.deltaTime, 0, axisZ * walkSpeed * Time.deltaTime);
+        //    transform.position += new Vector3(walkSpeed * Time.deltaTime, 0, 0);
         //}
-        //else
+        //if (Input.GetKey(KeyCode.A))
         //{
-        //    Debug.Log("Controls not working");
+        //    transform.position += new Vector3(0, 0, walkSpeed * Time.deltaTime);
         //}
-
-
-        // Basic player movement (No physics)
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.position += new Vector3(walkSpeed * Time.deltaTime, 0, 0);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position += new Vector3(0, 0, walkSpeed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position += new Vector3(-walkSpeed * Time.deltaTime, 0, 0);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += new Vector3(0, 0, -walkSpeed * Time.deltaTime);
-        }
-
-        //// firing Machine Gun 
-        //if (Input.GetKey(KeyCode.Mouse0))
+        //if (Input.GetKey(KeyCode.S))
         //{
-        //    newGun.isFiring = true;
-        //    //newGun2.isFiring = true;
+        //    transform.position += new Vector3(-walkSpeed * Time.deltaTime, 0, 0);
         //}
-        //if (Input.GetKeyUp(KeyCode.Mouse0))
+        //if (Input.GetKey(KeyCode.D))
         //{
-        //    newGun.isFiring = false;
-        //    //newGun2.isFiring = false; 
+        //    transform.position += new Vector3(0, 0, -walkSpeed * Time.deltaTime);
         //}
     }
 
     // ray casting
 	private void Turning() {
 
-        //float rotateAxisX = XCI.GetAxis(XboxAxis.RightStickX, controller);
-        //float rotateAxisZ = XCI.GetAxis(XboxAxis.RightStickY, controller);
+        float rotateAxisX = XCI.GetAxis(XboxAxis.RightStickX, controller);
+        float rotateAxisZ = XCI.GetAxis(XboxAxis.RightStickY, controller);
 
-        //Vector3 direction = new Vector3(rotateAxisX, 0, rotateAxisZ);
+        Vector3 direction = new Vector3(rotateAxisX, 0, rotateAxisZ);
+
+        if (direction.magnitude < 0.1f)
+        {
+            direction = previousRotation;
+        }
+
+        direction = direction.normalized;
+        previousRotation = direction;
+        transform.rotation = Quaternion.LookRotation(direction);
         
-        //if(direction.magnitude < 0.1f)
+
+
+        //Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //RaycastHit floorHit;
+
+        //if (Physics.Raycast(camRay, out floorHit, camRayLength, floorMask))
         //{
-        //    direction = previousRotation;
+        //    Vector3 playerToMouse = floorHit.point - transform.position;
+        //    playerToMouse.y = 0f;
+
+        //    Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
+        //    playerRigidbody.MoveRotation(newRotation);
+
+        //    Vector3 position = transform.position + offset;
+        //    // smoothing of the rotation of player
+        //    transform.position = Vector3.Lerp(transform.position, position, rotationSmoothing * Time.deltaTime);
         //}
-
-        //direction = direction.normalized;
-        //previousRotation = direction;
-        //transform.rotation = Quaternion.LookRotation(direction); 
-
-        Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit floorHit;
-
-        if (Physics.Raycast(camRay, out floorHit, camRayLength, floorMask))
-        {
-            Vector3 playerToMouse = floorHit.point - transform.position;
-            playerToMouse.y = 0f;
-
-            Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
-            playerRigidbody.MoveRotation(newRotation);
-
-            Vector3 position = transform.position + offset;
-            // smoothing of the rotation of player
-            transform.position = Vector3.Lerp(transform.position, position, rotationSmoothing * Time.deltaTime);
-        }
-        else
-        {
-            Debug.Log("Turning is not working");
-        }
+        //else
+        //{
+        //    Debug.Log("Turning is not working");
+        //}
     }
 }
