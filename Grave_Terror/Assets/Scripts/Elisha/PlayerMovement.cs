@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour {
 	Vector3 offset;
 
     public XboxController controller;
-    private Camera camera;
 
     //public XboxController controller;
     //bool controlWorks = true;
