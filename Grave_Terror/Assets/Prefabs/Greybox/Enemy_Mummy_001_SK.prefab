@@ -57,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1049179074810732}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -62.13322, y: 23.131472, z: -46.159454}
+  m_LocalPosition: {x: 13.14669, y: 0, z: -18.422401}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4662495665621178}
@@ -91,7 +91,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4a73e6a413fbbcb44a5f7d67009b7d4f, type: 3}
+  - {fileID: 2100000, guid: ae18ab5545e5ebe479caf451d5f3ab51, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -117,7 +117,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1049179074810732}
-  m_Mesh: {fileID: 4300000, guid: 4a73e6a413fbbcb44a5f7d67009b7d4f, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 59f83ae086848734db30eb4b995cc9ed, type: 3}
 --- !u!54 &54750622526511742
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -163,6 +163,7 @@ MonoBehaviour:
   attackDamage: 0
   attackRange: 0
   movementSpeed: 15
+  fireDamageOverTime: 0
   velocity: {x: 0, y: 0, z: 0}
   drag: 0.98
   mass: 5.4
