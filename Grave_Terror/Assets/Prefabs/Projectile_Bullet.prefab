@@ -196,4 +196,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 200
-  enemy: {fileID: 1071145814203772, guid: 96d55da248366c4418f07210367098d3, type: 2}
+  bulletLife: 2
