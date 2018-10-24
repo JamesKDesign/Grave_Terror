@@ -31,7 +31,7 @@ public class EnemyAttack : BaseBehaviour
 			if (timer <= 0.0f)
 			{
 				timer = enemy.attackRate;
-				enemy.target.GetComponent<PlayerHealth>().RemoveHealth(enemy.attackDamage);
+				enemy.target.GetComponent<PlayerHealth>().DamagePlayer(enemy.attackDamage);
 			}
 		}
 		//Non-directing behaviour
