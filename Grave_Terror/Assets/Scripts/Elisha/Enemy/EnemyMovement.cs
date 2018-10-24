@@ -8,11 +8,8 @@ public class EnemyMovement : MonoBehaviour {
 	// TESTING PURPOSES ONLY //
 
     public Transform target;
-	NavMeshAgent enemy;
-	public float speed = 10f;
-    public float damage;
+    NavMeshAgent enemy;
 	
-
 	private void Awake() {
 		target = GameObject.FindGameObjectWithTag("Player").transform;
 		enemy = GetComponent<NavMeshAgent>();
@@ -21,16 +18,4 @@ public class EnemyMovement : MonoBehaviour {
 	private void Update() {
 		enemy.SetDestination(target.position);
 	}
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.name == "Player")
-        {
-            other.transform.GetComponent<PlayerHealth>().RemoveHealth(damage);
-        }
-        else
-        {
-            Debug.Log("Collision not working");
-        }
-    }
 }
