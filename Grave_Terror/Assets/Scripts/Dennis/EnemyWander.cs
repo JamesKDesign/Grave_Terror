@@ -11,10 +11,10 @@ public class EnemyWander : BaseBehaviour
 
 	public override Vector3 Update()
 	{
-		Vector3 dev = enemy.velocity;
-		dev = Vector3.Cross(dev, enemy.transform.right);
-
-		dev.x += Random.Range(-1.0f, 1.0f);
+		//Needs testing
+		Vector3 dev = enemy.transform.forward;
+		//haha unity fu
+		//dev *= Vector3.zero;
 
 		return dev;
 	}

@@ -34,6 +34,8 @@ public class Enemy : MonoBehaviour
 	public int attackDamage;
 	[Tooltip("Actor attack range (in unity meters)")]
 	public float attackRange;
+	[Tooltip("Actor attack rate (delay in seconds)")]
+	public float attackRate;
 	[Tooltip("Actor travel speed")]
 	public float movementSpeed;
 
@@ -61,17 +63,14 @@ public class Enemy : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		behaviours.Add(new EnemyPathing(this, pathingWeight));
-		behaviours.Add(new EnemyFlocking(this, flockingWeight));
+		//behaviours.Add(new EnemyPathing(this, pathingWeight));
+		//behaviours.Add(new EnemyFlocking(this, flockingWeight));
 		behaviours.Add(new EnemyWander(this, wanderWeight));
+		behaviours.Add(new EnemyAttack(this, 1.0f)); //Weight does not effect this behaviour
 
 		cc = GetComponent<CharacterController>();
 
 		health = GetComponent<EnemyHealth>();
-
-		//Shifty fix one
-		Rigidbody rb = gameObject.AddComponent<Rigidbody>();
-		Destroy(rb);
 	}
 	
 	// Update is called once per frame
@@ -106,7 +105,7 @@ public class Enemy : MonoBehaviour
 
 		//rotate towards where we are going
 		if (velocity != Vector3.zero)
-			transform.localRotation = Quaternion.Euler(new Vector3(0.0f, Mathf.Atan2(velocity.y, velocity.x), 0.0f));
+			transform.localRotation = Quaternion.LookRotation(velocity);
 			//transform.rotation.SetFromToRotation(Vector3.zero, velocity);
 
 		//Cap max velocity
@@ -116,7 +115,7 @@ public class Enemy : MonoBehaviour
 		}
 
 		//Anchor the enemy to the floor (rigidbody fix)
-		//transform.position = new Vector3(transform.position.x, 0.0f, transform.position.z);
+		transform.position = new Vector3(transform.position.x, 0.0f, transform.position.z);
 	}
 
 	private void FixedUpdate()

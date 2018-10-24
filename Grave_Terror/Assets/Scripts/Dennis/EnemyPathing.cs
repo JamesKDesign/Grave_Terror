@@ -29,7 +29,7 @@ public class EnemyPathing : BaseBehaviour
 		//If we're off the grid travel in the opposite direction that got us into this mess
 		else
 		{
-			return -lastHeading;
+			return lastHeading;
 		}
 	}
 
