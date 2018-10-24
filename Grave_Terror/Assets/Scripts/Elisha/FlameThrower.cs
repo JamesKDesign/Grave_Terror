@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
 
-public class FlameThrower : MonoBehaviour {
-
+public class FlameThrower : MonoBehaviour
+{
     public GameObject flame;
     public XboxController controller;
     public float counter;
@@ -18,9 +18,8 @@ public class FlameThrower : MonoBehaviour {
             if (counter > delay)
             {
                 // bullets
-                GameObject bullet = Instantiate(flame, transform.position, transform.rotation);
+                GameObject newFlame = Instantiate(flame, transform.position, transform.rotation);
                 counter = 0f;
-
             }
         }
     }

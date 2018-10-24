@@ -6,7 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
 
     public int health;
-    private float currentHealth;
+    public float currentHealth;
 
     private void Awake()
     {
