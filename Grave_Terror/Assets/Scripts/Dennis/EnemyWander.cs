@@ -12,11 +12,10 @@ public class EnemyWander : BaseBehaviour
 	public override Vector3 Update()
 	{
 		Vector3 dev = enemy.velocity;
-		float rval = Random.value;
+		dev = Vector3.Cross(dev, enemy.transform.right);
 
-		dev.x *= Mathf.Sin(rval);
-		dev.z *= Mathf.Cos(rval);
+		dev.x += Random.Range(-1.0f, 1.0f);
 
-		return Vector3.zero;
+		return dev;
 	}
 }

@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
 
 	private EnemyHealth health;
 
+	[HideInInspector]
 	public GameObject target;
 
 	private CharacterController cc;
@@ -47,19 +48,30 @@ public class Enemy : MonoBehaviour
 	public Vector3 velocity;
 	private Vector3 acceleration;
 
+	//Slowdown overtime
 	public float drag = 0.97f;
+	[Tooltip("Higher mass means it takes longer to reach max speed")]
 	public float mass = 10.0f;
+
+	[Header("Weights")]
+	public float pathingWeight = 0.67f;
+	public float flockingWeight = 0.33f;
+	public float wanderWeight = 1.00f;
 
 	// Use this for initialization
 	void Start ()
 	{
-		behaviours.Add(new EnemyPathing(this, 0.67f));
-		behaviours.Add(new EnemyFlocking(this, 0.33f));
-		behaviours.Add(new EnemyWander(this, 0.33f));
+		behaviours.Add(new EnemyPathing(this, pathingWeight));
+		behaviours.Add(new EnemyFlocking(this, flockingWeight));
+		behaviours.Add(new EnemyWander(this, wanderWeight));
 
 		cc = GetComponent<CharacterController>();
 
 		health = GetComponent<EnemyHealth>();
+
+		//Shifty fix one
+		Rigidbody rb = gameObject.AddComponent<Rigidbody>();
+		Destroy(rb);
 	}
 	
 	// Update is called once per frame
@@ -68,9 +80,11 @@ public class Enemy : MonoBehaviour
 		switch (state)
 		{
 			case E_STATE.NORMAL:
+				//Disable fire effect here?
 				break;
 
 			case E_STATE.IGNITED:
+				//Mabye display some fire effect here?
 				health.DamageHealth(fireDamageOverTime * Time.deltaTime);
 				break;
 		}
@@ -91,14 +105,18 @@ public class Enemy : MonoBehaviour
 		velocity *= drag;
 
 		//rotate towards where we are going
-		if(velocity != Vector3.zero)
-			transform.rotation.SetLookRotation(velocity);
+		if (velocity != Vector3.zero)
+			transform.localRotation = Quaternion.Euler(new Vector3(0.0f, Mathf.Atan2(velocity.y, velocity.x), 0.0f));
+			//transform.rotation.SetFromToRotation(Vector3.zero, velocity);
 
 		//Cap max velocity
 		if (velocity.magnitude > movementSpeed)
 		{
 			velocity = Vector3.Normalize(velocity) * movementSpeed;
 		}
+
+		//Anchor the enemy to the floor (rigidbody fix)
+		//transform.position = new Vector3(transform.position.x, 0.0f, transform.position.z);
 	}
 
 	private void FixedUpdate()
@@ -139,5 +157,10 @@ public class Enemy : MonoBehaviour
 	{
 		state = E_STATE.IGNITED;
 		fireDamageOverTime = _fire_strength;
+	}
+
+	private void OnDrawGizmosSelected()
+	{
+		Debug.DrawRay(transform.position, transform.forward * 5.0f, Color.red);
 	}
 }
