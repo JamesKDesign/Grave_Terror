@@ -7,7 +7,7 @@ public class PlayerShooting : MonoBehaviour
 {
 
     public GameObject projectile;
-    public GameObject Blood;
+    //public GameObject Blood;
     public float delay;
     public float counter = 0f;
     public float damageToGive;
@@ -48,8 +48,8 @@ public class PlayerShooting : MonoBehaviour
                         }
 
                         // blood
-                        GameObject impactGo = Instantiate(Blood, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                        Destroy(impactGo.gameObject, 2.0f);
+                        //GameObject impactGo = Instantiate(Blood, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+                       // Destroy(impactGo.gameObject, 2.0f);
                     }
                 }
             }
@@ -81,8 +81,8 @@ public class PlayerShooting : MonoBehaviour
                     }
 
                     // blood
-                    GameObject impactGo = Instantiate(Blood, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                    Destroy(impactGo.gameObject, 2.0f);
+                   // GameObject impactGo = Instantiate(Blood, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+                   // Destroy(impactGo.gameObject, 2.0f);
                 }
             }
         }
