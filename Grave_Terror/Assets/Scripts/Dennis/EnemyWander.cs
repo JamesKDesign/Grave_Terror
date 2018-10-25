@@ -13,8 +13,11 @@ public class EnemyWander : BaseBehaviour
 	{
 		//Needs testing
 		Vector3 dev = enemy.transform.forward;
-		//haha unity fu
-		//dev *= Vector3.zero;
+		//Multiplying the dev Vec3 with a Vec3(10,0,10)
+		dev = new Vector3(dev.x * 1.0f, 0.0f, dev.z * 1.0f);
+
+		float rValue = Random.Range(-1.0f, 1.0f);
+		dev = new Vector3(dev.x + (enemy.transform.right.x * rValue), 0.0f, dev.z + (enemy.transform.right.z * rValue));
 
 		return dev;
 	}

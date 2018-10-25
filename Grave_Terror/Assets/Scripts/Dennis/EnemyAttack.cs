@@ -35,6 +35,6 @@ public class EnemyAttack : BaseBehaviour
 			}
 		}
 		//Non-directing behaviour
-		return Vector3.zero;
+		return enemy.target.transform.position - enemy.transform.position;
 	}
 }

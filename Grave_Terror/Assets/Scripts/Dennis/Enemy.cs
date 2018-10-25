@@ -29,6 +29,11 @@ public class Enemy : MonoBehaviour
 	[HideInInspector]
 	public bool alive = false;
 
+	//Is this actor directly engaging the target?
+	[HideInInspector]
+	public bool engaging = false;
+	private BaseBehaviour engager;
+
 	//Values to be set in the editor
 	[Tooltip("Actor attack damage")]
 	public int attackDamage;
@@ -58,15 +63,16 @@ public class Enemy : MonoBehaviour
 	[Header("Weights")]
 	public float pathingWeight = 0.67f;
 	public float flockingWeight = 0.33f;
-	public float wanderWeight = 1.00f;
+	public float wanderWeight = 0.10f;
 
 	// Use this for initialization
 	void Start ()
 	{
-		//behaviours.Add(new EnemyPathing(this, pathingWeight));
-		//behaviours.Add(new EnemyFlocking(this, flockingWeight));
+		behaviours.Add(new EnemyPathing(this, pathingWeight));
+		behaviours.Add(new EnemyFlocking(this, flockingWeight));
 		behaviours.Add(new EnemyWander(this, wanderWeight));
-		behaviours.Add(new EnemyAttack(this, 1.0f)); //Weight does not effect this behaviour
+		//Moved to its own section
+		engager = new EnemyAttack(this, 1.0f); //Weight does not effect this behaviour
 
 		cc = GetComponent<CharacterController>();
 
@@ -90,9 +96,16 @@ public class Enemy : MonoBehaviour
 
 		//Cycle through all behaviours
 		acceleration = Vector3.zero;
-		foreach (BaseBehaviour b in behaviours)
+		if (engaging)
 		{
-			acceleration += b.Update() * b.weight;
+			acceleration += engager.Update();
+		}
+		else
+		{
+			foreach (BaseBehaviour b in behaviours)
+			{
+				acceleration += b.Update() * b.weight;
+			}
 		}
 		//No up velocity
 		acceleration.y = 0.0f;
@@ -120,6 +133,7 @@ public class Enemy : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		//Debug.Log("WTF " + velocity);
 		cc.Move(velocity * Time.deltaTime);
 	}
 
@@ -158,8 +172,8 @@ public class Enemy : MonoBehaviour
 		fireDamageOverTime = _fire_strength;
 	}
 
-	private void OnDrawGizmosSelected()
+	private void OnDrawGizmos()
 	{
-		Debug.DrawRay(transform.position, transform.forward * 5.0f, Color.red);
+		Debug.DrawRay(transform.position, transform.forward * 10.0f, Color.red);
 	}
 }
