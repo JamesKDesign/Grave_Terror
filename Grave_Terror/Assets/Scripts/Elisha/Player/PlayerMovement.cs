@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CharacterController))]
+
 public class PlayerMovement : MonoBehaviour
 {
 
@@ -15,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public bool useController = false;
     private Vector3 previousRotation = Vector3.forward;
     Vector3 offset;
+    CharacterController characterController;
 
     private void Awake()
     {
@@ -22,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         floorMask = LayerMask.GetMask("Floor");
         // Set up references.
         playerRigidbody = GetComponent<Rigidbody>();
+        characterController = GetComponent<CharacterController>();
 
     }
 

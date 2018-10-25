@@ -20,7 +20,7 @@ public class LaserSight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //laser.SetPosition(0, new Vector3(, 0, 0));
+        laser.SetPosition(0, new Vector3(0, 0, 0));
 
         RaycastHit hit;
         if (Physics.Raycast(laser.transform.position, laser.transform.forward, out hit))
