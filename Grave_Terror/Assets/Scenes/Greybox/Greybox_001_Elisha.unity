@@ -20121,7 +20121,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4911305549900222, guid: 72aae7ecf34f598479d97c001955ae30, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -3.38
+      value: 6.74
       objectReference: {fileID: 0}
     - target: {fileID: 4911305549900222, guid: 72aae7ecf34f598479d97c001955ae30, type: 2}
       propertyPath: m_LocalPosition.y
@@ -20174,10 +20174,15 @@ Prefab:
     - target: {fileID: 114621304826191894, guid: 72aae7ecf34f598479d97c001955ae30,
         type: 2}
       propertyPath: useController
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1683214390377150, guid: 72aae7ecf34f598479d97c001955ae30, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 143694602848223656, guid: 72aae7ecf34f598479d97c001955ae30,
+        type: 2}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -27148,7 +27153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a643ff55462ee7849800c2ae41b1f3a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flame: {fileID: 1073892824264478, guid: b00d9b19d89208a48b9835a88535eba5, type: 2}
+  flame: {fileID: 1665607543111060, guid: b00d9b19d89208a48b9835a88535eba5, type: 2}
   controller: 1
   counter: 0
   delay: 0.1
@@ -31581,7 +31586,7 @@ MonoBehaviour:
   - {fileID: 95568754}
   - {fileID: 1532692570}
   m_enemyPrefab:
-  - {fileID: 1897225393812312, guid: 2939a417504fe5a42b4e07268dde6777, type: 2}
+  - {fileID: 1999174270748098, guid: 2939a417504fe5a42b4e07268dde6777, type: 2}
   m_enemySpawning:
   - triggered: 0
     enemyID: 0
@@ -35181,6 +35186,21 @@ MonoBehaviour:
   health: 20
   currentHealth: 0
   damageFlashLength: 0.2
+--- !u!54 &1930027291
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1930027284}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1933728244
 Prefab:
   m_ObjectHideFlags: 0
