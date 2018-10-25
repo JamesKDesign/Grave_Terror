@@ -53,8 +53,10 @@ public class FlowFieldGenerator : MonoBehaviour
 
 	public string filePath;
 
-	//TEMPORAL VARIABLE
-	public Transform target;
+	//player Targets
+	public Transform[] targets;
+	//Optimization
+	private int current = 0;
 
 	private void Awake()
 	{
@@ -64,7 +66,7 @@ public class FlowFieldGenerator : MonoBehaviour
 	[System.Serializable]
 	public class Segment
 	{
-		public Vector3 direction;
+		public Vector3[] direction = new Vector3[4];
 		//0↑  1↗  2→  3↘  4↓  5↙  6←  7↖
 		public Segment[] neighbours = new Segment[8];
 
@@ -77,13 +79,20 @@ public class FlowFieldGenerator : MonoBehaviour
 		//--==!!!!!==--Export it so it doesnt need to be regenerated every run--==!!!!!==--
 		GenerateField();
 
-		QueryGrid(target.position);
-		//QueryGrid(Vector3.zero);
+		for (int i = 0; i < targets.Length; ++i)
+		{
+			QueryGrid(targets[i].position, i);
+		}
 	}
 
 	private void Update()
 	{
-		QueryGrid(target.position);
+		//Only update them one at a time
+		QueryGrid(targets[current].position, current);
+		//Change current for the next go
+		current++;
+		if (current >= targets.Length)
+			current = 0;
 	}
 
 	private void GenerateField()
@@ -107,7 +116,7 @@ public class FlowFieldGenerator : MonoBehaviour
 					if (hit.transform.gameObject.layer == 8)
 					{
 						grid[x, y] = new Segment();
-						grid[x, y].direction = Vector3.zero;
+						grid[x, y].direction[0] = Vector3.zero;
 						continue;
 					}
 				}
@@ -153,7 +162,7 @@ public class FlowFieldGenerator : MonoBehaviour
 
 	//Set the grid to point towards a target position
 	//Should be called everytime the player moves to a different sector
-	static public void QueryGrid(Vector3 _target_pos)
+	static public void QueryGrid(Vector3 _target_pos, int _index)
 	{
 		//Reset the grid
 		FlowFieldGenerator.instance.ResetGrid();
@@ -190,14 +199,14 @@ public class FlowFieldGenerator : MonoBehaviour
 					//Just check if its closer
 					if (segment.distance + Vectoral.d[s] < neighbour.distance)
 					{
-						neighbour.direction = Vectoral.v[s];
+						neighbour.direction[_index] = Vectoral.v[s];
 						neighbour.distance = segment.distance + Vectoral.d[s];
 					}
 					continue;
 				}
 
 				//Voodoo arrays because only 8 directions are possible
-				neighbour.direction = Vectoral.v[s];
+				neighbour.direction[_index] = Vectoral.v[s];
 
 				//Mark it as queried so we dont calculate it again
 				neighbour.queried = true;
@@ -209,12 +218,12 @@ public class FlowFieldGenerator : MonoBehaviour
 	}
 
 	//Find out which segment in the grid we're standing on and get where we need to go
-	static public Vector3 GetDirectionFromGrid(Vector3 _position)
+	static public Vector3 GetDirectionFromGrid(Vector3 _position, int _index)
 	{
 		//Convert to segment
 		Vector2Int seg = instance.GetSegmentIndex(_position);
 		//Return the segment's direction
-		return FlowFieldGenerator.instance.grid[seg.x, seg.y].direction;
+		return FlowFieldGenerator.instance.grid[seg.x, seg.y].direction[_index];
 
 		//return Vector3.zero;
 	}
@@ -240,6 +249,20 @@ public class FlowFieldGenerator : MonoBehaviour
 		seg.y = (int)((FlowFieldGenerator.instance.bottomLeft.position.z * -1.0f) + _position.z);
 
 		return grid[seg.x, seg.y];
+	}
+
+	public Vector3 GetSegmentDirection(Vector3 _position, int _index)
+	{
+		//XZ to XY
+		Vector2Int seg = new Vector2Int();
+		//convert world position to grid positon
+		seg.x = (int)((FlowFieldGenerator.instance.bottomLeft.position.x * -1.0f) + _position.x);
+		seg.y = (int)((FlowFieldGenerator.instance.bottomLeft.position.z * -1.0f) + _position.z);
+
+		if (grid[seg.x, seg.y] != null)
+			return grid[seg.x, seg.y].direction[_index];
+		else
+			return Vector3.zero;
 	}
 
 	//Does exactly whats on the label
@@ -292,7 +315,6 @@ public class FlowFieldGenerator : MonoBehaviour
 
 	private void OnDrawGizmosSelected()
 	{
-		Debug.DrawRay(target.position, Vector3.up * 1000.0f, Color.red);
 		for (int x = 0; x < size.x; ++x)
 		{
 			for (int y = 0; y < size.y; ++y)
@@ -300,7 +322,8 @@ public class FlowFieldGenerator : MonoBehaviour
 				if (grid[x, y] != null)
 				{
 					Gizmos.DrawWireCube(bottomLeft.position + new Vector3((float)x + 0.5f, 0.05f, (float)y + 0.5f), new Vector3(0.95f, 0.05f, 0.95f));
-					Debug.DrawRay(bottomLeft.position + new Vector3((float)x + 0.5f, 0.1f, (float)y + 0.5f), grid[x, y].direction * 0.5f, Color.green);
+					Debug.DrawRay(bottomLeft.position + new Vector3((float)x + 0.5f, 0.1f, (float)y + 0.5f), grid[x, y].direction[0] * 0.5f, Color.green);
+					Debug.DrawRay(bottomLeft.position + new Vector3((float)x + 0.5f, 0.1f, (float)y + 0.5f), grid[x, y].direction[1] * 0.5f, Color.blue);
 					//Debug.DrawRay(bottomLeft.position + new Vector3((float)x + 0.5f, 0.1f, (float)y + 0.5f), Vector3.up * grid[x, y].distance, Color.red);
 				}
 			}

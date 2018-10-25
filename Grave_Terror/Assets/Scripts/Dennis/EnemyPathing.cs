@@ -20,10 +20,10 @@ public class EnemyPathing : BaseBehaviour
 	override public Vector3 Update()
 	{
 		//If we're on the grid just follow its directions
-		FlowFieldGenerator.Segment seg = FFG.GetSegment(enemy.transform.position);
+		Vector3 seg = FFG.GetSegmentDirection(enemy.transform.position, 0);
 		if (seg != null)
 		{
-			lastHeading = seg.direction;
+			lastHeading = seg;
 			return lastHeading;
 		}
 		//If we're off the grid travel in the opposite direction that got us into this mess

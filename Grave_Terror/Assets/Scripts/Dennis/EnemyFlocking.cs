@@ -20,6 +20,9 @@ public class EnemyFlocking : BaseBehaviour
 		{
 			averageVel += sensor.nearby[i].velocity;
 			averageNUL += sensor.nearby[i].transform.position;
+			//Limiter of 4 to early out
+			if (i > 4)
+				break;
 		}
 		//Velocity
 		averageVel /= (float)i;

@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
 	public bool alive = false;
 
 	//Is this actor directly engaging the target?
-	[HideInInspector]
+	//[HideInInspector]
 	public bool engaging = false;
 	private BaseBehaviour engager;
 

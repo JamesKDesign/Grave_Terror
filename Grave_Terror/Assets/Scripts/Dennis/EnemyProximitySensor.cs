@@ -16,6 +16,7 @@ public class EnemyProximitySensor : MonoBehaviour
 			GetComponentInParent<Enemy>().engaging = true;
 			GetComponentInParent<Enemy>().target = other.gameObject;
 		}
+		
 	}
 	private void OnTriggerExit(Collider other)
 	{
