@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 8
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.125, g: 0.036764704, b: 0.08240366, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.03
@@ -13165,7 +13165,7 @@ MonoBehaviour:
   m_enemySpawning:
   - triggered: 0
     enemyID: 0
-    amount: 100000000
+    amount: 100
     randomSpawn: 1
     nearbySpawnOnly: 0
     nearThreshold: 0
@@ -13854,6 +13854,7 @@ GameObject:
   - component: {fileID: 770648768}
   - component: {fileID: 770648767}
   - component: {fileID: 770648766}
+  - component: {fileID: 770648770}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -13924,6 +13925,18 @@ Transform:
   m_Father: {fileID: 1888561085}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &770648770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 770648765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90616c7bf912f2a4388e3096b6721476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PostEffect: {fileID: 2100000, guid: 8425396788514a54196d9f01bcb4f6d6, type: 2}
 --- !u!1001 &777610126
 Prefab:
   m_ObjectHideFlags: 0
@@ -21107,7 +21120,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.4
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -25328,7 +25341,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 10
-  m_Range: 10
+  m_Range: 8.93066
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -25360,7 +25373,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1407094121}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -21, y: -10, z: -13.17}
+  m_LocalPosition: {x: 14.24, y: -9.49, z: -13.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 550004218}
