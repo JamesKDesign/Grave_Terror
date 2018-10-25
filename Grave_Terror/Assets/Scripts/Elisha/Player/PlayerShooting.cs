@@ -39,6 +39,7 @@ public class PlayerShooting : MonoBehaviour
                         if (target != null)
                         {
                             target.DamageHealth(damageToGive);
+                            Destroy(bullet, 0.2f);
                         }
 
                         // force push back
@@ -49,7 +50,7 @@ public class PlayerShooting : MonoBehaviour
 
                         // blood
                         GameObject impactGo = Instantiate(hitEffect, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                        Destroy(impactGo.gameObject, 2.0f);
+                        Destroy(impactGo, 0.2f);
                     }
                 }
             }

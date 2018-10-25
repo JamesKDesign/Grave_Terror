@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 public class UIPauseMenu : MonoBehaviour
 {
 	bool paused = false;
+    public XboxController controller;
+    public bool useController = false;
 
 	private void Start()
 	{
@@ -13,16 +16,25 @@ public class UIPauseMenu : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetKeyDown(KeyCode.Escape))
-		{
-			TogglePause();
-		}
-		if (paused)
-		{
-		}
-		else
-		{
-		}
+        if(!useController)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                TogglePause();
+            }
+        }
+        else if (useController == true)
+        {
+            if (XCI.GetButtonDown(XboxButton.Start))
+            {
+                TogglePause();
+            }
+
+            if(paused == true && (XCI.GetButtonDown(XboxButton.A)))
+            {
+                QuitClick();
+            }
+        }
 	}
 
 	public void ContinueClick()

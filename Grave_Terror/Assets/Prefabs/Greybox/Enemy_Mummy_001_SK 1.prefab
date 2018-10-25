@@ -223,14 +223,14 @@ MonoBehaviour:
   attackDamage: 0
   attackRange: 0
   attackRate: 0
-  movementSpeed: 10
+  movementSpeed: 8
   fireDamageOverTime: 0
   velocity: {x: 0, y: 0, z: 0}
   drag: 0.98
   mass: 5.4
   pathingWeight: 0.67
   flockingWeight: 0.33
-  wanderWeight: 1
+  wanderWeight: 0.1
 --- !u!114 &114998978250858082
 MonoBehaviour:
   m_ObjectHideFlags: 1

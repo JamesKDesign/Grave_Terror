@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4687575203012182}
   - component: {fileID: 33269014726368872}
   - component: {fileID: 23551760822589472}
-  - component: {fileID: 65062188547450916}
+  - component: {fileID: 65814526838165178}
   m_Layer: 0
   m_Name: Bannister_Centre_001
   m_TagString: Untagged
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1389911810641940}
   m_LocalRotation: {x: -0, y: 0.70710707, z: -0, w: 0.70710653}
-  m_LocalPosition: {x: -80, y: 0, z: -30}
+  m_LocalPosition: {x: -18.466986, y: 0, z: -4.05183}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,7 +83,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1389911810641940}
   m_Mesh: {fileID: 4300000, guid: 9a7c2cdbfb9474d449bd9b6459147627, type: 3}
---- !u!65 &65062188547450916
+--- !u!65 &65814526838165178
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -93,5 +93,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 1.5, z: 0.6}
+  m_Size: {x: 2, y: 1.2, z: 0.6}
   m_Center: {x: 0, y: 0.59235895, z: 1.75}

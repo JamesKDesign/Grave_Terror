@@ -443,7 +443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 15
   flameLife: 2
-  flameDamage: 10
+  flameDamage: 20
   damageTimer: 5
 --- !u!114 &114607210568070202
 MonoBehaviour:
