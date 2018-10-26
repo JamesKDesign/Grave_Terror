@@ -6,29 +6,28 @@ using XboxCtrlrInput;
 public class PlayerShooting : MonoBehaviour
 {
 
-    public GameObject projectile;
+    public GameObject particleProjectile;
     public GameObject hitEffect;
     public float delay;
     public float counter = 0f;
     public float damageToGive;
     public float impactForce = 30f;
-    public XboxController controller;
     public float range;
-    public PlayerMovement useController;
+    public XboxControllerManager xboxController;
 
     // Raycasting
     private void FixedUpdate()
     {
         counter += Time.deltaTime;
-        if (useController.useController == true)
+        if (xboxController.useController == true)
         {
-            if (XCI.GetAxis(XboxAxis.RightTrigger, controller) > 0.1f)
+            if (XCI.GetAxis(XboxAxis.RightTrigger, xboxController.controller) > 0.1f)
             {
                 if (counter > delay)
                 {
-                    // bullets
-                    GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
-                    counter = 0f;
+                     // bullets
+                     GameObject bullet = Instantiate(particleProjectile, transform.position, transform.rotation);
+                     counter = 0f;
 
                     RaycastHit hit;
                     Ray rayCast = new Ray(transform.position, transform.forward);
@@ -39,7 +38,7 @@ public class PlayerShooting : MonoBehaviour
                         if (target != null)
                         {
                             target.DamageHealth(damageToGive);
-                            Destroy(bullet, 0.2f);
+                            //Destroy(bullet, 0.2f);
                         }
 
                         // force push back
@@ -55,12 +54,12 @@ public class PlayerShooting : MonoBehaviour
                 }
             }
         }
-        else if (!useController.useController)
+        else if (!xboxController.useController)
         {
             if (Input.GetKey(KeyCode.Mouse0) && counter > delay)
             {
                 // bullets
-                GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
+                GameObject bullet = Instantiate(particleProjectile, transform.position, transform.rotation);
                 counter = 0f;
 
                 RaycastHit hit;

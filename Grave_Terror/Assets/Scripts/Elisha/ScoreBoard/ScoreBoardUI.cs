@@ -8,26 +8,25 @@ public class ScoreBoardUI : MonoBehaviour
 
     [SerializeField]
     GameObject scoreBoard;
-    public XboxController controller;
-    public bool useController = false;
+    public XboxControllerManager xboxController;
 
     // Update is called once per frame
     void Update()
     {
 
-        if (useController == true)
+        if (xboxController.useController == true)
         {
             // bringing up the score board
-            if (XCI.GetButtonDown(XboxButton.Back, controller))
+            if (XCI.GetButtonDown(XboxButton.Back, xboxController.controller))
             {
                 scoreBoard.SetActive(true);
             }
-            else if (XCI.GetButtonUp(XboxButton.Back, controller))
+            else if (XCI.GetButtonUp(XboxButton.Back, xboxController.controller))
             {
                 scoreBoard.SetActive(false);
             }
         }
-        else if (!useController)
+        else if (!xboxController.useController)
         {
             if (Input.GetKeyDown(KeyCode.Tab))
             {

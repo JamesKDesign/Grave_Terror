@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
 
-[RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(CharacterController))]
-
 public class PlayerMovement : MonoBehaviour
 {
 
@@ -14,11 +11,22 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float camRayLength = 100f;
     [SerializeField] private float rotationSmoothing = 7f;
     Rigidbody playerRigidbody;
-    public XboxController controller;
-    public bool useController = false;
     private Vector3 previousRotation = Vector3.forward;
     Vector3 offset;
-    CharacterController characterController;
+    public XboxControllerManager xboxController;
+
+    bool isDodging = false;
+    public AnimationCurve dodgeCurve;
+    public float dodgeSpeed;
+    public float dodgeTime;
+    private float dodgeTimer = 0.0f;
+
+    public GameObject flameTrail;
+    //private float trailTimer = 0.0f;
+    public float trailTime;
+    public float trailDamage;
+
+    private Camera camRotationY;
 
     private void Awake()
     {
@@ -26,8 +34,8 @@ public class PlayerMovement : MonoBehaviour
         floorMask = LayerMask.GetMask("Floor");
         // Set up references.
         playerRigidbody = GetComponent<Rigidbody>();
-        characterController = GetComponent<CharacterController>();
-
+        /*flameTrail = GetComponent<ParticleSystem>()*/;
+        camRotationY = GetComponent<Camera>();
     }
 
     // Physics update only
@@ -39,21 +47,55 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Move();
+        // If player is dodging
+        if(isDodging)
+        {
+            // start dodge and fire trail timers
+            dodgeTimer += Time.deltaTime;
+            if (dodgeTimer >= dodgeTime)
+            {
+                isDodging = false;
+                dodgeTimer = 0.0f;
+            }
+            GameObject trail = Instantiate(flameTrail);
+            trail.transform.parent = this.transform;
+            trail.transform.localPosition = Vector3.zero;
+            Destroy(trail, trailTime);
+            transform.position += transform.forward * dodgeCurve.Evaluate(dodgeTimer/dodgeTime) * dodgeSpeed * Time.deltaTime;
+            
+        }
+
+        else
+        {
+            Move();
+        }
+    }
+
+    // if a enemy rins into the fire trail
+    public void OnTriggerEnter(Collider other)
+    {
+        // damage the enemy.
+        if (other.gameObject.tag == "Fire")
+        {
+            other.gameObject.GetComponent<Enemy>().Ignite(trailDamage);
+            print("Damaging enemy " + trailDamage);
+        }
     }
 
     // Basic movement of the player
     private void Move()
     {
 
-        if (useController == true)
+        if (xboxController.useController == true)
         {
-            float axisX = XCI.GetAxis(XboxAxis.LeftStickX, controller);
-            float axisZ = XCI.GetAxis(XboxAxis.LeftStickY, controller);
+            float axisX = XCI.GetAxis(XboxAxis.LeftStickX, xboxController.controller);
+            float axisZ = XCI.GetAxis(XboxAxis.LeftStickY, xboxController.controller);
+
+            
 
             transform.position += new Vector3(axisX * walkSpeed * Time.deltaTime, 0, axisZ * walkSpeed * Time.deltaTime);
         }
-        else if (!useController)
+        else if (!xboxController.useController)
         {
             // Basic player movement (No physics)
             if (Input.GetKey(KeyCode.W))
@@ -73,16 +115,21 @@ public class PlayerMovement : MonoBehaviour
                 transform.position += new Vector3(0, 0, -walkSpeed * Time.deltaTime);
             }
         }
+
+        if (XCI.GetButtonDown(XboxButton.LeftStick, xboxController.controller))
+        {
+            isDodging = true;
+        }
     }
 
     // Rotation of player
     private void Turning()
     {
 
-        if (useController == true)
+        if (xboxController.useController == true)
         {
-            float rotateAxisX = XCI.GetAxis(XboxAxis.RightStickX, controller);
-            float rotateAxisZ = XCI.GetAxis(XboxAxis.RightStickY, controller);
+            float rotateAxisX = XCI.GetAxis(XboxAxis.RightStickX, xboxController.controller);
+            float rotateAxisZ = XCI.GetAxis(XboxAxis.RightStickY, xboxController.controller);
 
             Vector3 direction = new Vector3(rotateAxisX, 0, rotateAxisZ);
 
@@ -95,7 +142,7 @@ public class PlayerMovement : MonoBehaviour
             previousRotation = direction;
             transform.rotation = Quaternion.LookRotation(direction);
         }
-        else if (!useController)
+        else if (!xboxController.useController)
         {
             Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit floorHit;
