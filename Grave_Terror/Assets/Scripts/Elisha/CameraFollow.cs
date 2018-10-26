@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
 
-    private Camera camera;
+    private Camera mainCamera;
     // time for the camera to refocus
     [SerializeField] private float DampTime;
     // Space between the top/bottom most target and the screen edge
@@ -21,7 +21,7 @@ public class CameraFollow : MonoBehaviour {
     private void Awake ()
     {
 		// Camera is child to CameraRig 
-        camera = gameObject.GetComponentInChildren<Camera>();
+        mainCamera = gameObject.GetComponentInChildren<Camera>();
         SetStartPositionAndSize();
     }
 
@@ -81,7 +81,7 @@ public class CameraFollow : MonoBehaviour {
     {
         // Find the required size based on the desired position and smoothly transition to that size
         float requiredSize = FindRequiredSize();
-        camera.fieldOfView = Mathf.SmoothDamp (camera.fieldOfView, requiredSize, ref ZoomSpeed, DampTime);
+        mainCamera.fieldOfView = Mathf.SmoothDamp (mainCamera.fieldOfView, requiredSize, ref ZoomSpeed, DampTime);
     }
 
     // Finds the size at which the camera distance should be
@@ -110,7 +110,7 @@ public class CameraFollow : MonoBehaviour {
             size = Mathf.Max(size, Mathf.Abs(desiredPosToTarget.y));
 
             // Choose the largest out of the current size and the calculated size based on the tank being to the left or right of the camera
-            size = Mathf.Max(size, Mathf.Abs(desiredPosToTarget.x) / camera.aspect);
+            size = Mathf.Max(size, Mathf.Abs(desiredPosToTarget.x) / mainCamera.aspect);
         }
 
         Debug.Log(size);
@@ -125,17 +125,17 @@ public class CameraFollow : MonoBehaviour {
         return size;
     }
 
-	
+
     // Camera start position
-    public void SetStartPositionAndSize ()
+    public void SetStartPositionAndSize()
     {
         // Find the desired position
-        FindAveragePosition ();
+        FindAveragePosition();
 
         // Set the camera's position to the desired position without damping
         transform.position = DesiredPosition;
 
         // Find and set the required size of the camera
-        camera.fieldOfView = FindRequiredSize();
+        mainCamera.fieldOfView = FindRequiredSize();
     }
 }
