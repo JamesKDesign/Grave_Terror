@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114895316938135064}
   m_Layer: 0
   m_Name: Afterburner
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 4796676409565104}
   m_Layer: 0
   m_Name: FlameTrailSpawn
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
