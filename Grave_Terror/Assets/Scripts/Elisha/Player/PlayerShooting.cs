@@ -25,6 +25,7 @@ public class PlayerShooting : MonoBehaviour
             {
                 if (counter > delay)
                 {
+                    
                      // bullets
                      GameObject bullet = Instantiate(particleProjectile, transform.position, transform.rotation);
                      counter = 0f;

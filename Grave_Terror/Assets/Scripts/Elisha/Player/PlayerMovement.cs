@@ -71,11 +71,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // if a enemy rins into the fire trail
+    // if a enemy runs into the fire trail
     public void OnTriggerEnter(Collider other)
     {
         // damage the enemy.
-        if (other.gameObject.tag == "Fire")
+        if (other.gameObject.tag == "Enemy")
         {
             other.gameObject.GetComponent<Enemy>().Ignite(trailDamage);
             print("Damaging enemy " + trailDamage);
