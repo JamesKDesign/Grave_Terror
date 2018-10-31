@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class DestructableObjects : MonoBehaviour {
 
-    public float maxHealth;
-    public float currentHealth;
+    public int maxHealth;
+    public int currentHealth;
     private Renderer rend;
-    private Color colour;
+    //private Color colour;
     public float damageFlashLength;
-    public float flashCounter;
+    private float flashCounter;
 
     private void Awake()
     {
         currentHealth = maxHealth;
-        colour = rend.material.GetColor("_Color");
+        //colour = rend.material.GetColor("_Color");
         rend = GetComponent<Renderer>();
     }
 
 
-    void Break()
+   public void Update()
     {
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            Destroy(obj: gameObject);
         }
 
         if (flashCounter > 0)
@@ -31,16 +31,16 @@ public class DestructableObjects : MonoBehaviour {
             flashCounter -= Time.deltaTime;
             if (flashCounter <= 0)
             {
-                rend.material.SetColor("_Color", Color.blue);
+                //rend.material.SetColor("_Color", Color.grey);
             }
         }
     }
 
-    void ObjectDamage(float _amount)
+   public void ObjectDamage(int _amount)
     {
         currentHealth -= _amount;
-        // flashCounter = damageFlashLength;
-        rend.material.SetColor("_Color", Color.red);
-        print("Player health: " + currentHealth);
+        flashCounter = damageFlashLength;
+        //rend.material.SetColor("_Color", Color.red);
+        Debug.Log("Objects health: " + currentHealth);
     }
 }

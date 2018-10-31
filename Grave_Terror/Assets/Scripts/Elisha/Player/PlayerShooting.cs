@@ -10,9 +10,11 @@ public class PlayerShooting : MonoBehaviour
     public GameObject hitEffect;
     public float delay;
     public float counter = 0f;
-    public float damageToGive;
+    public int damageToGive;
     public float impactForce = 30f;
     public float range;
+    public CameraShake cameraShake;
+    public float duration;
     public XboxControllerManager xboxController;
 
     // Raycasting
@@ -39,13 +41,20 @@ public class PlayerShooting : MonoBehaviour
                         if (target != null)
                         {
                             target.DamageHealth(damageToGive);
-                            //Destroy(bullet, 0.2f);
+                            cameraShake.Shake(duration);
                         }
 
                         // force push back
                         if (hit.rigidbody != null)
                         {
                             hit.rigidbody.AddForce(-hit.normal * impactForce);
+                            cameraShake.Shake(duration);
+                        }
+
+                        DestructableObjects obj = hit.transform.GetComponent<DestructableObjects>();
+                        if (obj != null)
+                        {
+                            obj.ObjectDamage(damageToGive);
                         }
 
                         // blood
@@ -75,6 +84,13 @@ public class PlayerShooting : MonoBehaviour
                         target.DamageHealth(damageToGive);
                     }
 
+                    DestructableObjects obj = hit.transform.GetComponent<DestructableObjects>();
+                    if(obj != null)
+                    {
+                        obj.ObjectDamage(damageToGive);
+                    }
+                    
+
                     // force push back
                     if (hit.rigidbody != null)
                     {
@@ -88,4 +104,12 @@ public class PlayerShooting : MonoBehaviour
             }
         }
     }
+
+    //public void OnTriggerStay(Collider other)
+    //{
+    //    if (other.gameObject.tag == "Finish")
+    //    {
+    //        other.gameObject.GetComponent<DestructableObjects>().ObjectDamage(damageToGive);
+    //    }
+    //}
 }
