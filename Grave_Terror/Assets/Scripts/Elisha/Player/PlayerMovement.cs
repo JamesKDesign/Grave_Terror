@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private int floorMask;
     [SerializeField] private float camRayLength = 100f;
     [SerializeField] private float rotationSmoothing = 7f;
+    public float rotationSpeed;
     Rigidbody playerRigidbody;
     private Vector3 previousRotation = Vector3.forward;
     Vector3 offset;
@@ -128,19 +129,22 @@ public class PlayerMovement : MonoBehaviour
 
         if (xboxController.useController == true)
         {
-            float rotateAxisX = XCI.GetAxis(XboxAxis.RightStickX, xboxController.controller);
-            float rotateAxisZ = XCI.GetAxis(XboxAxis.RightStickY, xboxController.controller);
 
-            Vector3 direction = new Vector3(rotateAxisX, 0, rotateAxisZ);
+            transform.Rotate(Vector3.down * Input.GetAxis("Vertical") * rotationSpeed);
+            transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * rotationSpeed);
+            //float rotateAxisX = XCI.GetAxis(XboxAxis.RightStickX, xboxController.controller);
+            //float rotateAxisZ = XCI.GetAxis(XboxAxis.RightStickY, xboxController.controller);
 
-            if (direction.magnitude < 0.1f)
-            {
-                direction = previousRotation;
-            }
+            //Vector3 direction = new Vector3(rotateAxisX, 0, rotateAxisZ);
 
-            direction = direction.normalized;
-            previousRotation = direction;
-            transform.rotation = Quaternion.LookRotation(direction);
+            //if (direction.magnitude < 0.1f)
+            //{
+            //    direction = previousRotation;
+            //}
+
+            //direction = direction.normalized;
+            //previousRotation = direction;
+            //transform.rotation = Quaternion.LookRotation(direction);
         }
         else if (!xboxController.useController)
         {

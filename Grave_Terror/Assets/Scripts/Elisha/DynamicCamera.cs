@@ -45,7 +45,7 @@ public class DynamicCamera : MonoBehaviour {
         {
             bounds.Encapsulate(players[i].position);
         }
-
+        
         return bounds.size.x;
     }
 
@@ -63,7 +63,6 @@ public class DynamicCamera : MonoBehaviour {
         if (players.Count == 1)
         {
             return players[0].position;
-            
         }
 
         // Bounds creates a box around the players on the screen and will always centre them
@@ -75,5 +74,4 @@ public class DynamicCamera : MonoBehaviour {
         }
         return bounds.center;
     }
-
 }
