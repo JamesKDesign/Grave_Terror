@@ -1,0 +1,240 @@
+fileFormatVersion: 2
+guid: 54f22d1551aeee343a831bc626b94aa7
+timeCreated: 1541045341
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Ctrl_Head
+    100002: Ctrl_Hips
+    100004: Ctrl_LeftClavicle
+    100006: Ctrl_LeftElbow
+    100008: Ctrl_LeftFoot
+    100010: Ctrl_LeftPalm
+    100012: Ctrl_LeftShoulder
+    100014: Ctrl_LeftThumb
+    100016: Ctrl_LeftWrist
+    100018: Ctrl_Neck
+    100020: Ctrl_RightClavicle
+    100022: Ctrl_RightElbow
+    100024: Ctrl_RightFoot
+    100026: Ctrl_RightPalm
+    100028: Ctrl_RightShoulder
+    100030: Ctrl_RightThumb
+    100032: Ctrl_RightWrist
+    100034: Ctrl_Root
+    100036: Ctrl_Spine
+    100038: Ctrl_Spine1
+    100040: Ctrl_Spine2
+    100042: Grp_LeftClavicle
+    100044: Grp_LeftElbow
+    100046: Grp_LeftPalm
+    100048: Grp_LeftShoulder
+    100050: Grp_LeftThumb
+    100052: Grp_LeftWrist
+    100054: Grp_RightClavicle
+    100056: Grp_RightElbow
+    100058: Grp_RightPalm
+    100060: Grp_RightShoulder
+    100062: Grp_RightThumb
+    100064: Grp_RightWrist
+    100066: //RootNode
+    100068: Zombie_Head
+    100070: Zombie_Hips
+    100072: Zombie_LeftArm
+    100074: Zombie_LeftFoot
+    100076: Zombie_LeftForeArm
+    100078: Zombie_LeftHand
+    100080: Zombie_LeftLeg
+    100082: Zombie_LeftPalm
+    100084: Zombie_LeftShoulder
+    100086: Zombie_LeftThumb
+    100088: Zombie_LeftToeBase
+    100090: Zombie_LeftUpLeg
+    100092: Zombie_Neck
+    100094: Zombie_RightArm
+    100096: Zombie_RightFoot
+    100098: Zombie_RightForeArm
+    100100: Zombie_RightHand
+    100102: Zombie_RightLeg
+    100104: Zombie_RightPalm
+    100106: Zombie_RightShoulder
+    100108: Zombie_RightThumb
+    100110: Zombie_RightToeBase
+    100112: Zombie_RightUpLeg
+    100114: Zombie_Root
+    100116: Zombie_Spine
+    100118: Zombie_Spine1
+    100120: Zombie_Spine2
+    400000: Ctrl_Head
+    400002: Ctrl_Hips
+    400004: Ctrl_LeftClavicle
+    400006: Ctrl_LeftElbow
+    400008: Ctrl_LeftFoot
+    400010: Ctrl_LeftPalm
+    400012: Ctrl_LeftShoulder
+    400014: Ctrl_LeftThumb
+    400016: Ctrl_LeftWrist
+    400018: Ctrl_Neck
+    400020: Ctrl_RightClavicle
+    400022: Ctrl_RightElbow
+    400024: Ctrl_RightFoot
+    400026: Ctrl_RightPalm
+    400028: Ctrl_RightShoulder
+    400030: Ctrl_RightThumb
+    400032: Ctrl_RightWrist
+    400034: Ctrl_Root
+    400036: Ctrl_Spine
+    400038: Ctrl_Spine1
+    400040: Ctrl_Spine2
+    400042: Grp_LeftClavicle
+    400044: Grp_LeftElbow
+    400046: Grp_LeftPalm
+    400048: Grp_LeftShoulder
+    400050: Grp_LeftThumb
+    400052: Grp_LeftWrist
+    400054: Grp_RightClavicle
+    400056: Grp_RightElbow
+    400058: Grp_RightPalm
+    400060: Grp_RightShoulder
+    400062: Grp_RightThumb
+    400064: Grp_RightWrist
+    400066: //RootNode
+    400068: Zombie_Head
+    400070: Zombie_Hips
+    400072: Zombie_LeftArm
+    400074: Zombie_LeftFoot
+    400076: Zombie_LeftForeArm
+    400078: Zombie_LeftHand
+    400080: Zombie_LeftLeg
+    400082: Zombie_LeftPalm
+    400084: Zombie_LeftShoulder
+    400086: Zombie_LeftThumb
+    400088: Zombie_LeftToeBase
+    400090: Zombie_LeftUpLeg
+    400092: Zombie_Neck
+    400094: Zombie_RightArm
+    400096: Zombie_RightFoot
+    400098: Zombie_RightForeArm
+    400100: Zombie_RightHand
+    400102: Zombie_RightLeg
+    400104: Zombie_RightPalm
+    400106: Zombie_RightShoulder
+    400108: Zombie_RightThumb
+    400110: Zombie_RightToeBase
+    400112: Zombie_RightUpLeg
+    400114: Zombie_Root
+    400116: Zombie_Spine
+    400118: Zombie_Spine1
+    400120: Zombie_Spine2
+    7400000: Attack
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 31bcda6a460e18b42a6249c1394332e4,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

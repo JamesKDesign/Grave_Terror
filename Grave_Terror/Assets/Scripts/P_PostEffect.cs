@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera)), ExecuteInEditMode, ImageEffectAllowedInSceneView]
-public class PostEffect : MonoBehaviour
+public class P_PostEffect : MonoBehaviour
 {
     Camera m_Camera;
 

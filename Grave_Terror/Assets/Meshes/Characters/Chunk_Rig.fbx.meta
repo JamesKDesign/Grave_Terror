@@ -1,0 +1,183 @@
+fileFormatVersion: 2
+guid: ff2bb6ec93ec8ea478c2e4f6bbb1a055
+timeCreated: 1541048313
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Chunk_Head
+    100002: Chunk_Hips
+    100004: Chunk_LeftArm
+    100006: Chunk_LeftFoot
+    100008: Chunk_LeftForeArm
+    100010: Chunk_LeftHand
+    100012: Chunk_LeftLeg
+    100014: Chunk_LeftPalm
+    100016: Chunk_LeftShoulder
+    100018: Chunk_LeftToeBase
+    100020: Chunk_LeftUpLeg
+    100022: Chunk_low
+    100024: Chunk_Neck
+    100026: //RootNode
+    100028: Chunk_RightArm
+    100030: Chunk_RightFoot
+    100032: Chunk_RightForeArm
+    100034: Chunk_RightHand
+    100036: Chunk_RightLeg
+    100038: Chunk_RightPalm
+    100040: Chunk_RightShoulder
+    100042: Chunk_RightToeBase
+    100044: Chunk_RightUpLeg
+    100046: Chunk_Root
+    100048: Chunk_Spine
+    100050: Chunk_Spine1
+    100052: Chunk_Spine2
+    100054: Ctrl_Head
+    100056: Ctrl_Hips
+    100058: Ctrl_LeftClavicle
+    100060: Ctrl_LeftFoot
+    100062: Ctrl_LeftWrist
+    100064: Ctrl_Neck
+    100066: Ctrl_RightClavicle
+    100068: Ctrl_RightFoot
+    100070: Ctrl_RightWrist
+    100072: Ctrl_Root
+    100074: Ctrl_Spine
+    100076: Ctrl_Spine1
+    100078: Ctrl_Spine2
+    100080: Grp_LeftClavicle
+    100082: Grp_RightClavicle
+    100084: Loc_Weapon_Handle
+    100086: Weapon_Chunk
+    400000: Chunk_Head
+    400002: Chunk_Hips
+    400004: Chunk_LeftArm
+    400006: Chunk_LeftFoot
+    400008: Chunk_LeftForeArm
+    400010: Chunk_LeftHand
+    400012: Chunk_LeftLeg
+    400014: Chunk_LeftPalm
+    400016: Chunk_LeftShoulder
+    400018: Chunk_LeftToeBase
+    400020: Chunk_LeftUpLeg
+    400022: Chunk_low
+    400024: Chunk_Neck
+    400026: //RootNode
+    400028: Chunk_RightArm
+    400030: Chunk_RightFoot
+    400032: Chunk_RightForeArm
+    400034: Chunk_RightHand
+    400036: Chunk_RightLeg
+    400038: Chunk_RightPalm
+    400040: Chunk_RightShoulder
+    400042: Chunk_RightToeBase
+    400044: Chunk_RightUpLeg
+    400046: Chunk_Root
+    400048: Chunk_Spine
+    400050: Chunk_Spine1
+    400052: Chunk_Spine2
+    400054: Ctrl_Head
+    400056: Ctrl_Hips
+    400058: Ctrl_LeftClavicle
+    400060: Ctrl_LeftFoot
+    400062: Ctrl_LeftWrist
+    400064: Ctrl_Neck
+    400066: Ctrl_RightClavicle
+    400068: Ctrl_RightFoot
+    400070: Ctrl_RightWrist
+    400072: Ctrl_Root
+    400074: Ctrl_Spine
+    400076: Ctrl_Spine1
+    400078: Ctrl_Spine2
+    400080: Grp_LeftClavicle
+    400082: Grp_RightClavicle
+    400084: Loc_Weapon_Handle
+    400086: Weapon_Chunk
+    2100000: lambert2
+    2100002: lambert3
+    2300000: Weapon_Chunk
+    3300000: Weapon_Chunk
+    4300000: Chunk_low
+    4300002: Weapon_Chunk
+    9500000: //RootNode
+    13700000: Chunk_low
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
