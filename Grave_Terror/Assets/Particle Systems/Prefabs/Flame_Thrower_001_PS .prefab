@@ -53,6 +53,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4387329231578630}
+  - component: {fileID: 114070297515126598}
   m_Layer: 0
   m_Name: 'Flame_Thrower_001_PS '
   m_TagString: Untagged
@@ -163,6 +164,21 @@ Transform:
   m_Father: {fileID: 4309431341775134}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &114070297515126598
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1575040791299074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30db9b0c6f4e43f439f3b8164c828766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 5
+  flameLife: 2
+  flameDamage: 10
+  damageTimer: 2
 --- !u!198 &198005641507140576
 ParticleSystem:
   m_ObjectHideFlags: 1
