@@ -54,11 +54,11 @@ GameObject:
   - component: {fileID: 4101462399420026}
   - component: {fileID: 33621074175200614}
   - component: {fileID: 23434483535960854}
-  - component: {fileID: 136423954223842462}
   - component: {fileID: 114100225286647616}
   - component: {fileID: 114955799043567008}
-  - component: {fileID: 54110401199339128}
   - component: {fileID: 114818748908205520}
+  - component: {fileID: 54608956330178646}
+  - component: {fileID: 143063898173165298}
   m_Layer: 0
   m_Name: Character_Sizzle_001_SK
   m_TagString: Player
@@ -87,8 +87,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1443688543262336}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.934, y: 0, z: 1.85}
+  m_LocalRotation: {x: -0, y: 0.7071065, z: -0, w: 0.7071072}
+  m_LocalPosition: {x: -52.690002, y: 0, z: -19.529999}
   m_LocalScale: {x: 0.97821856, y: 0.9782186, z: 0.9782186}
   m_Children:
   - {fileID: 4307296483476200}
@@ -218,7 +218,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1443688543262336}
   m_Mesh: {fileID: 4300000, guid: 09a2cafb60aff384eab52aa8bf3ff8c9, type: 3}
---- !u!54 &54110401199339128
+--- !u!54 &54608956330178646
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -239,15 +239,16 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1443688543262336}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b231892fc7f665749bd2c4d91c81b744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 8
+  walkSpeed: 5
   floorMask: 0
   camRayLength: 100
   rotationSmoothing: 7
+  rotationSpeed: 0
   xboxController: {fileID: 114818748908205520}
   dodgeCurve:
     serializedVersion: 2
@@ -278,15 +279,15 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1365122475814286}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a643ff55462ee7849800c2ae41b1f3a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flame: {fileID: 1373764868086484, guid: b00d9b19d89208a48b9835a88535eba5, type: 2}
+  flame: {fileID: 1575040791299074, guid: 4ad4596abf560724481e626a81686e0d, type: 2}
   controller: 1
   counter: 0
-  delay: 0.2
+  delay: 0
   maxAmmo: 200
   currentAmmo: 0
   coolDown: 0
@@ -302,7 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a63ca5c6783d4a846a5f8f82498bab75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: 0
+  controller: 1
   useController: 1
 --- !u!114 &114955799043567008
 MonoBehaviour:
@@ -318,8 +319,8 @@ MonoBehaviour:
   health: 5
   currentHealth: 0
   damageFlashLength: 0.2
---- !u!136 &136423954223842462
-CapsuleCollider:
+--- !u!143 &143063898173165298
+CharacterController:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -327,7 +328,11 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.40000004
-  m_Height: 1.5999999
-  m_Direction: 1
-  m_Center: {x: -0.000000074505806, y: 0.79999995, z: 0}
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.42075446
+  m_SlopeLimit: 44.75
+  m_StepOffset: 0.63
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0}
