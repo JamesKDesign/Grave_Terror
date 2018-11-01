@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public enum MENU_STATE
 {
@@ -25,6 +27,13 @@ public class Rails
 	public float travelTime;
 }
 
+[System.Serializable]
+public class Points
+{
+	public Transform transform;
+	public UnityEvent call;
+}
+
 //Class because you cant make instances of transforms to use for storage
 public class WATransform
 {
@@ -36,8 +45,10 @@ public class MainMenu : MonoBehaviour
 {
 	Camera mainCamera;
 
+	public string gameScene;
+
 	[Header("Camera")]
-	public Transform[] endPoints;
+	public Points[] endPoints;
 	[Tooltip("Transforms that the camera will travel between\nAffected by rotation!")]
 	public Rails[] cameraPath;
 
@@ -95,8 +106,8 @@ public class MainMenu : MonoBehaviour
 			WATransform[] pos = new WATransform[cameraPath[path].pos.Length + 2];
 			//First the start point
 			pos[0] = new WATransform();
-			pos[0].pos = endPoints[cameraPath[path].startPoint].position;
-			pos[0].rot = endPoints[cameraPath[path].startPoint].rotation;
+			pos[0].pos = endPoints[cameraPath[path].startPoint].transform.position;
+			pos[0].rot = endPoints[cameraPath[path].startPoint].transform.rotation;
 			int i = 0;
 			for (; i < cameraPath[path].pos.Length; i++)
 			{
@@ -106,21 +117,45 @@ public class MainMenu : MonoBehaviour
 			}
 			//Lastly the endpoint
 			pos[i + 1] = new WATransform();
-			pos[i + 1].pos = endPoints[cameraPath[path].endPoint].position;
-			pos[i + 1].rot = endPoints[cameraPath[path].endPoint].rotation;
+			pos[i + 1].pos = endPoints[cameraPath[path].endPoint].transform.position;
+			pos[i + 1].rot = endPoints[cameraPath[path].endPoint].transform.rotation;
 			//Process
 			WATransform output = PositionLerpRecursive(pos, timer);
 			mainCamera.transform.position = output.pos;
 			mainCamera.transform.localRotation = output.rot;
 		}
-		else //Deny move commands while move in progress
+		else //Deny input commands while move in progress
 		{
-			if (Input.GetKeyDown(KeyCode.Alpha1))
-				MoveTo(0);
-			if (Input.GetKeyDown(KeyCode.Alpha2))
-				MoveTo(1);
-			if (Input.GetKeyDown(KeyCode.Alpha3))
-				MoveTo(2);
+			switch (state)
+			{
+				case MENU_STATE.MENU:
+					break;
+				case MENU_STATE.CHARACTER_SELECT:
+					//Player 1 selection placeholder
+					if (Input.GetKeyDown(KeyCode.LeftArrow))
+					{
+
+					}
+					else if (Input.GetKeyDown(KeyCode.RightArrow))
+					{
+
+					}
+					//Player 2 selection placeholder
+					if (Input.GetKeyDown(KeyCode.A))
+					{
+
+					}
+					if (Input.GetKeyDown(KeyCode.D))
+					{
+
+					}
+					break;
+			}
+			//These should be replaced with XBocks controller inputs
+			if (Input.GetKeyDown(KeyCode.Return))
+			{
+				endPoints[current].call.Invoke();
+			}
 		}
 	}
 
@@ -129,6 +164,7 @@ public class MainMenu : MonoBehaviour
 	{
 		for (int i = 0; i < cameraPath.Length; i++)
 		{
+			//Target is valid to move to in the correct direction
 			if (cameraPath[i].startPoint == current &&
 				cameraPath[i].endPoint == _target)
 			{
@@ -139,6 +175,7 @@ public class MainMenu : MonoBehaviour
 
 				return true;
 			}
+			//Target is valid to move to in the reverse direction
 			else if (cameraPath[i].startPoint == _target &&
 				cameraPath[i].endPoint == current)
 			{
@@ -154,35 +191,58 @@ public class MainMenu : MonoBehaviour
 		return false;
 	}
 
+	//Non-returning copy of MoveTo to use with UnityEvent class
+	public void V_MoveTo(int _target)
+	{
+		MoveTo(_target);
+	}
+
 	//Move the camera to the end of a path by force, skipping any setup pathing
 	public void ForceMoveTo(int _target)
 	{
 		current = _target;
-		mainCamera.transform.position = endPoints[_target].position;
-		mainCamera.transform.rotation = endPoints[_target].rotation;
+		mainCamera.transform.position = endPoints[_target].transform.position;
+		mainCamera.transform.rotation = endPoints[_target].transform.rotation;
 	}
 
+	public void GotoCharacterSelection()
+	{
+		V_MoveTo(2); //If theres a problem it will be this -----------------------------------------------------------------------------------------------
+		state = MENU_STATE.CHARACTER_SELECT;
+	}
+
+	public void CharacterSelectComplete()
+	{
+		SceneManager.LoadScene(gameScene);
+	}
+
+	public void QuitGame()
+	{
+		Application.Quit();
+	}
+
+	#region Gizmos_n_Debug
 	//Gizmos to help visualize it
 	private void OnDrawGizmos()
 	{
 		foreach (Rails r in cameraPath)
 		{
 			Gizmos.color = r.color;
-			Gizmos.DrawLine(endPoints[r.startPoint].position, r.pos[0].position);
+			Gizmos.DrawLine(endPoints[r.startPoint].transform.position, r.pos[0].position);
 			int i = 0;
 			for (; i < r.pos.Length - 1; ++i)
 			{
 				Gizmos.DrawLine(r.pos[i].position, r.pos[i + 1].position);
 				Gizmos.DrawRay(r.pos[i].position, r.pos[i].forward);
 			}
-			Gizmos.DrawLine(endPoints[r.endPoint].position, r.pos[i].position);
+			Gizmos.DrawLine(endPoints[r.endPoint].transform.position, r.pos[i].position);
 		}
 		//Draw the endpoints and the directions their facing
 		Gizmos.color = Color.white;
-		foreach (Transform t in endPoints)
+		foreach (Points t in endPoints)
 		{
-			Gizmos.DrawSphere(t.position, 0.2f);
-			Gizmos.DrawRay(t.position, t.forward);
+			Gizmos.DrawSphere(t.transform.position, 0.2f);
+			Gizmos.DrawRay(t.transform.position, t.transform.forward);
 		}
 	}
 
@@ -194,8 +254,8 @@ public class MainMenu : MonoBehaviour
 			Gizmos.color = r.color;
 			WATransform[] pos = new WATransform[r.pos.Length + 2];
 			pos[0] = new WATransform();
-			pos[0].pos = endPoints[r.startPoint].position;
-			pos[0].rot = endPoints[r.startPoint].rotation;
+			pos[0].pos = endPoints[r.startPoint].transform.position;
+			pos[0].rot = endPoints[r.startPoint].transform.rotation;
 			int i = 0;
 			for (; i < r.pos.Length; i++)
 			{
@@ -203,10 +263,9 @@ public class MainMenu : MonoBehaviour
 				pos[i + 1].pos = r.pos[i].position;
 				pos[i + 1].rot = r.pos[i].localRotation;
 			}
-			//Lastly the endpoint
 			pos[i + 1] = new WATransform();
-			pos[i + 1].pos = endPoints[r.endPoint].position;
-			pos[i + 1].rot = endPoints[r.endPoint].rotation;
+			pos[i + 1].pos = endPoints[r.endPoint].transform.position;
+			pos[i + 1].rot = endPoints[r.endPoint].transform.rotation;
 			WATransform pos1 = PositionLerpRecursive(pos, 0.1f);
 			Gizmos.DrawLine(pos[0].pos, pos1.pos);
 			WATransform pos2 = PositionLerpRecursive(pos, 0.2f);
@@ -228,6 +287,7 @@ public class MainMenu : MonoBehaviour
 			Gizmos.DrawLine(pos1.pos, pos[pos.Length - 1].pos);
 		}
 	}
+	#endregion
 
 	//Recursive lerp to guide the camera smoothly along its rails
 	private WATransform PositionLerpRecursive(WATransform[] _pos, float _time)
