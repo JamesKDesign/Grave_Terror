@@ -16,17 +16,16 @@ public class Rails
 {
 	[Tooltip("For visualization help")]
 	public Color color;
+
 	public Transform[] pos;
+	[Tooltip("Element no. of desired start")]
+	public int startPoint;
+	[Tooltip("Element no. of desired destination")]
+	public int endPoint;
 	public float travelTime;
 }
 
-[System.Serializable]
-public class ValidPath
-{
-	public int from; //Where we are going from
-	public int to; //The point we want to go to
-}
-
+//Class because you cant make instances of transforms to use for storage
 public class WATransform
 {
 	public Vector3 pos;
@@ -36,9 +35,11 @@ public class WATransform
 public class MainMenu : MonoBehaviour
 {
 	Camera mainCamera;
+
+	[Header("Camera")]
+	public Transform[] endPoints;
 	[Tooltip("Transforms that the camera will travel between\nAffected by rotation!")]
 	public Rails[] cameraPath;
-	public ValidPath[] paths;
 
 	public MENU_STATE state = MENU_STATE.MENU;
 
@@ -50,60 +51,115 @@ public class MainMenu : MonoBehaviour
 	//Timer for the camera in motion
 	private float timer = 0.0f;
 	//The target path we are taking
-	private int target = 0;
-	private int sequence = 0;
+	public int path = 0;
+	//If we are following it in reverse order
+	private bool reverse = false;
 
 	// Use this for initialization
 	void Start ()
 	{
 		mainCamera = Camera.main;
 
-		MoveTo(0);
+		ForceMoveTo(0);
+		//MoveTo(1);
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
+
 		//If we want to move the camera somewhere
 		if (moving)
 		{
-			timer += Time.deltaTime / cameraPath[target].travelTime;
-			//Break on timeout
-			if (timer > 1.0f)
+			if (reverse)
 			{
-				moving = false;
-				current = target;
+				timer -= Time.deltaTime / cameraPath[path].travelTime;
+				//Break on timeout
+				if (timer < 0.0f)
+				{
+					moving = false;
+					current = cameraPath[path].startPoint;
+				}
 			}
-			//Lerp rotation and position between points
 			else
 			{
-				WATransform[] pos = new WATransform[cameraPath[target].pos.Length];
-				for (int i = 0; i < cameraPath[target].pos.Length; i++)
+				timer += Time.deltaTime / cameraPath[path].travelTime;
+				//Break on timeout
+				if (timer > 1.0f)
 				{
-					pos[i] = new WATransform();
-					pos[i].pos = cameraPath[target].pos[i].position;
-					pos[i].rot = cameraPath[target].pos[i].localRotation;
+					moving = false;
+					current = cameraPath[path].endPoint;
 				}
-				WATransform output = PositionLerpRecursive(pos, timer);
-				mainCamera.transform.position = output.pos;
-				mainCamera.transform.localRotation = output.rot;
 			}
+			//Lerp rotation and position between points
+			WATransform[] pos = new WATransform[cameraPath[path].pos.Length + 2];
+			//First the start point
+			pos[0] = new WATransform();
+			pos[0].pos = endPoints[cameraPath[path].startPoint].position;
+			pos[0].rot = endPoints[cameraPath[path].startPoint].rotation;
+			int i = 0;
+			for (; i < cameraPath[path].pos.Length; i++)
+			{
+				pos[i + 1] = new WATransform();
+				pos[i + 1].pos = cameraPath[path].pos[i].position;
+				pos[i + 1].rot = cameraPath[path].pos[i].localRotation;
+			}
+			//Lastly the endpoint
+			pos[i + 1] = new WATransform();
+			pos[i + 1].pos = endPoints[cameraPath[path].endPoint].position;
+			pos[i + 1].rot = endPoints[cameraPath[path].endPoint].rotation;
+			//Process
+			WATransform output = PositionLerpRecursive(pos, timer);
+			mainCamera.transform.position = output.pos;
+			mainCamera.transform.localRotation = output.rot;
+		}
+		else //Deny move commands while move in progress
+		{
+			if (Input.GetKeyDown(KeyCode.Alpha1))
+				MoveTo(0);
+			if (Input.GetKeyDown(KeyCode.Alpha2))
+				MoveTo(1);
+			if (Input.GetKeyDown(KeyCode.Alpha3))
+				MoveTo(2);
 		}
 	}
 
 	//Checks if the target has a valid path to it
 	public bool MoveTo(int _target)
 	{
-		
+		for (int i = 0; i < cameraPath.Length; i++)
+		{
+			if (cameraPath[i].startPoint == current &&
+				cameraPath[i].endPoint == _target)
+			{
+				timer = 0.0f;
+				reverse = false;
+				path = i;
+				moving = true;
 
+				return true;
+			}
+			else if (cameraPath[i].startPoint == _target &&
+				cameraPath[i].endPoint == current)
+			{
+				timer = 1.0f;
+				reverse = true;
+				path = i;
+				moving = true;
 
+				return true;
+			}
+		}
+		//we didnt find a path we could follow so we return false
+		return false;
+	}
 
-		moving = true;
-		timer = 0.0f;
-		target = _target;
-		sequence = 0;
-
-		return true;
+	//Move the camera to the end of a path by force, skipping any setup pathing
+	public void ForceMoveTo(int _target)
+	{
+		current = _target;
+		mainCamera.transform.position = endPoints[_target].position;
+		mainCamera.transform.rotation = endPoints[_target].rotation;
 	}
 
 	//Gizmos to help visualize it
@@ -112,11 +168,64 @@ public class MainMenu : MonoBehaviour
 		foreach (Rails r in cameraPath)
 		{
 			Gizmos.color = r.color;
-			for (int i = 0; i < r.pos.Length - 1; ++i)
+			Gizmos.DrawLine(endPoints[r.startPoint].position, r.pos[0].position);
+			int i = 0;
+			for (; i < r.pos.Length - 1; ++i)
 			{
 				Gizmos.DrawLine(r.pos[i].position, r.pos[i + 1].position);
+				Gizmos.DrawRay(r.pos[i].position, r.pos[i].forward);
 			}
-			Gizmos.DrawSphere(r.pos[r.pos.Length - 1].position, 0.2f);
+			Gizmos.DrawLine(endPoints[r.endPoint].position, r.pos[i].position);
+		}
+		//Draw the endpoints and the directions their facing
+		Gizmos.color = Color.white;
+		foreach (Transform t in endPoints)
+		{
+			Gizmos.DrawSphere(t.position, 0.2f);
+			Gizmos.DrawRay(t.position, t.forward);
+		}
+	}
+
+	//More indepth
+	private void OnDrawGizmosSelected()
+	{
+		foreach (Rails r in cameraPath)
+		{
+			Gizmos.color = r.color;
+			WATransform[] pos = new WATransform[r.pos.Length + 2];
+			pos[0] = new WATransform();
+			pos[0].pos = endPoints[r.startPoint].position;
+			pos[0].rot = endPoints[r.startPoint].rotation;
+			int i = 0;
+			for (; i < r.pos.Length; i++)
+			{
+				pos[i + 1] = new WATransform();
+				pos[i + 1].pos = r.pos[i].position;
+				pos[i + 1].rot = r.pos[i].localRotation;
+			}
+			//Lastly the endpoint
+			pos[i + 1] = new WATransform();
+			pos[i + 1].pos = endPoints[r.endPoint].position;
+			pos[i + 1].rot = endPoints[r.endPoint].rotation;
+			WATransform pos1 = PositionLerpRecursive(pos, 0.1f);
+			Gizmos.DrawLine(pos[0].pos, pos1.pos);
+			WATransform pos2 = PositionLerpRecursive(pos, 0.2f);
+			Gizmos.DrawLine(pos1.pos, pos2.pos);
+			pos1 = PositionLerpRecursive(pos, 0.3f);
+			Gizmos.DrawLine(pos2.pos, pos1.pos);
+			pos2 = PositionLerpRecursive(pos, 0.4f);
+			Gizmos.DrawLine(pos1.pos, pos2.pos);
+			pos1 = PositionLerpRecursive(pos, 0.5f);
+			Gizmos.DrawLine(pos2.pos, pos1.pos);
+			pos2 = PositionLerpRecursive(pos, 0.6f);
+			Gizmos.DrawLine(pos1.pos, pos2.pos);
+			pos1 = PositionLerpRecursive(pos, 0.7f);
+			Gizmos.DrawLine(pos2.pos, pos1.pos);
+			pos2 = PositionLerpRecursive(pos, 0.8f);
+			Gizmos.DrawLine(pos1.pos, pos2.pos);
+			pos1 = PositionLerpRecursive(pos, 0.9f);
+			Gizmos.DrawLine(pos2.pos, pos1.pos);
+			Gizmos.DrawLine(pos1.pos, pos[pos.Length - 1].pos);
 		}
 	}
 
