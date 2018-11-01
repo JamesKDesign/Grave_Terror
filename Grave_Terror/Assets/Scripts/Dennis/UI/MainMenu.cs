@@ -62,7 +62,7 @@ public class MainMenu : MonoBehaviour
 	//Timer for the camera in motion
 	private float timer = 0.0f;
 	//The target path we are taking
-	public int path = 0;
+	private int path = 0;
 	//If we are following it in reverse order
 	private bool reverse = false;
 
@@ -207,7 +207,6 @@ public class MainMenu : MonoBehaviour
 
 	public void GotoCharacterSelection()
 	{
-		V_MoveTo(2); //If theres a problem it will be this -----------------------------------------------------------------------------------------------
 		state = MENU_STATE.CHARACTER_SELECT;
 	}
 
@@ -236,6 +235,43 @@ public class MainMenu : MonoBehaviour
 				Gizmos.DrawRay(r.pos[i].position, r.pos[i].forward);
 			}
 			Gizmos.DrawLine(endPoints[r.endPoint].transform.position, r.pos[i].position);
+			//Segment 2
+			{
+				Gizmos.color = r.color;
+				WATransform[] pos = new WATransform[r.pos.Length + 2];
+				pos[0] = new WATransform();
+				pos[0].pos = endPoints[r.startPoint].transform.position;
+				pos[0].rot = endPoints[r.startPoint].transform.rotation;
+				i = 0;
+				for (; i < r.pos.Length; i++)
+				{
+					pos[i + 1] = new WATransform();
+					pos[i + 1].pos = r.pos[i].position;
+					pos[i + 1].rot = r.pos[i].localRotation;
+				}
+				pos[i + 1] = new WATransform();
+				pos[i + 1].pos = endPoints[r.endPoint].transform.position;
+				pos[i + 1].rot = endPoints[r.endPoint].transform.rotation;
+				WATransform pos1 = PositionLerpRecursive(pos, 0.1f);
+				Gizmos.DrawLine(pos[0].pos, pos1.pos);
+				WATransform pos2 = PositionLerpRecursive(pos, 0.2f);
+				Gizmos.DrawLine(pos1.pos, pos2.pos);
+				pos1 = PositionLerpRecursive(pos, 0.3f);
+				Gizmos.DrawLine(pos2.pos, pos1.pos);
+				pos2 = PositionLerpRecursive(pos, 0.4f);
+				Gizmos.DrawLine(pos1.pos, pos2.pos);
+				pos1 = PositionLerpRecursive(pos, 0.5f);
+				Gizmos.DrawLine(pos2.pos, pos1.pos);
+				pos2 = PositionLerpRecursive(pos, 0.6f);
+				Gizmos.DrawLine(pos1.pos, pos2.pos);
+				pos1 = PositionLerpRecursive(pos, 0.7f);
+				Gizmos.DrawLine(pos2.pos, pos1.pos);
+				pos2 = PositionLerpRecursive(pos, 0.8f);
+				Gizmos.DrawLine(pos1.pos, pos2.pos);
+				pos1 = PositionLerpRecursive(pos, 0.9f);
+				Gizmos.DrawLine(pos2.pos, pos1.pos);
+				Gizmos.DrawLine(pos1.pos, pos[pos.Length - 1].pos);
+			}
 		}
 		//Draw the endpoints and the directions their facing
 		Gizmos.color = Color.white;
@@ -247,46 +283,46 @@ public class MainMenu : MonoBehaviour
 	}
 
 	//More indepth
-	private void OnDrawGizmosSelected()
-	{
-		foreach (Rails r in cameraPath)
-		{
-			Gizmos.color = r.color;
-			WATransform[] pos = new WATransform[r.pos.Length + 2];
-			pos[0] = new WATransform();
-			pos[0].pos = endPoints[r.startPoint].transform.position;
-			pos[0].rot = endPoints[r.startPoint].transform.rotation;
-			int i = 0;
-			for (; i < r.pos.Length; i++)
-			{
-				pos[i + 1] = new WATransform();
-				pos[i + 1].pos = r.pos[i].position;
-				pos[i + 1].rot = r.pos[i].localRotation;
-			}
-			pos[i + 1] = new WATransform();
-			pos[i + 1].pos = endPoints[r.endPoint].transform.position;
-			pos[i + 1].rot = endPoints[r.endPoint].transform.rotation;
-			WATransform pos1 = PositionLerpRecursive(pos, 0.1f);
-			Gizmos.DrawLine(pos[0].pos, pos1.pos);
-			WATransform pos2 = PositionLerpRecursive(pos, 0.2f);
-			Gizmos.DrawLine(pos1.pos, pos2.pos);
-			pos1 = PositionLerpRecursive(pos, 0.3f);
-			Gizmos.DrawLine(pos2.pos, pos1.pos);
-			pos2 = PositionLerpRecursive(pos, 0.4f);
-			Gizmos.DrawLine(pos1.pos, pos2.pos);
-			pos1 = PositionLerpRecursive(pos, 0.5f);
-			Gizmos.DrawLine(pos2.pos, pos1.pos);
-			pos2 = PositionLerpRecursive(pos, 0.6f);
-			Gizmos.DrawLine(pos1.pos, pos2.pos);
-			pos1 = PositionLerpRecursive(pos, 0.7f);
-			Gizmos.DrawLine(pos2.pos, pos1.pos);
-			pos2 = PositionLerpRecursive(pos, 0.8f);
-			Gizmos.DrawLine(pos1.pos, pos2.pos);
-			pos1 = PositionLerpRecursive(pos, 0.9f);
-			Gizmos.DrawLine(pos2.pos, pos1.pos);
-			Gizmos.DrawLine(pos1.pos, pos[pos.Length - 1].pos);
-		}
-	}
+	//private void OnDrawGizmosSelected()
+	//{
+	//	foreach (Rails r in cameraPath)
+	//	{
+	//		Gizmos.color = r.color;
+	//		WATransform[] pos = new WATransform[r.pos.Length + 2];
+	//		pos[0] = new WATransform();
+	//		pos[0].pos = endPoints[r.startPoint].transform.position;
+	//		pos[0].rot = endPoints[r.startPoint].transform.rotation;
+	//		int i = 0;
+	//		for (; i < r.pos.Length; i++)
+	//		{
+	//			pos[i + 1] = new WATransform();
+	//			pos[i + 1].pos = r.pos[i].position;
+	//			pos[i + 1].rot = r.pos[i].localRotation;
+	//		}
+	//		pos[i + 1] = new WATransform();
+	//		pos[i + 1].pos = endPoints[r.endPoint].transform.position;
+	//		pos[i + 1].rot = endPoints[r.endPoint].transform.rotation;
+	//		WATransform pos1 = PositionLerpRecursive(pos, 0.1f);
+	//		Gizmos.DrawLine(pos[0].pos, pos1.pos);
+	//		WATransform pos2 = PositionLerpRecursive(pos, 0.2f);
+	//		Gizmos.DrawLine(pos1.pos, pos2.pos);
+	//		pos1 = PositionLerpRecursive(pos, 0.3f);
+	//		Gizmos.DrawLine(pos2.pos, pos1.pos);
+	//		pos2 = PositionLerpRecursive(pos, 0.4f);
+	//		Gizmos.DrawLine(pos1.pos, pos2.pos);
+	//		pos1 = PositionLerpRecursive(pos, 0.5f);
+	//		Gizmos.DrawLine(pos2.pos, pos1.pos);
+	//		pos2 = PositionLerpRecursive(pos, 0.6f);
+	//		Gizmos.DrawLine(pos1.pos, pos2.pos);
+	//		pos1 = PositionLerpRecursive(pos, 0.7f);
+	//		Gizmos.DrawLine(pos2.pos, pos1.pos);
+	//		pos2 = PositionLerpRecursive(pos, 0.8f);
+	//		Gizmos.DrawLine(pos1.pos, pos2.pos);
+	//		pos1 = PositionLerpRecursive(pos, 0.9f);
+	//		Gizmos.DrawLine(pos2.pos, pos1.pos);
+	//		Gizmos.DrawLine(pos1.pos, pos[pos.Length - 1].pos);
+	//	}
+	//}
 	#endregion
 
 	//Recursive lerp to guide the camera smoothly along its rails
