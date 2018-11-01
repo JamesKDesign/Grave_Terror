@@ -21,7 +21,7 @@ public class DynamicCamera : MonoBehaviour {
         m_camera = GetComponent<Camera>();
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         // if no players on the screen
         if(players.Count == 0)

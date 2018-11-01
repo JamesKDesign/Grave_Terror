@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-
+    [Tooltip("Players health amount")]
     public float health;
+    [Tooltip("The players current health state")]
     public float currentHealth;
+    [Tooltip("How long the flash will run for when the player is hit")]
     public float damageFlashLength;
     private float flashCounter;
     private Renderer rend;

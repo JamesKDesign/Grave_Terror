@@ -5,33 +5,26 @@ using XboxCtrlrInput;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] public float walkSpeed;
-    [SerializeField] private int floorMask;
-    [SerializeField] private float camRayLength = 100f;
-    [SerializeField] private float rotationSmoothing = 7f;
-    public float rotationSpeed;
-   // Rigidbody playerRigidbody;
-    CharacterController characterControl;
+    private CharacterController characterControl;
     private Vector3 previousRotation = Vector3.forward;
-    Vector3 offset;
-    public XboxControllerManager xboxController;
+    private Vector3 offset;
+    public float walkSpeed;
+    private int floorMask;
+    private float camRayLength = 100f;
+    public float rotationSmoothing = 7f;
+    public float rotationSpeed;
     public float gravity;
-
-    bool isDodging = false;
+    private bool isDodging = false;
     public AnimationCurve dodgeCurve;
     public float dodgeSpeed;
     public float dodgeTime;
     private float dodgeTimer = 0.0f;
-
-    public GameObject flameTrail;
-    //private float trailTimer = 0.0f;
     public float trailTime;
     public float trailDamage;
-
+    public GameObject flameTrail;
+    public XboxControllerManager xboxController;
     private Camera camRotationY;
-
-    Vector3 moveDirection = Vector3.zero;
-    Vector3 rotationDirection = Vector3.right;
+    private Vector3 moveDirection = Vector3.zero;
 
 
     private void Awake()
@@ -43,17 +36,10 @@ public class PlayerMovement : MonoBehaviour
         camRotationY = GetComponent<Camera>();
     }
 
-    // Physics update only
     private void FixedUpdate()
     {
-        // Turn the player to face the mouse cursor.
-        //Turning();
-    }
-
-    private void Update()
-    {
         // If player is dodging
-        if(isDodging)
+        if (isDodging)
         {
             // start dodge and fire trail timers
             dodgeTimer += Time.deltaTime;
@@ -66,15 +52,12 @@ public class PlayerMovement : MonoBehaviour
             trail.transform.parent = this.transform;
             trail.transform.localPosition = Vector3.zero;
             Destroy(trail, trailTime);
-            transform.position += transform.forward * dodgeCurve.Evaluate(dodgeTimer/dodgeTime) * dodgeSpeed * Time.deltaTime;
-            
+            transform.position += transform.forward * dodgeCurve.Evaluate(dodgeTimer / dodgeTime) * dodgeSpeed * Time.deltaTime;
         }
-
         else
         {
             Move();
         }
-        Debug.Log(moveDirection);
     }
 
     // if a enemy runs into the fire trail
@@ -88,23 +71,21 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // Basic movement of the player
     private void Move()
     {
         if (xboxController.useController == true)
         {
             float axisX = XCI.GetAxis(XboxAxis.LeftStickX, xboxController.controller);
             float axisZ = XCI.GetAxis(XboxAxis.LeftStickY, xboxController.controller);
-
+            // free movement 
             moveDirection = new Vector3(axisX * walkSpeed * Time.deltaTime, 0f, axisZ * walkSpeed * Time.deltaTime);
             moveDirection.y = moveDirection.y - (gravity * Time.deltaTime);
-
+            // rotation
             transform.Rotate(Vector3.up, Input.GetAxis("Horizontal") * rotationSpeed);
             characterControl.Move(moveDirection);
         }
         else if (!xboxController.useController)
         {
-            // Basic player movement (No physics)
             if (Input.GetKey(KeyCode.W))
             {
                 transform.position += new Vector3(walkSpeed * Time.deltaTime, 0, 0);
