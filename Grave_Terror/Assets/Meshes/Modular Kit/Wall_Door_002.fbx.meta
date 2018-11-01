@@ -1,18 +1,18 @@
 fileFormatVersion: 2
-guid: 3b1a91348265f0043b63585ffe87c05b
-timeCreated: 1539841677
+guid: 684465e7f45534c419caa509fe626873
+timeCreated: 1541035050
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Floor_Base_001
+    100000: Wall_Door_001
     100002: //RootNode
-    400000: Floor_Base_001
+    400000: Wall_Door_001
     400002: //RootNode
     2100000: lam_test
-    2300000: Floor_Base_001
-    3300000: Floor_Base_001
-    4300000: Floor_Base_001
+    2300000: Wall_Door_001
+    3300000: Wall_Door_001
+    4300000: Wall_Door_001
   externalObjects: {}
   materials:
     importMaterials: 1

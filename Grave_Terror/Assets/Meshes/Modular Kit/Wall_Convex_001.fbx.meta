@@ -1,18 +1,18 @@
 fileFormatVersion: 2
-guid: 957e53af7591e424e9eb2f8bed84fa7b
-timeCreated: 1539926048
+guid: 58d12d38b939176478d62db73cf29f32
+timeCreated: 1541035050
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Wall_Base_001
-    100002: //RootNode
-    400000: Wall_Base_001
-    400002: //RootNode
+    100000: //RootNode
+    100002: Wall_Corner_Convex_001
+    400000: //RootNode
+    400002: Wall_Corner_Convex_001
     2100000: lam_test
-    2300000: Wall_Base_001
-    3300000: Wall_Base_001
-    4300000: Wall_Base_001
+    2300000: Wall_Corner_Convex_001
+    3300000: Wall_Corner_Convex_001
+    4300000: Wall_Corner_Convex_001
   externalObjects: {}
   materials:
     importMaterials: 1
