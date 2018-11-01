@@ -7,15 +7,15 @@ public class DestructableObjects : MonoBehaviour {
     public int maxHealth;
     public int currentHealth;
     private Renderer rend;
-    //private Color colour;
-    public float damageFlashLength;
-    private float flashCounter;
+    private Color colour;
+    public float FlashLength;
+    private float flashCounter = 1f;
 
     private void Awake()
     {
         currentHealth = maxHealth;
-        //colour = rend.material.GetColor("_Color");
         rend = GetComponent<Renderer>();
+        colour = rend.material.GetColor("_Color");
     }
 
 
@@ -26,12 +26,12 @@ public class DestructableObjects : MonoBehaviour {
             Destroy(obj: gameObject);
         }
 
-        if (flashCounter > 0)
+        if (flashCounter >= 0)
         {
             flashCounter -= Time.deltaTime;
             if (flashCounter <= 0)
             {
-                //rend.material.SetColor("_Color", Color.grey);
+                rend.material.SetColor("_Color", Color.grey);
             }
         }
     }
@@ -39,8 +39,8 @@ public class DestructableObjects : MonoBehaviour {
    public void ObjectDamage(int _amount)
     {
         currentHealth -= _amount;
-        flashCounter = damageFlashLength;
-        //rend.material.SetColor("_Color", Color.red);
+        flashCounter = FlashLength;
+        rend.material.SetColor("_Color", Color.red);
         Debug.Log("Objects health: " + currentHealth);
     }
 }

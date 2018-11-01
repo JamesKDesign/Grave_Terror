@@ -7,7 +7,7 @@ public class DynamicCamera : MonoBehaviour {
 
     // list of players
     public List<Transform> players;
-    private Camera camera;
+    private Camera m_camera;
     // To adjust  the camera
     public Vector3 offset;
     private Vector3 velocity;
@@ -18,7 +18,7 @@ public class DynamicCamera : MonoBehaviour {
 
     private void Awake()
     {
-        camera = GetComponent<Camera>();
+        m_camera = GetComponent<Camera>();
     }
 
     private void LateUpdate()
@@ -35,7 +35,7 @@ public class DynamicCamera : MonoBehaviour {
     void Zoom()
     {
         float newZoom = Mathf.Lerp(maxZoom, minZoom, GetGreatestDistance() / zoomLimit);
-        camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, newZoom, Time.deltaTime);
+        m_camera.fieldOfView = Mathf.Lerp(m_camera.fieldOfView, newZoom, Time.deltaTime);
     }
 
     float GetGreatestDistance()

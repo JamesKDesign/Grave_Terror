@@ -5,16 +5,17 @@ using XboxCtrlrInput;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     [SerializeField] public float walkSpeed;
     [SerializeField] private int floorMask;
     [SerializeField] private float camRayLength = 100f;
     [SerializeField] private float rotationSmoothing = 7f;
     public float rotationSpeed;
-    Rigidbody playerRigidbody;
+   // Rigidbody playerRigidbody;
+    CharacterController characterControl;
     private Vector3 previousRotation = Vector3.forward;
     Vector3 offset;
     public XboxControllerManager xboxController;
+    public float gravity;
 
     bool isDodging = false;
     public AnimationCurve dodgeCurve;
@@ -29,12 +30,15 @@ public class PlayerMovement : MonoBehaviour
 
     private Camera camRotationY;
 
+    Vector3 moveDirection = Vector3.zero;
+    Vector3 rotationDirection = Vector3.right;
+
+
     private void Awake()
     {
         // Create a layer mask for the floor layer.
         floorMask = LayerMask.GetMask("Floor");
-        // Set up references.
-        playerRigidbody = GetComponent<Rigidbody>();
+        characterControl = GetComponent<CharacterController>();
         /*flameTrail = GetComponent<ParticleSystem>()*/;
         camRotationY = GetComponent<Camera>();
     }
@@ -43,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         // Turn the player to face the mouse cursor.
-        Turning();
+        //Turning();
     }
 
     private void Update()
@@ -70,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Move();
         }
+        Debug.Log(moveDirection);
     }
 
     // if a enemy runs into the fire trail
@@ -86,15 +91,16 @@ public class PlayerMovement : MonoBehaviour
     // Basic movement of the player
     private void Move()
     {
-
         if (xboxController.useController == true)
         {
             float axisX = XCI.GetAxis(XboxAxis.LeftStickX, xboxController.controller);
             float axisZ = XCI.GetAxis(XboxAxis.LeftStickY, xboxController.controller);
 
-            
+            moveDirection = new Vector3(axisX * walkSpeed * Time.deltaTime, 0f, axisZ * walkSpeed * Time.deltaTime);
+            moveDirection.y = moveDirection.y - (gravity * Time.deltaTime);
 
-            transform.position += new Vector3(axisX * walkSpeed * Time.deltaTime, 0, axisZ * walkSpeed * Time.deltaTime);
+            transform.Rotate(Vector3.up, Input.GetAxis("Horizontal") * rotationSpeed);
+            characterControl.Move(moveDirection);
         }
         else if (!xboxController.useController)
         {
@@ -116,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
                 transform.position += new Vector3(0, 0, -walkSpeed * Time.deltaTime);
             }
         }
-
+       
         if (XCI.GetButtonDown(XboxButton.LeftStick, xboxController.controller))
         {
             isDodging = true;
@@ -126,27 +132,7 @@ public class PlayerMovement : MonoBehaviour
     // Rotation of player
     private void Turning()
     {
-
-        if (xboxController.useController == true)
-        {
-
-            transform.Rotate(Vector3.down * Input.GetAxis("Vertical") * rotationSpeed);
-            transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * rotationSpeed);
-            //float rotateAxisX = XCI.GetAxis(XboxAxis.RightStickX, xboxController.controller);
-            //float rotateAxisZ = XCI.GetAxis(XboxAxis.RightStickY, xboxController.controller);
-
-            //Vector3 direction = new Vector3(rotateAxisX, 0, rotateAxisZ);
-
-            //if (direction.magnitude < 0.1f)
-            //{
-            //    direction = previousRotation;
-            //}
-
-            //direction = direction.normalized;
-            //previousRotation = direction;
-            //transform.rotation = Quaternion.LookRotation(direction);
-        }
-        else if (!xboxController.useController)
+        if (!xboxController.useController)
         {
             Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit floorHit;
@@ -157,7 +143,6 @@ public class PlayerMovement : MonoBehaviour
                 playerToMouse.y = 0f;
 
                 Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
-                playerRigidbody.MoveRotation(newRotation);
 
                 Vector3 position = transform.position + offset;
                 // smoothing of the rotation of player
