@@ -6,7 +6,6 @@ using XboxCtrlrInput;
 public class PlayerMovement : MonoBehaviour
 {
     private CharacterController characterControl;
-    private Vector3 previousRotation = Vector3.forward;
     private Vector3 offset;
     public float walkSpeed;
     private int floorMask;
@@ -25,18 +24,16 @@ public class PlayerMovement : MonoBehaviour
     public XboxControllerManager xboxController;
     private Camera camRotationY;
     private Vector3 moveDirection = Vector3.zero;
-
+    private Vector3 prevRotDirection = Vector3.forward;
 
     private void Awake()
     {
-        // Create a layer mask for the floor layer.
         floorMask = LayerMask.GetMask("Floor");
         characterControl = GetComponent<CharacterController>();
-        /*flameTrail = GetComponent<ParticleSystem>()*/;
         camRotationY = GetComponent<Camera>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         // If player is dodging
         if (isDodging)
@@ -58,6 +55,8 @@ public class PlayerMovement : MonoBehaviour
         {
             Move();
         }
+
+        Turning();
     }
 
     // if a enemy runs into the fire trail
@@ -80,8 +79,8 @@ public class PlayerMovement : MonoBehaviour
             // free movement 
             moveDirection = new Vector3(axisX * walkSpeed * Time.deltaTime, 0f, axisZ * walkSpeed * Time.deltaTime);
             moveDirection.y = moveDirection.y - (gravity * Time.deltaTime);
-            // rotation
-            transform.Rotate(Vector3.up, Input.GetAxis("Horizontal") * rotationSpeed);
+            //// rotation
+            //transform.Rotate(Vector3.up, Input.GetAxis("Horizontal") * rotationSpeed);
             characterControl.Move(moveDirection);
         }
         else if (!xboxController.useController)
@@ -113,7 +112,27 @@ public class PlayerMovement : MonoBehaviour
     // Rotation of player
     private void Turning()
     {
-        if (!xboxController.useController)
+        if(xboxController.useController)
+        {
+            //// rotation
+            //transform.Rotate(Vector3.up, Input.GetAxis("Horizontal") * rotationSpeed);
+            float rotateAxisX = XCI.GetAxis(XboxAxis.RightStickX, xboxController.controller);
+            float rotateAxisZ = XCI.GetAxis(XboxAxis.RightStickY, xboxController.controller);
+
+            Vector3 directionVector = new Vector3(rotateAxisX, 0, rotateAxisZ);
+
+            if (directionVector.magnitude < 0.1f)
+            {
+                directionVector = prevRotDirection;
+            }
+
+            directionVector = directionVector.normalized;
+            prevRotDirection = directionVector;
+            transform.rotation = Quaternion.LookRotation(directionVector);
+           
+
+        }
+        else if (!xboxController.useController)
         {
             Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit floorHit;
