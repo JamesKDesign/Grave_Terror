@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23535544322075730}
   - component: {fileID: 65950780331577362}
   - component: {fileID: 65889910754642440}
+  - component: {fileID: 114412373606133062}
   m_Layer: 0
   m_Name: Bannister_Corner_Concave_001_SM
   m_TagString: Untagged
@@ -108,3 +109,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6376176, y: 1.2, z: 1.0823858}
   m_Center: {x: 1.7588089, y: 0.59235895, z: 1.5311929}
+--- !u!114 &114412373606133062
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1816067246714466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7aed3e3ac832ce41a5ad6476367b8f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 150
+  currentHealth: 150
+  FlashLength: 0.3
