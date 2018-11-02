@@ -11,11 +11,13 @@ public class EnemyMovement : MonoBehaviour {
     NavMeshAgent enemy;
 	
 	private void Awake() {
+        target = GetComponent<Transform>();
 		target = GameObject.FindGameObjectWithTag("Player").transform;
-		enemy = GetComponent<NavMeshAgent>();
+
+        enemy = GetComponent<NavMeshAgent>();
 	}
 
 	private void Update() {
 		enemy.SetDestination(target.position);
-	}
+    }
 }

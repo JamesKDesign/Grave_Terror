@@ -8,6 +8,7 @@ public class PlayerShooting : MonoBehaviour
 
     public GameObject particleProjectile;
     public GameObject hitEffect;
+    public ParticleSystem muzzleFlash;
     public float delay;
     public float counter = 0f;
     public int damageToGive;
@@ -27,9 +28,10 @@ public class PlayerShooting : MonoBehaviour
             {
                 if (counter > delay)
                 {
-                    
+                    muzzleFlash.Play();
                      // bullets
-                     GameObject bullet = Instantiate(particleProjectile, transform.position, transform.rotation);
+                    GameObject bullet = Instantiate(particleProjectile, transform.position, transform.rotation);
+                    
                      counter = 0f;
 
                     RaycastHit hit;
@@ -41,7 +43,7 @@ public class PlayerShooting : MonoBehaviour
                         if (target != null)
                         {
                             target.DamageHealth(damageToGive);
-                            cameraShake.Shake(duration);
+                            //cameraShake.Shake(duration);
                         }
 
                         // force push back
@@ -62,6 +64,10 @@ public class PlayerShooting : MonoBehaviour
                         Destroy(impactGo, 0.2f);
                     }
                 }
+            }
+            else
+            {
+                muzzleFlash.Stop();
             }
         }
         else if (!xboxController.useController)

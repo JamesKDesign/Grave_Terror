@@ -11,7 +11,8 @@ public class ObjectOnFire : MonoBehaviour {
 	void Awake () {
         setOnFire = GetComponentInChildren<ParticleSystem>();
         timer = 0.0f;
-	}
+        //setOnFire.Stop();
+    }
 
     private void Update()
     {
@@ -20,7 +21,7 @@ public class ObjectOnFire : MonoBehaviour {
         if(timer > 4.0f)
         {
             timer = 0.0f;
-            setOnFire.Stop();
+            
         }
     }
 

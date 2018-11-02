@@ -19,8 +19,8 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             ScoreBoard.score += 1;
-            //Destroy(gameObject);
-            gameObject.GetComponent<Enemy>().Dead();
+            Destroy(gameObject);
+           // gameObject.GetComponent<Enemy>().Dead();
             print("enemy dead");
         }
     }
