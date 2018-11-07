@@ -9,14 +9,22 @@ public class PlayerShooting : MonoBehaviour
     public GameObject particleProjectile;
     public GameObject hitEffect;
     public ParticleSystem muzzleFlash;
+    public XboxControllerManager xboxController;
+    public CameraShake cameraShake;
+    private GameObject bullet;
     public float delay;
     public float counter = 0f;
     public int damageToGive;
     public float impactForce = 30f;
     public float range;
-    public CameraShake cameraShake;
     public float duration;
-    public XboxControllerManager xboxController;
+    public int maxAmmo;
+    public int currentAmmo;
+
+    private void Awake()
+    {
+        currentAmmo = maxAmmo;
+    }
 
     // Raycasting
     private void FixedUpdate()
@@ -26,15 +34,16 @@ public class PlayerShooting : MonoBehaviour
         {
             if (XCI.GetAxis(XboxAxis.RightTrigger, xboxController.controller) > 0.1f)
             {
+                currentAmmo--;
                 if (counter > delay)
                 {
-                    muzzleFlash.Play();
+                      muzzleFlash.Play();
                      // bullets
-                    GameObject bullet = Instantiate(particleProjectile, transform.position, transform.rotation);
-                    
+                     bullet = Instantiate(particleProjectile, transform.position, transform.rotation);
                      counter = 0f;
 
                     RaycastHit hit;
+                    
                     Ray rayCast = new Ray(transform.position, transform.forward);
                     if (Physics.Raycast(rayCast, out hit, range))
                     {
@@ -75,7 +84,7 @@ public class PlayerShooting : MonoBehaviour
             if (Input.GetKey(KeyCode.Mouse0) && counter > delay)
             {
                 // bullets
-                GameObject bullet = Instantiate(particleProjectile, transform.position, transform.rotation);
+                bullet = Instantiate(particleProjectile, transform.position, transform.rotation);
                 counter = 0f;
 
                 RaycastHit hit;
@@ -109,13 +118,16 @@ public class PlayerShooting : MonoBehaviour
                 }
             }
         }
-    }
 
-    //public void OnTriggerStay(Collider other)
-    //{
-    //    if (other.gameObject.tag == "Finish")
-    //    {
-    //        other.gameObject.GetComponent<DestructableObjects>().ObjectDamage(damageToGive);
-    //    }
-    //}
+        if (currentAmmo <= 0)
+        {
+            currentAmmo = 0;
+            bullet.SetActive(false);
+
+            if(XCI.GetButtonDown(XboxButton.X))
+            {
+                currentAmmo = maxAmmo;
+            }
+        }
+    }
 }

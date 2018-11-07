@@ -5,9 +5,7 @@ using XboxCtrlrInput;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private CharacterController characterControl;
     private Vector3 offset;
-    public float walkSpeed;
     private int floorMask;
     private float camRayLength = 100f;
     public float rotationSmoothing = 7f;
@@ -23,8 +21,16 @@ public class PlayerMovement : MonoBehaviour
     public GameObject flameTrail;
     public XboxControllerManager xboxController;
     private Camera camRotationY;
-    private Vector3 moveDirection = Vector3.zero;
     private Vector3 prevRotDirection = Vector3.forward;
+
+    // Relative camera rotation
+    public Transform cam;
+    public float walkSpeed;
+    private Vector3 inputDirection = new Vector3(0, 0, 0);
+    private Vector3 moveDirection = new Vector3(0, 0, 0);
+    private CharacterController characterControl;
+
+
 
     private void Awake()
     {
@@ -76,12 +82,25 @@ public class PlayerMovement : MonoBehaviour
         {
             float axisX = XCI.GetAxis(XboxAxis.LeftStickX, xboxController.controller);
             float axisZ = XCI.GetAxis(XboxAxis.LeftStickY, xboxController.controller);
-            // free movement 
-            moveDirection = new Vector3(axisX * walkSpeed * Time.deltaTime, 0f, axisZ * walkSpeed * Time.deltaTime);
+
+            inputDirection = new Vector3(axisX, 0, axisZ);
+
+            Vector3 camForward = cam.forward;
+            camForward.y = 0;
+            camForward = camForward.normalized;
+
+            Quaternion cameraRotation = Quaternion.FromToRotation(Vector3.forward, camForward);
+            Vector3 lookForward = cameraRotation * inputDirection;
+
+            if(inputDirection.sqrMagnitude > 0)
+            {
+                Ray look = new Ray(transform.position, lookForward);
+                transform.LookAt(look.GetPoint(1));
+            }
+            moveDirection = transform.forward * walkSpeed * inputDirection.sqrMagnitude;
             moveDirection.y = moveDirection.y - (gravity * Time.deltaTime);
-            //// rotation
-            //transform.Rotate(Vector3.up, Input.GetAxis("Horizontal") * rotationSpeed);
-            characterControl.Move(moveDirection);
+            characterControl.Move(moveDirection * Time.deltaTime);
+            
         }
         else if (!xboxController.useController)
         {

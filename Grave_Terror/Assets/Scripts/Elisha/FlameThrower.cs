@@ -17,7 +17,8 @@ public class FlameThrower : MonoBehaviour
     public float coolDownTimer;
     PlayerMovement playerRotation;
     public GameObject sizzleRotation;
-    public ParticleSystem flameThrower;
+    //public ParticleSystem flameThrower;
+    public GameObject flame;
 
     private void Awake()
     {
@@ -35,16 +36,16 @@ public class FlameThrower : MonoBehaviour
             counter += Time.deltaTime;
             if (counter > delay)
             {
-                flameThrower.Play();
-               // GameObject newFlame = Instantiate(flame, transform.position, sizzleRotation.transform.rotation);
+                //flameThrower.Play();
+                GameObject newFlame = Instantiate(flame, transform.position, sizzleRotation.transform.rotation);
                 //flame.SetActive(true);
                 counter = 0f;
             }
         }
-        else
-        {
-            flameThrower.Stop();
-        }
+        //else
+        //{
+        //    //flameThrower.Stop();
+        //}
 
         if (currentAmmo <= 0f)
         {
@@ -55,7 +56,6 @@ public class FlameThrower : MonoBehaviour
             {
                 coolDown = 1.0f;
                 currentAmmo = maxAmmo;
-                
             }
         }
     }
