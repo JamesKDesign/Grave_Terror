@@ -247,7 +247,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1275005891588940
 GameObject:
   m_ObjectHideFlags: 1
@@ -344,21 +344,6 @@ GameObject:
   m_Layer: 0
   m_Name: Sizzle_Neck
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1480408294773698
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4718326280350768}
-  m_Layer: 0
-  m_Name: 'Flame_Thrower_001_PS '
-  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -510,6 +495,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4623514140962264}
+  - component: {fileID: 114907978420438288}
   m_Layer: 0
   m_Name: Flame_Thrower_001_PS (1)
   m_TagString: Fire
@@ -658,7 +644,8 @@ Transform:
   m_LocalRotation: {x: -0.7970434, y: 0.2472277, z: 0.21240228, w: 0.5084148}
   m_LocalPosition: {x: -0.192, y: -0.01, z: 0.021}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4300129777123632}
   m_Father: {fileID: 4704634285243062}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -724,14 +711,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1658042375097830}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.06783759, y: -0.0678376, z: -0.7038453, w: 0.7038452}
+  m_LocalPosition: {x: 0.003107673, y: -0.014534806, z: 0.0036153998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4364523907956756}
   - {fileID: 4931695941462088}
   - {fileID: 4887127954841328}
-  m_Father: {fileID: 4718326280350768}
+  m_Father: {fileID: 4156486808711210}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4337145188540616
@@ -953,23 +940,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4156486808711210}
-  - {fileID: 4718326280350768}
   m_Father: {fileID: 4585207708570250}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4718326280350768
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1480408294773698}
-  m_LocalRotation: {x: -0.6861067, y: -0.407066, z: -0.17104886, w: 0.5781845}
-  m_LocalPosition: {x: -0.181, y: -0.002, z: 0.028}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4300129777123632}
-  m_Father: {fileID: 4704634285243062}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4752361836194272
 Transform:
@@ -1157,7 +1129,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1335420841307778}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 284e6266c460339479cefe3ec8bf867b, type: 3}
   m_Controller: {fileID: 9100000, guid: 1946ca26c176fd846b6fc24bdee0cc35, type: 2}
   m_CullingMode: 1
@@ -1192,7 +1164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a63ca5c6783d4a846a5f8f82498bab75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: 2
+  controller: 1
   useController: 1
 --- !u!114 &114677879984724372
 MonoBehaviour:
@@ -1205,7 +1177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b231892fc7f665749bd2c4d91c81b744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 6
   rotationSmoothing: 7
   rotationSpeed: 8
   gravity: 20
@@ -1233,6 +1204,8 @@ MonoBehaviour:
   trailDamage: 1
   flameTrail: {fileID: 1310806736051744, guid: 9590e8d98b964a44bbc2791dc57f96b7, type: 2}
   xboxController: {fileID: 114497222421201216}
+  cam: {fileID: 0}
+  walkSpeed: 6
 --- !u!114 &114767708503430702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1244,8 +1217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a643ff55462ee7849800c2ae41b1f3a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Collider: {fileID: 0}
-  controller: 2
+  controller: 1
   counter: 0
   delay: 0
   maxAmmo: 200
@@ -1253,7 +1225,7 @@ MonoBehaviour:
   coolDown: 0
   coolDownTimer: 1
   sizzleRotation: {fileID: 1335420841307778}
-  flameThrower: {fileID: 198958698421747544}
+  flame: {fileID: 1687791481059810}
 --- !u!114 &114845923305398364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1265,16 +1237,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a643ff55462ee7849800c2ae41b1f3a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Collider: {fileID: 0}
-  controller: 2
+  controller: 1
   counter: 0
   delay: 0
-  maxAmmo: 100
+  maxAmmo: 200
   currentAmmo: 0
   coolDown: 1
   coolDownTimer: 1
   sizzleRotation: {fileID: 1335420841307778}
-  flameThrower: {fileID: 198826523233917402}
+  flame: {fileID: 1687791481059810}
+--- !u!114 &114907978420438288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687791481059810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30db9b0c6f4e43f439f3b8164c828766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 5
+  flameLife: 2
+  flameDamage: 10
+  damageTimer: 2
 --- !u!137 &137970714359589262
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -4782,7 +4768,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 530228610
+  randomSeed: -1986091441
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -8143,7 +8129,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1581100319
+  randomSeed: -1931363700
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -21611,7 +21597,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 544744330
+  randomSeed: -1486014374
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -24978,7 +24964,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1391716215
+  randomSeed: -1363150710
   InitialModule:
     serializedVersion: 3
     enabled: 1
