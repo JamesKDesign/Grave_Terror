@@ -133,8 +133,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if(xboxController.useController)
         {
-            //// rotation
-            //transform.Rotate(Vector3.up, Input.GetAxis("Horizontal") * rotationSpeed);
             float rotateAxisX = XCI.GetAxis(XboxAxis.RightStickX, xboxController.controller);
             float rotateAxisZ = XCI.GetAxis(XboxAxis.RightStickY, xboxController.controller);
 
@@ -148,7 +146,6 @@ public class PlayerMovement : MonoBehaviour
             directionVector = directionVector.normalized;
             prevRotDirection = directionVector;
             transform.rotation = Quaternion.LookRotation(directionVector);
-           
 
         }
         else if (!xboxController.useController)

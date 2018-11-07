@@ -8,18 +8,19 @@ public class PlayerShooting : MonoBehaviour
 
     public GameObject particleProjectile;
     public GameObject hitEffect;
+    public GameObject chunkRotation;
     public ParticleSystem muzzleFlash;
     public XboxControllerManager xboxController;
-    public CameraShake cameraShake;
     private GameObject bullet;
     public float delay;
     public float counter = 0f;
     public int damageToGive;
-    public float impactForce = 30f;
     public float range;
     public float duration;
     public int maxAmmo;
     public int currentAmmo;
+    private bool isReloading = false;
+
 
     private void Awake()
     {
@@ -29,52 +30,55 @@ public class PlayerShooting : MonoBehaviour
     // Raycasting
     private void FixedUpdate()
     {
-        counter += Time.deltaTime;
         if (xboxController.useController == true)
         {
+            
+            counter += Time.deltaTime;
             if (XCI.GetAxis(XboxAxis.RightTrigger, xboxController.controller) > 0.1f)
             {
-                currentAmmo--;
-                if (counter > delay)
+                if(isReloading == false)
                 {
-                      muzzleFlash.Play();
-                     // bullets
-                     bullet = Instantiate(particleProjectile, transform.position, transform.rotation);
-                     counter = 0f;
-
-                    RaycastHit hit;
-                    
-                    Ray rayCast = new Ray(transform.position, transform.forward);
-                    if (Physics.Raycast(rayCast, out hit, range))
+                    currentAmmo--;
+                    if (counter > delay)
                     {
-                        // enemy health damaged
-                        EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
-                        if (target != null)
-                        {
-                            target.DamageHealth(damageToGive);
-                            //cameraShake.Shake(duration);
-                        }
+                        muzzleFlash.Play();
+                        // bullets
+                        bullet = Instantiate(particleProjectile, transform.position, chunkRotation.transform.rotation);
+                        counter = 0f;
 
-                        // force push back
-                        if (hit.rigidbody != null)
+                        RaycastHit hit;
+                        Ray rayCast = new Ray(transform.position, transform.forward);
+                        if (Physics.Raycast(rayCast, out hit, range))
                         {
-                            hit.rigidbody.AddForce(-hit.normal * impactForce);
-                            cameraShake.Shake(duration);
-                        }
+                            // enemy health damaged
+                            EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+                            if (target != null)
+                            {
+                                target.DamageHealth(damageToGive);
+                            }
 
-                        DestructableObjects obj = hit.transform.GetComponent<DestructableObjects>();
-                        if (obj != null)
-                        {
-                            obj.ObjectDamage(damageToGive);
-                        }
+                            DestructableObjects obj = hit.transform.GetComponent<DestructableObjects>();
+                            if (obj != null)
+                            {
+                                obj.ObjectDamage(damageToGive);
+                            }
 
-                        // blood
-                        GameObject impactGo = Instantiate(hitEffect, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                        Destroy(impactGo, 0.2f);
+                            // blood
+                            GameObject impactGo = Instantiate(hitEffect, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+                            Destroy(impactGo, 0.2f);
+                        }
+                    }
+                }
+                else if(isReloading == true)
+                {
+                    if (XCI.GetButtonDown(XboxButton.X))
+                    {
+                        currentAmmo = maxAmmo;
+                        isReloading = false;
                     }
                 }
             }
-            else
+            else if (XCI.GetAxis(XboxAxis.RightTrigger, xboxController.controller) < 0.1)
             {
                 muzzleFlash.Stop();
             }
@@ -104,13 +108,6 @@ public class PlayerShooting : MonoBehaviour
                     {
                         obj.ObjectDamage(damageToGive);
                     }
-                    
-
-                    // force push back
-                    if (hit.rigidbody != null)
-                    {
-                        hit.rigidbody.AddForce(-hit.normal * impactForce);
-                    }
 
                     // blood
                    GameObject impactGo = Instantiate(hitEffect, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
@@ -121,13 +118,10 @@ public class PlayerShooting : MonoBehaviour
 
         if (currentAmmo <= 0)
         {
+            isReloading = true;
             currentAmmo = 0;
             bullet.SetActive(false);
-
-            if(XCI.GetButtonDown(XboxButton.X))
-            {
-                currentAmmo = maxAmmo;
-            }
+            muzzleFlash.Stop();
         }
     }
 }

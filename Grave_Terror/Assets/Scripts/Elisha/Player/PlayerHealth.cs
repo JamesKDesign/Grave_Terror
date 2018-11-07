@@ -23,9 +23,9 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
+        currentHealth = health;
         rend = GetComponent<Renderer>();
         colour = rend.material.GetColor("_Color");
-        currentHealth = health;
         print("Player starting health: " + currentHealth);
     }
 

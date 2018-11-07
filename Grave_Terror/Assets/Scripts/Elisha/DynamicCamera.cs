@@ -72,6 +72,11 @@ public class DynamicCamera : MonoBehaviour {
             // Encapsulate grows the bounds and includes the new player
             bounds.Encapsulate(players[i].position);
         }
+
+        if (players[0] == null)
+        {
+            bounds.Encapsulate(players[1].position);
+        }
         return bounds.center;
     }
 }
