@@ -10,7 +10,7 @@ public enum MENU_STATE
 	//OPTIONS,
 	QUIT,
 	CHARACTER_SELECT,
-	START_GAME,
+	GAME,
 }
 
 [System.Serializable]
@@ -32,6 +32,10 @@ public class Points
 {
 	public Transform transform;
 	public UnityEvent call;
+	[Tooltip("Element no. of desired destination when navigating menu\n-1 will do nothing")]
+	public int movePositive;
+	[Tooltip("Element no. of desired destination when navigating menu\n-1 will do nothing")]
+	public int moveNegative;
 }
 
 //Class because you cant make instances of transforms to use for storage
@@ -65,6 +69,14 @@ public class MainMenu : MonoBehaviour
 	private int path = 0;
 	//If we are following it in reverse order
 	private bool reverse = false;
+
+	//Selection -1 is invalid, Selection 1 is Chunk, Selection 2 is Sizzle
+	private int p1Selected = -1;
+	private int p2Selected = -1;
+	[Tooltip("Is Chunk on the right or the left?")]
+	public bool chunkLeft;
+
+	public GameObject selectionScreen;
 
 	// Use this for initialization
 	void Start ()
@@ -131,30 +143,74 @@ public class MainMenu : MonoBehaviour
 				case MENU_STATE.MENU:
 					break;
 				case MENU_STATE.CHARACTER_SELECT:
-					//Player 1 selection placeholder
-					if (Input.GetKeyDown(KeyCode.LeftArrow))
+					//First come first serve selection
+                    //add some way for players to see who they selected
+                    float p1Selection = Input.GetAxis("Horizontal"); //Replace with player one horizontal joystick axis
+                    float p2Selection = Input.GetAxis("Vertical"); //Replace with player two horizontal joystick axis
+					//If chunk is on the other side
+					if (chunkLeft)
 					{
-
+						p1Selection *= -1.0f;
+						p2Selection *= -1.0f;
 					}
-					else if (Input.GetKeyDown(KeyCode.RightArrow))
+					//Player 1
+					if (p1Selection >= 0.75f)
 					{
-
+						if (p2Selected != 1)
+							p1Selected = 1;
 					}
-					//Player 2 selection placeholder
-					if (Input.GetKeyDown(KeyCode.A))
+					else if (p1Selection <= -0.75)
 					{
-
+						if (p2Selected != 2)
+							p1Selected = 2;
 					}
-					if (Input.GetKeyDown(KeyCode.D))
+					else
 					{
-
+						p1Selected = -1;
+					}
+					//Player 2
+					if (p2Selection >= 0.75f)
+					{
+						if (p1Selected != 1)
+							p2Selected = 1;
+					}
+					else if (p2Selection <= -0.75)
+					{
+						if (p1Selected != 2)
+							p2Selected = 2;
+					}
+					else
+					{
+						p1Selected = -1;
 					}
 					break;
+				case MENU_STATE.GAME:
+					//Do nothing
+					return;
+					break;
 			}
-			//These should be replaced with XBocks controller inputs
+			//Call all functions todo with the selection option
+			//TODO: replace getkeydown with xbocks controller input 
 			if (Input.GetKeyDown(KeyCode.Return))
 			{
 				endPoints[current].call.Invoke();
+			}
+			//TODO: replace getkeydown with xbox controller input left/right - up/down
+			//Positive Movement
+			if (Input.GetKeyDown(KeyCode.D))
+			{
+				if (endPoints[current].movePositive != -1)
+				{
+					MoveTo(endPoints[current].movePositive);
+				}
+			}
+			//Negative movement
+			else if (Input.GetKeyDown(KeyCode.A))
+			{
+				if (endPoints[current].moveNegative != -1)
+				{
+					MoveTo(endPoints[current].moveNegative);
+				}
 			}
 		}
 	}
@@ -208,15 +264,25 @@ public class MainMenu : MonoBehaviour
 	public void GotoCharacterSelection()
 	{
 		state = MENU_STATE.CHARACTER_SELECT;
+		//Enable gameobjects in selection screen
+		selectionScreen.SetActive(true);
 	}
 
 	public void CharacterSelectComplete()
 	{
-		SceneManager.LoadScene(gameScene);
+		//Make sure both players have made a selection before allowing them to proceed
+		if (p1Selected != -1 &&
+			p2Selected != -1)
+		{
+			SceneManager.LoadScene(gameScene);
+		}
 	}
 
 	public void QuitGame()
 	{
+		//Set state to quit just incase
+		state = MENU_STATE.QUIT;
+		Debug.Log("Quitting..."); //Debug message to show that it works in editor
 		Application.Quit();
 	}
 
