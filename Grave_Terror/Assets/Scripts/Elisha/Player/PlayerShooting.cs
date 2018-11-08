@@ -11,6 +11,7 @@ public class PlayerShooting : MonoBehaviour
     public GameObject chunkRotation;
     public ParticleSystem muzzleFlash;
     public XboxControllerManager xboxController;
+    //public Animator anim;
     private GameObject bullet;
     public float delay;
     public float counter = 0f;
@@ -25,6 +26,7 @@ public class PlayerShooting : MonoBehaviour
     private void Awake()
     {
         currentAmmo = maxAmmo;
+        //anim = GetComponent<Animator>();
     }
 
     // Raycasting
@@ -41,6 +43,7 @@ public class PlayerShooting : MonoBehaviour
                     currentAmmo--;
                     if (counter > delay)
                     {
+                        //anim.SetBool("isShooting", true);
                         muzzleFlash.Play();
                         // bullets
                         bullet = Instantiate(particleProjectile, transform.position, chunkRotation.transform.rotation);
@@ -71,6 +74,7 @@ public class PlayerShooting : MonoBehaviour
                 }
                 else if(isReloading == true)
                 {
+                    //anim.SetBool("isShooting", false);
                     if (XCI.GetButtonDown(XboxButton.X))
                     {
                         currentAmmo = maxAmmo;
@@ -80,6 +84,7 @@ public class PlayerShooting : MonoBehaviour
             }
             else if (XCI.GetAxis(XboxAxis.RightTrigger, xboxController.controller) < 0.1)
             {
+               // anim.SetBool("isShooting", false);
                 muzzleFlash.Stop();
             }
         }

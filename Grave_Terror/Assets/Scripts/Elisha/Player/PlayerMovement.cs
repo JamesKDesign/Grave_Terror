@@ -30,10 +30,14 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection = new Vector3(0, 0, 0);
     private CharacterController characterControl;
 
+    // Animation
+    public new Animator anim;
+
 
 
     private void Awake()
     {
+        anim = GetComponent<Animator>();
         floorMask = LayerMask.GetMask("Floor");
         characterControl = GetComponent<CharacterController>();
         camRotationY = GetComponent<Camera>();
@@ -84,7 +88,6 @@ public class PlayerMovement : MonoBehaviour
             float axisZ = XCI.GetAxis(XboxAxis.LeftStickY, xboxController.controller);
 
             inputDirection = new Vector3(axisX, 0, axisZ);
-
             Vector3 camForward = cam.forward;
             camForward.y = 0;
             camForward = camForward.normalized;
@@ -92,15 +95,16 @@ public class PlayerMovement : MonoBehaviour
             Quaternion cameraRotation = Quaternion.FromToRotation(Vector3.forward, camForward);
             Vector3 lookForward = cameraRotation * inputDirection;
 
-            if(inputDirection.sqrMagnitude > 0)
+            if (inputDirection.sqrMagnitude > 0)
             {
                 Ray look = new Ray(transform.position, lookForward);
                 transform.LookAt(look.GetPoint(1));
             }
+
             moveDirection = transform.forward * walkSpeed * inputDirection.sqrMagnitude;
             moveDirection.y = moveDirection.y - (gravity * Time.deltaTime);
             characterControl.Move(moveDirection * Time.deltaTime);
-            
+
         }
         else if (!xboxController.useController)
         {
