@@ -190,7 +190,7 @@ public class Spawner : MonoBehaviour
 			//Nothing left to spawn
 			if (m_enemyReady.Count == 0)
 			{
-				Debug.Log("Error: No entities remaining in pool " + i);
+				Debug.Log("Error: No entities remaining in pool");
 				return;
 			}
 			//Spawn it
@@ -213,5 +213,24 @@ public class Spawner : MonoBehaviour
 		_enemy.transform.parent = transform;
 
 		_enemy.SetActive(false);
+	}
+
+	//Allow other scripts to spawn enemies at a location of their choosing
+	public void RemoteSpawn(Vector3 _position)
+	{
+		if (m_enemyReady.Count == 0)
+		{
+			Debug.Log("Error: No entities remaining in pool\nSpawn requested from remote at: " + _position.ToString());
+			return;
+		}
+
+		GameObject obj = m_enemyReady.Pop();
+		obj.transform.parent = null;
+
+		obj.transform.position = _position;
+
+		obj.SetActive(true);
+
+		obj.GetComponent<Enemy>().Init();
 	}
 }

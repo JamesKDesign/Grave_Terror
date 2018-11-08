@@ -2002,6 +2002,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 162324932}
+  - component: {fileID: 162324933}
   m_Layer: 2
   m_Name: testflak1
   m_TagString: Untagged
@@ -2022,6 +2023,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &162324933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 162324931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72686c3d6de3c7943925a433c8023686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slowEnemyPrefab: {fileID: 0}
+  fastEnemyPrefab: {fileID: 0}
+  waves: []
+  wave: 0
+  nextWaveDelay: 0
+  waitForAllClear: 0
 --- !u!1 &162337114
 GameObject:
   m_ObjectHideFlags: 0
@@ -33799,6 +33817,8 @@ MonoBehaviour:
   filePath: C:/Users/s181646/Desktop
   targets:
   - {fileID: 584658364}
+  - {fileID: 19536634}
+  - {fileID: 19536634}
   - {fileID: 19536634}
 --- !u!4 &1598325979
 Transform:

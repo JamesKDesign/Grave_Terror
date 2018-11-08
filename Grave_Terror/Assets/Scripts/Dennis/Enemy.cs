@@ -42,6 +42,9 @@ public class Enemy : MonoBehaviour
 	[Tooltip("Actor travel speed")]
 	public float movementSpeed;
 
+	//What path this actors following
+	private int path = -1;
+
 	[HideInInspector]
 	public bool engaging = false;
 
@@ -104,6 +107,24 @@ public class Enemy : MonoBehaviour
 				if (fireTime <= 0.0f)
 					state = E_STATE.NORMAL;
 				break;
+		}
+
+		//If we have no path get one
+		if (path == -1)
+		{
+			float rValue = Random.Range(0.0f, 1.0f);
+			//More likely to target the players (66%~)
+			if (rValue > 0.33f)
+			{
+				if (rValue > 0.666f)
+				{
+					path = 1;
+				}
+				else
+				{
+					path = 0;
+				}
+			}
 		}
 
 		//Cycle through all behaviours or attack

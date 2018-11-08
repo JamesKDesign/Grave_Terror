@@ -54,6 +54,7 @@ public class FlowFieldGenerator : MonoBehaviour
 	public string filePath;
 
 	//player Targets
+	[Tooltip("The first 2 targets should ALWAYS be the players")]
 	public Transform[] targets;
 	//Optimization
 	private int current = 0;
