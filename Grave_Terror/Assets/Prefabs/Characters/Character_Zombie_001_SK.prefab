@@ -1881,12 +1881,13 @@ MonoBehaviour:
   target: {fileID: 0}
   state: 0
   alive: 0
-  engaging: 1
   attackDamage: 0
-  attackRange: 0
+  attackDelay: 0
   attackRate: 0
   movementSpeed: 15
+  engaging: 1
   fireDamageOverTime: 0
+  fireTime: 0
   velocity: {x: 0, y: 0, z: 0}
   drag: 0.98
   mass: 5.4
