@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
 	private EnemyHealth health;
 
 	[HideInInspector]
-	public GameObject target;
+	public GameObject target = null;
 
 	private CharacterController cc;
 
@@ -43,7 +43,8 @@ public class Enemy : MonoBehaviour
 	public float movementSpeed;
 
 	//What path this actors following
-	private int path = -1;
+    [HideInInspector]
+	public int path = -1;
 
 	[HideInInspector]
 	public bool engaging = false;
@@ -127,9 +128,14 @@ public class Enemy : MonoBehaviour
 			}
 		}
 
-		//Cycle through all behaviours or attack
-		if (engaging) //Attack
-		{
+        //Cycle through all behaviours or attack
+        if (engaging) //Attack
+        {
+            if (target == null)
+            {
+				engaging = false;
+				return;
+            }
 			//Move directly towards our target
 			acceleration = target.transform.position - transform.position;
 
@@ -251,8 +257,8 @@ public class Enemy : MonoBehaviour
 		}
 	}
 
-	private void OnDrawGizmos()
-	{
-		Debug.DrawRay(transform.position, transform.forward * 10.0f, Color.red);
-	}
+	//private void OnDrawGizmos()
+	//{
+	//	Debug.DrawRay(transform.position, transform.forward * 10.0f, Color.red);
+	//}
 }
