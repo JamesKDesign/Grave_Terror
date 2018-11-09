@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4135427750976250}
   m_Layer: 0
-  m_Name: Gun_Muzzle_Flash_001_PS
+  m_Name: Muzzle_Flash_001_PS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,14 +80,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1955911226239354}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000025928018}
-  m_LocalPosition: {x: -21.932, y: 1.103, z: -12.8}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 72.79845, y: 8.912708, z: -15.310953}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4127359842601096}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4428599082966696
 Transform:
   m_ObjectHideFlags: 1
@@ -161,7 +161,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 976633260
+  randomSeed: 74265901
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3574,7 +3574,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -1191197581
+  randomSeed: -474669218
   InitialModule:
     serializedVersion: 3
     enabled: 1
