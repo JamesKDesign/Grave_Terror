@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class ObjectOnFire : MonoBehaviour {
 
-    public ParticleSystem setOnFire;
+    public GameObject onFireEffect;
     private float timer;
+    public float burnTime = 4.0f;
+    
 
 	// Use this for initialization
 	void Awake () {
-        setOnFire = GetComponentInChildren<ParticleSystem>();
+        
         timer = 0.0f;
         //setOnFire.Stop();
     }
@@ -18,7 +20,7 @@ public class ObjectOnFire : MonoBehaviour {
     {
         timer += Time.deltaTime;
 
-        if(timer > 4.0f)
+        if(timer > burnTime)
         {
             timer = 0.0f;
             
@@ -30,7 +32,7 @@ public class ObjectOnFire : MonoBehaviour {
         if(other.gameObject.tag == "Fire")
         {
             timer = 0.0f;
-            setOnFire.Play();
+            onFireEffect.GetComponentInChildren<ParticleSystem>().Play();
         }
         
     }

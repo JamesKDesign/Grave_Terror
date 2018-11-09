@@ -1044,8 +1044,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  dodgeSpeed: 6
-  dodgeTime: 0.8
+  dodgeSpeed: 8
+  dodgeTime: 1.2
   trailTime: 4
   trailDamage: 1
   flameTrail: {fileID: 1565712291540358}
@@ -1072,7 +1072,7 @@ MonoBehaviour:
   coolDown: 1
   coolDownTimer: 1
   sizzleRotation: {fileID: 1335420841307778}
-  flame: {fileID: 1373764868086484, guid: b00d9b19d89208a48b9835a88535eba5, type: 2}
+  flame: {fileID: 0}
 --- !u!114 &114845923305398364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1087,12 +1087,12 @@ MonoBehaviour:
   controller: 1
   counter: 0
   delay: 0
-  maxAmmo: 100
+  maxAmmo: 200
   currentAmmo: 0
   coolDown: 1
   coolDownTimer: 1
   sizzleRotation: {fileID: 1335420841307778}
-  flame: {fileID: 1373764868086484, guid: b00d9b19d89208a48b9835a88535eba5, type: 2}
+  flame: {fileID: 0}
 --- !u!137 &137970714359589262
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -11272,7 +11272,7 @@ ParticleSystem:
   lengthInSec: 5
   simulationSpeed: 1
   stopAction: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -11322,7 +11322,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1087600943
+  randomSeed: 178054971
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -11882,7 +11882,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 15
       minScalar: 10
       maxCurve:
         serializedVersion: 2
