@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
 public class DynamicCamera : MonoBehaviour {
-
+     
     // list of players
     public List<Transform> players;
     private Camera m_camera;
@@ -15,6 +15,7 @@ public class DynamicCamera : MonoBehaviour {
     public float minZoom;
     public float maxZoom;
     public float zoomLimit;
+
 
     private void Awake()
     {
@@ -29,7 +30,6 @@ public class DynamicCamera : MonoBehaviour {
             return;
         MoveCamera();
         Zoom();
-       
     }
 
     void Zoom()
