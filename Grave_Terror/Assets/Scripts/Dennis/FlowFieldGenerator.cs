@@ -283,6 +283,15 @@ public class FlowFieldGenerator : MonoBehaviour
 		}
 	}
 
+	public int AttemptTarget(int _index)
+	{
+		if (targets[_index].GetComponent<PlayerHealth>().currentHealth > 0.0f)
+		{
+			return _index;
+		}
+		return -1;
+	}
+
 	//void ExportGrid()
 	//{
 	//POSTPONED

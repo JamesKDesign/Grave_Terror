@@ -9,12 +9,23 @@ public enum E_STATE
 	IGNITED
 }
 
+public enum E_ACTION
+{
+	IDLE,
+	ATTACK,
+	MOVE
+}
+
 [RequireComponent(typeof(CharacterController))]
 public class Enemy : MonoBehaviour
 {
+	//'enemy' HP values
+	private static PlayerHealth p1HP, p2HP;
+
 	[HideInInspector] //THe spawner that created us
 	public Spawner spawner;
 
+	//Our own HP
 	private EnemyHealth health;
 
 	[HideInInspector]
@@ -89,6 +100,9 @@ public class Enemy : MonoBehaviour
 		health = GetComponent<EnemyHealth>();
 
 		attackHitbox = transform.Find("AttackBox").GetComponent<EnemyAttackBox>();
+
+		p1HP = FlowFieldGenerator.GetInstance().targets[0].GetComponent<PlayerHealth>();
+		p2HP = FlowFieldGenerator.GetInstance().targets[1].GetComponent<PlayerHealth>();
 	}
 	
 	// Update is called once per frame
@@ -109,24 +123,29 @@ public class Enemy : MonoBehaviour
 					state = E_STATE.NORMAL;
 				break;
 		}
+		
 
 		//If we have no path get one
 		if (path == -1)
 		{
-			float rValue = Random.Range(0.0f, 1.0f);
-			//More likely to target the players (66%~)
-			if (rValue > 0.33f)
+			if (p1HP.currentHealth > 0.0f)
 			{
-				if (rValue > 0.666f)
-				{
-					path = 1;
-				}
-				else
-				{
-					path = 0;
-				}
+				path = 0;
+			}
+			else if (p2HP.currentHealth > 0.0f)
+			{
+				path = 1;
+			}
+			else
+			{
+				return;
 			}
 		}
+
+		if (path == 0 && p1HP.currentHealth <= 0.0f)
+			path = -1;
+		else if (path == 1 && p2HP.currentHealth <= 0.0f)
+			path = -1;
 
         //Cycle through all behaviours or attack
         if (engaging) //Attack
@@ -203,6 +222,7 @@ public class Enemy : MonoBehaviour
 		alive = true;
 		//Tell the EnemyController we are alive
 		//EnemyController.instance.RegisterEnemy(this);
+		//path = (int)(Random.Range(0.0f, 1.0f) + 0.5f);
 	}
 	//Actor died
 	public void Dead()
@@ -226,7 +246,7 @@ public class Enemy : MonoBehaviour
 	}
 
 	//Ignite this enemy
-	public void Ignite(float _fire_strength = 10.0f, float _fire_duration = 2.0f)
+	public void Ignite(float _fire_strength = 10.0f, float _fire_duration = 5.0f)
 	{
 		state = E_STATE.IGNITED;
 		fireDamageOverTime = _fire_strength;
@@ -252,6 +272,11 @@ public class Enemy : MonoBehaviour
 		if (attackHitbox.target != null)
 		{
 			attackHitbox.target.transform.GetComponent<PlayerHealth>().DamagePlayer(attackDamage);
+			if (attackHitbox.target.transform.GetComponent<PlayerHealth>().currentHealth <= 0)
+			{
+				//Set 0 to 1 and 1 to 0
+				path = FlowFieldGenerator.GetInstance().AttemptTarget(path * -1 + 1);
+			}
 			//DEBUG
 			//transform.Find("AttackEffect").GetComponent<ParticleSystem>().Play();
 		}

@@ -19,17 +19,19 @@ public class EnemyPathing : BaseBehaviour
 	// Update is called once per frame
 	override public Vector3 Update()
 	{
+		if (enemy.path == -1)
+			return Vector3.zero;
 		//If we're on the grid just follow its directions
-		Vector3 seg = FFG.GetSegmentDirection(enemy.transform.position, 0);
+		Vector3 seg = FFG.GetSegmentDirection(enemy.transform.position, enemy.path);
 		if (seg != null)
 		{
 			lastHeading = seg;
 			return lastHeading;
 		}
-		//If we're off the grid travel in the opposite direction that got us into this mess
+		//If we're off the grid
 		else
 		{
-			return lastHeading;
+			return -lastHeading * 1000.0f;
 		}
 	}
 
