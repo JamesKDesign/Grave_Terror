@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 30af7a14dc01fff4c8aae3d18bfc8e6a
+timeCreated: 1541730735
+licenseType: Free
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _Colour_Top: {instanceID: 0}
+  - _Roughness_Top: {instanceID: 0}
+  - _Normal_Top: {instanceID: 0}
+  - _Colour_Bottom: {instanceID: 0}
+  - _Rougness_Bottom: {instanceID: 0}
+  - _Normal_Bottom: {instanceID: 0}
+  - _Dissolve_Noise: {instanceID: 0}
+  - _Dissolve_Gradient: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
