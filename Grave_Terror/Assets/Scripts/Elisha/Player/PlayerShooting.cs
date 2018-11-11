@@ -17,6 +17,8 @@ public class PlayerShooting : MonoBehaviour
     public int damageToGive;
     public float range;
 
+    public new Animator anim;
+
     // Raycasting
     private void FixedUpdate()
     {
@@ -35,7 +37,9 @@ public class PlayerShooting : MonoBehaviour
                    bullet = Instantiate(particleProjectile, transform.position, chunkRotation.transform.rotation);
                    counter = 0f;
 
-                   RaycastHit hit;
+                    anim.SetBool("IsAttacking", true);
+
+                    RaycastHit hit;
                    Ray rayCast = new Ray(transform.position, transform.forward);
                    if (Physics.Raycast(rayCast, out hit, range))
                    {
@@ -61,6 +65,8 @@ public class PlayerShooting : MonoBehaviour
             else if (XCI.GetAxis(XboxAxis.RightTrigger, xboxController.controller) < 0.1)
             {
                 muzzleFlash.Stop();
+
+                anim.SetBool("IsAttacking", false);
             }
         }
         else if (!xboxController.useController)
