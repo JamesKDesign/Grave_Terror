@@ -6815,6 +6815,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4078512790777496, guid: 93b66f812fbe4b442b3f54a6ea055dcc,
     type: 2}
   m_PrefabInternal: {fileID: 309904323}
+--- !u!95 &310587210 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 95967412742031170, guid: c6273967a6956bd4697772aea559791e,
+    type: 2}
+  m_PrefabInternal: {fileID: 841625505}
 --- !u!1001 &317960021
 Prefab:
   m_ObjectHideFlags: 0
@@ -15714,7 +15719,6 @@ GameObject:
   - component: {fileID: 770648766}
   - component: {fileID: 770648770}
   - component: {fileID: 770648771}
-  - component: {fileID: 770648772}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -15816,17 +15820,6 @@ MonoBehaviour:
   minZoom: 50
   maxZoom: 40
   zoomLimit: 15
---- !u!114 &770648772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 770648765}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3851b43f1f13e1443bf55ce844a223e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &770651269 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4400895426600944, guid: 09b89374235f5ac46b3242763ad58638,
@@ -16723,6 +16716,31 @@ Prefab:
       propertyPath: useController
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114497222421201216, guid: c6273967a6956bd4697772aea559791e,
+        type: 2}
+      propertyPath: controller
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114677879984724372, guid: c6273967a6956bd4697772aea559791e,
+        type: 2}
+      propertyPath: maxSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114677879984724372, guid: c6273967a6956bd4697772aea559791e,
+        type: 2}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 310587210}
+    - target: {fileID: 114677879984724372, guid: c6273967a6956bd4697772aea559791e,
+        type: 2}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 897618747}
+    - target: {fileID: 114677879984724372, guid: c6273967a6956bd4697772aea559791e,
+        type: 2}
+      propertyPath: maxDistance
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6273967a6956bd4697772aea559791e, type: 2}
   m_IsPrefabParent: 0
@@ -16892,7 +16910,7 @@ Prefab:
         type: 2}
       propertyPath: cameraShake
       value: 
-      objectReference: {fileID: 770648772}
+      objectReference: {fileID: 0}
     - target: {fileID: 114083631494943686, guid: 4dc264f3a6fc3424e84ef28e70da5f80,
         type: 2}
       propertyPath: delay
@@ -17169,6 +17187,21 @@ Prefab:
         type: 2}
       propertyPath: m_ApplyRootMotion
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114190699988900694, guid: 4dc264f3a6fc3424e84ef28e70da5f80,
+        type: 2}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 1168831438}
+    - target: {fileID: 114190699988900694, guid: 4dc264f3a6fc3424e84ef28e70da5f80,
+        type: 2}
+      propertyPath: maxDistance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114190699988900694, guid: 4dc264f3a6fc3424e84ef28e70da5f80,
+        type: 2}
+      propertyPath: maxSpeed
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4dc264f3a6fc3424e84ef28e70da5f80, type: 2}
@@ -34369,6 +34402,10 @@ Prefab:
     - target: {fileID: 4412270810905986, guid: 37299c5805f9c324e8cf4dcd794157c4, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351810278266804, guid: 37299c5805f9c324e8cf4dcd794157c4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 37299c5805f9c324e8cf4dcd794157c4, type: 2}
