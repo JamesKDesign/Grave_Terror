@@ -45,14 +45,14 @@ public class PlayerShooting : MonoBehaviour
                        if (target != null)
                        {
                            target.DamageHealth(damageToGive);
-                            Destroy(bullet);
+                            Destroy(bullet, 0.5f);
                        }
 
                        DestructableObjects obj = hit.transform.GetComponent<DestructableObjects>();
                        if (obj != null)
                        {
                            obj.ObjectDamage(damageToGive);
-                           Destroy(bullet);
+                           Destroy(bullet, 0.5f);
                        }
 
                        // blood
