@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FlameMovement : MonoBehaviour {
 
@@ -10,7 +8,7 @@ public class FlameMovement : MonoBehaviour {
     public float damageTimer;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // changing the objects transform by multiplying the vector3 forward by speed and deltatime
         transform.Translate(Vector3.forward * Speed * Time.deltaTime);

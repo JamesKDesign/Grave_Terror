@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -31,21 +29,8 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-        if (currentHealth <= 0)
-        {
-            gameObject.SetActive(false);
-            print("Player is dead");
-
-        }
-
-        if (flashCounter > 0)
-        {
-            flashCounter -= Time.deltaTime;
-            if (flashCounter <= 0)
-            {
-                rend.material.SetColor("_Color", Color.blue);
-            }
-        }
+        playerHealth();
+        playerFlash();
     }
 
     public void DamagePlayer(float amount)
@@ -54,5 +39,28 @@ public class PlayerHealth : MonoBehaviour
         flashCounter = damageFlashLength;
         rend.material.SetColor("_Color", Color.red);
         print("Player health: " + currentHealth);
+    }
+
+    void playerHealth ()
+    {
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+            //gameObject.SetActive(false);
+            print("Player is dead");
+
+        }
+    }
+
+    void playerFlash()
+    {
+        if (flashCounter > 0)
+        {
+            flashCounter -= Time.deltaTime;
+            if (flashCounter <= 0)
+            {
+                rend.material.SetColor("_Color", Color.blue);
+            }
+        }
     }
 }

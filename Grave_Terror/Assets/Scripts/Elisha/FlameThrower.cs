@@ -1,16 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using XboxCtrlrInput;
 
 public class FlameThrower : MonoBehaviour
 {
     PlayerMovement playerRotation;
     public GameObject sizzleRotation;
-    public GameObject flame;
     public XboxController controller;
     public float counter;
     public float delay;
+    public GameObject flameBall;
 
     private void Awake()
     {
@@ -19,12 +17,19 @@ public class FlameThrower : MonoBehaviour
 
     public void Update()
     {
-        
+        counter += Time.deltaTime;
         if (XCI.GetAxis(XboxAxis.RightTrigger, controller) > 0.1f)
         {
-            counter += Time.deltaTime;
-            GameObject newFlame = Instantiate(flame, transform.position, sizzleRotation.transform.rotation);
-           
+            if (counter > delay)
+            {
+                GameObject newFlame = Instantiate(flameBall, transform.position, sizzleRotation.transform.rotation);
+                counter = 0.0f;
+            } 
+        }
+        else if (XCI.GetAxis(XboxAxis.RightTrigger, controller) < 0.1f)
+        {
+            
+            print("flame has stopped");
         }
     }
 }

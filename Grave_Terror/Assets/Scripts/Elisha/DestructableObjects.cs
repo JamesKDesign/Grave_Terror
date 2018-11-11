@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DestructableObjects : MonoBehaviour {
 
@@ -19,7 +17,7 @@ public class DestructableObjects : MonoBehaviour {
     }
 
 
-   public void Update()
+   public void FixedUpdate()
     {
         if (currentHealth <= 0)
         {

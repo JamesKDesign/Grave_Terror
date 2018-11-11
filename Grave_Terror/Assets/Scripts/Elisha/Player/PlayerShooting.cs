@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using XboxCtrlrInput;
 
 public class PlayerShooting : MonoBehaviour
 {
-
     public GameObject particleProjectile;
     public GameObject hitEffect;
     public GameObject chunkRotation;
@@ -48,12 +45,14 @@ public class PlayerShooting : MonoBehaviour
                        if (target != null)
                        {
                            target.DamageHealth(damageToGive);
+                            Destroy(bullet);
                        }
 
                        DestructableObjects obj = hit.transform.GetComponent<DestructableObjects>();
                        if (obj != null)
                        {
                            obj.ObjectDamage(damageToGive);
+                           Destroy(bullet);
                        }
 
                        // blood

@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 199440740682267588}
   m_Layer: 0
   m_Name: Fire_Dash_001_PS
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -917,8 +917,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1335420841307778}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 83, y: 0.099999994, z: -28.6}
+  m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.7071079}
+  m_LocalPosition: {x: 19.000002, y: 0.1839999, z: 24.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4059238896958094}
@@ -926,7 +926,7 @@ Transform:
   - {fileID: 4978994089252444}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!23 &23873373998915768
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -941,7 +941,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 94684a3f71c4c4a46835c088b24b5f69, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1030,14 +1030,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: -0.48484802
-      value: 1.6825142
+      time: -0.47614288
+      value: 1.5298576
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 1.604187
-      value: 1.022377
+      time: 1.4910278
+      value: 1.9672012
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1052,7 +1052,8 @@ MonoBehaviour:
   xboxController: {fileID: 114497222421201216}
   cam: {fileID: 0}
   walkSpeed: 6
-  anim: {fileID: 95967412742031170}
+  maxDistance: 20
+  player2: {fileID: 0}
 --- !u!114 &114767708503430702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1064,15 +1065,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a643ff55462ee7849800c2ae41b1f3a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sizzleRotation: {fileID: 1335420841307778}
   controller: 1
   counter: 0
-  delay: 0
-  maxAmmo: 200
-  currentAmmo: 0
-  coolDown: 1
-  coolDownTimer: 1
-  sizzleRotation: {fileID: 1335420841307778}
-  flame: {fileID: 0}
+  delay: 0.2
+  flameBall: {fileID: 1373764868086484, guid: b00d9b19d89208a48b9835a88535eba5, type: 2}
 --- !u!114 &114845923305398364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1084,15 +1081,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a643ff55462ee7849800c2ae41b1f3a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sizzleRotation: {fileID: 1335420841307778}
   controller: 1
   counter: 0
-  delay: 0
-  maxAmmo: 200
-  currentAmmo: 0
-  coolDown: 1
-  coolDownTimer: 1
-  sizzleRotation: {fileID: 1335420841307778}
-  flame: {fileID: 0}
+  delay: 0.2
+  flameBall: {fileID: 1373764868086484, guid: b00d9b19d89208a48b9835a88535eba5, type: 2}
 --- !u!137 &137970714359589262
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1108,7 +1101,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: e9e81bd84156c0d4aa9ac78b95b54d7f, type: 2}
-  - {fileID: 2100000, guid: 94684a3f71c4c4a46835c088b24b5f69, type: 2}
+  - {fileID: 2100000, guid: 551d83d6b92fceb4da2cee7b93b43b23, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11322,7 +11315,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 178054971
+  randomSeed: 83634940
   InitialModule:
     serializedVersion: 3
     enabled: 1
