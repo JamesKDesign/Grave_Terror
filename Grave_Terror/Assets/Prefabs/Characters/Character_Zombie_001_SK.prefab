@@ -2138,8 +2138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9f5f5185aaabe44da7bfc83d24ec84f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particle: {fileID: 198090823193315242, guid: b00d9b19d89208a48b9835a88535eba5, type: 2}
-  timer: 0
+  onFireEffect: {fileID: 1211942458997902}
   burnTime: 4
 --- !u!135 &135750279669296626
 SphereCollider:

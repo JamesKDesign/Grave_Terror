@@ -9,6 +9,7 @@ public class FlameThrower : MonoBehaviour
     public float counter;
     public float delay;
     public GameObject flameBall;
+    public Animator anim;
 
     private void Awake()
     {
@@ -23,13 +24,14 @@ public class FlameThrower : MonoBehaviour
             if (counter > delay)
             {
                 GameObject newFlame = Instantiate(flameBall, transform.position, sizzleRotation.transform.rotation);
+                anim.SetBool("IsAttacking", true);
                 counter = 0.0f;
             } 
         }
         else if (XCI.GetAxis(XboxAxis.RightTrigger, controller) < 0.1f)
         {
-            
-            print("flame has stopped");
+
+            anim.SetBool("IsAttacking", false);
         }
     }
 }
