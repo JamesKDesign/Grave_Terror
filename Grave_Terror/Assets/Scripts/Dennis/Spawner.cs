@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+	public static Spawner instance;
+
 	[System.Serializable]
 	public class EnemySpawn
 	{
@@ -59,6 +61,11 @@ public class Spawner : MonoBehaviour
 	private List<EventSpawn> m_eventSpawn = new List<EventSpawn>();
 	//Timer
 	private float m_timer = 0.0f;
+
+	private void Awake()
+	{
+		instance = this;
+	}
 
 	private void Start()
 	{
