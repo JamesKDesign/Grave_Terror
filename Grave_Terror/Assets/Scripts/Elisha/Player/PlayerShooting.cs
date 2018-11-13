@@ -106,9 +106,6 @@ public class PlayerShooting : MonoBehaviour
                             holes = Instantiate(bulletHole, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                             Destroy(holes, 0.2f);
                         }
-
-                        holes = Instantiate(bulletHole, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                        Destroy(holes, 0.1f);
                     }
                 }
             }
