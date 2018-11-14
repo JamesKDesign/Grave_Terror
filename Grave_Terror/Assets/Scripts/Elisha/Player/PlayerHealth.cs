@@ -44,6 +44,7 @@ public class PlayerHealth : MonoBehaviour
         {
             // Player alive with full functions
             case PlayerState.ALIVE:
+                timer = 30f;
                 controls.Dashing();
                 controls.Turning();
                 print("In alive state");

@@ -11,8 +11,20 @@ public class RevivePlayer : MonoBehaviour {
 
     private void Awake()
     {
-        player2 = GetComponent<Transform>();
-        player = GetComponent<PlayerHealth>();
+        player = GetComponentInParent<PlayerHealth>();
+        timer = 5.0f;
+    }
+
+    private void Update()
+    {
+        if (timer <= 0f)
+        {
+            player.playerState = PlayerHealth.PlayerState.ALIVE;
+            player.health = 3.0f;
+            player.currentHealth = player.health;
+            timer = 5f;
+        
+        }
     }
 
     // If player enters this trigger it will revive the player
@@ -20,16 +32,10 @@ public class RevivePlayer : MonoBehaviour {
     {
         if (player.playerState == PlayerHealth.PlayerState.REVIVE)
         {
-            if (other.gameObject == player2)
+            if (other.gameObject == player2.gameObject)
             {
                 timer -= Time.deltaTime;
                 Debug.Log("timer" + timer);
-
-                if (timer <= 0f)
-                {
-                    player.playerState = PlayerHealth.PlayerState.ALIVE;
-                    timer = 0f;
-                }
             }
         }
     }
