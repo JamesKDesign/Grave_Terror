@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 198110472425310304}
   - component: {fileID: 199438099180592774}
   m_Layer: 0
-  m_Name: Health_Plus_Additive
+  m_Name: Health_Pluses_Additive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -225,7 +225,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1094893415
+  randomSeed: 2131740788
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3586,7 +3586,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 763754521
+  randomSeed: -401358437
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -6947,7 +6947,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 147591033
+  randomSeed: 270338017
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10308,7 +10308,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -965999002
+  randomSeed: -1977272233
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -13669,7 +13669,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -343839861
+  randomSeed: 1941057214
   InitialModule:
     serializedVersion: 3
     enabled: 1
