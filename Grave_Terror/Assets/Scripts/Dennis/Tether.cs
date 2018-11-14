@@ -38,10 +38,9 @@ public class Tether : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-
 		if (Vector3.Distance(transform.position, linkLast) > maxDistance)
 		{
-			transform.position = Vector3.ClampMagnitude(linkLast - last, maxDistance) + last;
+			transform.position = -Vector3.ClampMagnitude(linkLast - last, maxDistance) + linkLast;
 		}
 
 		last = transform.position;
