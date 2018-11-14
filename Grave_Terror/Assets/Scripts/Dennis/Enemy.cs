@@ -128,11 +128,12 @@ public class Enemy : MonoBehaviour
 		//If we have no path get one
 		if (path == -1)
 		{
-			if (p1HP.currentHealth > 0.0f)
+			attackLocked = false;
+			if (p1HP.playerState != PlayerHealth.PlayerState.DEAD)
 			{
 				path = 0;
 			}
-			else if (p2HP.currentHealth > 0.0f)
+			else if (p2HP.playerState != PlayerHealth.PlayerState.DEAD)
 			{
 				path = 1;
 			}
@@ -142,9 +143,11 @@ public class Enemy : MonoBehaviour
 			}
 		}
 
-		if (path == 0 && p1HP.currentHealth <= 0.0f)
+		Debug.Log(path);
+
+		if (path == 0 && p1HP.playerState == PlayerHealth.PlayerState.DEAD)
 			path = -1;
-		else if (path == 1 && p2HP.currentHealth <= 0.0f)
+		else if (path == 1 && p2HP.playerState == PlayerHealth.PlayerState.DEAD)
 			path = -1;
 
         //Cycle through all behaviours or attack
@@ -222,7 +225,10 @@ public class Enemy : MonoBehaviour
 		alive = true;
 		//Tell the EnemyController we are alive
 		//EnemyController.instance.RegisterEnemy(this);
-		//path = (int)(Random.Range(0.0f, 1.0f) + 0.5f);
+		if (Random.value > 0.5f)
+			path = 0;
+		else
+			path = 1;
 	}
 	//Actor died
 	public void Dead()
@@ -250,6 +256,7 @@ public class Enemy : MonoBehaviour
 	{
 		state = E_STATE.IGNITED;
 		fireDamageOverTime = _fire_strength;
+		fireTime = _fire_duration;
 	}
 
 	//Don't call this anywhere but AttackBox
@@ -279,6 +286,7 @@ public class Enemy : MonoBehaviour
 			}
 			//DEBUG
 			//transform.Find("AttackEffect").GetComponent<ParticleSystem>().Play();
+			Debug.Log("attacking " + attackHitbox.target.name);
 		}
 	}
 

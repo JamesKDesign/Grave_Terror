@@ -13,8 +13,11 @@ public class EnemyProximitySensor : MonoBehaviour
 			nearby.Add(other.gameObject.GetComponent<Enemy>());
 		else if (other.CompareTag("Player"))
 		{
-			GetComponentInParent<Enemy>().engaging = true;
-			GetComponentInParent<Enemy>().target = other.gameObject;
+			if (other.GetComponent<PlayerHealth>().playerState != PlayerHealth.PlayerState.DEAD)
+			{
+				GetComponentInParent<Enemy>().engaging = true;
+				GetComponentInParent<Enemy>().target = other.gameObject;
+			}
 		}
 		
 	}

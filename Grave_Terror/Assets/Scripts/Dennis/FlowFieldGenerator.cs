@@ -77,13 +77,14 @@ public class FlowFieldGenerator : MonoBehaviour
 
 	void Start ()
 	{
-		//--==!!!!!==--Export it so it doesnt need to be regenerated every run--==!!!!!==--
 		GenerateField();
 
 		for (int i = 0; i < targets.Length; ++i)
 		{
 			QueryGrid(targets[i].position, i);
 		}
+
+		Debug.Log(targets[0].name + " - " + targets[1].name);
 	}
 
 	private void Update()

@@ -19,9 +19,18 @@ public class EnemyAttackBox : MonoBehaviour
 		parent = GetComponentInParent<Enemy>();
 	}
 
+	private void Update()
+	{
+		if(target.GetComponent<PlayerHealth>().playerState == PlayerHealth.PlayerState.DEAD)
+		{
+			parent.engaging = false;
+			target = null;
+		}
+	}
+
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.CompareTag("Player"))
+		if (other.CompareTag("Player") && target.GetComponent<PlayerHealth>().playerState != PlayerHealth.PlayerState.DEAD)
 		{
 			target = other.gameObject;
 		}
@@ -29,7 +38,7 @@ public class EnemyAttackBox : MonoBehaviour
 
 	private void OnTriggerStay(Collider other)
 	{
-		if (other.CompareTag("Player"))
+		if (other.CompareTag("Player") && target.GetComponent<PlayerHealth>().playerState != PlayerHealth.PlayerState.DEAD)
 		{
 			parent.AttackSignal();
 		}
