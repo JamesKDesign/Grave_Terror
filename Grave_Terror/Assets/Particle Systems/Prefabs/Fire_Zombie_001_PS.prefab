@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 198310180753087074}
   - component: {fileID: 199530070260311098}
   m_Layer: 0
-  m_Name: Fire_001_PS
+  m_Name: Fire_Zombie_001_PS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

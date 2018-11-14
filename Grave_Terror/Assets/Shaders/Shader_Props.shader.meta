@@ -1,13 +1,12 @@
 fileFormatVersion: 2
 guid: 556ebdc6188a3d24cb8a449a2284bde3
-timeCreated: 1541730715
+timeCreated: 1542174358
 licenseType: Free
 ShaderImporter:
   externalObjects: {}
   defaultTextures:
-  - _BumpMap: {instanceID: 0}
-  - _MainTex: {instanceID: 0}
-  - _Texture_Channel_Stack: {instanceID: 0}
+  - _Texture_Channel_Stack: {fileID: 2800000, guid: aa762ee7680f35f4fb9a9210fa94ce61,
+      type: 3}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
