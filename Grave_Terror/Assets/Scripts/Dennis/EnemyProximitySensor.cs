@@ -4,22 +4,35 @@ using UnityEngine;
 
 public class EnemyProximitySensor : MonoBehaviour
 {
-
+	private Enemy enemy;
 	public List<Enemy> nearby = new List<Enemy>(20);
-
+	private void Start()
+	{
+		enemy = GetComponentInParent<Enemy>();
+	}
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.CompareTag("Enemy"))
 			nearby.Add(other.gameObject.GetComponent<Enemy>());
 		else if (other.CompareTag("Player"))
 		{
-			if (other.GetComponent<PlayerHealth>().playerState != PlayerHealth.PlayerState.DEAD)
+			if (other.GetComponent<PlayerHealth>().playerState == PlayerHealth.PlayerState.ALIVE)
 			{
-				GetComponentInParent<Enemy>().engaging = true;
-				GetComponentInParent<Enemy>().target = other.gameObject;
+				enemy.engaging = true;
+				enemy.target = other.gameObject;
 			}
 		}
-		
+	}
+	private void OnTriggerStay(Collider other)
+	{
+		if (other.CompareTag("Player") && enemy.target != null)
+		{
+			if (other.GetComponent<PlayerHealth>().playerState == PlayerHealth.PlayerState.ALIVE)
+			{
+				enemy.engaging = true;
+				enemy.target = other.gameObject;
+			}
+		}
 	}
 	private void OnTriggerExit(Collider other)
 	{
@@ -27,8 +40,8 @@ public class EnemyProximitySensor : MonoBehaviour
 			nearby.Remove(other.gameObject.GetComponent<Enemy>());
 		else if (other.CompareTag("Player"))
 		{
-			GetComponentInParent<Enemy>().engaging = false;
-			GetComponentInParent<Enemy>().target = null;
+			enemy.engaging = false;
+			enemy.target = null;
 		}
 	}
 	public void EntityDied(Enemy _enemy)

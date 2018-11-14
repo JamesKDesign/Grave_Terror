@@ -6,6 +6,7 @@ public class EnemyAttackBox : MonoBehaviour
 {
 
 	Enemy parent;
+	[HideInInspector]
 	public GameObject target = null;
 
 	void Awake ()
@@ -21,7 +22,9 @@ public class EnemyAttackBox : MonoBehaviour
 
 	private void Update()
 	{
-		if(target.GetComponent<PlayerHealth>().playerState == PlayerHealth.PlayerState.DEAD)
+		if (target == null)
+			return;
+		if(target.GetComponent<PlayerHealth>().playerState != PlayerHealth.PlayerState.ALIVE)
 		{
 			parent.engaging = false;
 			target = null;
@@ -30,7 +33,7 @@ public class EnemyAttackBox : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.CompareTag("Player") && target.GetComponent<PlayerHealth>().playerState != PlayerHealth.PlayerState.DEAD)
+		if (other.CompareTag("Player") && other.GetComponent<PlayerHealth>().playerState == PlayerHealth.PlayerState.ALIVE)
 		{
 			target = other.gameObject;
 		}
@@ -38,8 +41,9 @@ public class EnemyAttackBox : MonoBehaviour
 
 	private void OnTriggerStay(Collider other)
 	{
-		if (other.CompareTag("Player") && target.GetComponent<PlayerHealth>().playerState != PlayerHealth.PlayerState.DEAD)
+		if (other.CompareTag("Player") && other.GetComponent<PlayerHealth>().playerState == PlayerHealth.PlayerState.ALIVE)
 		{
+			target = other.gameObject;
 			parent.AttackSignal();
 		}
 	}

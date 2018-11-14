@@ -63,6 +63,7 @@ public class Enemy : MonoBehaviour
 	//Deny the actor from moving and turning when he is attacking
 	private bool attackLocked = false;
 	private float attackTimer = 0.0f;
+	private float attackRecov = 0.0f;
 	private EnemyAttackBox attackHitbox = null;
 
 	[HideInInspector]
@@ -129,11 +130,11 @@ public class Enemy : MonoBehaviour
 		if (path == -1)
 		{
 			attackLocked = false;
-			if (p1HP.playerState != PlayerHealth.PlayerState.DEAD)
+			if (p1HP.playerState == PlayerHealth.PlayerState.ALIVE)
 			{
 				path = 0;
 			}
-			else if (p2HP.playerState != PlayerHealth.PlayerState.DEAD)
+			else if (p2HP.playerState == PlayerHealth.PlayerState.ALIVE)
 			{
 				path = 1;
 			}
@@ -143,12 +144,18 @@ public class Enemy : MonoBehaviour
 			}
 		}
 
-		Debug.Log(path);
-
-		if (path == 0 && p1HP.playerState == PlayerHealth.PlayerState.DEAD)
+		//Debug.Log(path);
+		//Just incase
+		if (path == 0 && p1HP.playerState != PlayerHealth.PlayerState.ALIVE)
+		{
 			path = -1;
-		else if (path == 1 && p2HP.playerState == PlayerHealth.PlayerState.DEAD)
+			engaging = false;
+		}
+		else if (path == 1 && p2HP.playerState != PlayerHealth.PlayerState.ALIVE)
+		{
 			path = -1;
+			engaging = false;
+		}
 
         //Cycle through all behaviours or attack
         if (engaging) //Attack
@@ -164,18 +171,21 @@ public class Enemy : MonoBehaviour
 			attackTimer -= Time.deltaTime;
 			if (attackLocked)
 			{
-				if (attackTimer <= 0.0f)
+				if (attackTimer <= 0.0f && attackRecov <= 0.0f)
 				{
 					Attack();
 					//Allow movement and rotation again
 					attackLocked = false;
 					//Set the time for cooldown between attacks
-					attackTimer = attackRate;
+					attackRecov = attackRate;
 				}
 			}
 		}
 		else //Behaviours
 		{
+			//Deadlock prevention!
+			attackLocked = false;
+
 			acceleration = Vector3.zero;
 			foreach (BaseBehaviour b in behaviours)
 			{
@@ -264,7 +274,7 @@ public class Enemy : MonoBehaviour
 	public void AttackSignal()
 	{
 		//Only attack if we can
-		if (attackTimer <= 0.0f)
+		if (attackRecov <= 0.0f && attackTimer <= 0.0f)
 		{
 			attackLocked = true;
 			attackTimer = attackDelay;
@@ -279,7 +289,7 @@ public class Enemy : MonoBehaviour
 		if (attackHitbox.target != null)
 		{
 			attackHitbox.target.transform.GetComponent<PlayerHealth>().DamagePlayer(attackDamage);
-			if (attackHitbox.target.transform.GetComponent<PlayerHealth>().currentHealth <= 0)
+			if (attackHitbox.target.transform.GetComponent<PlayerHealth>().playerState == PlayerHealth.PlayerState.ALIVE)
 			{
 				//Set 0 to 1 and 1 to 0
 				path = FlowFieldGenerator.GetInstance().AttemptTarget(path * -1 + 1);

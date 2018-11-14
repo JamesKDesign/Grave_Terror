@@ -5385,8 +5385,28 @@ Prefab:
     - target: {fileID: 114167234892520748, guid: c6273967a6956bd4697772aea559791e,
         type: 2}
       propertyPath: health
-      value: 50
+      value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114677879984724372, guid: c6273967a6956bd4697772aea559791e,
+        type: 2}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1888561085}
+    - target: {fileID: 114677879984724372, guid: c6273967a6956bd4697772aea559791e,
+        type: 2}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 1531711909}
+    - target: {fileID: 114845923305398364, guid: c6273967a6956bd4697772aea559791e,
+        type: 2}
+      propertyPath: xboxController
+      value: 
+      objectReference: {fileID: 1407817146}
+    - target: {fileID: 114767708503430702, guid: c6273967a6956bd4697772aea559791e,
+        type: 2}
+      propertyPath: xboxController
+      value: 
+      objectReference: {fileID: 1407817146}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6273967a6956bd4697772aea559791e, type: 2}
   m_IsPrefabParent: 0
@@ -19838,6 +19858,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4917682288106370, guid: ec764643aade6fd4cb7e13d0074e1b8a,
     type: 2}
   m_PrefabInternal: {fileID: 1400184708}
+--- !u!114 &1407817146 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114497222421201216, guid: c6273967a6956bd4697772aea559791e,
+    type: 2}
+  m_PrefabInternal: {fileID: 351461525}
+  m_Script: {fileID: 11500000, guid: a63ca5c6783d4a846a5f8f82498bab75, type: 3}
 --- !u!1001 &1413415213
 Prefab:
   m_ObjectHideFlags: 0
@@ -21949,6 +21975,11 @@ Transform:
 --- !u!1 &1531711901 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1313237091450074, guid: 4dc264f3a6fc3424e84ef28e70da5f80,
+    type: 2}
+  m_PrefabInternal: {fileID: 1654250347}
+--- !u!95 &1531711908 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 95553438228234310, guid: 4dc264f3a6fc3424e84ef28e70da5f80,
     type: 2}
   m_PrefabInternal: {fileID: 1654250347}
 --- !u!4 &1531711909 stripped
@@ -24255,6 +24286,26 @@ Prefab:
     - target: {fileID: 1346261792049722, guid: 4dc264f3a6fc3424e84ef28e70da5f80, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114190699988900694, guid: 4dc264f3a6fc3424e84ef28e70da5f80,
+        type: 2}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1888561085}
+    - target: {fileID: 114190699988900694, guid: 4dc264f3a6fc3424e84ef28e70da5f80,
+        type: 2}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1531711908}
+    - target: {fileID: 114190699988900694, guid: 4dc264f3a6fc3424e84ef28e70da5f80,
+        type: 2}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 1768569350}
+    - target: {fileID: 114287581662934976, guid: 4dc264f3a6fc3424e84ef28e70da5f80,
+        type: 2}
+      propertyPath: health
+      value: 6.923562e+17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4dc264f3a6fc3424e84ef28e70da5f80, type: 2}

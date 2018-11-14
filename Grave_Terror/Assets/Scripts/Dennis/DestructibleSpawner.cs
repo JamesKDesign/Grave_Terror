@@ -24,14 +24,10 @@ public class DestructibleSpawner : MonoBehaviour
 	{
 		if (timer <= 0.0f)
 		{
-			Vector3 radius = new Vector3(Random.Range(-maxRadius, maxRadius), 0.0f, Random.Range(-maxRadius, maxRadius));
-			if (radius.sqrMagnitude < minRadius * minRadius)
-			{
-				float sub = maxRadius - minRadius;
-				radius.x += minRadius;
-				radius.y += minRadius;
-			}
-			spawner.RemoteSpawn(radius + transform.position);
+			Vector2 radius = Random.insideUnitCircle * maxRadius + new Vector2(minRadius, minRadius);
+			Vector3 region = new Vector3(radius.x, 0.0f, radius.y);
+
+			spawner.RemoteSpawn(region + transform.position);
 			timer = spawnDelay;
 		}
 	}

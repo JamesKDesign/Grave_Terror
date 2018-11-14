@@ -325,6 +325,21 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 270
       objectReference: {fileID: 0}
+    - target: {fileID: 114121153217018290, guid: 0ad4f4c9310a25f458e46345f998f327,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114100225286647616, guid: 0ad4f4c9310a25f458e46345f998f327,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114955799043567008, guid: 0ad4f4c9310a25f458e46345f998f327,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ad4f4c9310a25f458e46345f998f327, type: 2}
   m_IsPrefabParent: 0
@@ -1014,7 +1029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a247e6525b7f724ba9df0e7858ff583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameScene: Main - Copy
+  gameScene: GreyBox_001_Dennis
   endPoints:
   - transform: {fileID: 1434918150}
     call:
@@ -1031,8 +1046,21 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1453891370}
+          m_MethodName: V_MoveTo
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
+    movePositive: 1
+    moveNegative: 1
   - transform: {fileID: 1553572547}
     call:
       m_PersistentCalls:
@@ -1050,6 +1078,8 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
+    movePositive: 0
+    moveNegative: 0
   - transform: {fileID: 2145330792}
     call:
       m_PersistentCalls:
@@ -1067,6 +1097,8 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
+    movePositive: -1
+    moveNegative: -1
   cameraPath:
   - color: {r: 0, g: 0.13103437, b: 1, a: 0.50980395}
     pos:
@@ -1082,7 +1114,8 @@ MonoBehaviour:
     endPoint: 2
     travelTime: 2
   state: 0
-  path: 0
+  chunkLeft: 0
+  selectionScreen: {fileID: 2145330791}
 --- !u!1 &1456348052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,6 +1336,21 @@ Prefab:
     - target: {fileID: 4911305549900222, guid: 72aae7ecf34f598479d97c001955ae30, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 114889860614521354, guid: 72aae7ecf34f598479d97c001955ae30,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114621304826191894, guid: 72aae7ecf34f598479d97c001955ae30,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114378989932319506, guid: 72aae7ecf34f598479d97c001955ae30,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 72aae7ecf34f598479d97c001955ae30, type: 2}
