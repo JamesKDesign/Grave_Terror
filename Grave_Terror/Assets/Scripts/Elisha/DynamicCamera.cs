@@ -32,11 +32,11 @@ public class DynamicCamera : MonoBehaviour {
 
     void Zoom()
     {
-        float newZoom = Mathf.Lerp(maxZoom, minZoom, GetGreatestDistance() / zoomLimit);
+        float newZoom = Mathf.Lerp(maxZoom, minZoom, GetGreatestDistanceX() + GetGreatestDistanceY() / zoomLimit);
         m_camera.fieldOfView = Mathf.Lerp(m_camera.fieldOfView, newZoom, Time.deltaTime);
     }
 
-    float GetGreatestDistance()
+    float GetGreatestDistanceX()
     {
         var bounds = new Bounds(players[0].position, Vector3.zero);
         for(int i = 0; i < players.Count; i++)
@@ -45,6 +45,17 @@ public class DynamicCamera : MonoBehaviour {
         }
         
         return bounds.size.x;
+    }
+
+    float GetGreatestDistanceY()
+    {
+        var bounds = new Bounds(players[0].position, Vector3.zero);
+        for (int i = 0; i < players.Count; i++)
+        {
+            bounds.Encapsulate(players[i].position);
+        }
+
+        return bounds.size.y;
     }
 
     void MoveCamera()

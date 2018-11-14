@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     private Color colour;
     public float timer;
     PlayerMovement controls;
+    public ParticleSystem reviveEffect; 
 
     public enum PlayerState
     {
@@ -28,6 +29,8 @@ public class PlayerHealth : MonoBehaviour
     private void Awake()
     {
         currentHealth = health;
+        reviveEffect = GetComponent<ParticleSystem>();
+        //reviveEffect = GetComponent<ParticleSystem>();
         rend = GetComponent<Renderer>();
         colour = rend.material.GetColor("_Color");
         print("Player starting health: " + currentHealth);
@@ -69,6 +72,7 @@ public class PlayerHealth : MonoBehaviour
         if(playerState == PlayerState.REVIVE)
         {
             timer -= Time.deltaTime;
+            reviveEffect.Play();
         }
 
         if (timer <= 0)
@@ -90,7 +94,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            playerState = PlayerState.REVIVE;
+            playerState = PlayerState.REVIVE;           
         }
         else
         {
