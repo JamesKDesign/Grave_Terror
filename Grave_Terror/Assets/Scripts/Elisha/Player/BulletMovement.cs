@@ -18,4 +18,12 @@ public class BulletMovement : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

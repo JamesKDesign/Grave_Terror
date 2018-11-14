@@ -5,7 +5,7 @@ public class FlameMovement : MonoBehaviour {
     public float Speed;
     public float flameLife;
     public float flameDamage;
-    public float damageTimer;
+    //public float damageTimer;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -25,6 +25,10 @@ public class FlameMovement : MonoBehaviour {
         {
             other.gameObject.GetComponent<Enemy>().Ignite(flameDamage);
             print("Damaging enemy " + flameDamage);
+        }
+        else if(other.gameObject)
+        {
+            Destroy(gameObject);
         }
     }
 }

@@ -40,7 +40,7 @@ public class Tether : MonoBehaviour
 	{
 		if (Vector3.Distance(transform.position, linkLast) > maxDistance)
 		{
-			transform.position = -Vector3.ClampMagnitude(linkLast - last, maxDistance) + linkLast;
+			transform.position = -Vector3.ClampMagnitude(linkLast - transform.position, maxDistance) + linkLast;
 		}
 
 		last = transform.position;

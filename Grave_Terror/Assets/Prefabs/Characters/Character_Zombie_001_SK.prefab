@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 114264135973668518}
   - component: {fileID: 114705419051228964}
   - component: {fileID: 114736040544301924}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Character_Zombie_001_SK
   m_TagString: Enemy
   m_Icon: {fileID: 0}

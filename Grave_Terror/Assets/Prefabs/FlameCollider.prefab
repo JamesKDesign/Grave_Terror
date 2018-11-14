@@ -56,7 +56,8 @@ GameObject:
   - component: {fileID: 33609394349734574}
   - component: {fileID: 65880237818815494}
   - component: {fileID: 114562821395988390}
-  m_Layer: 0
+  - component: {fileID: 54748129027585534}
+  m_Layer: 8
   m_Name: FlameCollider
   m_TagString: Fire
   m_Icon: {fileID: 0}
@@ -204,6 +205,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1373764868086484}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54748129027585534
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1373764868086484}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &65880237818815494
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -229,8 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 10
   flameLife: 2
-  flameDamage: 30
-  damageTimer: 5
+  flameDamage: 20
 --- !u!198 &198155152155930410
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -291,7 +306,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 2061657279
+  randomSeed: -1300314883
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3652,7 +3667,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 489828317
+  randomSeed: 298660064
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7013,7 +7028,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -906274372
+  randomSeed: -868277828
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10374,7 +10389,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 659669883
+  randomSeed: 1406854184
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -13747,7 +13762,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1798684027
+  randomSeed: 948592385
   InitialModule:
     serializedVersion: 3
     enabled: 1
