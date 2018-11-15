@@ -7,7 +7,7 @@ public class RevivePlayer : MonoBehaviour {
     public float timer;
     PlayerHealth player;
     public Transform player2;
-
+    PlayerHealth  health;
 
     private void Awake()
     {
@@ -20,6 +20,8 @@ public class RevivePlayer : MonoBehaviour {
         if (timer <= 0f)
         {
             player.playerState = PlayerHealth.PlayerState.ALIVE;
+            health.reviveVolume.GetComponentInChildren<ParticleSystem>().startColor = Color.green;
+            health.reviveVolume.GetComponentInChildren<ParticleSystem>().Stop();
             player.health = 3.0f;
             player.currentHealth = player.health;
             timer = 5f;

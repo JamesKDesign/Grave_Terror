@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
     private Color colour;
     public float timer;
     PlayerMovement controls;
-    public ParticleSystem reviveEffect; 
+    public GameObject reviveVolume;
 
     public enum PlayerState
     {
@@ -29,8 +29,6 @@ public class PlayerHealth : MonoBehaviour
     private void Awake()
     {
         currentHealth = health;
-        reviveEffect = GetComponent<ParticleSystem>();
-        //reviveEffect = GetComponent<ParticleSystem>();
         rend = GetComponent<Renderer>();
         colour = rend.material.GetColor("_Color");
         print("Player starting health: " + currentHealth);
@@ -55,16 +53,18 @@ public class PlayerHealth : MonoBehaviour
             // Player revive state can rotate player and shoot 
             case PlayerState.REVIVE:
                 print("In revive state");
-                controls.Turning();
                 // death timer hits 0 will kill the player 
                 if (timer == 0.0f)
                 {
                     gameObject.SetActive(false);
+                    
                 }
                 break;
             // Player dead state sets player to in-active
             case PlayerState.DEAD:
+                
                 gameObject.SetActive(false);
+                reviveVolume.GetComponentInChildren<ParticleSystem>().Stop();
                 print("In death state");
                 break;
         }
@@ -72,7 +72,8 @@ public class PlayerHealth : MonoBehaviour
         if(playerState == PlayerState.REVIVE)
         {
             timer -= Time.deltaTime;
-            reviveEffect.Play();
+            reviveVolume.GetComponentInChildren<ParticleSystem>().startColor = Color.red;
+            reviveVolume.GetComponentInChildren<ParticleSystem>().Play();
         }
 
         if (timer <= 0)
@@ -94,7 +95,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            playerState = PlayerState.REVIVE;           
+            playerState = PlayerState.REVIVE;         
         }
         else
         {
