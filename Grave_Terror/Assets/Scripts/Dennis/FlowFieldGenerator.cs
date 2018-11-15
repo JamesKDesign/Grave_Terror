@@ -51,8 +51,6 @@ public class FlowFieldGenerator : MonoBehaviour
 	//The flow field
 	private Segment[,] grid;
 
-	public string filePath;
-
 	//player Targets
 	[Tooltip("The first 2 targets should ALWAYS be the players")]
 	public Transform[] targets;
@@ -255,11 +253,15 @@ public class FlowFieldGenerator : MonoBehaviour
 
 	public Vector3 GetSegmentDirection(Vector3 _position, int _index)
 	{
+		//Auto reject
+		if(_position.x >= size.x || _position.z >= size.y ||
+			_position.x < 0 || _position.z < 0)
+			return Vector3.zero;
 		//XZ to XY
 		Vector2Int seg = new Vector2Int();
 		//convert world position to grid positon
-		seg.x = (int)((FlowFieldGenerator.instance.bottomLeft.position.x * -1.0f) + _position.x);
-		seg.y = (int)((FlowFieldGenerator.instance.bottomLeft.position.z * -1.0f) + _position.z);
+		seg.x = (int)((bottomLeft.position.x * -1.0f) + _position.x);
+		seg.y = (int)((bottomLeft.position.z * -1.0f) + _position.z);
 
 		if (grid[seg.x, seg.y] != null)
 			return grid[seg.x, seg.y].direction[_index];
@@ -292,32 +294,6 @@ public class FlowFieldGenerator : MonoBehaviour
 		}
 		return -1;
 	}
-
-	//void ExportGrid()
-	//{
-	//POSTPONED
-	//	if (File.Exists(filePath))
-	//	{
-	//		//Exists so we load
-	//		using (StreamWriter stream = new StreamWriter(filePath))
-	//		{
-	//			string str;
-	//
-	//			str = bottomLeft.ToString();
-	//
-	//			stream
-	//
-	//			str = size.x.ToString();
-	//			str += size.y.ToString();
-	//
-	//			stream.WriteLine(str);
-	//		}
-	//	}
-	//	else
-	//	{
-	//		//Doesnt exist so we save
-	//	}
-	//}
 
 	public static FlowFieldGenerator GetInstance()
 	{

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using XboxCtrlrInput;
 
 public enum MENU_STATE
 {
@@ -53,7 +54,11 @@ public class MainMenu : MonoBehaviour
 	public string gameScene;
 	private string menuScene;
 
+	//Both players
 	public XboxControllerManager xboxController;
+	//Now appart
+	public XboxControllerManager p1XCtrl;
+	public XboxControllerManager p2XCtrl;
 
 	[Header("Camera")]
 	public Points[] endPoints;
@@ -158,9 +163,17 @@ public class MainMenu : MonoBehaviour
 			{
 				//First come first serve selection
 				//add some way for players to see who they selected
-				float p1Selection = Input.GetAxis("Horizontal"); //Replace with player one horizontal joystick axis
-				float p2Selection = Input.GetAxis("Vertical"); //Replace with player two horizontal joystick axis
-															   //If chunk is on the other side
+				float p1Selection = XCI.GetAxis(XboxAxis.LeftStickX, p1XCtrl.controller); //Replace with player one horizontal joystick axis
+				float p2Selection = XCI.GetAxis(XboxAxis.LeftStickX, p2XCtrl.controller); //Replace with player two horizontal joystick axis
+				//DEBUG just start
+				if (Input.GetKeyDown(KeyCode.Z))
+				{
+					p1Selected = 1;
+					p2Selected = 2;
+					endPoints[current].call.Invoke();
+				}
+				
+				//If chunk is on the other side
 				if (chunkLeft)
 				{
 					p1Selection *= -1.0f;
@@ -197,13 +210,11 @@ public class MainMenu : MonoBehaviour
 					p1Selected = -1;
 				}
 			}
-			//Call all functions todo with the selection option
-			//TODO: replace getkeydown with xbocks controller input 
+			//Debug keyboard buttons
 			if (Input.GetKeyDown(KeyCode.Return))
 			{
 				endPoints[current].call.Invoke();
 			}
-			//TODO: replace getkeydown with xbox controller input left/right - up/down
 			//Positive Movement
 			else if (Input.GetKeyDown(KeyCode.D))
 			{
@@ -216,6 +227,25 @@ public class MainMenu : MonoBehaviour
 			else if (Input.GetKeyDown(KeyCode.A))
 			{
 				if (endPoints[current].moveNegative != -1)
+				{
+					MoveTo(endPoints[current].moveNegative);
+				}
+			}
+
+			//Xbone controller inputs
+			if (xboxController.useController)
+			{
+				float horiAxis = XCI.GetAxis(XboxAxis.LeftStickX);
+				//Confirm
+				if (XCI.GetButtonDown(XboxButton.A, xboxController.controller))
+				{
+					endPoints[current].call.Invoke();
+				}
+				else if (horiAxis > 0.5f) //Positive Movement
+				{
+					MoveTo(endPoints[current].movePositive);
+				}
+				else if (horiAxis < -0.5f) //Negative Movement
 				{
 					MoveTo(endPoints[current].moveNegative);
 				}
@@ -240,6 +270,23 @@ public class MainMenu : MonoBehaviour
 				else if (Input.GetKeyDown(KeyCode.X))
 				{
 					SceneManager.LoadScene(menuScene);
+				}
+				//Xbone Controller
+				if (xboxController.useController)
+				{
+					float horiAxis = XCI.GetAxis(XboxAxis.LeftStickX);
+					//PUSH THE BUTTON
+					if (XCI.GetButtonDown(XboxButton.A, xboxController.controller))
+					{
+						if (horiAxis > 0.5f) //Retry
+						{
+							SceneManager.LoadScene(gameScene);
+						}
+						else if (horiAxis < -0.5f) //Main Menu
+						{
+							SceneManager.LoadScene(menuScene);
+						}
+					}
 				}
 			}
 			else
