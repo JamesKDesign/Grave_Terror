@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4239076578965700}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ctrl_Spine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4762257498222964}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ctrl_Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4550172478139518}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ctrl_Hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4575778449595616}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ctrl_RightFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4012564217351804}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Grp_RightWrist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4769313561471656}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ctrl_LeftElbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4257232277497724}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4075228554879436}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ctrl_Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4570800336215770}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ctrl_RightShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4220982027116768}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ctrl_RightWrist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4951368938437828}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Grp_LeftPalm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4047590043984626}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ctrl_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4028836914831674}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Grp_RightShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4451773296254438}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ctrl_LeftThumb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4400546046919952}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_Hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4821723018884948}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_RightPalm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4291688271503818}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_LeftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 4934875582299808}
   - component: {fileID: 198523399130383022}
   - component: {fileID: 199617212376003506}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fire_001_PS (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4485225695798820}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_LeftForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4827119579477816}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ctrl_LeftClavicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +321,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4423247344733814}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Grp_LeftElbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ GameObject:
   - component: {fileID: 4238740368498578}
   - component: {fileID: 198508779042623226}
   - component: {fileID: 199075476315207570}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fire_Multiplied_PS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1362872205647366
 GameObject:
   m_ObjectHideFlags: 1
@@ -374,7 +374,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4740957509363222}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_RightFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,7 +389,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4920739929000872}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_RightLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 4237589099440216}
   - component: {fileID: 198673878941283870}
   - component: {fileID: 199601271488187884}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fire_Sparks_PS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +421,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4012166538061050}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Grp_RightThumb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +437,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4549949514358202}
   - component: {fileID: 137209026315076556}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -452,7 +452,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4130848481288986}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Grp_RightClavicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4098327735853952}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_RightShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -482,7 +482,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4117233199736842}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_Spine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,7 +497,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4750107228636996}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Grp_LeftClavicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +512,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4415900199286340}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_LeftPalm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +527,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4469016123415440}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ctrl_RightPalm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4533683372463184}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ctrl_RightThumb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -557,7 +557,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4097638149177720}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_LeftUpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,7 +572,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4470188588930568}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_LeftShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -589,7 +589,7 @@ GameObject:
   - component: {fileID: 4532307520243156}
   - component: {fileID: 198945363321075112}
   - component: {fileID: 199034515398638012}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fire_Glow_001_PS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -604,7 +604,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4693583585561958}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -619,7 +619,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4194113001530322}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,7 +634,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4153808244314996}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -649,7 +649,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4637154836094528}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ctrl_RightClavicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,7 +664,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4226311504893282}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -679,7 +679,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4518201871036210}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ctrl_Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -694,7 +694,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4610975108743654}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ctrl_RightElbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -709,7 +709,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4141583893225540}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Grp_RightPalm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -724,7 +724,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4081491991214276}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_RightToeBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -739,7 +739,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4753051945948668}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ctrl_LeftShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -754,7 +754,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4332857758054232}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_LeftArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -769,7 +769,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4576144924347736}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Grp_LeftThumb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -784,7 +784,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4856584989785390}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_RightThumb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -799,7 +799,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4882070688394116}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Grp_LeftWrist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -814,7 +814,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4670762958797220}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ctrl_LeftFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -829,7 +829,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4271836691166008}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_RightUpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -844,7 +844,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4381102072634466}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_RightForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -859,7 +859,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4944892387324398}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -874,7 +874,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4244062610396810}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Grp_RightElbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -889,7 +889,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4110247739361582}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ctrl_Spine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -904,7 +904,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4470740498174028}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ctrl_LeftWrist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -938,7 +938,7 @@ GameObject:
   - component: {fileID: 4098043143663274}
   - component: {fileID: 198666688698271654}
   - component: {fileID: 199728067196419240}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fire_Additive_PS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -953,7 +953,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4523716187728606}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ctrl_LeftPalm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -968,7 +968,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4604306350808992}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_LeftThumb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -983,7 +983,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4522289457951754}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_LeftFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -998,7 +998,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4995218828847784}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Grp_LeftShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1013,7 +1013,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4672862616952814}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_RightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1045,7 +1045,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4535589531304350}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_LeftToeBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1060,7 +1060,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4557256973967398}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zombie_Spine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

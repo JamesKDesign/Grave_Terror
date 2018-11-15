@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 65652090414398938}
   - component: {fileID: 114364628149317426}
   - component: {fileID: 54023667624904966}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: FlameCollider 1
   m_TagString: Fire
   m_Icon: {fileID: 0}

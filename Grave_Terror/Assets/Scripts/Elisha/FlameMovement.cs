@@ -21,12 +21,14 @@ public class FlameMovement : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other)
     {
+
         if (other.gameObject.tag == "Enemy")
         {
             other.gameObject.GetComponent<Enemy>().Ignite(flameDamage);
             print("Damaging enemy " + flameDamage);
         }
-        else if(other.gameObject)
+
+        else if (other.gameObject)
         {
             Destroy(gameObject);
         }

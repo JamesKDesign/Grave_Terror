@@ -39524,6 +39524,10 @@ Prefab:
       propertyPath: dodgeSpeed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1335420841307778, guid: c6273967a6956bd4697772aea559791e, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114845923305398364, guid: c6273967a6956bd4697772aea559791e, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c6273967a6956bd4697772aea559791e, type: 2}
@@ -40445,10 +40449,6 @@ Prefab:
     - target: {fileID: 4412270810905986, guid: 37299c5805f9c324e8cf4dcd794157c4, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1351810278266804, guid: 37299c5805f9c324e8cf4dcd794157c4, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 37299c5805f9c324e8cf4dcd794157c4, type: 2}
