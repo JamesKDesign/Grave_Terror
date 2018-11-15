@@ -58,9 +58,9 @@ ModelImporter:
     2100000: MAT_Weapon
     2100002: MAT_Sizzle
     4300000: Sizzle_Lowpoly
-    7400000: Walk
-    7400002: Idle
-    7400004: Attack
+    7400000: Sizzle_Walk
+    7400002: Sizzle_Idle
+    7400004: Sizzle_Attack
     9500000: //RootNode
     13700000: Sizzle_Lowpoly
   externalObjects: {}
@@ -91,7 +91,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Walk
+      name: Sizzle_Walk
       takeName: Take 001
       firstFrame: 1
       lastFrame: 29
@@ -119,7 +119,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Idle
+      name: Sizzle_Idle
       takeName: Take 001
       firstFrame: 31
       lastFrame: 59
@@ -147,7 +147,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Attack
+      name: Sizzle_Attack
       takeName: Take 001
       firstFrame: 61
       lastFrame: 89

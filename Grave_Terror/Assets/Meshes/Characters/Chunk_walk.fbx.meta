@@ -95,7 +95,7 @@ ModelImporter:
     2300000: Weapon_Chunk
     3300000: Weapon_Chunk
     4300000: Weapon_Chunk
-    7400000: Walk
+    7400000: Chunk_Walk
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -125,7 +125,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Walk
+      name: Chunk_Walk
       takeName: Take 001
       firstFrame: 1
       lastFrame: 29

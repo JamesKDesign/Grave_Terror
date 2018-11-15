@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 54f22d1551aeee343a831bc626b94aa7
-timeCreated: 1541045341
+timeCreated: 1542237318
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -127,7 +127,7 @@ ModelImporter:
     400116: Zombie_Spine
     400118: Zombie_Spine1
     400120: Zombie_Spine2
-    7400000: Attack
+    7400000: Zombie_Attack
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -157,7 +157,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Attack
+      name: Zombie_Attack
       takeName: Take 001
       firstFrame: 1
       lastFrame: 30
@@ -167,7 +167,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 205e7af7b6c4b414f9d8655c79550c82
-timeCreated: 1541045341
+timeCreated: 1542237696
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -51,21 +51,22 @@ ModelImporter:
     100086: Zombie_LeftThumb
     100088: Zombie_LeftToeBase
     100090: Zombie_LeftUpLeg
-    100092: Zombie_Neck
-    100094: Zombie_RightArm
-    100096: Zombie_RightFoot
-    100098: Zombie_RightForeArm
-    100100: Zombie_RightHand
-    100102: Zombie_RightLeg
-    100104: Zombie_RightPalm
-    100106: Zombie_RightShoulder
-    100108: Zombie_RightThumb
-    100110: Zombie_RightToeBase
-    100112: Zombie_RightUpLeg
-    100114: Zombie_Root
-    100116: Zombie_Spine
-    100118: Zombie_Spine1
-    100120: Zombie_Spine2
+    100092: Zombie_low
+    100094: Zombie_Neck
+    100096: Zombie_RightArm
+    100098: Zombie_RightFoot
+    100100: Zombie_RightForeArm
+    100102: Zombie_RightHand
+    100104: Zombie_RightLeg
+    100106: Zombie_RightPalm
+    100108: Zombie_RightShoulder
+    100110: Zombie_RightThumb
+    100112: Zombie_RightToeBase
+    100114: Zombie_RightUpLeg
+    100116: Zombie_Root
+    100118: Zombie_Spine
+    100120: Zombie_Spine1
+    100122: Zombie_Spine2
     400000: Ctrl_Head
     400002: Ctrl_Hips
     400004: Ctrl_LeftClavicle
@@ -112,23 +113,27 @@ ModelImporter:
     400086: Zombie_LeftThumb
     400088: Zombie_LeftToeBase
     400090: Zombie_LeftUpLeg
-    400092: Zombie_Neck
-    400094: Zombie_RightArm
-    400096: Zombie_RightFoot
-    400098: Zombie_RightForeArm
-    400100: Zombie_RightHand
-    400102: Zombie_RightLeg
-    400104: Zombie_RightPalm
-    400106: Zombie_RightShoulder
-    400108: Zombie_RightThumb
-    400110: Zombie_RightToeBase
-    400112: Zombie_RightUpLeg
-    400114: Zombie_Root
-    400116: Zombie_Spine
-    400118: Zombie_Spine1
-    400120: Zombie_Spine2
-    7400000: Idle
+    400092: Zombie_low
+    400094: Zombie_Neck
+    400096: Zombie_RightArm
+    400098: Zombie_RightFoot
+    400100: Zombie_RightForeArm
+    400102: Zombie_RightHand
+    400104: Zombie_RightLeg
+    400106: Zombie_RightPalm
+    400108: Zombie_RightShoulder
+    400110: Zombie_RightThumb
+    400112: Zombie_RightToeBase
+    400114: Zombie_RightUpLeg
+    400116: Zombie_Root
+    400118: Zombie_Spine
+    400120: Zombie_Spine1
+    400122: Zombie_Spine2
+    2100000: lambert4
+    4300000: Zombie_low
+    7400000: Zombie_Idle
     9500000: //RootNode
+    13700000: Zombie_low
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -157,7 +162,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
+      name: Zombie_Idle
       takeName: Take 001
       firstFrame: 1
       lastFrame: 30
