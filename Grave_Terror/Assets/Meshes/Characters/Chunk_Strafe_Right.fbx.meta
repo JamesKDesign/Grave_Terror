@@ -1,0 +1,149 @@
+fileFormatVersion: 2
+guid: e7202e173d2d16b4e8f63bf77ff195ef
+timeCreated: 1542253116
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Chunk_Head
+    100002: Chunk_Hips
+    100004: Chunk_LeftArm
+    100006: Chunk_LeftFoot
+    100008: Chunk_LeftForeArm
+    100010: Chunk_LeftHand
+    100012: Chunk_LeftLeg
+    100014: Chunk_LeftPalm
+    100016: Chunk_LeftShoulder
+    100018: Chunk_LeftToeBase
+    100020: Chunk_LeftUpLeg
+    100022: Chunk_Neck
+    100024: Chunk_RightArm
+    100026: Chunk_RightFoot
+    100028: Chunk_RightForeArm
+    100030: Chunk_RightHand
+    100032: Chunk_RightLeg
+    100034: Chunk_RightPalm
+    100036: Chunk_RightShoulder
+    100038: Chunk_RightToeBase
+    100040: Chunk_RightUpLeg
+    100042: Chunk_Root
+    100044: Chunk_Spine
+    100046: Chunk_Spine1
+    100048: Chunk_Spine2
+    100050: //RootNode
+    100052: Loc_Weapon_Handle
+    100054: Weapon_Chunk
+    400000: Chunk_Head
+    400002: Chunk_Hips
+    400004: Chunk_LeftArm
+    400006: Chunk_LeftFoot
+    400008: Chunk_LeftForeArm
+    400010: Chunk_LeftHand
+    400012: Chunk_LeftLeg
+    400014: Chunk_LeftPalm
+    400016: Chunk_LeftShoulder
+    400018: Chunk_LeftToeBase
+    400020: Chunk_LeftUpLeg
+    400022: Chunk_Neck
+    400024: Chunk_RightArm
+    400026: Chunk_RightFoot
+    400028: Chunk_RightForeArm
+    400030: Chunk_RightHand
+    400032: Chunk_RightLeg
+    400034: Chunk_RightPalm
+    400036: Chunk_RightShoulder
+    400038: Chunk_RightToeBase
+    400040: Chunk_RightUpLeg
+    400042: Chunk_Root
+    400044: Chunk_Spine
+    400046: Chunk_Spine1
+    400048: Chunk_Spine2
+    400050: //RootNode
+    400052: Loc_Weapon_Handle
+    400054: Weapon_Chunk
+    2100000: lambert3
+    2300000: Weapon_Chunk
+    3300000: Weapon_Chunk
+    4300000: Weapon_Chunk
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
