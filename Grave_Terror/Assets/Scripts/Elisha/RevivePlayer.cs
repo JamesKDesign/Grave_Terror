@@ -6,8 +6,7 @@ public class RevivePlayer : MonoBehaviour {
 
     public float timer;
     PlayerHealth player;
-    public Transform player2;
-    PlayerHealth  health;
+    public GameObject player2;
 
     private void Awake()
     {
@@ -20,8 +19,9 @@ public class RevivePlayer : MonoBehaviour {
         if (timer <= 0f)
         {
             player.playerState = PlayerHealth.PlayerState.ALIVE;
-            health.reviveVolume.GetComponentInChildren<ParticleSystem>().startColor = Color.green;
-            health.reviveVolume.GetComponentInChildren<ParticleSystem>().Stop();
+            ParticleSystem.MainModule revMainMod = player.reviveVolume.GetComponentInChildren<ParticleSystem>().main;
+            revMainMod.startColor = Color.green;
+            player.reviveVolume.GetComponentInChildren<ParticleSystem>().Stop();
             player.health = 3.0f;
             player.currentHealth = player.health;
             timer = 5f;
@@ -30,11 +30,12 @@ public class RevivePlayer : MonoBehaviour {
     }
 
     // If player enters this trigger it will revive the player
-    public void OnTriggerStay(Collider other)
+    void OnTriggerStay(Collider other)
     {
+        Debug.Log("Activated");
         if (player.playerState == PlayerHealth.PlayerState.REVIVE)
         {
-            if (other.gameObject == player2.gameObject)
+            if (other.gameObject == player2)
             {
                 timer -= Time.deltaTime;
                 Debug.Log("timer" + timer);

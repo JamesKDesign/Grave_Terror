@@ -62,8 +62,9 @@ public class PlayerHealth : MonoBehaviour
                 break;
             // Player dead state sets player to in-active
             case PlayerState.DEAD:
-                
-                gameObject.SetActive(false);
+
+                //gameObject.SetActive(false);
+                Destroy(gameObject);
                 reviveVolume.GetComponentInChildren<ParticleSystem>().Stop();
                 print("In death state");
                 break;
@@ -72,8 +73,12 @@ public class PlayerHealth : MonoBehaviour
         if(playerState == PlayerState.REVIVE)
         {
             timer -= Time.deltaTime;
-            reviveVolume.GetComponentInChildren<ParticleSystem>().startColor = Color.red;
-            reviveVolume.GetComponentInChildren<ParticleSystem>().Play();
+            if (reviveVolume != null)
+            {
+                ParticleSystem.MainModule revMainMod = reviveVolume.GetComponentInChildren<ParticleSystem>().main;
+                revMainMod.startColor = Color.red;
+                reviveVolume.GetComponentInChildren<ParticleSystem>().Play();
+            }
         }
 
         if (timer <= 0)

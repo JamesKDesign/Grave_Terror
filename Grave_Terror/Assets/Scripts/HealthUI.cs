@@ -35,15 +35,23 @@ public class HealthUI : MonoBehaviour {
     void SizzleChange() {
 
         if (Sizhealth.currentHealth < 3) {
-            rect.x = 0.335f;
+            rect.x = 0.247f;
             sizzle.uvRect = rect;
         }
-        if (Sizhealth.currentHealth < 2 && Sizhealth.currentHealth < 1)
+        if (Sizhealth.currentHealth < 2)
         {
-            rect.x = 0.667f;
+            rect.x = 0.493f;
             sizzle.uvRect = rect;
         }
-
+        if (Sizhealth.currentHealth < 1) {
+            rect.x = 0.493f;
+            sizzle.uvRect = rect;
+        }
+        if (Sizhealth.currentHealth <= 0)
+        {
+            rect.x = 0.74f;
+            sizzle.uvRect = rect;
+        }
         if (Sizhealth.currentHealth >= 3) {
             rect.x = 0;
             sizzle.uvRect = rect;
@@ -55,15 +63,23 @@ public class HealthUI : MonoBehaviour {
 
         if (Chuhealth.currentHealth < 3)
         {
-            rect.x = 0.335f;
+            rect.x = 0.247f;
             chunk.uvRect = rect;
         }
-        if (Chuhealth.currentHealth < 2 && Chuhealth.currentHealth < 1)
+        if (Chuhealth.currentHealth < 2)
         {
-            rect.x = 0.667f;
+            rect.x = 0.493f;
             chunk.uvRect = rect;
         }
-
+        if (Chuhealth.currentHealth < 1) {
+            rect.x = 0.493f;
+            chunk.uvRect = rect;
+        }
+        if (Chuhealth.currentHealth <= 0)
+        {
+            rect.x = 0.74f;
+            chunk.uvRect = rect;
+        }
         if (Chuhealth.currentHealth >= 3)
         {
             rect.x = 0;
