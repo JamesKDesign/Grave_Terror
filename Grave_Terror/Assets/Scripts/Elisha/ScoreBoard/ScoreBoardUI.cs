@@ -5,15 +5,15 @@ using XboxCtrlrInput;
 
 public class ScoreBoardUI : MonoBehaviour
 {
-
     [SerializeField]
     GameObject scoreBoard;
+    public GameObject player1;
+    public GameObject player2;
     public XboxControllerManager xboxController;
 
     // Update is called once per frame
     void Update()
     {
-
         if (xboxController.useController == true)
         {
             // bringing up the score board

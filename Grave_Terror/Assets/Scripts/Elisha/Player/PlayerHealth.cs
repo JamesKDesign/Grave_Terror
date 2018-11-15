@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
     public float timer;
     PlayerMovement controls;
     public GameObject reviveVolume;
+    public float deathTime;
 
     public enum PlayerState
     {
@@ -45,32 +46,34 @@ public class PlayerHealth : MonoBehaviour
         {
             // Player alive with full functions
             case PlayerState.ALIVE:
-                timer = 30f;
+                print("In alive state");
+                timer = deathTime;
                 controls.Dashing();
                 controls.Turning();
-                print("In alive state");
                 break;
             // Player revive state can rotate player and shoot 
             case PlayerState.REVIVE:
                 print("In revive state");
+                controls.Turning();
                 // death timer hits 0 will kill the player 
                 if (timer == 0.0f)
                 {
-                    gameObject.SetActive(false);
-                    
+                    playerState = PlayerState.DEAD;
+                   // Destroy(gameObject);
                 }
                 break;
             // Player dead state sets player to in-active
             case PlayerState.DEAD:
-
-                //gameObject.SetActive(false);
-                Destroy(gameObject);
-                reviveVolume.GetComponentInChildren<ParticleSystem>().Stop();
                 print("In death state");
                 break;
         }
 
-        if(playerState == PlayerState.REVIVE)
+        if(playerState == PlayerState.DEAD)
+        {
+            Destroy(gameObject);
+        }
+
+        if (playerState == PlayerState.REVIVE)
         {
             timer -= Time.deltaTime;
             if (reviveVolume != null)
@@ -79,12 +82,6 @@ public class PlayerHealth : MonoBehaviour
                 revMainMod.startColor = Color.red;
                 reviveVolume.GetComponentInChildren<ParticleSystem>().Play();
             }
-        }
-
-        if (timer <= 0)
-        {
-            timer = 0.0f;
-            playerState = PlayerState.DEAD;
         }
     }
 
