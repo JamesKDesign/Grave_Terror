@@ -10,6 +10,8 @@ public class DestructibleSpawner : MonoBehaviour
 	public float minRadius;
 	public float maxRadius;
 
+	public bool active;
+
 	private float timer;
 	// Use this for initialization
 	void Start ()
@@ -22,7 +24,7 @@ public class DestructibleSpawner : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (timer <= 0.0f)
+		if (active && timer <= 0.0f)
 		{
 			Vector2 radius = Random.insideUnitCircle * maxRadius + new Vector2(minRadius, minRadius);
 			Vector3 region = new Vector3(radius.x, 0.0f, radius.y);
@@ -30,5 +32,10 @@ public class DestructibleSpawner : MonoBehaviour
 			spawner.RemoteSpawn(region + transform.position);
 			timer = spawnDelay;
 		}
+	}
+
+	public void Trigger()
+	{
+		active = true;
 	}
 }

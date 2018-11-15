@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour
 
 	[HideInInspector] //Current state
 	public E_STATE state = E_STATE.NORMAL;
+	public E_ACTION action = E_ACTION.IDLE;
 
 	//Is this actor alive?
 	[HideInInspector]
@@ -210,8 +211,11 @@ public class Enemy : MonoBehaviour
 
 		//rotate towards where we are going
 		if (velocity != Vector3.zero)
+		{
 			transform.localRotation = Quaternion.LookRotation(velocity);
 			//transform.rotation.SetFromToRotation(Vector3.zero, velocity);
+			action = E_ACTION.MOVE;
+		}
 
 		//Cap max velocity
 		if (velocity.magnitude > movementSpeed)
@@ -285,6 +289,7 @@ public class Enemy : MonoBehaviour
 	//Attack and deal damage if a player was hit
 	public void Attack()
 	{
+		action = E_ACTION.ATTACK;
 		//If there is no valid target in the attackbox then the attack is missed
 		if (attackHitbox.target != null)
 		{

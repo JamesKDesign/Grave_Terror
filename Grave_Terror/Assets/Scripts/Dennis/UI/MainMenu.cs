@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum MENU_STATE
 {
@@ -50,6 +51,9 @@ public class MainMenu : MonoBehaviour
 	Camera mainCamera;
 
 	public string gameScene;
+	private string menuScene;
+
+	public XboxControllerManager xboxController;
 
 	[Header("Camera")]
 	public Points[] endPoints;
@@ -78,19 +82,31 @@ public class MainMenu : MonoBehaviour
 
 	public GameObject selectionScreen;
 
+	//Game in progress sequence
+	[Header("Game Settings")]
+	private PlayerHealth[] player = null;
+	private GameObject ogreScreen = null;
+	[Tooltip("Time until fully")]
+	public float fadeTime;
+
 	// Use this for initialization
-	void Start ()
+	void Start()
 	{
+		//SceneManager stuff
+		SceneManager.sceneLoaded += OnSceneLoad;
+		menuScene = SceneManager.GetActiveScene().name;
+		//Make sure this persists through scene loads
+		DontDestroyOnLoad(gameObject);
+
 		mainCamera = Camera.main;
 
 		ForceMoveTo(0);
 		//MoveTo(1);
 	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
 
+	// Update is called once per frame
+	private void MainMenuUpdate()
+	{
 		//If we want to move the camera somewhere
 		if (moving)
 		{
@@ -138,56 +154,48 @@ public class MainMenu : MonoBehaviour
 		}
 		else //Deny input commands while move in progress
 		{
-			switch (state)
+			if (state == MENU_STATE.CHARACTER_SELECT)
 			{
-				case MENU_STATE.MENU:
-					break;
-				case MENU_STATE.CHARACTER_SELECT:
-					//First come first serve selection
-                    //add some way for players to see who they selected
-                    float p1Selection = Input.GetAxis("Horizontal"); //Replace with player one horizontal joystick axis
-                    float p2Selection = Input.GetAxis("Vertical"); //Replace with player two horizontal joystick axis
-					//If chunk is on the other side
-					if (chunkLeft)
-					{
-						p1Selection *= -1.0f;
-						p2Selection *= -1.0f;
-					}
-					//Player 1
-					if (p1Selection >= 0.75f)
-					{
-						if (p2Selected != 1)
-							p1Selected = 1;
-					}
-					else if (p1Selection <= -0.75)
-					{
-						if (p2Selected != 2)
-							p1Selected = 2;
-					}
-					else
-					{
-						p1Selected = -1;
-					}
-					//Player 2
-					if (p2Selection >= 0.75f)
-					{
-						if (p1Selected != 1)
-							p2Selected = 1;
-					}
-					else if (p2Selection <= -0.75)
-					{
-						if (p1Selected != 2)
-							p2Selected = 2;
-					}
-					else
-					{
-						p1Selected = -1;
-					}
-					break;
-				case MENU_STATE.GAME:
-					//Do nothing
-					return;
-					break;
+				//First come first serve selection
+				//add some way for players to see who they selected
+				float p1Selection = Input.GetAxis("Horizontal"); //Replace with player one horizontal joystick axis
+				float p2Selection = Input.GetAxis("Vertical"); //Replace with player two horizontal joystick axis
+															   //If chunk is on the other side
+				if (chunkLeft)
+				{
+					p1Selection *= -1.0f;
+					p2Selection *= -1.0f;
+				}
+				//Player 1
+				if (p1Selection >= 0.75f)
+				{
+					if (p2Selected != 1)
+						p1Selected = 1;
+				}
+				else if (p1Selection <= -0.75)
+				{
+					if (p2Selected != 2)
+						p1Selected = 2;
+				}
+				else
+				{
+					p1Selected = -1;
+				}
+				//Player 2
+				if (p2Selection >= 0.75f)
+				{
+					if (p1Selected != 1)
+						p2Selected = 1;
+				}
+				else if (p2Selection <= -0.75)
+				{
+					if (p1Selected != 2)
+						p2Selected = 2;
+				}
+				else
+				{
+					p1Selected = -1;
+				}
 			}
 			//Call all functions todo with the selection option
 			//TODO: replace getkeydown with xbocks controller input 
@@ -197,7 +205,7 @@ public class MainMenu : MonoBehaviour
 			}
 			//TODO: replace getkeydown with xbox controller input left/right - up/down
 			//Positive Movement
-			if (Input.GetKeyDown(KeyCode.D))
+			else if (Input.GetKeyDown(KeyCode.D))
 			{
 				if (endPoints[current].movePositive != -1)
 				{
@@ -212,6 +220,77 @@ public class MainMenu : MonoBehaviour
 					MoveTo(endPoints[current].moveNegative);
 				}
 			}
+		}
+	}
+
+	private void GameUpdate()
+	{
+		if (moving)
+		{
+			if (timer <= 0.0f)
+			{
+				//SceneManager.LoadScene(menuScene);
+				ogreScreen.GetComponent<Image>().color = Color.white;
+
+				//Accept player input here
+				if (Input.GetKeyDown(KeyCode.Z))
+				{
+					SceneManager.LoadScene(gameScene);
+				}
+				else if (Input.GetKeyDown(KeyCode.X))
+				{
+					SceneManager.LoadScene(menuScene);
+				}
+			}
+			else
+			{
+				timer -= Time.deltaTime / fadeTime;
+				//no write variables
+				Color color = ogreScreen.GetComponent<Image>().color;
+				color.a = (timer * -2.0f) + 1.0f;
+				ogreScreen.GetComponent<Image>().color = color;
+			}
+		}
+		//Check if both players are dead
+		else if (player[0].playerState == PlayerHealth.PlayerState.DEAD &&
+				player[0].playerState == PlayerHealth.PlayerState.DEAD)
+		{
+			//reusing old variables
+			moving = true;
+			timer = 1.0f;
+			ogreScreen.SetActive(true);
+			ogreScreen.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+		}
+	}
+
+	private void OnSceneLoad(Scene _scene, LoadSceneMode _mode)
+	{
+		if (_scene.name == gameScene)
+		{
+			GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+			player = new PlayerHealth[2];
+			player[0] = players[0].GetComponent<PlayerHealth>();
+			player[1] = players[1].GetComponent<PlayerHealth>();
+
+			ogreScreen = GameObject.Find("GameOverScreen");
+			ogreScreen.SetActive(false);
+
+			timer = 0.0f;
+			moving = false;
+		}
+	}
+
+	private void Update()
+	{
+		switch (state)
+		{
+			case MENU_STATE.CHARACTER_SELECT:
+			case MENU_STATE.MENU:
+				MainMenuUpdate();
+				break;
+			case MENU_STATE.GAME:
+				GameUpdate();
+				break;
 		}
 	}
 
@@ -275,6 +354,7 @@ public class MainMenu : MonoBehaviour
 			p2Selected != -1)
 		{
 			SceneManager.LoadScene(gameScene);
+			state = MENU_STATE.GAME;
 		}
 	}
 
