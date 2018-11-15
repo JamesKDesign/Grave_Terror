@@ -227,6 +227,18 @@ public class Enemy : MonoBehaviour
 		transform.position = new Vector3(transform.position.x, 0.0f, transform.position.z);
 	}
 
+    private void LateUpdate()
+    {
+        GetComponentInChildren<SkinnedMeshRenderer>().material.SetFloat("_IsTarget", 0.0f);
+    }
+
+    public void SetTargeted()
+    {
+        //Setting the material boolean to true
+        Debug.Log("Enemy Targeted");
+        GetComponentInChildren<SkinnedMeshRenderer>().material.SetFloat("_IsTarget", 1.0f);
+    }
+
 	private void FixedUpdate()
 	{
 		//Debug.Log("WTF " + velocity);

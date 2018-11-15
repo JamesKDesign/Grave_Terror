@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 33269014726368872}
   - component: {fileID: 23551760822589472}
   - component: {fileID: 65814526838165178}
-  - component: {fileID: 114451906363021784}
   m_Layer: 0
   m_Name: Bannister_Centre_001
   m_TagString: Untagged
@@ -96,17 +95,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 1.2, z: 0.6}
   m_Center: {x: 0, y: 0.59235895, z: 1.75}
---- !u!114 &114451906363021784
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1389911810641940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7aed3e3ac832ce41a5ad6476367b8f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 150
-  currentHealth: 150
-  FlashLength: 0.3

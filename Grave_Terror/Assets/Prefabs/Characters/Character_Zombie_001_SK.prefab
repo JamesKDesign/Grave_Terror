@@ -505,7 +505,7 @@ GameObject:
   - component: {fileID: 137248645430908948}
   m_Layer: 0
   m_Name: Zombie_low
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -578,8 +578,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1693355508699240}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 0.9238789, z: -0, w: 0.38268512}
+  m_LocalPosition: {x: 17, y: 0, z: -47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4386765316758414}
@@ -589,7 +589,7 @@ Transform:
   - {fileID: 4750973988078336}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 135, z: 0}
 --- !u!4 &4050734164511098
 Transform:
   m_ObjectHideFlags: 1
@@ -1143,8 +1143,9 @@ MonoBehaviour:
   spawner: {fileID: 0}
   target: {fileID: 0}
   state: 0
+  action: 0
   alive: 0
-  attackDamage: 1
+  attackDamage: 5
   attackDelay: 1
   attackRate: 1
   movementSpeed: 5
@@ -1222,7 +1223,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ae18ab5545e5ebe479caf451d5f3ab51, type: 2}
+  - {fileID: 2100000, guid: f7fcc77e4cc440b4f9ebb1a633e47d5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

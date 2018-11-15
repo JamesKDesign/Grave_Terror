@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 33054024573892746}
   - component: {fileID: 23371462846961400}
   - component: {fileID: 65041510660281362}
-  - component: {fileID: 114844849954835040}
   m_Layer: 0
   m_Name: Bannister_End_Right_001_SM
   m_TagString: Untagged
@@ -96,17 +95,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.60000086, y: 1.1847181, z: 1.05}
   m_Center: {x: 1.7499998, y: 0.59235895, z: -1.5249997}
---- !u!114 &114844849954835040
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1334879568624384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7aed3e3ac832ce41a5ad6476367b8f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 150
-  currentHealth: 150
-  FlashLength: 0.3
