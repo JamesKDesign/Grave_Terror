@@ -19,17 +19,17 @@ public class Tether : MonoBehaviour
 		//If we arent tethered to something just fade away
 		if (link == null)
 		{
-			Debug.Log(gameObject.name + " has no tether link");
+			//Debug.Log(gameObject.name + " has no tether link");
 			Destroy(this);
 		}
 		//If link distances are different just average both
 		if (link.maxDistance != maxDistance)
 		{
-			Debug.Log("Tether length synced");
+			//Debug.Log("Tether length synced");
 			maxDistance = maxDistance + link.maxDistance / 2.0f;
 			link.maxDistance = maxDistance;
 		}
-		Debug.Log(gameObject.name + " tethered too " + link.gameObject.name);
+		//Debug.Log(gameObject.name + " tethered too " + link.gameObject.name);
 
 		last = transform.position;
 		linkLast = link.transform.position;

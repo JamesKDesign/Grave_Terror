@@ -253,15 +253,16 @@ public class FlowFieldGenerator : MonoBehaviour
 
 	public Vector3 GetSegmentDirection(Vector3 _position, int _index)
 	{
-		//Auto reject
-		if(_position.x >= size.x || _position.z >= size.y ||
-			_position.x < 0 || _position.z < 0)
-			return Vector3.zero;
 		//XZ to XY
 		Vector2Int seg = new Vector2Int();
 		//convert world position to grid positon
 		seg.x = (int)((bottomLeft.position.x * -1.0f) + _position.x);
 		seg.y = (int)((bottomLeft.position.z * -1.0f) + _position.z);
+
+		//Auto reject
+		if (seg.x >= size.x || seg.y >= size.y ||
+			seg.x < 0 || seg.y < 0)
+			return Vector3.zero;
 
 		if (grid[seg.x, seg.y] != null)
 			return grid[seg.x, seg.y].direction[_index];
