@@ -15,6 +15,7 @@ public class PlayerShooting : MonoBehaviour
     public float counter = 0f;
     public int damageToGive;
     public float range;
+    public EnemyHealth target;
 
     public new Animator anim;
 
@@ -41,7 +42,7 @@ public class PlayerShooting : MonoBehaviour
                     if (Physics.Raycast(rayCast, out hit, range))
                     {
                         // enemy health damaged
-                        EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+                        target = hit.transform.GetComponent<EnemyHealth>();
                         if (target != null)
                         {
                             target.DamageHealth(damageToGive);
