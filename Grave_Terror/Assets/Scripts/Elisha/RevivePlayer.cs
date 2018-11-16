@@ -38,7 +38,8 @@ public class RevivePlayer : MonoBehaviour {
             if (deleteTimer <= 0)
             {
                 player.reviveVolume.GetComponentInChildren<ParticleSystem>().Stop();
-                deleteTimer = 0.0f;
+                deleteTimer = 2.0f;
+                isRevived = false;
             }
         }
     }
