@@ -19,224 +19,232 @@ public enum E_ACTION
 [RequireComponent(typeof(CharacterController))]
 public class Enemy : MonoBehaviour
 {
-	//'enemy' HP values
-	private static PlayerHealth p1HP, p2HP;
+    //'enemy' HP values
+    private static PlayerHealth p1HP, p2HP;
 
-	[HideInInspector] //THe spawner that created us
-	public Spawner spawner;
+    [HideInInspector] //THe spawner that created us
+    public Spawner spawner;
 
-	//Our own HP
-	private EnemyHealth health;
+    //Our own HP
+    private EnemyHealth health;
 
-	[HideInInspector]
-	public GameObject target = null;
-
-	private CharacterController cc;
-
-	[HideInInspector] //Current state
-	public E_STATE state = E_STATE.NORMAL;
-	public E_ACTION action = E_ACTION.IDLE;
-
-	//Is this actor alive?
-	[HideInInspector]
-	public bool alive = false;
-
-	//Is this actor directly engaging the target?
-	//[HideInInspector]
-
-	//Values to be set in the editor
-	[Tooltip("Actor attack damage")]
-	public int attackDamage;
-	[Tooltip("How long the actor takes to wind up his attack (in unity meters)")]
-	public float attackDelay;
-	[Tooltip("Time until next attack can be done after finishing an attack (delay in seconds)")]
-	public float attackRate;
-	[Tooltip("Actor travel speed")]
-	public float movementSpeed;
-
-	//What path this actors following
     [HideInInspector]
-	public int path = -1;
+    public GameObject target = null;
 
-	[HideInInspector]
-	public bool engaging = false;
+    private CharacterController cc;
 
-	//Deny the actor from moving and turning when he is attacking
-	private bool attackLocked = false;
-	private float attackTimer = 0.0f;
-	private float attackRecov = 0.0f;
-	private EnemyAttackBox attackHitbox = null;
+    [HideInInspector] //Current state
+    public E_STATE state = E_STATE.NORMAL;
+    public E_ACTION action = E_ACTION.IDLE;
 
-	[HideInInspector]
-	public float fireDamageOverTime = 0.0f;
-	[HideInInspector]
-	public float fireTime = 0.0f;
+    //Is this actor alive?
+    [HideInInspector]
+    public bool alive = false;
 
-	//Public so the controller can easily access it
-	[HideInInspector]
-	public List<BaseBehaviour> behaviours = new List<BaseBehaviour>(4);
+    //Is this actor directly engaging the target?
+    //[HideInInspector]
 
-	[HideInInspector]
-	public Vector3 velocity;
-	private Vector3 acceleration;
+    //Values to be set in the editor
+    [Tooltip("Actor attack damage")]
+    public int attackDamage;
+    [Tooltip("How long the actor takes to wind up his attack (in unity meters)")]
+    public float attackDelay;
+    [Tooltip("Time until next attack can be done after finishing an attack (delay in seconds)")]
+    public float attackRate;
+    [Tooltip("Actor travel speed")]
+    public float movementSpeed;
 
-	//Slowdown overtime
-	public float drag = 0.97f;
-	[Tooltip("Higher mass means it takes longer to reach max speed")]
-	public float mass = 10.0f;
+    //What path this actors following
+    [HideInInspector]
+    public int path = -1;
 
-	[Header("Weights")]
-	public float pathingWeight = 0.67f;
-	public float flockingWeight = 0.33f;
-	public float wanderWeight = 0.10f;
+    [HideInInspector]
+    public bool engaging = false;
 
-	// Use this for initialization
-	void Start ()
-	{
-		behaviours.Add(new EnemyPathing(this, pathingWeight));
-		behaviours.Add(new EnemyFlocking(this, flockingWeight));
-		behaviours.Add(new EnemyWander(this, wanderWeight)); //This one needs work
+    //Deny the actor from moving and turning when he is attacking
+    private bool attackLocked = false;
+    private float attackTimer = 0.0f;
+    private float attackRecov = 0.0f;
+    private EnemyAttackBox attackHitbox = null;
 
-		cc = GetComponent<CharacterController>();
+    [HideInInspector]
+    public float fireDamageOverTime = 0.0f;
+    [HideInInspector]
+    public float fireTime = 0.0f;
 
-		health = GetComponent<EnemyHealth>();
+    //Public so the controller can easily access it
+    [HideInInspector]
+    public List<BaseBehaviour> behaviours = new List<BaseBehaviour>(4);
 
-		attackHitbox = transform.Find("AttackBox").GetComponent<EnemyAttackBox>();
+    [HideInInspector]
+    public Vector3 velocity;
+    private Vector3 acceleration;
 
-		p1HP = FlowFieldGenerator.GetInstance().targets[0].GetComponent<PlayerHealth>();
-		p2HP = FlowFieldGenerator.GetInstance().targets[1].GetComponent<PlayerHealth>();
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		switch (state)
-		{
-			case E_STATE.NORMAL:
-				//Disable fire effect here?
-				break;
+    //Slowdown overtime
+    public float drag = 0.97f;
+    [Tooltip("Higher mass means it takes longer to reach max speed")]
+    public float mass = 10.0f;
 
-			case E_STATE.IGNITED:
-				//Mabye display some fire effect here?
-				health.DamageHealth(fireDamageOverTime * Time.deltaTime);
-				fireTime -= Time.deltaTime;
-				//Enemy is no longer on fire
-				if (fireTime <= 0.0f)
-					state = E_STATE.NORMAL;
-				break;
-		}
-		
+    [Header("Weights")]
+    public float pathingWeight = 0.67f;
+    public float flockingWeight = 0.33f;
+    public float wanderWeight = 0.10f;
 
-		//If we have no path get one
-		if (path == -1)
-		{
-			attackLocked = false;
-			if (p1HP.playerState == PlayerHealth.PlayerState.ALIVE)
-			{
-				path = 0;
-			}
-			else if (p2HP.playerState == PlayerHealth.PlayerState.ALIVE)
-			{
-				path = 1;
-			}
-			else
-			{
-				return;
-			}
-		}
+    bool m_IsTargeted = false;
 
-		//Debug.Log(path);
-		//Just incase
-		if (path == 0 && p1HP.playerState != PlayerHealth.PlayerState.ALIVE)
-		{
-			path = -1;
-			engaging = false;
-		}
-		else if (path == 1 && p2HP.playerState != PlayerHealth.PlayerState.ALIVE)
-		{
-			path = -1;
-			engaging = false;
-		}
+    // Use this for initialization
+    void Start()
+    {
+        behaviours.Add(new EnemyPathing(this, pathingWeight));
+        behaviours.Add(new EnemyFlocking(this, flockingWeight));
+        behaviours.Add(new EnemyWander(this, wanderWeight)); //This one needs work
+
+        cc = GetComponent<CharacterController>();
+
+        health = GetComponent<EnemyHealth>();
+
+        attackHitbox = transform.Find("AttackBox").GetComponent<EnemyAttackBox>();
+
+        p1HP = FlowFieldGenerator.GetInstance().targets[0].GetComponent<PlayerHealth>();
+        p2HP = FlowFieldGenerator.GetInstance().targets[1].GetComponent<PlayerHealth>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        switch (state)
+        {
+            case E_STATE.NORMAL:
+                //Disable fire effect here?
+                break;
+
+            case E_STATE.IGNITED:
+                //Mabye display some fire effect here?
+                health.DamageHealth(fireDamageOverTime * Time.deltaTime);
+                fireTime -= Time.deltaTime;
+                //Enemy is no longer on fire
+                if (fireTime <= 0.0f)
+                    state = E_STATE.NORMAL;
+                break;
+        }
+
+
+        //If we have no path get one
+        if (path == -1)
+        {
+            attackLocked = false;
+            if (p1HP.playerState == PlayerHealth.PlayerState.ALIVE)
+            {
+                path = 0;
+            }
+            else if (p2HP.playerState == PlayerHealth.PlayerState.ALIVE)
+            {
+                path = 1;
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        //Debug.Log(path);
+        //Just incase
+        if (path == 0 && p1HP.playerState != PlayerHealth.PlayerState.ALIVE)
+        {
+            path = -1;
+            engaging = false;
+        }
+        else if (path == 1 && p2HP.playerState != PlayerHealth.PlayerState.ALIVE)
+        {
+            path = -1;
+            engaging = false;
+        }
 
         //Cycle through all behaviours or attack
         if (engaging) //Attack
         {
             if (target == null)
             {
-				engaging = false;
-				return;
+                engaging = false;
+                return;
             }
-			//Move directly towards our target
-			acceleration = target.transform.position - transform.position;
+            //Move directly towards our target
+            acceleration = target.transform.position - transform.position;
 
-			attackTimer -= Time.deltaTime;
-			if (attackLocked)
-			{
-				if (attackTimer <= 0.0f && attackRecov <= 0.0f)
-				{
-					Attack();
-					//Allow movement and rotation again
-					attackLocked = false;
-					//Set the time for cooldown between attacks
-					attackRecov = attackRate;
-				}
-			}
-		}
-		else //Behaviours
-		{
-			//Deadlock prevention!
-			attackLocked = false;
+            attackTimer -= Time.deltaTime;
+            if (attackLocked)
+            {
+                if (attackTimer <= 0.0f && attackRecov <= 0.0f)
+                {
+                    Attack();
+                    //Allow movement and rotation again
+                    attackLocked = false;
+                    //Set the time for cooldown between attacks
+                    attackRecov = attackRate;
+                }
+            }
+        }
+        else //Behaviours
+        {
+            //Deadlock prevention!
+            attackLocked = false;
 
-			acceleration = Vector3.zero;
-			foreach (BaseBehaviour b in behaviours)
-			{
-				acceleration += b.Update() * b.weight;
-			}
-		}
-		//No up velocity
-		acceleration.y = 0.0f;
-		//Normalize it and multiply it by our speed
-		acceleration.Normalize();
-		acceleration *= movementSpeed;
+            acceleration = Vector3.zero;
+            foreach (BaseBehaviour b in behaviours)
+            {
+                acceleration += b.Update() * b.weight;
+            }
+        }
+        //No up velocity
+        acceleration.y = 0.0f;
+        //Normalize it and multiply it by our speed
+        acceleration.Normalize();
+        acceleration *= movementSpeed;
 
-		//Prevent movement while attacking ------
-		if (attackLocked)
-		{
-			acceleration = Vector3.zero;
-			velocity = Vector3.zero;
-		}
+        //Prevent movement while attacking ------
+        if (attackLocked)
+        {
+            acceleration = Vector3.zero;
+            velocity = Vector3.zero;
+        }
 
-		velocity += acceleration / mass;
-		velocity *= drag;
+        velocity += acceleration / mass;
+        velocity *= drag;
 
-		//rotate towards where we are going
-		if (velocity != Vector3.zero)
-		{
-			transform.localRotation = Quaternion.LookRotation(velocity);
-			//transform.rotation.SetFromToRotation(Vector3.zero, velocity);
-			action = E_ACTION.MOVE;
-		}
+        //rotate towards where we are going
+        if (velocity != Vector3.zero)
+        {
+            transform.localRotation = Quaternion.LookRotation(velocity);
+            //transform.rotation.SetFromToRotation(Vector3.zero, velocity);
+            action = E_ACTION.MOVE;
+        }
 
-		//Cap max velocity
-		if (velocity.magnitude > movementSpeed)
-		{
-			velocity = Vector3.Normalize(velocity) * movementSpeed;
-		}
+        //Cap max velocity
+        if (velocity.magnitude > movementSpeed)
+        {
+            velocity = Vector3.Normalize(velocity) * movementSpeed;
+        }
 
-		//Anchor the enemy to the floor (rigidbody raycast fix)
-		transform.position = new Vector3(transform.position.x, 0.0f, transform.position.z);
-	}
-
-    private void LateUpdate()
-    {
-        GetComponentInChildren<SkinnedMeshRenderer>().material.SetFloat("_IsTarget", 0.0f);
+        //Anchor the enemy to the floor (rigidbody raycast fix)
+        transform.position = new Vector3(transform.position.x, 0.0f, transform.position.z);
     }
 
     public void SetTargeted()
     {
         //Setting the material boolean to true
         Debug.Log("Enemy Targeted");
-        GetComponentInChildren<SkinnedMeshRenderer>().material.SetFloat("_IsTarget", 1.0f);
+        if (!m_IsTargeted)
+        {
+            GetComponentInChildren<Renderer>().material.SetFloat("_IsTarget", 1.0f);
+            Invoke("SetUntargeted", 0.5f);
+        } 
+        m_IsTargeted = true;   
+    }
+
+    void SetUntargeted()
+    {
+        GetComponentInChildren<Renderer>().material.SetFloat("_IsTarget", 0.0f);
+        m_IsTargeted = false;
     }
 
 	private void FixedUpdate()
