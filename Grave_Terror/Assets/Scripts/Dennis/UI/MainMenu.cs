@@ -54,6 +54,9 @@ public class MainMenu : MonoBehaviour
 	public string gameScene;
 	private string menuScene;
 
+	//The Canvas
+	public Canvas canvas;
+
 	//Both players
 	public XboxControllerManager xboxController;
 	//Now appart
@@ -87,6 +90,9 @@ public class MainMenu : MonoBehaviour
 
 	public GameObject selectionScreen;
 
+	//Selection Screen cursor
+	Vector2 p1Vec, p2Vec;
+
 	//Game in progress sequence
 	[Header("Game Settings")]
 	private PlayerHealth[] player = null;
@@ -107,6 +113,17 @@ public class MainMenu : MonoBehaviour
 
 		ForceMoveTo(0);
 		//MoveTo(1);
+	}
+
+	//Dont break it...
+	private void Just()
+	{
+		//P1
+		p1Vec.x = XCI.GetAxis(XboxAxis.LeftStickX, p1XCtrl.controller);
+		p1Vec.y = XCI.GetAxis(XboxAxis.LeftStickY, p1XCtrl.controller);
+		//P2
+		p2Vec.x = XCI.GetAxis(XboxAxis.LeftStickX, p2XCtrl.controller);
+		p2Vec.y = XCI.GetAxis(XboxAxis.LeftStickY, p2XCtrl.controller);
 	}
 
 	// Update is called once per frame
