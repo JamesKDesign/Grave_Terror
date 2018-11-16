@@ -45,8 +45,6 @@ public class Spawner : MonoBehaviour
 		public float time;
 		public int remainingSpawns;
 	}
-	//The player(s)
-	public GameObject m_player;
 	//Places enemies should spawn from
 	public Transform[] m_spawnPoints;
 	//Different enemy prefabs, Order is important
