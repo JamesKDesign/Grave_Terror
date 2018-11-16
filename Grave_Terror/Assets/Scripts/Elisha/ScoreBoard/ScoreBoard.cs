@@ -3,25 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using XboxCtrlrInput;
-
+    //ATREUS
 public class ScoreBoard : MonoBehaviour
 {
     public Text Sizzle;
     public Text chunk;
+    public Text SizzleD;
+    public Text ChunkD;
     private int SizzleScore;
     private int SizzleDowns;
-    private int SizzleDeath;
     private int ChunkScore;
     private int ChunkDowns;
-    private int ChunkDeath;
+    private int Placeholder;
     public GameObject scoreBoard;
     public XboxControllerManager XboxController;
-
+    public XboxControllerManager XboxController2;
     // references
     public PlayerHealth sizzlehealth;
     public PlayerHealth chunkhealth;
     public PlayerShooting chunkShooting;
-    public Enemy sizzleShooting;
+    public EnemyHealth sizzleShooting;
+    private bool CheckMe = false;
+
 
     // Use this for initialization
     void Awake()
@@ -30,12 +33,9 @@ public class ScoreBoard : MonoBehaviour
         // sizzle scores
         SizzleScore = 0;
         SizzleDowns = 0;
-        SizzleDeath = 0;
-
         // chunk scores
         ChunkScore = 0;
         ChunkDowns = 0;
-        ChunkDeath = 0;
     }
 
     // Update is called once per frame
@@ -48,45 +48,52 @@ public class ScoreBoard : MonoBehaviour
 
     void SizzleScoreBoard()
     {
-        Sizzle.text = "Kills: " + SizzleScore;
-        Sizzle.text = "Downs: " + SizzleDowns;
-        Sizzle.text = "Deaths: " + SizzleDeath;
-
-        if (sizzlehealth.playerState == PlayerHealth.PlayerState.REVIVE)
+        if (sizzlehealth.playerState == PlayerHealth.PlayerState.REVIVE && CheckMe == true)
         {
-            SizzleDowns++;
+            CheckMe = false;
+            SizzleDowns += 1;
+            SizzleD.text = SizzleDowns.ToString();
+        }
+        else if (sizzlehealth.playerState != PlayerHealth.PlayerState.REVIVE && CheckMe == false)
+        {
+            CheckMe = true;
         }
 
-        if(sizzleShooting.state == E_STATE.IGNITED)
+        if (sizzleShooting.currentHealth <= 0 && CheckMe == true)
         {
-            SizzleScore++;
+            CheckMe = false;
+            SizzleScore += 1;
+            Sizzle.text = SizzleScore.ToString();
+        }
+        else if (sizzleShooting.currentHealth != 0 && CheckMe == false)
+        {
+            CheckMe = true;
         }
 
-        if(sizzlehealth.playerState == PlayerHealth.PlayerState.DEAD)
-        {
-            SizzleDeath++;
-        }
     }
-    
     void ChunkScoreBoard()
     {
-        chunk.text = "Kills: " + ChunkScore;
-        chunk.text = "Downs: " + ChunkDowns;
-        chunk.text = "Deaths: " + ChunkDeath;
 
-        if (chunkhealth.playerState == PlayerHealth.PlayerState.REVIVE)
+        if (chunkhealth.playerState == PlayerHealth.PlayerState.REVIVE && CheckMe == true)
         {
-            ChunkDowns++;
+            CheckMe = false;
+            ChunkDowns += 1;
+            ChunkD.text = ChunkDowns.ToString();
+        }
+        else if (chunkhealth.playerState != PlayerHealth.PlayerState.REVIVE && CheckMe == false)
+        {
+            CheckMe = true;
         }
 
-        if (chunkShooting.target.currentHealth == 0)
+        if (chunkShooting.target.health <= 0 && CheckMe == true)
         {
-            ChunkScore++;
+            CheckMe = false;
+            ChunkScore += 1;
+            chunk.text = ChunkScore.ToString();
         }
-
-        if (chunkhealth.playerState == PlayerHealth.PlayerState.DEAD)
+        else if (chunkShooting.target.health != 0.0 && CheckMe == false)
         {
-            ChunkDeath++;
+            CheckMe = true;
         }
     }
 
@@ -105,6 +112,30 @@ public class ScoreBoard : MonoBehaviour
             }
         }
         else if (!XboxController.useController)
+        {
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                scoreBoard.SetActive(true);
+            }
+            else if (Input.GetKeyUp(KeyCode.Tab))
+            {
+                scoreBoard.SetActive(false);
+            }
+        }
+
+        if (XboxController2.useController == true)
+        {
+            // bringing up the score board
+            if (XCI.GetButtonDown(XboxButton.Back, XboxController2.controller))
+            {
+                scoreBoard.SetActive(true);
+            }
+            else if (XCI.GetButtonUp(XboxButton.Back, XboxController2.controller))
+            {
+                scoreBoard.SetActive(false);
+            }
+        }
+        else if (!XboxController2.useController)
         {
             if (Input.GetKeyDown(KeyCode.Tab))
             {
