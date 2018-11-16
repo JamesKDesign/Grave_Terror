@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: ff2bb6ec93ec8ea478c2e4f6bbb1a055
-timeCreated: 1541048313
+guid: 57ab4a9c461974c4faece082f30ade53
+timeCreated: 1542339304
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -28,27 +28,11 @@ ModelImporter:
     100040: Chunk_RightShoulder
     100042: Chunk_RightToeBase
     100044: Chunk_RightUpLeg
-    100046: Chunk_Root
-    100048: Chunk_Spine
-    100050: Chunk_Spine1
-    100052: Chunk_Spine2
-    100054: Ctrl_Head
-    100056: Ctrl_Hips
-    100058: Ctrl_LeftClavicle
-    100060: Ctrl_LeftFoot
-    100062: Ctrl_LeftWrist
-    100064: Ctrl_Neck
-    100066: Ctrl_RightClavicle
-    100068: Ctrl_RightFoot
-    100070: Ctrl_RightWrist
-    100072: Ctrl_Root
-    100074: Ctrl_Spine
-    100076: Ctrl_Spine1
-    100078: Ctrl_Spine2
-    100080: Grp_LeftClavicle
-    100082: Grp_RightClavicle
-    100084: Loc_Weapon_Handle
-    100086: Weapon_Chunk
+    100046: Chunk_Spine
+    100048: Chunk_Spine1
+    100050: Chunk_Spine2
+    100052: Loc_Weapon_Handle
+    100054: Weapon_Chunk
     400000: Chunk_Head
     400002: Chunk_Hips
     400004: Chunk_LeftArm
@@ -72,27 +56,11 @@ ModelImporter:
     400040: Chunk_RightShoulder
     400042: Chunk_RightToeBase
     400044: Chunk_RightUpLeg
-    400046: Chunk_Root
-    400048: Chunk_Spine
-    400050: Chunk_Spine1
-    400052: Chunk_Spine2
-    400054: Ctrl_Head
-    400056: Ctrl_Hips
-    400058: Ctrl_LeftClavicle
-    400060: Ctrl_LeftFoot
-    400062: Ctrl_LeftWrist
-    400064: Ctrl_Neck
-    400066: Ctrl_RightClavicle
-    400068: Ctrl_RightFoot
-    400070: Ctrl_RightWrist
-    400072: Ctrl_Root
-    400074: Ctrl_Spine
-    400076: Ctrl_Spine1
-    400078: Ctrl_Spine2
-    400080: Grp_LeftClavicle
-    400082: Grp_RightClavicle
-    400084: Loc_Weapon_Handle
-    400086: Weapon_Chunk
+    400046: Chunk_Spine
+    400048: Chunk_Spine1
+    400050: Chunk_Spine2
+    400052: Loc_Weapon_Handle
+    400054: Weapon_Chunk
     2100000: lambert2
     2100002: lambert3
     2300000: Weapon_Chunk

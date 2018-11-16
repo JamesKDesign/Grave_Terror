@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 31bcda6a460e18b42a6249c1394332e4
-timeCreated: 1542237318
+guid: 8e88c316a1b86f4488caef0389c4a6b2
+timeCreated: 1542337924
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -30,10 +30,9 @@ ModelImporter:
     100044: Zombie_RightThumb
     100046: Zombie_RightToeBase
     100048: Zombie_RightUpLeg
-    100050: Zombie_Root
-    100052: Zombie_Spine
-    100054: Zombie_Spine1
-    100056: Zombie_Spine2
+    100050: Zombie_Spine
+    100052: Zombie_Spine1
+    100054: Zombie_Spine2
     400000: Zombie_Head
     400002: Zombie_Hips
     400004: Zombie_LeftArm
@@ -59,10 +58,9 @@ ModelImporter:
     400044: Zombie_RightThumb
     400046: Zombie_RightToeBase
     400048: Zombie_RightUpLeg
-    400050: Zombie_Root
-    400052: Zombie_Spine
-    400054: Zombie_Spine1
-    400056: Zombie_Spine2
+    400050: Zombie_Spine
+    400052: Zombie_Spine1
+    400054: Zombie_Spine2
     2100000: lambert4
     4300000: Zombie_low
     9500000: //RootNode

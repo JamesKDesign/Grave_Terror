@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: a723b1f22de8bd242b572e549574d9bd
-timeCreated: 1541047015
+guid: 915da258a7a0d794cb3e5a57823badc8
+timeCreated: 1542339743
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -26,28 +26,12 @@ ModelImporter:
     100036: Chunk_RightShoulder
     100038: Chunk_RightToeBase
     100040: Chunk_RightUpLeg
-    100042: Chunk_Root
-    100044: Chunk_Spine
-    100046: Chunk_Spine1
-    100048: Chunk_Spine2
-    100050: //RootNode
-    100052: Ctrl_Head
-    100054: Ctrl_Hips
-    100056: Ctrl_LeftClavicle
-    100058: Ctrl_LeftFoot
-    100060: Ctrl_LeftWrist
-    100062: Ctrl_Neck
-    100064: Ctrl_RightClavicle
-    100066: Ctrl_RightFoot
-    100068: Ctrl_RightWrist
-    100070: Ctrl_Root
-    100072: Ctrl_Spine
-    100074: Ctrl_Spine1
-    100076: Ctrl_Spine2
-    100078: Grp_LeftClavicle
-    100080: Grp_RightClavicle
-    100082: Loc_Weapon_Handle
-    100084: Weapon_Chunk
+    100042: Chunk_Spine
+    100044: Chunk_Spine1
+    100046: Chunk_Spine2
+    100048: //RootNode
+    100050: Loc_Weapon_Handle
+    100052: Weapon_Chunk
     400000: Chunk_Head
     400002: Chunk_Hips
     400004: Chunk_LeftArm
@@ -69,33 +53,17 @@ ModelImporter:
     400036: Chunk_RightShoulder
     400038: Chunk_RightToeBase
     400040: Chunk_RightUpLeg
-    400042: Chunk_Root
-    400044: Chunk_Spine
-    400046: Chunk_Spine1
-    400048: Chunk_Spine2
-    400050: //RootNode
-    400052: Ctrl_Head
-    400054: Ctrl_Hips
-    400056: Ctrl_LeftClavicle
-    400058: Ctrl_LeftFoot
-    400060: Ctrl_LeftWrist
-    400062: Ctrl_Neck
-    400064: Ctrl_RightClavicle
-    400066: Ctrl_RightFoot
-    400068: Ctrl_RightWrist
-    400070: Ctrl_Root
-    400072: Ctrl_Spine
-    400074: Ctrl_Spine1
-    400076: Ctrl_Spine2
-    400078: Grp_LeftClavicle
-    400080: Grp_RightClavicle
-    400082: Loc_Weapon_Handle
-    400084: Weapon_Chunk
+    400042: Chunk_Spine
+    400044: Chunk_Spine1
+    400046: Chunk_Spine2
+    400048: //RootNode
+    400050: Loc_Weapon_Handle
+    400052: Weapon_Chunk
     2100000: lambert3
     2300000: Weapon_Chunk
     3300000: Weapon_Chunk
     4300000: Weapon_Chunk
-    7400000: Chunk_Walk
+    7400000: Take 001
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -123,35 +91,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Chunk_Walk
-      takeName: Take 001
-      firstFrame: 1
-      lastFrame: 29
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -198,7 +138,7 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: ff2bb6ec93ec8ea478c2e4f6bbb1a055,
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 57ab4a9c461974c4faece082f30ade53,
     type: 3}
   animationType: 2
   humanoidOversampling: 1

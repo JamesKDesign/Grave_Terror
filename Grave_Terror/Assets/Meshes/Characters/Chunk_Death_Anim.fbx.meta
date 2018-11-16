@@ -1,63 +1,70 @@
 fileFormatVersion: 2
-guid: 8816b6f8e2ab92944bae235bddeb7fc1
-timeCreated: 1542337924
+guid: 22eb6cb710406f2418331c84cd5e626e
+timeCreated: 1542339743
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Sizzle_Head
-    100002: Sizzle_Hips
-    100004: Sizzle_LeftArm
-    100006: Sizzle_LeftFoot
-    100008: Sizzle_LeftForeArm
-    100010: Sizzle_LeftHand
-    100012: Sizzle_LeftLeg
-    100014: Sizzle_LeftShoulder
-    100016: Sizzle_LeftToeBase
-    100018: Sizzle_LeftUpLeg
-    100020: Sizzle_Lowpoly
-    100022: Sizzle_Neck
-    100024: //RootNode
-    100026: Sizzle_RightArm
-    100028: Sizzle_RightFoot
-    100030: Sizzle_RightForeArm
-    100032: Sizzle_RightHand
-    100034: Sizzle_RightLeg
-    100036: Sizzle_RightShoulder
-    100038: Sizzle_RightToeBase
-    100040: Sizzle_RightUpLeg
-    100042: Sizzle_Spine
-    100044: Sizzle_Spine1
-    100046: Sizzle_Spine2
-    400000: Sizzle_Head
-    400002: Sizzle_Hips
-    400004: Sizzle_LeftArm
-    400006: Sizzle_LeftFoot
-    400008: Sizzle_LeftForeArm
-    400010: Sizzle_LeftHand
-    400012: Sizzle_LeftLeg
-    400014: Sizzle_LeftShoulder
-    400016: Sizzle_LeftToeBase
-    400018: Sizzle_LeftUpLeg
-    400020: Sizzle_Lowpoly
-    400022: Sizzle_Neck
-    400024: //RootNode
-    400026: Sizzle_RightArm
-    400028: Sizzle_RightFoot
-    400030: Sizzle_RightForeArm
-    400032: Sizzle_RightHand
-    400034: Sizzle_RightLeg
-    400036: Sizzle_RightShoulder
-    400038: Sizzle_RightToeBase
-    400040: Sizzle_RightUpLeg
-    400042: Sizzle_Spine
-    400044: Sizzle_Spine1
-    400046: Sizzle_Spine2
-    2100000: MAT_Weapon
-    2100002: MAT_Sizzle
-    4300000: Sizzle_Lowpoly
+    100000: //RootNode
+    100002: Chunk_Head
+    100004: Chunk_Hips
+    100006: Chunk_LeftArm
+    100008: Chunk_LeftFoot
+    100010: Chunk_LeftForeArm
+    100012: Chunk_LeftHand
+    100014: Chunk_LeftLeg
+    100016: Chunk_LeftPalm
+    100018: Chunk_LeftShoulder
+    100020: Chunk_LeftToeBase
+    100022: Chunk_LeftUpLeg
+    100024: Chunk_Neck
+    100026: Chunk_RightArm
+    100028: Chunk_RightFoot
+    100030: Chunk_RightForeArm
+    100032: Chunk_RightHand
+    100034: Chunk_RightLeg
+    100036: Chunk_RightPalm
+    100038: Chunk_RightShoulder
+    100040: Chunk_RightToeBase
+    100042: Chunk_RightUpLeg
+    100044: Chunk_Spine
+    100046: Chunk_Spine1
+    100048: Chunk_Spine2
+    100050: Loc_Weapon_Handle
+    100052: Weapon_Chunk
+    400000: //RootNode
+    400002: Chunk_Head
+    400004: Chunk_Hips
+    400006: Chunk_LeftArm
+    400008: Chunk_LeftFoot
+    400010: Chunk_LeftForeArm
+    400012: Chunk_LeftHand
+    400014: Chunk_LeftLeg
+    400016: Chunk_LeftPalm
+    400018: Chunk_LeftShoulder
+    400020: Chunk_LeftToeBase
+    400022: Chunk_LeftUpLeg
+    400024: Chunk_Neck
+    400026: Chunk_RightArm
+    400028: Chunk_RightFoot
+    400030: Chunk_RightForeArm
+    400032: Chunk_RightHand
+    400034: Chunk_RightLeg
+    400036: Chunk_RightPalm
+    400038: Chunk_RightShoulder
+    400040: Chunk_RightToeBase
+    400042: Chunk_RightUpLeg
+    400044: Chunk_Spine
+    400046: Chunk_Spine1
+    400048: Chunk_Spine2
+    400050: Loc_Weapon_Handle
+    400052: Weapon_Chunk
+    2100000: lambert3
+    2300000: Weapon_Chunk
+    3300000: Weapon_Chunk
+    4300000: Weapon_Chunk
+    7400000: Take 001
     9500000: //RootNode
-    13700000: Sizzle_Lowpoly
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -114,7 +121,7 @@ ModelImporter:
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1
-  copyAvatar: 0
+  copyAvatar: 1
   humanDescription:
     serializedVersion: 2
     human: []
@@ -131,7 +138,8 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 22eb6cb710406f2418331c84cd5e626e,
+    type: 3}
   animationType: 2
   humanoidOversampling: 1
   additionalBone: 0

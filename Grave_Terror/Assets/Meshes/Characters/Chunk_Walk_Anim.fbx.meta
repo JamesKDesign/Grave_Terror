@@ -1,64 +1,68 @@
 fileFormatVersion: 2
-guid: 4e1d71a38a9c68440a6e508d0914e514
-timeCreated: 1542253180
+guid: c819203e7f844ce45a215280948f1275
+timeCreated: 1542339743
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Zombie_Head
-    100004: Zombie_Hips
-    100006: Zombie_LeftArm
-    100008: Zombie_LeftFoot
-    100010: Zombie_LeftForeArm
-    100012: Zombie_LeftHand
-    100014: Zombie_LeftLeg
-    100016: Zombie_LeftPalm
-    100018: Zombie_LeftShoulder
-    100020: Zombie_LeftThumb
-    100022: Zombie_LeftToeBase
-    100024: Zombie_LeftUpLeg
-    100026: Zombie_Neck
-    100028: Zombie_RightArm
-    100030: Zombie_RightFoot
-    100032: Zombie_RightForeArm
-    100034: Zombie_RightHand
-    100036: Zombie_RightLeg
-    100038: Zombie_RightPalm
-    100040: Zombie_RightShoulder
-    100042: Zombie_RightThumb
-    100044: Zombie_RightToeBase
-    100046: Zombie_RightUpLeg
-    100048: Zombie_Spine
-    100050: Zombie_Spine1
-    100052: Zombie_Spine2
-    400000: //RootNode
-    400002: Zombie_Head
-    400004: Zombie_Hips
-    400006: Zombie_LeftArm
-    400008: Zombie_LeftFoot
-    400010: Zombie_LeftForeArm
-    400012: Zombie_LeftHand
-    400014: Zombie_LeftLeg
-    400016: Zombie_LeftPalm
-    400018: Zombie_LeftShoulder
-    400020: Zombie_LeftThumb
-    400022: Zombie_LeftToeBase
-    400024: Zombie_LeftUpLeg
-    400026: Zombie_Neck
-    400028: Zombie_RightArm
-    400030: Zombie_RightFoot
-    400032: Zombie_RightForeArm
-    400034: Zombie_RightHand
-    400036: Zombie_RightLeg
-    400038: Zombie_RightPalm
-    400040: Zombie_RightShoulder
-    400042: Zombie_RightThumb
-    400044: Zombie_RightToeBase
-    400046: Zombie_RightUpLeg
-    400048: Zombie_Spine
-    400050: Zombie_Spine1
-    400052: Zombie_Spine2
+    100000: Chunk_Head
+    100002: Chunk_Hips
+    100004: Chunk_LeftArm
+    100006: Chunk_LeftFoot
+    100008: Chunk_LeftForeArm
+    100010: Chunk_LeftHand
+    100012: Chunk_LeftLeg
+    100014: Chunk_LeftPalm
+    100016: Chunk_LeftShoulder
+    100018: Chunk_LeftToeBase
+    100020: Chunk_LeftUpLeg
+    100022: Chunk_Neck
+    100024: Chunk_RightArm
+    100026: Chunk_RightFoot
+    100028: Chunk_RightForeArm
+    100030: Chunk_RightHand
+    100032: Chunk_RightLeg
+    100034: Chunk_RightPalm
+    100036: Chunk_RightShoulder
+    100038: Chunk_RightToeBase
+    100040: Chunk_RightUpLeg
+    100042: Chunk_Spine
+    100044: Chunk_Spine1
+    100046: Chunk_Spine2
+    100048: //RootNode
+    100050: Loc_Weapon_Handle
+    100052: Weapon_Chunk
+    400000: Chunk_Head
+    400002: Chunk_Hips
+    400004: Chunk_LeftArm
+    400006: Chunk_LeftFoot
+    400008: Chunk_LeftForeArm
+    400010: Chunk_LeftHand
+    400012: Chunk_LeftLeg
+    400014: Chunk_LeftPalm
+    400016: Chunk_LeftShoulder
+    400018: Chunk_LeftToeBase
+    400020: Chunk_LeftUpLeg
+    400022: Chunk_Neck
+    400024: Chunk_RightArm
+    400026: Chunk_RightFoot
+    400028: Chunk_RightForeArm
+    400030: Chunk_RightHand
+    400032: Chunk_RightLeg
+    400034: Chunk_RightPalm
+    400036: Chunk_RightShoulder
+    400038: Chunk_RightToeBase
+    400040: Chunk_RightUpLeg
+    400042: Chunk_Spine
+    400044: Chunk_Spine1
+    400046: Chunk_Spine2
+    400048: //RootNode
+    400050: Loc_Weapon_Handle
+    400052: Weapon_Chunk
+    2100000: lambert3
+    2300000: Weapon_Chunk
+    3300000: Weapon_Chunk
+    4300000: Weapon_Chunk
     7400000: Take 001
     9500000: //RootNode
   externalObjects: {}
@@ -117,7 +121,7 @@ ModelImporter:
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1
-  copyAvatar: 0
+  copyAvatar: 1
   humanDescription:
     serializedVersion: 2
     human: []
@@ -134,7 +138,8 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 57ab4a9c461974c4faece082f30ade53,
+    type: 3}
   animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
