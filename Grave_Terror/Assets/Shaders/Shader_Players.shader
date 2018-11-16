@@ -1,28 +1,31 @@
 // Shader created with Shader Forge v1.37 
 // Shader Forge (c) Neat Corporation / Joachim Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
-/*SF_DATA;ver:1.37;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:4,bdst:1,dpts:2,wrdp:False,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:True,qofs:0,qpre:3,rntp:2,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:2865,x:32719,y:32652,varname:node_2865,prsc:2|diff-7736-RGB,spec-358-OUT,gloss-6915-R,normal-5964-RGB,emission-6915-B,difocc-6915-G,spcocc-6915-G;n:type:ShaderForge.SFN_Tex2d,id:7736,x:32320,y:32530,ptovrint:True,ptlb:Colour,ptin:_MainTex,varname:_MainTex,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Tex2d,id:5964,x:32320,y:32804,ptovrint:True,ptlb:Normal Map,ptin:_BumpMap,varname:_BumpMap,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:3,isnm:True;n:type:ShaderForge.SFN_Slider,id:358,x:32163,y:32709,ptovrint:False,ptlb:Metallic,ptin:_Metallic,varname:node_358,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Tex2d,id:6915,x:32320,y:32993,ptovrint:False,ptlb:Texture_Channel_Stack,ptin:_Texture_Channel_Stack,varname:node_6915,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:aa762ee7680f35f4fb9a9210fa94ce61,ntxv:2,isnm:False;proporder:7736-6915-358-5964;pass:END;sub:END;*/
+/*SF_DATA;ver:1.37;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:2,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:False,qofs:0,qpre:2,rntp:3,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.05442371,fgcg:0.07352942,fgcb:0.05082181,fgca:1,fgde:0.03,fgrn:0,fgrf:300,stcl:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:2865,x:32719,y:32712,varname:node_2865,prsc:2|diff-8743-RGB,spec-8979-OUT,gloss-9305-R,normal-8161-RGB,emission-8458-OUT,difocc-9305-G,spcocc-9305-G,clip-7177-OUT;n:type:ShaderForge.SFN_Tex2d,id:9350,x:31906,y:32601,ptovrint:False,ptlb:Dissolve_Noise,ptin:_Dissolve_Noise,varname:node_9350,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:28c7aad1372ff114b90d330f8a2dd938,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Slider,id:3980,x:31397,y:32842,ptovrint:False,ptlb:Dissolve_Value,ptin:_Dissolve_Value,varname:node_3980,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:1,max:3;n:type:ShaderForge.SFN_Add,id:6035,x:32081,y:32789,varname:node_6035,prsc:2|A-8813-OUT,B-9350-R;n:type:ShaderForge.SFN_OneMinus,id:3457,x:31732,y:32771,varname:node_3457,prsc:2|IN-3980-OUT;n:type:ShaderForge.SFN_RemapRange,id:2718,x:31554,y:32938,varname:node_2718,prsc:2,frmn:0,frmx:1,tomn:-8,tomx:8|IN-6035-OUT;n:type:ShaderForge.SFN_Clamp01,id:2157,x:31727,y:32938,varname:node_2157,prsc:2|IN-2718-OUT;n:type:ShaderForge.SFN_OneMinus,id:5861,x:31896,y:32938,varname:node_5861,prsc:2|IN-2157-OUT;n:type:ShaderForge.SFN_Append,id:539,x:32081,y:32954,varname:node_539,prsc:2|A-5861-OUT,B-4206-OUT;n:type:ShaderForge.SFN_Vector1,id:4206,x:31896,y:33079,varname:node_4206,prsc:2,v1:0;n:type:ShaderForge.SFN_Tex2d,id:513,x:32280,y:32954,varname:node_513,prsc:2,tex:857a8e9195b715848abbbbb790d378b1,ntxv:0,isnm:False|UVIN-539-OUT,MIP-4206-OUT,TEX-46-TEX;n:type:ShaderForge.SFN_Tex2dAsset,id:46,x:32081,y:33105,ptovrint:False,ptlb:Dissolve_Gradient,ptin:_Dissolve_Gradient,varname:node_46,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:857a8e9195b715848abbbbb790d378b1,ntxv:0,isnm:False;n:type:ShaderForge.SFN_RemapRange,id:8813,x:31906,y:32771,varname:node_8813,prsc:2,frmn:0,frmx:1,tomn:0.1,tomx:0.6|IN-3457-OUT;n:type:ShaderForge.SFN_Slider,id:8979,x:32295,y:32544,ptovrint:False,ptlb:Metalness,ptin:_Metalness,varname:node_8979,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Tex2d,id:8743,x:32452,y:32354,ptovrint:False,ptlb:Colour,ptin:_Colour,varname:node_8743,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:4e4c5ae656da06945b896f5eb2765fb3,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Tex2d,id:9305,x:32297,y:32772,ptovrint:False,ptlb:Texture Channel Stack,ptin:_TextureChannelStack,varname:node_9305,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:aa762ee7680f35f4fb9a9210fa94ce61,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Tex2d,id:8161,x:32452,y:32648,ptovrint:False,ptlb:Normal,ptin:_Normal,varname:node_8161,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:0287d053c8e7f0c41ae32d37ae118c64,ntxv:3,isnm:True;n:type:ShaderForge.SFN_Multiply,id:7177,x:32507,y:32971,varname:node_7177,prsc:2|A-6035-OUT,B-9305-A;n:type:ShaderForge.SFN_Add,id:8458,x:32507,y:32832,varname:node_8458,prsc:2|A-9305-B,B-513-RGB;proporder:8743-9305-8161-8979-3980-46-9350;pass:END;sub:END;*/
 
-Shader "Shader Forge/Characters" {
+Shader "Shader Forge/Players" {
     Properties {
-        _MainTex ("Colour", 2D) = "white" {}
-        _Texture_Channel_Stack ("Texture_Channel_Stack", 2D) = "black" {}
-        _Metallic ("Metallic", Range(0, 1)) = 0
-        _BumpMap ("Normal Map", 2D) = "bump" {}
+        _Colour ("Colour", 2D) = "white" {}
+        _TextureChannelStack ("Texture Channel Stack", 2D) = "white" {}
+        _Normal ("Normal", 2D) = "bump" {}
+        _Metalness ("Metalness", Range(0, 1)) = 0
+        _Dissolve_Value ("Dissolve_Value", Range(0, 3)) = 1
+        _Dissolve_Gradient ("Dissolve_Gradient", 2D) = "white" {}
+        _Dissolve_Noise ("Dissolve_Noise", 2D) = "white" {}
+        [HideInInspector]_Cutoff ("Alpha cutoff", Range(0,1)) = 0.5
     }
     SubShader {
         Tags {
-            "IgnoreProjector"="True"
-            "Queue"="Transparent"
-            "RenderType"="Transparent"
+            "Queue"="AlphaTest"
+            "RenderType"="TransparentCutout"
         }
         Pass {
             Name "FORWARD"
             Tags {
                 "LightMode"="ForwardBase"
             }
-            Blend DstColor Zero
-            ZWrite Off
+            Cull Off
+            
             
             CGPROGRAM
             #pragma vertex vert
@@ -31,20 +34,24 @@ Shader "Shader Forge/Characters" {
             #define SHOULD_SAMPLE_SH ( defined (LIGHTMAP_OFF) && defined(DYNAMICLIGHTMAP_OFF) )
             #define _GLOSSYENV 1
             #include "UnityCG.cginc"
+            #include "AutoLight.cginc"
             #include "Lighting.cginc"
             #include "UnityPBSLighting.cginc"
             #include "UnityStandardBRDF.cginc"
-            #pragma multi_compile_fwdbase
+            #pragma multi_compile_fwdbase_fullshadows
             #pragma multi_compile LIGHTMAP_OFF LIGHTMAP_ON
             #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
             #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
             #pragma multi_compile_fog
             #pragma only_renderers d3d9 d3d11 glcore gles 
             #pragma target 3.0
-            uniform sampler2D _MainTex; uniform float4 _MainTex_ST;
-            uniform sampler2D _BumpMap; uniform float4 _BumpMap_ST;
-            uniform float _Metallic;
-            uniform sampler2D _Texture_Channel_Stack; uniform float4 _Texture_Channel_Stack_ST;
+            uniform sampler2D _Dissolve_Noise; uniform float4 _Dissolve_Noise_ST;
+            uniform float _Dissolve_Value;
+            uniform sampler2D _Dissolve_Gradient; uniform float4 _Dissolve_Gradient_ST;
+            uniform float _Metalness;
+            uniform sampler2D _Colour; uniform float4 _Colour_ST;
+            uniform sampler2D _TextureChannelStack; uniform float4 _TextureChannelStack_ST;
+            uniform sampler2D _Normal; uniform float4 _Normal_ST;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
@@ -62,9 +69,10 @@ Shader "Shader Forge/Characters" {
                 float3 normalDir : TEXCOORD4;
                 float3 tangentDir : TEXCOORD5;
                 float3 bitangentDir : TEXCOORD6;
-                UNITY_FOG_COORDS(7)
+                LIGHTING_COORDS(7,8)
+                UNITY_FOG_COORDS(9)
                 #if defined(LIGHTMAP_ON) || defined(UNITY_SHOULD_SAMPLE_SH)
-                    float4 ambientOrLightmapUV : TEXCOORD8;
+                    float4 ambientOrLightmapUV : TEXCOORD10;
                 #endif
             };
             VertexOutput vert (VertexInput v) {
@@ -87,28 +95,35 @@ Shader "Shader Forge/Characters" {
                 float3 lightColor = _LightColor0.rgb;
                 o.pos = UnityObjectToClipPos( v.vertex );
                 UNITY_TRANSFER_FOG(o,o.pos);
+                TRANSFER_VERTEX_TO_FRAGMENT(o)
                 return o;
             }
-            float4 frag(VertexOutput i) : COLOR {
+            float4 frag(VertexOutput i, float facing : VFACE) : COLOR {
+                float isFrontFace = ( facing >= 0 ? 1 : 0 );
+                float faceSign = ( facing >= 0 ? 1 : -1 );
                 i.normalDir = normalize(i.normalDir);
+                i.normalDir *= faceSign;
                 float3x3 tangentTransform = float3x3( i.tangentDir, i.bitangentDir, i.normalDir);
                 float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
-                float3 _BumpMap_var = UnpackNormal(tex2D(_BumpMap,TRANSFORM_TEX(i.uv0, _BumpMap)));
-                float3 normalLocal = _BumpMap_var.rgb;
+                float3 _Normal_var = UnpackNormal(tex2D(_Normal,TRANSFORM_TEX(i.uv0, _Normal)));
+                float3 normalLocal = _Normal_var.rgb;
                 float3 normalDirection = normalize(mul( normalLocal, tangentTransform )); // Perturbed normals
                 float3 viewReflectDirection = reflect( -viewDirection, normalDirection );
+                float4 _Dissolve_Noise_var = tex2D(_Dissolve_Noise,TRANSFORM_TEX(i.uv0, _Dissolve_Noise));
+                float node_6035 = (((1.0 - _Dissolve_Value)*0.5+0.1)+_Dissolve_Noise_var.r);
+                float4 _TextureChannelStack_var = tex2D(_TextureChannelStack,TRANSFORM_TEX(i.uv0, _TextureChannelStack));
+                clip((node_6035*_TextureChannelStack_var.a) - 0.5);
                 float3 lightDirection = normalize(_WorldSpaceLightPos0.xyz);
                 float3 lightColor = _LightColor0.rgb;
                 float3 halfDirection = normalize(viewDirection+lightDirection);
 ////// Lighting:
-                float attenuation = 1;
+                float attenuation = LIGHT_ATTENUATION(i);
                 float3 attenColor = attenuation * _LightColor0.xyz;
                 float Pi = 3.141592654;
                 float InvPi = 0.31830988618;
 ///////// Gloss:
-                float4 _Texture_Channel_Stack_var = tex2D(_Texture_Channel_Stack,TRANSFORM_TEX(i.uv0, _Texture_Channel_Stack));
-                float gloss = _Texture_Channel_Stack_var.r;
-                float perceptualRoughness = 1.0 - _Texture_Channel_Stack_var.r;
+                float gloss = _TextureChannelStack_var.r;
+                float perceptualRoughness = 1.0 - _TextureChannelStack_var.r;
                 float roughness = perceptualRoughness * perceptualRoughness;
                 float specPow = exp2( gloss * 10.0 + 1.0 );
 /////// GI Data:
@@ -153,12 +168,12 @@ Shader "Shader Forge/Characters" {
                 lightColor = gi.light.color;
 ////// Specular:
                 float NdotL = saturate(dot( normalDirection, lightDirection ));
-                float3 specularAO = _Texture_Channel_Stack_var.g;
+                float3 specularAO = _TextureChannelStack_var.g;
                 float LdotH = saturate(dot(lightDirection, halfDirection));
-                float3 specularColor = _Metallic;
+                float3 specularColor = _Metalness;
                 float specularMonochrome;
-                float4 _MainTex_var = tex2D(_MainTex,TRANSFORM_TEX(i.uv0, _MainTex));
-                float3 diffuseColor = _MainTex_var.rgb; // Need this for specular when using metallic
+                float4 _Colour_var = tex2D(_Colour,TRANSFORM_TEX(i.uv0, _Colour));
+                float3 diffuseColor = _Colour_var.rgb; // Need this for specular when using metallic
                 diffuseColor = DiffuseAndSpecularFromMetallic( diffuseColor, specularColor, specularColor, specularMonochrome );
                 specularMonochrome = 1.0-specularMonochrome;
                 float NdotV = abs(dot( normalDirection, viewDirection ));
@@ -195,10 +210,13 @@ Shader "Shader Forge/Characters" {
                 float3 directDiffuse = ((1 +(fd90 - 1)*nlPow5) * (1 + (fd90 - 1)*nvPow5) * NdotL) * attenColor;
                 float3 indirectDiffuse = float3(0,0,0);
                 indirectDiffuse += gi.indirect.diffuse;
-                indirectDiffuse *= _Texture_Channel_Stack_var.g; // Diffuse AO
+                indirectDiffuse *= _TextureChannelStack_var.g; // Diffuse AO
                 float3 diffuse = (directDiffuse + indirectDiffuse) * diffuseColor;
 ////// Emissive:
-                float3 emissive = float3(_Texture_Channel_Stack_var.b,_Texture_Channel_Stack_var.b,_Texture_Channel_Stack_var.b);
+                float node_4206 = 0.0;
+                float2 node_539 = float2((1.0 - saturate((node_6035*16.0+-8.0))),node_4206);
+                float4 node_513 = tex2Dlod(_Dissolve_Gradient,float4(TRANSFORM_TEX(node_539, _Dissolve_Gradient),0.0,node_4206));
+                float3 emissive = (_TextureChannelStack_var.b+node_513.rgb);
 /// Final Color:
                 float3 finalColor = diffuse + specular + emissive;
                 fixed4 finalRGBA = fixed4(finalColor,1);
@@ -213,7 +231,8 @@ Shader "Shader Forge/Characters" {
                 "LightMode"="ForwardAdd"
             }
             Blend One One
-            ZWrite Off
+            Cull Off
+            
             
             CGPROGRAM
             #pragma vertex vert
@@ -226,17 +245,20 @@ Shader "Shader Forge/Characters" {
             #include "Lighting.cginc"
             #include "UnityPBSLighting.cginc"
             #include "UnityStandardBRDF.cginc"
-            #pragma multi_compile_fwdadd
+            #pragma multi_compile_fwdadd_fullshadows
             #pragma multi_compile LIGHTMAP_OFF LIGHTMAP_ON
             #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
             #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
             #pragma multi_compile_fog
             #pragma only_renderers d3d9 d3d11 glcore gles 
             #pragma target 3.0
-            uniform sampler2D _MainTex; uniform float4 _MainTex_ST;
-            uniform sampler2D _BumpMap; uniform float4 _BumpMap_ST;
-            uniform float _Metallic;
-            uniform sampler2D _Texture_Channel_Stack; uniform float4 _Texture_Channel_Stack_ST;
+            uniform sampler2D _Dissolve_Noise; uniform float4 _Dissolve_Noise_ST;
+            uniform float _Dissolve_Value;
+            uniform sampler2D _Dissolve_Gradient; uniform float4 _Dissolve_Gradient_ST;
+            uniform float _Metalness;
+            uniform sampler2D _Colour; uniform float4 _Colour_ST;
+            uniform sampler2D _TextureChannelStack; uniform float4 _TextureChannelStack_ST;
+            uniform sampler2D _Normal; uniform float4 _Normal_ST;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
@@ -272,13 +294,20 @@ Shader "Shader Forge/Characters" {
                 TRANSFER_VERTEX_TO_FRAGMENT(o)
                 return o;
             }
-            float4 frag(VertexOutput i) : COLOR {
+            float4 frag(VertexOutput i, float facing : VFACE) : COLOR {
+                float isFrontFace = ( facing >= 0 ? 1 : 0 );
+                float faceSign = ( facing >= 0 ? 1 : -1 );
                 i.normalDir = normalize(i.normalDir);
+                i.normalDir *= faceSign;
                 float3x3 tangentTransform = float3x3( i.tangentDir, i.bitangentDir, i.normalDir);
                 float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
-                float3 _BumpMap_var = UnpackNormal(tex2D(_BumpMap,TRANSFORM_TEX(i.uv0, _BumpMap)));
-                float3 normalLocal = _BumpMap_var.rgb;
+                float3 _Normal_var = UnpackNormal(tex2D(_Normal,TRANSFORM_TEX(i.uv0, _Normal)));
+                float3 normalLocal = _Normal_var.rgb;
                 float3 normalDirection = normalize(mul( normalLocal, tangentTransform )); // Perturbed normals
+                float4 _Dissolve_Noise_var = tex2D(_Dissolve_Noise,TRANSFORM_TEX(i.uv0, _Dissolve_Noise));
+                float node_6035 = (((1.0 - _Dissolve_Value)*0.5+0.1)+_Dissolve_Noise_var.r);
+                float4 _TextureChannelStack_var = tex2D(_TextureChannelStack,TRANSFORM_TEX(i.uv0, _TextureChannelStack));
+                clip((node_6035*_TextureChannelStack_var.a) - 0.5);
                 float3 lightDirection = normalize(lerp(_WorldSpaceLightPos0.xyz, _WorldSpaceLightPos0.xyz - i.posWorld.xyz,_WorldSpaceLightPos0.w));
                 float3 lightColor = _LightColor0.rgb;
                 float3 halfDirection = normalize(viewDirection+lightDirection);
@@ -288,18 +317,17 @@ Shader "Shader Forge/Characters" {
                 float Pi = 3.141592654;
                 float InvPi = 0.31830988618;
 ///////// Gloss:
-                float4 _Texture_Channel_Stack_var = tex2D(_Texture_Channel_Stack,TRANSFORM_TEX(i.uv0, _Texture_Channel_Stack));
-                float gloss = _Texture_Channel_Stack_var.r;
-                float perceptualRoughness = 1.0 - _Texture_Channel_Stack_var.r;
+                float gloss = _TextureChannelStack_var.r;
+                float perceptualRoughness = 1.0 - _TextureChannelStack_var.r;
                 float roughness = perceptualRoughness * perceptualRoughness;
                 float specPow = exp2( gloss * 10.0 + 1.0 );
 ////// Specular:
                 float NdotL = saturate(dot( normalDirection, lightDirection ));
                 float LdotH = saturate(dot(lightDirection, halfDirection));
-                float3 specularColor = _Metallic;
+                float3 specularColor = _Metalness;
                 float specularMonochrome;
-                float4 _MainTex_var = tex2D(_MainTex,TRANSFORM_TEX(i.uv0, _MainTex));
-                float3 diffuseColor = _MainTex_var.rgb; // Need this for specular when using metallic
+                float4 _Colour_var = tex2D(_Colour,TRANSFORM_TEX(i.uv0, _Colour));
+                float3 diffuseColor = _Colour_var.rgb; // Need this for specular when using metallic
                 diffuseColor = DiffuseAndSpecularFromMetallic( diffuseColor, specularColor, specularColor, specularMonochrome );
                 specularMonochrome = 1.0-specularMonochrome;
                 float NdotV = abs(dot( normalDirection, viewDirection ));
@@ -334,6 +362,70 @@ Shader "Shader Forge/Characters" {
             ENDCG
         }
         Pass {
+            Name "ShadowCaster"
+            Tags {
+                "LightMode"="ShadowCaster"
+            }
+            Offset 1, 1
+            Cull Off
+            
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            #define UNITY_PASS_SHADOWCASTER
+            #define SHOULD_SAMPLE_SH ( defined (LIGHTMAP_OFF) && defined(DYNAMICLIGHTMAP_OFF) )
+            #define _GLOSSYENV 1
+            #include "UnityCG.cginc"
+            #include "Lighting.cginc"
+            #include "UnityPBSLighting.cginc"
+            #include "UnityStandardBRDF.cginc"
+            #pragma fragmentoption ARB_precision_hint_fastest
+            #pragma multi_compile_shadowcaster
+            #pragma multi_compile LIGHTMAP_OFF LIGHTMAP_ON
+            #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
+            #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
+            #pragma multi_compile_fog
+            #pragma only_renderers d3d9 d3d11 glcore gles 
+            #pragma target 3.0
+            uniform sampler2D _Dissolve_Noise; uniform float4 _Dissolve_Noise_ST;
+            uniform float _Dissolve_Value;
+            uniform sampler2D _TextureChannelStack; uniform float4 _TextureChannelStack_ST;
+            struct VertexInput {
+                float4 vertex : POSITION;
+                float2 texcoord0 : TEXCOORD0;
+                float2 texcoord1 : TEXCOORD1;
+                float2 texcoord2 : TEXCOORD2;
+            };
+            struct VertexOutput {
+                V2F_SHADOW_CASTER;
+                float2 uv0 : TEXCOORD1;
+                float2 uv1 : TEXCOORD2;
+                float2 uv2 : TEXCOORD3;
+                float4 posWorld : TEXCOORD4;
+            };
+            VertexOutput vert (VertexInput v) {
+                VertexOutput o = (VertexOutput)0;
+                o.uv0 = v.texcoord0;
+                o.uv1 = v.texcoord1;
+                o.uv2 = v.texcoord2;
+                o.posWorld = mul(unity_ObjectToWorld, v.vertex);
+                o.pos = UnityObjectToClipPos( v.vertex );
+                TRANSFER_SHADOW_CASTER(o)
+                return o;
+            }
+            float4 frag(VertexOutput i, float facing : VFACE) : COLOR {
+                float isFrontFace = ( facing >= 0 ? 1 : 0 );
+                float faceSign = ( facing >= 0 ? 1 : -1 );
+                float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
+                float4 _Dissolve_Noise_var = tex2D(_Dissolve_Noise,TRANSFORM_TEX(i.uv0, _Dissolve_Noise));
+                float node_6035 = (((1.0 - _Dissolve_Value)*0.5+0.1)+_Dissolve_Noise_var.r);
+                float4 _TextureChannelStack_var = tex2D(_TextureChannelStack,TRANSFORM_TEX(i.uv0, _TextureChannelStack));
+                clip((node_6035*_TextureChannelStack_var.a) - 0.5);
+                SHADOW_CASTER_FRAGMENT(i)
+            }
+            ENDCG
+        }
+        Pass {
             Name "Meta"
             Tags {
                 "LightMode"="Meta"
@@ -359,9 +451,12 @@ Shader "Shader Forge/Characters" {
             #pragma multi_compile_fog
             #pragma only_renderers d3d9 d3d11 glcore gles 
             #pragma target 3.0
-            uniform sampler2D _MainTex; uniform float4 _MainTex_ST;
-            uniform float _Metallic;
-            uniform sampler2D _Texture_Channel_Stack; uniform float4 _Texture_Channel_Stack_ST;
+            uniform sampler2D _Dissolve_Noise; uniform float4 _Dissolve_Noise_ST;
+            uniform float _Dissolve_Value;
+            uniform sampler2D _Dissolve_Gradient; uniform float4 _Dissolve_Gradient_ST;
+            uniform float _Metalness;
+            uniform sampler2D _Colour; uniform float4 _Colour_ST;
+            uniform sampler2D _TextureChannelStack; uniform float4 _TextureChannelStack_ST;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float2 texcoord0 : TEXCOORD0;
@@ -384,20 +479,27 @@ Shader "Shader Forge/Characters" {
                 o.pos = UnityMetaVertexPosition(v.vertex, v.texcoord1.xy, v.texcoord2.xy, unity_LightmapST, unity_DynamicLightmapST );
                 return o;
             }
-            float4 frag(VertexOutput i) : SV_Target {
+            float4 frag(VertexOutput i, float facing : VFACE) : SV_Target {
+                float isFrontFace = ( facing >= 0 ? 1 : 0 );
+                float faceSign = ( facing >= 0 ? 1 : -1 );
                 float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
                 UnityMetaInput o;
                 UNITY_INITIALIZE_OUTPUT( UnityMetaInput, o );
                 
-                float4 _Texture_Channel_Stack_var = tex2D(_Texture_Channel_Stack,TRANSFORM_TEX(i.uv0, _Texture_Channel_Stack));
-                o.Emission = float3(_Texture_Channel_Stack_var.b,_Texture_Channel_Stack_var.b,_Texture_Channel_Stack_var.b);
+                float4 _TextureChannelStack_var = tex2D(_TextureChannelStack,TRANSFORM_TEX(i.uv0, _TextureChannelStack));
+                float4 _Dissolve_Noise_var = tex2D(_Dissolve_Noise,TRANSFORM_TEX(i.uv0, _Dissolve_Noise));
+                float node_6035 = (((1.0 - _Dissolve_Value)*0.5+0.1)+_Dissolve_Noise_var.r);
+                float node_4206 = 0.0;
+                float2 node_539 = float2((1.0 - saturate((node_6035*16.0+-8.0))),node_4206);
+                float4 node_513 = tex2Dlod(_Dissolve_Gradient,float4(TRANSFORM_TEX(node_539, _Dissolve_Gradient),0.0,node_4206));
+                o.Emission = (_TextureChannelStack_var.b+node_513.rgb);
                 
-                float4 _MainTex_var = tex2D(_MainTex,TRANSFORM_TEX(i.uv0, _MainTex));
-                float3 diffColor = _MainTex_var.rgb;
+                float4 _Colour_var = tex2D(_Colour,TRANSFORM_TEX(i.uv0, _Colour));
+                float3 diffColor = _Colour_var.rgb;
                 float specularMonochrome;
                 float3 specColor;
-                diffColor = DiffuseAndSpecularFromMetallic( diffColor, _Metallic, specColor, specularMonochrome );
-                float roughness = 1.0 - _Texture_Channel_Stack_var.r;
+                diffColor = DiffuseAndSpecularFromMetallic( diffColor, _Metalness, specColor, specularMonochrome );
+                float roughness = 1.0 - _TextureChannelStack_var.r;
                 o.Albedo = diffColor + specColor * roughness * roughness * 0.5;
                 
                 return UnityMetaFragment( o );
