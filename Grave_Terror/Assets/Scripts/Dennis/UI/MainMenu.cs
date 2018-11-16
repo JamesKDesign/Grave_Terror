@@ -255,7 +255,7 @@ public class MainMenu : MonoBehaviour
 
 	private void GameUpdate()
 	{
-		if (moving)
+		if (moving) //If both players are dead
 		{
 			if (timer <= 0.0f)
 			{
@@ -324,6 +324,18 @@ public class MainMenu : MonoBehaviour
 
 			timer = 0.0f;
 			moving = false;
+
+			//Override player controller settings
+			if (p1Selected == 0)
+			{
+				players[0].GetComponent<PlayerMovement>().xboxController = p1XCtrl;
+				players[1].GetComponent<PlayerMovement>().xboxController = p2XCtrl;
+			}
+			else
+			{
+				players[1].GetComponent<PlayerMovement>().xboxController = p1XCtrl;
+				players[0].GetComponent<PlayerMovement>().xboxController = p2XCtrl;
+			}
 		}
 	}
 
