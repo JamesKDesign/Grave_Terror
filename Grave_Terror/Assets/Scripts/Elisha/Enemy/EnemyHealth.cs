@@ -4,6 +4,7 @@ public class EnemyHealth : MonoBehaviour
 {
     public int health;
     public float currentHealth;
+    
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class EnemyHealth : MonoBehaviour
     public void DamageHealth(float amount)
     {
         currentHealth -= amount;
+
         print("Enemy health is " + currentHealth);
     }
 }

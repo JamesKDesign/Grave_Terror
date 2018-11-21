@@ -9,6 +9,7 @@ public class PlayerShooting : MonoBehaviour
     private GameObject holes;
     public GameObject chunkRotation;
     public ParticleSystem muzzleFlash;
+    public ParticleSystem bulletCasing;
     public XboxControllerManager xboxController;
     private GameObject bullet;
     public float delay;
@@ -18,6 +19,13 @@ public class PlayerShooting : MonoBehaviour
     public EnemyHealth target;
 
     public new Animator anim;
+
+    public CameraController cameraController;
+
+    void Start()
+    {
+        cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
+    }
 
     // Raycasting
     private void FixedUpdate()
@@ -31,6 +39,8 @@ public class PlayerShooting : MonoBehaviour
                 {
                     //anim.SetBool("isShooting", true);
                     muzzleFlash.Play();
+                    bulletCasing.Play();
+
                     // bullets
                     bullet = Instantiate(particleProjectile, transform.position, chunkRotation.transform.rotation);
                     counter = 0f;
@@ -47,6 +57,10 @@ public class PlayerShooting : MonoBehaviour
                         {
                             target.DamageHealth(damageToGive);
                             // blood
+
+                            cameraController.ShakeCamera();
+                            Debug.Log("shake");
+
                             GameObject impact = Instantiate(bloodEffect, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                             Destroy(impact, 0.5f);
                         }
@@ -65,6 +79,7 @@ public class PlayerShooting : MonoBehaviour
             else if (XCI.GetAxis(XboxAxis.RightTrigger, xboxController.controller) < 0.1)
             {
                 muzzleFlash.Stop();
+                bulletCasing.Stop();
 
                 anim.SetBool("IsAttacking", false);
             }
@@ -78,6 +93,7 @@ public class PlayerShooting : MonoBehaviour
                 {
                     //anim.SetBool("isShooting", true);
                     muzzleFlash.Play();
+                    bulletCasing.Play();
                     // bullets
                     bullet = Instantiate(particleProjectile, transform.position, chunkRotation.transform.rotation);
                     Destroy(bullet, 1f);
@@ -113,6 +129,7 @@ public class PlayerShooting : MonoBehaviour
             else if (Input.GetKeyUp(KeyCode.Mouse0) && counter < delay)
             {
                 muzzleFlash.Stop();
+                bulletCasing.Stop();
                 anim.SetBool("IsAttacking", false);
             }
         }
