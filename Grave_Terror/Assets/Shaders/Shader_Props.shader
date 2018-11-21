@@ -1,15 +1,15 @@
 // Shader created with Shader Forge v1.37 
 // Shader Forge (c) Neat Corporation / Joachim Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
-/*SF_DATA;ver:1.37;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:False,qofs:0,qpre:2,rntp:3,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:2865,x:32900,y:32459,varname:node_2865,prsc:2|diff-7736-RGB,spec-358-OUT,gloss-9160-R,normal-5964-RGB,emission-3502-OUT,difocc-9160-G,clip-9160-A;n:type:ShaderForge.SFN_Tex2d,id:7736,x:32506,y:32306,ptovrint:True,ptlb:Colour,ptin:_MainTex,varname:_MainTex,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Tex2d,id:5964,x:32506,y:32488,ptovrint:True,ptlb:Normals,ptin:_BumpMap,varname:_BumpMap,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:3,isnm:True;n:type:ShaderForge.SFN_Slider,id:358,x:32866,y:32372,ptovrint:False,ptlb:Metallic,ptin:_Metallic,varname:node_358,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Tex2d,id:9160,x:32506,y:32664,ptovrint:False,ptlb:Texture_Channel_Stack,ptin:_Texture_Channel_Stack,varname:node_9160,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:aa762ee7680f35f4fb9a9210fa94ce61,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Multiply,id:5234,x:32510,y:32844,varname:node_5234,prsc:2|A-9160-B,B-9586-OUT;n:type:ShaderForge.SFN_Blend,id:3502,x:32698,y:32844,varname:node_3502,prsc:2,blmd:0,clmp:True|SRC-5234-OUT,DST-5422-RGB;n:type:ShaderForge.SFN_RemapRange,id:9586,x:32344,y:33010,varname:node_9586,prsc:2,frmn:0,frmx:1,tomn:-1,tomx:1|IN-6337-OUT;n:type:ShaderForge.SFN_Multiply,id:1212,x:32175,y:32862,varname:node_1212,prsc:2|A-5854-TDB,B-5863-OUT;n:type:ShaderForge.SFN_Sin,id:6337,x:32175,y:33010,varname:node_6337,prsc:2|IN-1212-OUT;n:type:ShaderForge.SFN_ValueProperty,id:5863,x:32006,y:32915,ptovrint:False,ptlb:Pulse_Speed,ptin:_Pulse_Speed,varname:node_5863,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:1;n:type:ShaderForge.SFN_Color,id:5422,x:32510,y:32994,ptovrint:False,ptlb:Color.2,ptin:_Color2,varname:node_5422,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.986207,c2:0,c3:1,c4:1;n:type:ShaderForge.SFN_Time,id:5854,x:32006,y:32764,varname:node_5854,prsc:2;proporder:5964-7736-358-9160-5422-5863;pass:END;sub:END;*/
+/*SF_DATA;ver:1.37;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:False,qofs:0,qpre:2,rntp:3,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:2865,x:32900,y:32459,varname:node_2865,prsc:2|diff-7736-RGB,spec-358-OUT,gloss-9160-R,normal-5964-RGB,emission-3502-OUT,difocc-9160-G,clip-9160-A;n:type:ShaderForge.SFN_Tex2d,id:7736,x:32506,y:32306,ptovrint:True,ptlb:Colour,ptin:_MainTex,varname:_MainTex,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Tex2d,id:5964,x:32506,y:32488,ptovrint:True,ptlb:Normals,ptin:_BumpMap,varname:_BumpMap,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:3,isnm:True;n:type:ShaderForge.SFN_Slider,id:358,x:32866,y:32372,ptovrint:False,ptlb:Metallic,ptin:_Metallic,varname:node_358,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Tex2d,id:9160,x:32506,y:32664,ptovrint:False,ptlb:Texture_Channel_Stack,ptin:_Texture_Channel_Stack,varname:node_9160,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:aa762ee7680f35f4fb9a9210fa94ce61,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Multiply,id:5234,x:32510,y:32844,varname:node_5234,prsc:2|A-9160-B,B-9586-OUT;n:type:ShaderForge.SFN_Blend,id:3502,x:32698,y:32844,varname:node_3502,prsc:2,blmd:0,clmp:True|SRC-5234-OUT,DST-5422-RGB;n:type:ShaderForge.SFN_RemapRange,id:9586,x:32344,y:33010,varname:node_9586,prsc:2,frmn:0,frmx:1,tomn:-1,tomx:1|IN-6337-OUT;n:type:ShaderForge.SFN_Multiply,id:1212,x:32175,y:32862,varname:node_1212,prsc:2|A-5854-TDB,B-5863-OUT;n:type:ShaderForge.SFN_Sin,id:6337,x:32175,y:33010,varname:node_6337,prsc:2|IN-1212-OUT;n:type:ShaderForge.SFN_ValueProperty,id:5863,x:32006,y:32915,ptovrint:False,ptlb:Pulse_Speed,ptin:_Pulse_Speed,varname:node_5863,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:1;n:type:ShaderForge.SFN_Color,id:5422,x:32510,y:32994,ptovrint:False,ptlb:Emission Colour,ptin:_EmissionColour,varname:node_5422,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.986207,c2:0,c3:1,c4:1;n:type:ShaderForge.SFN_Time,id:5854,x:32006,y:32764,varname:node_5854,prsc:2;proporder:7736-9160-5964-358-5422-5863;pass:END;sub:END;*/
 
 Shader "Shader Forge/Props" {
     Properties {
-        _BumpMap ("Normals", 2D) = "bump" {}
         _MainTex ("Colour", 2D) = "white" {}
-        _Metallic ("Metallic", Range(0, 1)) = 0
         _Texture_Channel_Stack ("Texture_Channel_Stack", 2D) = "white" {}
-        _Color2 ("Color.2", Color) = (0.986207,0,1,1)
+        _BumpMap ("Normals", 2D) = "bump" {}
+        _Metallic ("Metallic", Range(0, 1)) = 0
+        _EmissionColour ("Emission Colour", Color) = (0.986207,0,1,1)
         _Pulse_Speed ("Pulse_Speed", Float ) = 1
         [HideInInspector]_Cutoff ("Alpha cutoff", Range(0,1)) = 0.5
     }
@@ -49,7 +49,7 @@ Shader "Shader Forge/Props" {
             uniform float _Metallic;
             uniform sampler2D _Texture_Channel_Stack; uniform float4 _Texture_Channel_Stack_ST;
             uniform float _Pulse_Speed;
-            uniform float4 _Color2;
+            uniform float4 _EmissionColour;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
@@ -206,7 +206,7 @@ Shader "Shader Forge/Props" {
                 float3 diffuse = (directDiffuse + indirectDiffuse) * diffuseColor;
 ////// Emissive:
                 float4 node_5854 = _Time + _TimeEditor;
-                float3 emissive = saturate(min((_Texture_Channel_Stack_var.b*(sin((node_5854.b*_Pulse_Speed))*2.0+-1.0)),_Color2.rgb));
+                float3 emissive = saturate(min((_Texture_Channel_Stack_var.b*(sin((node_5854.b*_Pulse_Speed))*2.0+-1.0)),_EmissionColour.rgb));
 /// Final Color:
                 float3 finalColor = diffuse + specular + emissive;
                 fixed4 finalRGBA = fixed4(finalColor,1);
@@ -247,7 +247,7 @@ Shader "Shader Forge/Props" {
             uniform float _Metallic;
             uniform sampler2D _Texture_Channel_Stack; uniform float4 _Texture_Channel_Stack_ST;
             uniform float _Pulse_Speed;
-            uniform float4 _Color2;
+            uniform float4 _EmissionColour;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
@@ -434,7 +434,7 @@ Shader "Shader Forge/Props" {
             uniform float _Metallic;
             uniform sampler2D _Texture_Channel_Stack; uniform float4 _Texture_Channel_Stack_ST;
             uniform float _Pulse_Speed;
-            uniform float4 _Color2;
+            uniform float4 _EmissionColour;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float2 texcoord0 : TEXCOORD0;
@@ -464,7 +464,7 @@ Shader "Shader Forge/Props" {
                 
                 float4 _Texture_Channel_Stack_var = tex2D(_Texture_Channel_Stack,TRANSFORM_TEX(i.uv0, _Texture_Channel_Stack));
                 float4 node_5854 = _Time + _TimeEditor;
-                o.Emission = saturate(min((_Texture_Channel_Stack_var.b*(sin((node_5854.b*_Pulse_Speed))*2.0+-1.0)),_Color2.rgb));
+                o.Emission = saturate(min((_Texture_Channel_Stack_var.b*(sin((node_5854.b*_Pulse_Speed))*2.0+-1.0)),_EmissionColour.rgb));
                 
                 float4 _MainTex_var = tex2D(_MainTex,TRANSFORM_TEX(i.uv0, _MainTex));
                 float3 diffColor = _MainTex_var.rgb;
