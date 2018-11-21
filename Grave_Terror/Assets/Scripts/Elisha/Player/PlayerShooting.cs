@@ -51,54 +51,52 @@ public class PlayerShooting : MonoBehaviour
                 }
                 if (XCI.GetAxis(XboxAxis.RightTrigger, xboxController.controller) > 0.1f)
                 {
-                    if (counter > delay)
-                    {
-                        //anim.SetBool("isShooting", true);
-                        muzzleFlash.Play();
-                        bulletCasing.Play();
+					if (counter > delay)
+					{
+						//anim.SetBool("isShooting", true);
+						muzzleFlash.Play();
+						bulletCasing.Play();
 
-                        // bullets
-                    //anim.SetBool("IsAttacking", true);
-                        bullet = Instantiate(particleProjectile, transform.position, chunkRotation.transform.rotation);
-                        counter = 0f;
+						// bullets
+						//anim.SetBool("IsAttacking", true);
+						bullet = Instantiate(particleProjectile, transform.position, chunkRotation.transform.rotation);
+						counter = 0f;
 
-                        anim.SetBool("IsAttacking", true);
+						anim.SetBool("IsAttacking", true);
 
-                        RaycastHit hit;
-                        Ray rayCast = new Ray(transform.position, transform.forward);
-                        if (Physics.Raycast(rayCast, out hit, range))
-                    RaycastHit hit;
-                    Ray rayCast = new Ray(transform.position, transform.forward);
-                    if (Physics.Raycast(rayCast, out hit, range, layerMask))
-                    {
-                        // enemy health damaged
-                        target = hit.transform.GetComponent<EnemyHealth>();
-                        if (target != null)
-                        {
-                            // enemy health damaged
-                            target = hit.transform.GetComponent<EnemyHealth>();
-                            if (target != null)
-                            {
-                                target.DamageHealth(damageToGive);
-                                // blood
+						RaycastHit hit;
+						Ray rayCast = new Ray(transform.position, transform.forward);
+						if (Physics.Raycast(rayCast, out hit, range, layerMask))
+						{
+							// enemy health damaged
+							target = hit.transform.GetComponent<EnemyHealth>();
+							if (target != null)
+							{
+								// enemy health damaged
+								target = hit.transform.GetComponent<EnemyHealth>();
+								if (target != null)
+								{
+									target.DamageHealth(damageToGive);
+									// blood
 
-                                cameraController.ShakeCamera();
-                                Debug.Log("shake");
+									cameraController.ShakeCamera();
+									Debug.Log("shake");
 
-                                GameObject impact = Instantiate(bloodEffect, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                                Destroy(impact, 0.5f);
-                            }
+									GameObject impact = Instantiate(bloodEffect, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+									Destroy(impact, 0.5f);
+								}
 
-                            DestructableObjects obj = hit.transform.GetComponent<DestructableObjects>();
-                            if (obj != null)
-                            {
-                                obj.ObjectDamage(damageToGive);
-                                // blood
-                                holes = Instantiate(bulletHole, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                                Destroy(holes, 0.2f);
-                            }
-                        }
-                    }
+								DestructableObjects obj = hit.transform.GetComponent<DestructableObjects>();
+								if (obj != null)
+								{
+									obj.ObjectDamage(damageToGive);
+									// blood
+									holes = Instantiate(bulletHole, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+									Destroy(holes, 0.2f);
+								}
+							}
+						}
+					}
                 }
                 else if (XCI.GetAxis(XboxAxis.RightTrigger, xboxController.controller) < 0.1)
                 {
