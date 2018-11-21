@@ -17,6 +17,8 @@ public class PlayerHealth : MonoBehaviour
     public GameObject reviveVolume;
     public float deathTime;
 
+    public Animator anim;
+
     public enum PlayerState
     {
         ALIVE,
@@ -47,6 +49,8 @@ public class PlayerHealth : MonoBehaviour
             // Player alive with full functions
             case PlayerState.ALIVE:
                 print("In alive state");
+
+                anim.SetBool("IsDowned", false);
                 timer = deathTime;
                 controls.Dashing();
                 controls.Turning();
@@ -54,6 +58,8 @@ public class PlayerHealth : MonoBehaviour
             // Player revive state can rotate player and shoot 
             case PlayerState.REVIVE:
                 print("In revive state");
+
+                anim.SetBool("IsDowned", true);
                 // death timer hits 0 will kill the player 
                 if (timer == 0.0f)
                 {

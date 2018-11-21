@@ -23,6 +23,8 @@ public class PlayerShooting : MonoBehaviour
 
     public CameraController cameraController;
 
+    public LayerMask layerMask;
+
     void Start()
     {
         cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
@@ -43,6 +45,8 @@ public class PlayerShooting : MonoBehaviour
                 counter += Time.deltaTime;
                 if (health.currentHealth > 0)
                 {
+                    muzzleFlash.Play();
+                    bulletCasing.Play();
 
                 }
                 if (XCI.GetAxis(XboxAxis.RightTrigger, xboxController.controller) > 0.1f)
@@ -54,6 +58,7 @@ public class PlayerShooting : MonoBehaviour
                         bulletCasing.Play();
 
                         // bullets
+                    //anim.SetBool("IsAttacking", true);
                         bullet = Instantiate(particleProjectile, transform.position, chunkRotation.transform.rotation);
                         counter = 0f;
 
@@ -62,6 +67,13 @@ public class PlayerShooting : MonoBehaviour
                         RaycastHit hit;
                         Ray rayCast = new Ray(transform.position, transform.forward);
                         if (Physics.Raycast(rayCast, out hit, range))
+                    RaycastHit hit;
+                    Ray rayCast = new Ray(transform.position, transform.forward);
+                    if (Physics.Raycast(rayCast, out hit, range, layerMask))
+                    {
+                        // enemy health damaged
+                        target = hit.transform.GetComponent<EnemyHealth>();
+                        if (target != null)
                         {
                             // enemy health damaged
                             target = hit.transform.GetComponent<EnemyHealth>();
@@ -93,7 +105,7 @@ public class PlayerShooting : MonoBehaviour
                     muzzleFlash.Stop();
                     bulletCasing.Stop();
 
-                    anim.SetBool("IsAttacking", false);
+                //anim.SetBool("IsAttacking", false);
                 }
             }
             else if (!xboxController.useController)

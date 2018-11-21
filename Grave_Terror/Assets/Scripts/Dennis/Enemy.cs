@@ -54,6 +54,9 @@ public class Enemy : MonoBehaviour
     [Tooltip("Actor travel speed")]
     public float movementSpeed;
 
+    public float movementSpeedVariance;
+    private float originalMove;
+
     //What path this actors following
     [HideInInspector]
     public int path = -1;
@@ -92,6 +95,8 @@ public class Enemy : MonoBehaviour
 
     bool m_IsTargeted = false;
 
+    public Animator anim;
+
     // Use this for initialization
     void Start()
     {
@@ -100,6 +105,10 @@ public class Enemy : MonoBehaviour
         behaviours.Add(new EnemyWander(this, wanderWeight)); //This one needs work
 
         cc = GetComponent<CharacterController>();
+
+        anim = GetComponent<Animator>();
+
+        originalMove = movementSpeed;
 
         health = GetComponent<EnemyHealth>();
 
@@ -177,11 +186,16 @@ public class Enemy : MonoBehaviour
                 if (attackTimer <= 0.0f && attackRecov <= 0.0f)
                 {
                     Attack();
+                    anim.SetBool("IsAttacking", true);
                     //Allow movement and rotation again
                     attackLocked = false;
                     //Set the time for cooldown between attacks
                     attackRecov = attackRate;
                 }
+            }
+            else
+            {
+                anim.SetBool("IsAttacking", false);
             }
         }
         else //Behaviours
@@ -214,9 +228,14 @@ public class Enemy : MonoBehaviour
         //rotate towards where we are going
         if (velocity != Vector3.zero)
         {
+            anim.SetBool("IsMoving", true);
             transform.localRotation = Quaternion.LookRotation(velocity);
             //transform.rotation.SetFromToRotation(Vector3.zero, velocity);
             action = E_ACTION.MOVE;
+        }
+        else
+        {
+            anim.SetBool("IsMoving", false);
         }
 
         //Cap max velocity
@@ -257,6 +276,9 @@ public class Enemy : MonoBehaviour
 	public void Init()
 	{
 		alive = true;
+        health.currentHealth = health.health;
+        //Randomize speed
+        movementSpeed = originalMove * (Random.Range(-1.0f, 1.0f) * movementSpeedVariance);
 		//Tell the EnemyController we are alive
 		//EnemyController.instance.RegisterEnemy(this);
 		if (Random.value > 0.5f)
@@ -310,8 +332,9 @@ public class Enemy : MonoBehaviour
 	public void Attack()
 	{
 		action = E_ACTION.ATTACK;
-		//If there is no valid target in the attackbox then the attack is missed
-		if (attackHitbox.target != null)
+        anim.SetBool("IsAttacking", true);
+        //If there is no valid target in the attackbox then the attack is missed
+        if (attackHitbox.target != null)
 		{
 			attackHitbox.target.transform.GetComponent<PlayerHealth>().DamagePlayer(attackDamage);
 			if (attackHitbox.target.transform.GetComponent<PlayerHealth>().playerState == PlayerHealth.PlayerState.ALIVE)
@@ -323,7 +346,11 @@ public class Enemy : MonoBehaviour
 			//transform.Find("AttackEffect").GetComponent<ParticleSystem>().Play();
 			Debug.Log("attacking " + attackHitbox.target.name);
 		}
-	}
+        else
+        {
+            anim.SetBool("IsAttacking", false);
+        }
+    }
 
 	//private void OnDrawGizmos()
 	//{

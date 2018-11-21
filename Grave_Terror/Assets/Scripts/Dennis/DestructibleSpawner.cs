@@ -24,6 +24,7 @@ public class DestructibleSpawner : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+        timer -= Time.deltaTime;
 		if (active && timer <= 0.0f)
 		{
 			Vector2 radius = Random.insideUnitCircle * maxRadius + new Vector2(minRadius, minRadius);
