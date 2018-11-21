@@ -74,7 +74,7 @@ public class MainMenu : MonoBehaviour
 	private int current = -1;
 
 	//Is the camera in motion?
-	private bool moving = false;
+	private bool moving = false; //Variable is reused for gameover
 	//Timer for the camera in motion
 	private float timer = 0.0f;
 	//The target path we are taking
@@ -113,6 +113,9 @@ public class MainMenu : MonoBehaviour
 
 		ForceMoveTo(0);
 		//MoveTo(1);
+
+		p1Vec = Vector2.zero;
+		p2Vec = Vector2.zero;
 	}
 
 	//Dont break it...
@@ -178,10 +181,15 @@ public class MainMenu : MonoBehaviour
 		{
 			if (state == MENU_STATE.CHARACTER_SELECT)
 			{
+				Vector2 p1Selection;
+				Vector2 p2Selection;
 				//First come first serve selection
 				//add some way for players to see who they selected
-				float p1Selection = XCI.GetAxis(XboxAxis.LeftStickX, p1XCtrl.controller); //Replace with player one horizontal joystick axis
-				float p2Selection = XCI.GetAxis(XboxAxis.LeftStickX, p2XCtrl.controller); //Replace with player two horizontal joystick axis
+				p1Selection.x = XCI.GetAxis(XboxAxis.LeftStickX, p1XCtrl.controller);
+				p1Selection.y = XCI.GetAxis(XboxAxis.LeftStickY, p1XCtrl.controller);
+
+				p2Selection.x = XCI.GetAxis(XboxAxis.LeftStickX, p2XCtrl.controller);
+				p2Selection.y = XCI.GetAxis(XboxAxis.LeftStickX, p2XCtrl.controller);
 				//DEBUG just start
 				if (Input.GetKeyDown(KeyCode.Z))
 				{
@@ -189,43 +197,39 @@ public class MainMenu : MonoBehaviour
 					p2Selected = 2;
 					endPoints[current].call.Invoke();
 				}
-				
-				//If chunk is on the other side
-				if (chunkLeft)
-				{
-					p1Selection *= -1.0f;
-					p2Selection *= -1.0f;
-				}
+
+				p1Vec += p1Selection;
+				p2Vec += p2Selection;
 				//Player 1
-				if (p1Selection >= 0.75f)
-				{
-					if (p2Selected != 1)
-						p1Selected = 1;
-				}
-				else if (p1Selection <= -0.75)
-				{
-					if (p2Selected != 2)
-						p1Selected = 2;
-				}
-				else
-				{
-					p1Selected = -1;
-				}
-				//Player 2
-				if (p2Selection >= 0.75f)
-				{
-					if (p1Selected != 1)
-						p2Selected = 1;
-				}
-				else if (p2Selection <= -0.75)
-				{
-					if (p1Selected != 2)
-						p2Selected = 2;
-				}
-				else
-				{
-					p1Selected = -1;
-				}
+				//if (p1Selection >= 0.75f)
+				//{
+				//	if (p2Selected != 1)
+				//		p1Selected = 1;
+				//}
+				//else if (p1Selection <= -0.75)
+				//{
+				//	if (p2Selected != 2)
+				//		p1Selected = 2;
+				//}
+				//else
+				//{
+				//	p1Selected = -1;
+				//}
+				////Player 2
+				//if (p2Vec.x >= UI)
+				//{
+				//	if (p1Selected != 1)
+				//		p2Selected = 1;
+				//}
+				//else if (p2Selection <= -0.75)
+				//{
+				//	if (p1Selected != 2)
+				//		p2Selected = 2;
+				//}
+				//else
+				//{
+				//	p1Selected = -1;
+				//}
 			}
 			//Debug keyboard buttons
 			if (Input.GetKeyDown(KeyCode.Return))
@@ -345,14 +349,19 @@ public class MainMenu : MonoBehaviour
 			//Override player controller settings
 			if (p1Selected == 0)
 			{
-				players[0].GetComponent<PlayerMovement>().xboxController = p1XCtrl;
-				players[1].GetComponent<PlayerMovement>().xboxController = p2XCtrl;
+				players[0].GetComponent<PlayerMovement>().xboxController.controller = XboxController.First;
+				players[1].GetComponent<PlayerMovement>().xboxController.controller = XboxController.Second;
 			}
 			else
 			{
-				players[1].GetComponent<PlayerMovement>().xboxController = p1XCtrl;
-				players[0].GetComponent<PlayerMovement>().xboxController = p2XCtrl;
+				players[1].GetComponent<PlayerMovement>().xboxController.controller = XboxController.Second;
+				players[0].GetComponent<PlayerMovement>().xboxController.controller = XboxController.First;
 			}
+		}
+		else if (_scene.name == menuScene)
+		{
+			p1Vec = Vector2.zero;
+			p2Vec = Vector2.zero;
 		}
 	}
 

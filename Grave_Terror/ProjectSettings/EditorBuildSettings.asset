@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Final/Main_Menu.unity
+    guid: 030ef2ebafacc6e45bdc6addfdeb734e
+  - enabled: 1
+    path: Assets/Scenes/Final/Level_001_Crypt_Entrance.unity
+    guid: 56038faa33632254bba54bc8288023e8
