@@ -11,27 +11,40 @@ public class FlameGaunletLeft : MonoBehaviour {
     public GameObject flameBallLeft;
     public XboxControllerManager xboxController;
     public Animator anim;
+    public PlayerHealth health;
 
     private void Awake()
     {
         playerRotation = GetComponent<PlayerMovement>();
     }
 
-    public void Update()
+    private void FixedUpdate()
+    {
+        FlameShootingLeft();
+    }
+
+    public void FlameShootingLeft()
     {
         counter += Time.deltaTime;
-        if (XCI.GetAxis(XboxAxis.LeftTrigger, xboxController.controller) > 0.1f)
+        if(health.playerState == PlayerHealth.PlayerState.ALIVE)
         {
-            if (counter > delay)
+            if (XCI.GetAxis(XboxAxis.LeftTrigger, xboxController.controller) > 0.1f)
             {
-                GameObject newFlame = Instantiate(flameBallLeft, transform.position, sizzleRotation.transform.rotation);
-                anim.SetBool("IsAttacking", true);
-                counter = 0.0f;
+                if (counter > delay)
+                {
+                    GameObject newFlame = Instantiate(flameBallLeft, transform.position, sizzleRotation.transform.rotation);
+                    anim.SetBool("IsAttacking", true);
+                    counter = 0.0f;
+                }
+            }
+            else if (XCI.GetAxis(XboxAxis.LeftTrigger, xboxController.controller) < 0.1f)
+            {
+                anim.SetBool("IsAttacking", false);
             }
         }
-        else if (XCI.GetAxis(XboxAxis.LeftTrigger, xboxController.controller) < 0.1f)
+        else if(health.playerState == PlayerHealth.PlayerState.REVIVE && health.playerState == PlayerHealth.PlayerState.DEAD)
         {
-            anim.SetBool("IsAttacking", false);
+            xboxController.useController = false;
         }
     }
 }

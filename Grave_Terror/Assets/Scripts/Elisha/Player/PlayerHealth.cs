@@ -29,11 +29,11 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
+        controls = GetComponent<PlayerMovement>();
         currentHealth = health;
         rend = GetComponent<Renderer>();
         colour = rend.material.GetColor("_Color");
         print("Player starting health: " + currentHealth);
-        controls = GetComponent<PlayerMovement>();
     }
 
     public void Update()
@@ -54,12 +54,10 @@ public class PlayerHealth : MonoBehaviour
             // Player revive state can rotate player and shoot 
             case PlayerState.REVIVE:
                 print("In revive state");
-                controls.Turning();
                 // death timer hits 0 will kill the player 
                 if (timer == 0.0f)
                 {
                     playerState = PlayerState.DEAD;
-                   // Destroy(gameObject);
                 }
                 break;
             // Player dead state sets player to in-active
