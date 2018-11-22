@@ -110,7 +110,8 @@ public class FlowFieldGenerator : MonoBehaviour
 				Vector3 point = new Vector3((float)x + 0.5f, rayHeight, (float)y + 0.5f) + bottomLeft.position;
 				//See if we can place a grid segment here
 				RaycastHit hit;
-				if (Physics.Raycast(point, Vector3.down, out hit, rayHeight + 1.0f, layers))
+				//if (Physics.Raycast(point, Vector3.down, out hit, rayHeight + 1.0f, layers))
+				if(Physics.BoxCast(point, new Vector3(0.4f, 0.4f, 0.4f), Vector3.down, out hit, Quaternion.Euler(0,0,0), rayHeight + 1.0f, layers))
 				{
 					//Valid object hit
 					if (hit.transform.gameObject.layer == 8)

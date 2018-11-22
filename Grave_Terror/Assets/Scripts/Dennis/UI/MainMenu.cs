@@ -223,7 +223,7 @@ public class MainMenu : MonoBehaviour
 				p1Cursor.GetComponent<RectTransform>().localPosition = p1Vec;
 				p2Cursor.GetComponent<RectTransform>().localPosition = p2Vec;
 				//P1 Poosh
-				if (XCI.GetButton(XboxButton.A, p1XCtrl.controller))
+				if (XCI.GetButtonDown(XboxButton.A, p1XCtrl.controller))
 				{
 					//P1 cursor hitboxes
 					if (p1Vec.x <= rChu.xMax && p1Vec.x >= rChu.xMin &&
@@ -235,7 +235,7 @@ public class MainMenu : MonoBehaviour
 						}
 						else
 						{
-							p1Selected = -1;
+							//p1Selected = -1;
 						}
 					}
 					else if (p1Vec.x <= rSiz.xMax && p1Vec.x >= rSiz.xMin &&
@@ -247,7 +247,7 @@ public class MainMenu : MonoBehaviour
 						}
 						else
 						{
-							p1Selected = -1;
+							//p1Selected = -1;
 						}
 					}
 					else
@@ -255,8 +255,12 @@ public class MainMenu : MonoBehaviour
 						p1Selected = -1;
 					}
 				}
+				else if (XCI.GetButtonDown(XboxButton.B, p1XCtrl.controller))
+				{
+					p1Selected = -1;
+				}
 				//P2 Poosh
-				if (XCI.GetButton(XboxButton.A, p2XCtrl.controller))
+				if (XCI.GetButtonDown(XboxButton.A, p2XCtrl.controller))
 				{
 					//P2 cursor hitboxes
 					if (p2Vec.x <= rChu.xMax && p2Vec.x >= rChu.xMin &&
@@ -268,7 +272,7 @@ public class MainMenu : MonoBehaviour
 						}
 						else
 						{
-							p2Selected = -1;
+							//p2Selected = -1;
 						}
 					}
 					else if (p2Vec.x <= rSiz.xMax && p2Vec.x >= rSiz.xMin &&
@@ -280,13 +284,17 @@ public class MainMenu : MonoBehaviour
 						}
 						else
 						{
-							p2Selected = -1;
+							//p2Selected = -1;
 						}
 					}
 					else
 					{
 						p2Selected = -1;
 					}
+				}
+				else if (XCI.GetButtonDown(XboxButton.B, p2XCtrl.controller))
+				{
+					p2Selected = -1;
 				}
 			}
 			//Debug keyboard buttons
