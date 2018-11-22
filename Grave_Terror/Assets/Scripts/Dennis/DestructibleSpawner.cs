@@ -12,6 +12,9 @@ public class DestructibleSpawner : MonoBehaviour
 
 	public bool active;
 
+	[Tooltip("Limit spawn amount")]
+	public int maxSpawns = int.MaxValue;
+
 	private float timer;
 	// Use this for initialization
 	void Start ()
@@ -25,13 +28,16 @@ public class DestructibleSpawner : MonoBehaviour
 	void Update ()
 	{
         timer -= Time.deltaTime;
-		if (active && timer <= 0.0f)
+		if (active && timer <= 0.0f && maxSpawns > 0)
 		{
-			Vector2 radius = Random.insideUnitCircle * maxRadius + new Vector2(minRadius, minRadius);
+			Vector2 radius = (Random.insideUnitCircle * maxRadius) + new Vector2(minRadius, minRadius);
 			Vector3 region = new Vector3(radius.x, 0.0f, radius.y);
-
+			//Spawn one
 			spawner.RemoteSpawn(region + transform.position);
+			//Reset timer
 			timer = spawnDelay;
+			//Decrease limit
+			maxSpawns--;
 		}
 	}
 
