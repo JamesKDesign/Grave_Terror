@@ -97,8 +97,13 @@ public class Enemy : MonoBehaviour
 
     public Animator anim;
 
-    // Use this for initialization
-    void Start()
+	private void Awake()
+	{
+		originalMove = movementSpeed;
+	}
+
+	// Use this for initialization
+	void Start()
     {
         behaviours.Add(new EnemyPathing(this, pathingWeight));
         behaviours.Add(new EnemyFlocking(this, flockingWeight));
@@ -107,8 +112,6 @@ public class Enemy : MonoBehaviour
         cc = GetComponent<CharacterController>();
 
         anim = GetComponent<Animator>();
-
-        originalMove = movementSpeed;
 
         health = GetComponent<EnemyHealth>();
 
@@ -279,7 +282,7 @@ public class Enemy : MonoBehaviour
         health = GetComponent<EnemyHealth>();
         health.currentHealth = health.health;
         //Randomize speed
-        movementSpeed = originalMove * (Random.Range(-1.0f, 1.0f) * movementSpeedVariance);
+        movementSpeed = originalMove + ((Random.Range(-1.0f, 1.0f) * movementSpeedVariance));
 		//Tell the EnemyController we are alive
 		//EnemyController.instance.RegisterEnemy(this);
 		if (Random.value > 0.5f)
