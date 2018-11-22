@@ -8,15 +8,11 @@ public class PlayerHealth : MonoBehaviour
     [Tooltip("The players current health state")]
     public float currentHealth;
     [Tooltip("How long the flash will run for when the player is hit")]
-    public float damageFlashLength;
-    private float flashCounter;
-    private Renderer rend;
-    private Color colour;
     public float timer;
     PlayerMovement controls;
     public GameObject reviveVolume;
     public float deathTime;
-    public GameObject DeathScreen;
+    //public GameObject DeathScreen;
     public Animator anim;
     public Transform player2;
 
@@ -33,18 +29,14 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
-        DeathScreen.SetActive(false);
+        //DeathScreen.SetActive(false);
         controls = GetComponent<PlayerMovement>();
         currentHealth = health;
-        rend = GetComponent<Renderer>();
-        colour = rend.material.GetColor("_Color");
-        print("Player starting health: " + currentHealth);
     }
 
     public void Update()
     {
         playerHealth();
-        playerFlash();
 
         // Player state switch
         switch(playerState)
@@ -55,7 +47,8 @@ public class PlayerHealth : MonoBehaviour
 
                 anim.SetBool("IsDowned", false);
                 timer = deathTime;
-                controls.Dashing();
+                controls.Move();
+               // controls.Dashing();
                 controls.Turning();
                 break;
             // Player revive state can rotate player and shoot 
@@ -77,7 +70,7 @@ public class PlayerHealth : MonoBehaviour
 
         if(player2.GetComponent<PlayerHealth>().playerState == PlayerState.DEAD && playerState == PlayerState.DEAD)
         {
-            DeathScreen.SetActive(true);
+            //DeathScreen.SetActive(true);
             gameObject.SetActive(false);
             player2.gameObject.SetActive(false);
         }
@@ -97,8 +90,6 @@ public class PlayerHealth : MonoBehaviour
     public void DamagePlayer(float amount)
     {
         currentHealth -= amount;
-        flashCounter = damageFlashLength;
-        rend.material.SetColor("_Color", Color.red);
         print("Player health: " + currentHealth);
     }
 
@@ -111,18 +102,6 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             playerState = PlayerState.ALIVE;
-        }
-    }
-
-    void playerFlash()
-    {
-        if (flashCounter > 0)
-        {
-            flashCounter -= Time.deltaTime;
-            if (flashCounter <= 0)
-            {
-                rend.material.SetColor("_Color", Color.blue);
-            }
         }
     }
 }
