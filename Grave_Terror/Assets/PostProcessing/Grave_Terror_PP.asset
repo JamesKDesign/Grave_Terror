@@ -42,13 +42,13 @@ MonoBehaviour:
   ambientOcclusion:
     m_Enabled: 1
     m_Settings:
-      intensity: 1.5
-      radius: 3
-      sampleCount: 10
+      intensity: 0.47
+      radius: 2.36
+      sampleCount: 6
       downsampling: 1
-      forceForwardCompatibility: 0
+      forceForwardCompatibility: 1
       ambientOnly: 0
-      highPrecision: 0
+      highPrecision: 1
   screenSpaceReflection:
     m_Enabled: 0
     m_Settings:
@@ -296,11 +296,11 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       mode: 0
-      color: {r: 0.012326994, g: 0.08823532, b: 0.022273611, a: 1}
+      color: {r: 0.041955013, g: 0.058823526, b: 0.04207135, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.62
+      intensity: 0.55
       smoothness: 1
-      roundness: 0.457
+      roundness: 0.2
       mask: {fileID: 0}
       opacity: 1
       rounded: 0

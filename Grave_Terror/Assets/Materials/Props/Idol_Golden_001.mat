@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: Idol_Golden_001
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _EMISSION
+  m_ShaderKeywords: _EMISSION _NORMALMAP
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 8933aa2018917ec4c8788d5e9fbfed22, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -59,7 +59,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture_Channel_Stack:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 3dfd469d8589ff149a878791b9d38d63, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -69,7 +69,7 @@ Material:
     - _DstBlend: 0
     - _Gloss: 0.8
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 0.65
     - _GlossyReflections: 1
     - _Metallic: 1
     - _Mode: 0
@@ -83,6 +83,7 @@ Material:
     - _V: 1
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.75659233, b: 0.11764705, a: 1}
+    - _Color: {r: 0.8455882, g: 0.6208985, b: 0.03108778, a: 1}
     - _Color2: {r: 0.986207, g: 0, b: 1, a: 1}
     - _EmissionColor: {r: 0.25, g: 0.19168358, b: 0.06617649, a: 1}
+    - _EmissionColour: {r: 0.986207, g: 0, b: 1, a: 1}
