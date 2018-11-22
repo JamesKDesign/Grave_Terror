@@ -41,6 +41,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1022810525264358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4620594353170892}
+  - component: {fileID: 114561985952147910}
+  m_Layer: 10
+  m_Name: Bullet_Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1143212656674812
 GameObject:
   m_ObjectHideFlags: 1
@@ -67,7 +83,7 @@ GameObject:
   - component: {fileID: 33682193769899164}
   - component: {fileID: 23458240964132200}
   - component: {fileID: 120873471896038050}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Weapon_Chunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +444,7 @@ GameObject:
   - component: {fileID: 4026800900849292}
   - component: {fileID: 135334034622337198}
   - component: {fileID: 114952065573182530}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: ReviveBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -514,22 +530,6 @@ GameObject:
   - component: {fileID: 4812501651793080}
   m_Layer: 0
   m_Name: Chunk_Spine
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1788980978078374
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4256293210663742}
-  - component: {fileID: 114389413651222546}
-  m_Layer: 2
-  m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -782,19 +782,6 @@ Transform:
   m_Father: {fileID: 4732996650188426}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4256293210663742
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1788980978078374}
-  m_LocalRotation: {x: -0.19132432, y: 0.17175964, z: -0.13170034, w: 0.9573655}
-  m_LocalPosition: {x: -0.22213496, y: -2.5340152, z: -2.989645}
-  m_LocalScale: {x: 0.010000002, y: 0.010000001, z: 0.0100000035}
-  m_Children: []
-  m_Father: {fileID: 4757015371220486}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4298539296249574
 Transform:
   m_ObjectHideFlags: 1
@@ -921,6 +908,19 @@ Transform:
   m_Father: {fileID: 4002149447311466}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4620594353170892
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1022810525264358}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.286, y: 0.897, z: -0.276}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4848678342288410}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4624371837831596
 Transform:
   m_ObjectHideFlags: 1
@@ -1039,8 +1039,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.0041781617, y: 0.27012458, z: 0.31283888}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_Children:
-  - {fileID: 4256293210663742}
+  m_Children: []
   m_Father: {fileID: 4298539296249574}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1114,6 +1113,7 @@ Transform:
   - {fileID: 4097706649005646}
   - {fileID: 4298539296249574}
   - {fileID: 4026800900849292}
+  - {fileID: 4620594353170892}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1291,33 +1291,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   link: {fileID: 0}
   maxDistance: 20
---- !u!114 &114389413651222546
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1788980978078374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af2e6bcaaa309d145bd7b48963505117, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particleProjectile: {fileID: 1842224786304258, guid: 1a3e84ea416334b4c9e7c805d9ecba8b,
-    type: 2}
-  bloodEffect: {fileID: 1520026050633352, guid: fd07942650edfdc469d8a377faa8c005,
-    type: 2}
-  bulletHole: {fileID: 1192769232789584, guid: 0c3d0991c222b6a4eb86558ea1f66e0b, type: 2}
-  chunkRotation: {fileID: 1611395107103194}
-  muzzleFlash: {fileID: 198308093820639376}
-  bulletCasing: {fileID: 198610948965452938}
-  xboxController: {fileID: 114085461531092194}
-  delay: 0.1
-  counter: 0
-  damageToGive: 30
-  range: 1000
-  target: {fileID: 0}
-  anim: {fileID: 95041727192482204}
-  cameraController: {fileID: 0}
 --- !u!114 &114475841938485108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1342,8 +1315,37 @@ MonoBehaviour:
   maxSpeed: 5
   cam: {fileID: 0}
   anim: {fileID: 95041727192482204}
-  maxDistance: 20
-  player2: {fileID: 0}
+--- !u!114 &114561985952147910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1022810525264358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2e6bcaaa309d145bd7b48963505117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleProjectile: {fileID: 1842224786304258, guid: 1a3e84ea416334b4c9e7c805d9ecba8b,
+    type: 2}
+  bloodEffect: {fileID: 1520026050633352, guid: fd07942650edfdc469d8a377faa8c005,
+    type: 2}
+  bulletHole: {fileID: 1192769232789584, guid: 0c3d0991c222b6a4eb86558ea1f66e0b, type: 2}
+  chunkRotation: {fileID: 1611395107103194}
+  muzzleFlash: {fileID: 198308093820639376}
+  bulletCasing: {fileID: 198610948965452938}
+  xboxController: {fileID: 114085461531092194}
+  delay: 0.1
+  counter: 0
+  damageToGive: 30
+  range: 1000
+  target: {fileID: 114695244792615172, guid: 9fda6711eeb2d394886ce0690f82aaec, type: 2}
+  health: {fileID: 114990317616453262}
+  anim: {fileID: 95041727192482204}
+  cameraController: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 2049
 --- !u!114 &114952065573182530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1376,6 +1378,9 @@ MonoBehaviour:
   timer: 30
   reviveVolume: {fileID: 1608149284222670}
   deathTime: 20
+  DeathScreen: {fileID: 0}
+  anim: {fileID: 95041727192482204}
+  player2: {fileID: 0}
   playerState: 0
 --- !u!120 &120028584809780558
 LineRenderer:
@@ -1650,7 +1655,7 @@ CharacterController:
   m_StepOffset: 0.1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.2, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!198 &198036724986817238
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -11746,7 +11751,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -15159,7 +15164,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -15359,7 +15364,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.3
+      scalar: 0.15
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -15767,7 +15772,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 20
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -21881,7 +21886,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
