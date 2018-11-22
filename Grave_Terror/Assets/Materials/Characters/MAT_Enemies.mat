@@ -23,7 +23,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Colour:
-        m_Texture: {fileID: 2800000, guid: 4e4c5ae656da06945b896f5eb2765fb3, type: 3}
+        m_Texture: {fileID: 2800000, guid: a79ec7dfd1218f84ba118f1b74bf51e2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -59,7 +59,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 0287d053c8e7f0c41ae32d37ae118c64, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5d9f021eb851ade4f9924595d3e868fe, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -71,7 +71,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextureChannelStack:
-        m_Texture: {fileID: 2800000, guid: 5b16e194d8a47394d8bba2d7f22281dd, type: 3}
+        m_Texture: {fileID: 2800000, guid: 557ba554230a3c34cac7bb9753d1b7da, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -101,7 +101,8 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Outline_Colour1: {r: 0.8455882, g: 0.1056985, b: 0.1056985, a: 1}
+    - _EmissionColour: {r: 1, g: 0, b: 0.3931036, a: 1}
+    - _Outline_Colour1: {r: 0.5661765, g: 0.066608995, b: 0.13896027, a: 1}
     - _Outline_Colour2: {r: 0.8088235, g: 0.6652697, b: 0.06541956, a: 1}
     - _TargetColour: {r: 1, g: 0, b: 0, a: 1}
     - _TargetColour_002: {r: 1, g: 0, b: 0, a: 1}

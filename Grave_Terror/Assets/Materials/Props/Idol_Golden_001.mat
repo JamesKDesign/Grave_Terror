@@ -9,7 +9,7 @@ Material:
   m_Name: Idol_Golden_001
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
-  m_LightmapFlags: 2
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -39,11 +39,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: ff029c54312f1fb44b3d4f848f60c17b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 143246de24a5be34fb1c44adb0d427f2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 30c1dd9ef6a20a741b00144fcfde4b2c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 143246de24a5be34fb1c44adb0d427f2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -69,9 +69,9 @@ Material:
     - _DstBlend: 0
     - _Gloss: 0.8
     - _GlossMapScale: 1
-    - _Glossiness: 0.35
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Metallic: 0.75
+    - _Metallic: 1
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -85,4 +85,4 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 0.75659233, b: 0.11764705, a: 1}
     - _Color2: {r: 0.986207, g: 0, b: 1, a: 1}
-    - _EmissionColor: {r: 1, g: 0.76673424, b: 0.2647059, a: 1}
+    - _EmissionColor: {r: 0.25, g: 0.19168358, b: 0.06617649, a: 1}
