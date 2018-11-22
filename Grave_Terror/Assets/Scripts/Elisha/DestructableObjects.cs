@@ -13,7 +13,7 @@ public class DestructableObjects : MonoBehaviour {
     {
         currentHealth = maxHealth;
         rend = GetComponent<Renderer>();
-        colour = rend.material.GetColor("_Color");
+        //colour = rend.material.GetColor("_Color");
     }
 
 
@@ -29,7 +29,7 @@ public class DestructableObjects : MonoBehaviour {
             flashCounter -= Time.deltaTime;
             if (flashCounter <= 0)
             {
-                rend.material.SetColor("_Color", Color.grey);
+                //rend.material.SetColor("_Color", Color.grey);
             }
         }
     }
@@ -38,7 +38,7 @@ public class DestructableObjects : MonoBehaviour {
     {
         currentHealth -= _amount;
         flashCounter = FlashLength;
-        rend.material.SetColor("_Color", Color.red);
+       // rend.material.SetColor("_Color", Color.red);
         Debug.Log("Objects health: " + currentHealth);
     }
 }

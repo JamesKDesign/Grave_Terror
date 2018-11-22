@@ -16,8 +16,10 @@ public class PlayerHealth : MonoBehaviour
     PlayerMovement controls;
     public GameObject reviveVolume;
     public float deathTime;
-
+    public GameObject DeathScreen;
     public Animator anim;
+    public Transform player2;
+
 
     public enum PlayerState
     {
@@ -31,6 +33,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
+        DeathScreen.SetActive(false);
         controls = GetComponent<PlayerMovement>();
         currentHealth = health;
         rend = GetComponent<Renderer>();
@@ -72,9 +75,11 @@ public class PlayerHealth : MonoBehaviour
                 break;
         }
 
-        if(playerState == PlayerState.DEAD)
+        if(player2.GetComponent<PlayerHealth>().playerState == PlayerState.DEAD && playerState == PlayerState.DEAD)
         {
-            Destroy(gameObject);
+            DeathScreen.SetActive(true);
+            gameObject.SetActive(false);
+            player2.gameObject.SetActive(false);
         }
 
         if (playerState == PlayerState.REVIVE)
