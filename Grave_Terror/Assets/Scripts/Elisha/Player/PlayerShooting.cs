@@ -18,6 +18,7 @@ public class PlayerShooting : MonoBehaviour
     public float range;
     public EnemyHealth target;
     public PlayerHealth health;
+    Vector3 hitLocation = Vector3.zero;
 
     public new Animator anim;
 
@@ -34,6 +35,7 @@ public class PlayerShooting : MonoBehaviour
     private void FixedUpdate()
     {
         Shooting();
+        Aim();
     }
 
     void Shooting()
@@ -105,5 +107,32 @@ public class PlayerShooting : MonoBehaviour
                 xboxController.useController = false;
             }
         }
+    }
+
+    void Aim()
+    {
+        //Raycasting from the player's position and creating an array of hit results from players forward direction
+        RaycastHit[] hit;
+        hit = Physics.RaycastAll(transform.position, transform.forward, 100.0f);
+        Debug.DrawRay(transform.position, transform.forward, Color.magenta);
+        foreach (RaycastHit result in hit)
+        {
+            //If the cast hits an object tagged as 'enemy', run settargeted function on Enemy script
+            if (result.collider.gameObject.tag == "Enemy")
+            {
+                Debug.Log("Enemy Targeted");
+                hitLocation = result.point;
+                result.collider.gameObject.GetComponent<Enemy>().SetTargeted();
+
+                break;
+            }
+        }
+    }
+
+    //Debug cube on targeted location
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawCube(hitLocation, Vector3.one);
     }
 }
