@@ -50,7 +50,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4620594353170892}
   - component: {fileID: 114561985952147910}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Bullet_Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 4457892968346300}
   - component: {fileID: 198218779469126632}
   - component: {fileID: 199790449997695316}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: Health_Ring_Outer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 4618930158397408}
   - component: {fileID: 198036724986817238}
   - component: {fileID: 199304492279700522}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: Health_Ring_Pulse_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 4967525005082314}
   - component: {fileID: 198837311455792182}
   - component: {fileID: 199911060534359398}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: Health_Pluses_Additive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 4608857475616266}
   - component: {fileID: 198896586729777440}
   - component: {fileID: 199186535001219448}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: Health_Ring_Pulse_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -605,7 +605,7 @@ GameObject:
   - component: {fileID: 4002149447311466}
   - component: {fileID: 198267059775893298}
   - component: {fileID: 199189303594754864}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: Revive_001_PS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1260,7 +1260,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: dac9cd1443384d448a84b1adaac9fde0, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1276,7 +1276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a63ca5c6783d4a846a5f8f82498bab75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: 1
+  controller: 3
   useController: 1
 --- !u!114 &114142996171949948
 MonoBehaviour:
@@ -1716,7 +1716,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1797906131
+  randomSeed: -656064509
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -5077,7 +5077,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1598486671
+  randomSeed: 1483233499
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -8438,7 +8438,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -517914927
+  randomSeed: 1082943817
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -11799,7 +11799,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 1636028353
+  randomSeed: 341300850
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -15212,7 +15212,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 342191402
+  randomSeed: 1358931943
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -18573,7 +18573,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1607417648
+  randomSeed: 1094009131
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -21934,7 +21934,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 1222991109
+  randomSeed: -4210453
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -25347,7 +25347,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1526279133
+  randomSeed: 282560037
   InitialModule:
     serializedVersion: 3
     enabled: 1
