@@ -276,6 +276,7 @@ public class Enemy : MonoBehaviour
 	public void Init()
 	{
 		alive = true;
+        health = GetComponent<EnemyHealth>();
         health.currentHealth = health.health;
         //Randomize speed
         movementSpeed = originalMove * (Random.Range(-1.0f, 1.0f) * movementSpeedVariance);
