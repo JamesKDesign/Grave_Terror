@@ -42,7 +42,11 @@ public class ScoreBoard : MonoBehaviour
     void FixedUpdate()
     {
         SizzleScoreBoard();
-        ChunkScoreBoard();
+        ChunkScoreBoard();     
+    }
+
+    private void Update()
+    {
         UIScoreControls();
     }
 

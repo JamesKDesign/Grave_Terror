@@ -688,7 +688,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1481543298125208}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.192955, y: 0.099999994, z: -17.818905}
+  m_LocalPosition: {x: 39.863976, y: -0.000000014901161, z: -15.809883}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4875015759956906}
@@ -870,8 +870,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1122604773051724}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.779, z: 1.2139997}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.843, z: 0.746}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 4218998287738812}
   m_RootOrder: 3
@@ -1140,10 +1140,10 @@ MonoBehaviour:
   state: 0
   action: 0
   alive: 0
-  attackDamage: 5
+  attackDamage: 3
   attackDelay: 1
   attackRate: 1
-  movementSpeed: 3
+  movementSpeed: 6
   movementSpeedVariance: 0
   path: -1
   engaging: 1

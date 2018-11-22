@@ -11,9 +11,9 @@ public class PlayerHealth : MonoBehaviour
     public float timer;
     PlayerMovement controls;
     public GameObject reviveVolume;
-    public float deathTime;
     //public GameObject DeathScreen;
     public Animator anim;
+    public Tether Tet;
     public Transform player2;
 
 
@@ -46,7 +46,7 @@ public class PlayerHealth : MonoBehaviour
                 print("In alive state");
 
                 anim.SetBool("IsDowned", false);
-                timer = deathTime;
+                timer = 20f;
                 controls.Move();
                // controls.Dashing();
                 controls.Turning();
@@ -71,8 +71,13 @@ public class PlayerHealth : MonoBehaviour
         if(player2.GetComponent<PlayerHealth>().playerState == PlayerState.DEAD && playerState == PlayerState.DEAD)
         {
             //DeathScreen.SetActive(true);
-            gameObject.SetActive(false);
             player2.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+        }
+
+        if (playerState == PlayerState.DEAD) {
+            Tet.maxDistance = float.PositiveInfinity;
+            this.gameObject.SetActive(false);
         }
 
         if (playerState == PlayerState.REVIVE)
