@@ -85,13 +85,13 @@ public class MainMenu : MonoBehaviour
 	//Selection -1 is invalid, Selection 1 is Chunk, Selection 2 is Sizzle
 	private int p1Selected = -1;
 	private int p2Selected = -1;
-	[Tooltip("Is Chunk on the right or the left?")]
-	public bool chunkLeft;
 
 	public GameObject selectionScreen;
 
 	//Selection Screen cursor
 	Vector2 p1Vec, p2Vec;
+	Rect rChu, rSiz;
+	GameObject p1Cursor, p2Cursor;
 
 	//Game in progress sequence
 	[Header("Game Settings")]
@@ -112,10 +112,29 @@ public class MainMenu : MonoBehaviour
 		mainCamera = Camera.main;
 
 		ForceMoveTo(0);
-		//MoveTo(1);
 
 		p1Vec = Vector2.zero;
 		p2Vec = Vector2.zero;
+
+		foreach (Transform t in selectionScreen.transform)
+		{
+			if (t.gameObject.name == "ChunkSelection")
+			{
+				rChu = t.gameObject.GetComponent<RectTransform>().rect;
+			}
+			else if (t.gameObject.name == "SizzleSelection")
+			{
+				rSiz = t.gameObject.GetComponent<RectTransform>().rect;
+			}
+			else if (t.gameObject.name == "P1Cursor")
+			{
+				p1Cursor = t.gameObject;
+			}
+			else if (t.gameObject.name == "P2Cursor")
+			{
+				p2Cursor = t.gameObject;
+			}
+		}
 	}
 
 	//Dont break it...
@@ -200,36 +219,75 @@ public class MainMenu : MonoBehaviour
 
 				p1Vec += p1Selection;
 				p2Vec += p2Selection;
-				//Player 1
-				//if (p1Selection >= 0.75f)
-				//{
-				//	if (p2Selected != 1)
-				//		p1Selected = 1;
-				//}
-				//else if (p1Selection <= -0.75)
-				//{
-				//	if (p2Selected != 2)
-				//		p1Selected = 2;
-				//}
-				//else
-				//{
-				//	p1Selected = -1;
-				//}
-				////Player 2
-				//if (p2Vec.x >= UI)
-				//{
-				//	if (p1Selected != 1)
-				//		p2Selected = 1;
-				//}
-				//else if (p2Selection <= -0.75)
-				//{
-				//	if (p1Selected != 2)
-				//		p2Selected = 2;
-				//}
-				//else
-				//{
-				//	p1Selected = -1;
-				//}
+
+				p1Cursor.GetComponent<RectTransform>().localPosition = p1Vec;
+				p2Cursor.GetComponent<RectTransform>().localPosition = p2Vec;
+				//P1 Poosh
+				if (XCI.GetButton(XboxButton.A, p1XCtrl.controller))
+				{
+					//P1 cursor hitboxes
+					if (p1Vec.x <= rChu.xMax && p1Vec.x >= rChu.xMin &&
+					p1Vec.y <= rChu.yMax && p1Vec.y >= rChu.yMin)
+					{
+						if (p2Selected != 1)
+						{
+							p1Selected = 1;
+						}
+						else
+						{
+							p1Selected = -1;
+						}
+					}
+					else if (p1Vec.x <= rSiz.xMax && p1Vec.x >= rSiz.xMin &&
+						p1Vec.y <= rSiz.yMax && p1Vec.y >= rSiz.yMin)
+					{
+						if (p2Selected != 2)
+						{
+							p1Selected = 2;
+						}
+						else
+						{
+							p1Selected = -1;
+						}
+					}
+					else
+					{
+						p1Selected = -1;
+					}
+				}
+				//P2 Poosh
+				if (XCI.GetButton(XboxButton.A, p2XCtrl.controller))
+				{
+					//P2 cursor hitboxes
+					if (p2Vec.x <= rChu.xMax && p2Vec.x >= rChu.xMin &&
+						p2Vec.y <= rChu.yMax && p2Vec.y >= rChu.yMin)
+					{
+						if (p1Selected != 1)
+						{
+							p2Selected = 1;
+						}
+						else
+						{
+							p2Selected = -1;
+						}
+					}
+					else if (p2Vec.x <= rSiz.xMax && p2Vec.x >= rSiz.xMin &&
+						p2Vec.y <= rSiz.yMax && p2Vec.y >= rSiz.yMin)
+					{
+						if (p1Selected != 2)
+						{
+							p2Selected = 2;
+						}
+						else
+						{
+							p2Selected = -1;
+						}
+					}
+					else
+					{
+						p2Selected = -1;
+					}
+				}
 			}
 			//Debug keyboard buttons
 			if (Input.GetKeyDown(KeyCode.Return))
@@ -327,7 +385,7 @@ public class MainMenu : MonoBehaviour
 			moving = true;
 			timer = 1.0f;
 			ogreScreen.SetActive(true);
-			ogreScreen.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+			ogreScreen.GetComponentInChildren<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 		}
 	}
 
@@ -428,7 +486,6 @@ public class MainMenu : MonoBehaviour
 	public void GotoCharacterSelection()
 	{
 		state = MENU_STATE.CHARACTER_SELECT;
-		//Enable gameobjects in selection screen
 		selectionScreen.SetActive(true);
 	}
 
