@@ -19,11 +19,8 @@ public class PlayerShooting : MonoBehaviour
     public EnemyHealth target;
     public PlayerHealth health;
     Vector3 hitLocation = Vector3.zero;
-
     public new Animator anim;
-
     public CameraController cameraController;
-
     public LayerMask layerMask;
 
     void Start()

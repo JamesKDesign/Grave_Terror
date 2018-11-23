@@ -4,7 +4,8 @@ public class EnemyHealth : MonoBehaviour
 {
     public int health;
     public float currentHealth;
-    
+    public ScoreBoard chunkKills;
+    public ScoreBoard SizzleKills;
 
     private void Awake()
     {

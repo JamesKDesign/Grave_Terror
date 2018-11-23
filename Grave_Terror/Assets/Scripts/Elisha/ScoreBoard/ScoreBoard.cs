@@ -17,7 +17,6 @@ public class ScoreBoard : MonoBehaviour
     private int Placeholder;
     public GameObject scoreBoard;
     public XboxControllerManager XboxController;
-    public XboxControllerManager XboxController2;
     // references
     public PlayerHealth sizzlehealth;
     public PlayerHealth chunkhealth;
@@ -47,7 +46,19 @@ public class ScoreBoard : MonoBehaviour
 
     private void Update()
     {
-        UIScoreControls();
+        if (XboxController.useController == true)
+        {
+            // bringing up the score board
+            if (XCI.GetButtonDown(XboxButton.Back, XboxController.controller))
+            {
+                print("working controller");
+                scoreBoard.SetActive(true);
+            }
+            else if (XCI.GetButtonUp(XboxButton.Back, XboxController.controller))
+            {
+                scoreBoard.SetActive(false);
+            }
+        }
     }
 
     void SizzleScoreBoard()
@@ -69,7 +80,7 @@ public class ScoreBoard : MonoBehaviour
             SizzleScore += 1;
             Sizzle.text = SizzleScore.ToString();
         }
-        else if (sizzleShooting.currentHealth != 0 && CheckMe == false)
+        else if (sizzleShooting.currentHealth != 0f && CheckMe == false)
         {
             CheckMe = true;
         }
@@ -89,66 +100,15 @@ public class ScoreBoard : MonoBehaviour
             CheckMe = true;
         }
 
-        if (chunkShooting.target.health <= 0 && CheckMe == true)
+        if (chunkShooting.target.health <= 0f && CheckMe == true)
         {
             CheckMe = false;
             ChunkScore += 1;
             chunk.text = ChunkScore.ToString();
         }
-        else if (chunkShooting.target.health != 0.0 && CheckMe == false)
+        else if (chunkShooting.target.health != 0f && CheckMe == false)
         {
             CheckMe = true;
-        }
-    }
-
-    void UIScoreControls()
-    {
-        if (XboxController.useController == true)
-        {
-            // bringing up the score board
-            if (XCI.GetButtonDown(XboxButton.Back, XboxController.controller))
-            {
-                scoreBoard.SetActive(true);
-            }
-            else if (XCI.GetButtonUp(XboxButton.Back, XboxController.controller))
-            {
-                scoreBoard.SetActive(false);
-            }
-        }
-        else if (!XboxController.useController)
-        {
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                scoreBoard.SetActive(true);
-            }
-            else if (Input.GetKeyUp(KeyCode.Tab))
-            {
-                scoreBoard.SetActive(false);
-            }
-        }
-
-        if (XboxController2.useController == true)
-        {
-            // bringing up the score board
-            if (XCI.GetButtonDown(XboxButton.Back, XboxController2.controller))
-            {
-                scoreBoard.SetActive(true);
-            }
-            else if (XCI.GetButtonUp(XboxButton.Back, XboxController2.controller))
-            {
-                scoreBoard.SetActive(false);
-            }
-        }
-        else if (!XboxController2.useController)
-        {
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                scoreBoard.SetActive(true);
-            }
-            else if (Input.GetKeyUp(KeyCode.Tab))
-            {
-                scoreBoard.SetActive(false);
-            }
         }
     }
 }
