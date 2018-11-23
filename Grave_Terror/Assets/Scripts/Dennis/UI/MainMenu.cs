@@ -454,15 +454,15 @@ public class MainMenu : MonoBehaviour
 			moving = false;
 
 			//Override player controller settings
-			if (p1Selected == 0)
+			if (p1Selected == 1)
 			{
 				players[0].GetComponent<PlayerMovement>().xboxController.controller = XboxController.First;
 				players[1].GetComponent<PlayerMovement>().xboxController.controller = XboxController.Second;
 			}
 			else
 			{
-				players[1].GetComponent<PlayerMovement>().xboxController.controller = XboxController.Second;
-				players[0].GetComponent<PlayerMovement>().xboxController.controller = XboxController.First;
+				players[0].GetComponent<PlayerMovement>().xboxController.controller = XboxController.Second;
+				players[1].GetComponent<PlayerMovement>().xboxController.controller = XboxController.First;
 			}
 		}
 		else if (_scene.name == menuScene)
