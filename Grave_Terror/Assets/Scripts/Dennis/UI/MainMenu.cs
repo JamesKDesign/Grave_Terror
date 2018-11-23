@@ -140,8 +140,8 @@ public class MainMenu : MonoBehaviour
 			}
 		}
 
-		rChu.position -= new Vector2(oChu.transform.localPosition.x, oChu.transform.localPosition.y);
-		rSiz.position -= new Vector2(oSiz.transform.localPosition.x, oSiz.transform.localPosition.y);
+		rChu.position += new Vector2(oChu.transform.localPosition.x, oChu.transform.localPosition.y);
+		rSiz.position += new Vector2(oSiz.transform.localPosition.x, oSiz.transform.localPosition.y);
 	}
 
 	//Dont break it...
@@ -219,8 +219,8 @@ public class MainMenu : MonoBehaviour
 				p2Selection.x = XCI.GetAxis(XboxAxis.LeftStickX, p2XCtrl.controller);
 				p2Selection.y = XCI.GetAxis(XboxAxis.LeftStickY, p2XCtrl.controller);
 
-				p1Selection.x = Input.GetAxis("Horizontal");
-				p1Selection.y = Input.GetAxis("Vertical");
+				//p1Selection.x = Input.GetAxis("Horizontal");
+				//p1Selection.y = Input.GetAxis("Vertical");
 
 				//DEBUG just start
 				if (Input.GetKeyDown(KeyCode.Z))
@@ -256,7 +256,7 @@ public class MainMenu : MonoBehaviour
 					p2Vec.y = edges.yMin;
 
 				//P1 Poosh
-				if (XCI.GetButtonDown(XboxButton.A, p1XCtrl.controller) || Input.GetKeyDown(KeyCode.Q))
+				if (XCI.GetButtonDown(XboxButton.A, p1XCtrl.controller))
 				{
 					//P1 cursor hitboxes
 					if (p1Vec.x <= rChu.xMax && p1Vec.x >= rChu.xMin &&
@@ -286,7 +286,7 @@ public class MainMenu : MonoBehaviour
 						}
 					}
 				}
-				else if (XCI.GetButtonDown(XboxButton.B, p1XCtrl.controller) || Input.GetKeyDown(KeyCode.E))
+				else if (XCI.GetButtonDown(XboxButton.B, p1XCtrl.controller))
 				{
 					//Reset color to white
 					if(p1Selected == 1)
@@ -325,10 +325,6 @@ public class MainMenu : MonoBehaviour
 						{
 							//p2Selected = -1;
 						}
-					}
-					else
-					{
-						p2Selected = -1;
 					}
 				}
 				else if (XCI.GetButtonDown(XboxButton.B, p2XCtrl.controller))
