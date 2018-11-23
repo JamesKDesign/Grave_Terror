@@ -100,7 +100,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 0.75
+        intensity: 0.4
         threshold: 0.75
         softKnee: 0.8
         radius: 2
@@ -298,7 +298,7 @@ MonoBehaviour:
       mode: 0
       color: {r: 0.041955013, g: 0.058823526, b: 0.04207135, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.55
+      intensity: 0.525
       smoothness: 1
       roundness: 0.2
       mask: {fileID: 0}
