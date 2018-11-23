@@ -57,6 +57,8 @@ public class FlowFieldGenerator : MonoBehaviour
 	//Optimization
 	private int current = 0;
 
+	private float timer = 0.0f;
+
 	private void Awake()
 	{
 		instance = this;
@@ -87,12 +89,17 @@ public class FlowFieldGenerator : MonoBehaviour
 
 	private void Update()
 	{
-		//Only update them one at a time
-		QueryGrid(targets[current].position, current);
-		//Change current for the next go
-		current++;
-		if (current >= targets.Length)
-			current = 0;
+		if (timer <= 0.0f)
+		{
+			//Only update them one at a time
+			QueryGrid(targets[current].position, current);
+			//Change current for the next go
+			current++;
+			if (current >= targets.Length)
+				current = 0;
+
+			timer = 0.1f;
+		}
 	}
 
 	private void GenerateField()
@@ -119,6 +126,20 @@ public class FlowFieldGenerator : MonoBehaviour
 						grid[x, y] = new Segment();
 						grid[x, y].direction[0] = Vector3.zero;
 						continue;
+					}
+					//Obstruction but it might be destroyed in the future
+					if (false/*hit.transform.CompareTag("Blocker")*/)
+					{
+						grid[x, y] = new Segment();
+						grid[x, y].direction[0] = Vector3.zero;
+						//Implant some leeches onto the obstruction if it doesn't already have a leech
+						//if (hit.transform.gameObject.GetComponent<ObstructingLeech>() == null)
+						//{
+							//ObstructingLeech leech = hit.transform.gameObject.AddComponent<ObstructingLeech>();
+						//}
+						////Seed the leech
+						//leech.Add(x, y);
+						//continue;
 					}
 				}
 				//No hit/bad hit
@@ -295,6 +316,22 @@ public class FlowFieldGenerator : MonoBehaviour
 			return _index;
 		}
 		return -1;
+	}
+
+	//Recalculates if the tile is still valid (or if an invalid tile is now valid)
+	public void Regenerate(Vector3 _position, int _cascade = 0)
+	{
+		//Worldspace to gridspace
+		Vector2Int seg = new Vector2Int();
+		seg.x = (int)((FlowFieldGenerator.instance.bottomLeft.position.x * -1.0f) + _position.x);
+		seg.y = (int)((FlowFieldGenerator.instance.bottomLeft.position.z * -1.0f) + _position.z);
+
+		while (_cascade >= 0)
+		{
+
+
+			_cascade--;
+		}
 	}
 
 	public static FlowFieldGenerator GetInstance()
