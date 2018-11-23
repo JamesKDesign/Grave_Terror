@@ -87,9 +87,11 @@ public class MainMenu : MonoBehaviour
 	private int p2Selected = -1;
 
 	public GameObject selectionScreen;
+	public float selectionScreenMovespeed = 300.0f;
 
 	//Selection Screen cursor
 	Vector2 p1Vec, p2Vec;
+	GameObject oChu, oSiz;
 	Rect rChu, rSiz;
 	GameObject p1Cursor, p2Cursor;
 
@@ -121,10 +123,12 @@ public class MainMenu : MonoBehaviour
 			if (t.gameObject.name == "ChunkSelection")
 			{
 				rChu = t.gameObject.GetComponent<RectTransform>().rect;
+				oChu = t.gameObject;
 			}
 			else if (t.gameObject.name == "SizzleSelection")
 			{
 				rSiz = t.gameObject.GetComponent<RectTransform>().rect;
+				oSiz = t.gameObject;
 			}
 			else if (t.gameObject.name == "P1Cursor")
 			{
@@ -216,12 +220,32 @@ public class MainMenu : MonoBehaviour
 					p2Selected = 2;
 					endPoints[current].call.Invoke();
 				}
-
-				p1Vec += p1Selection;
-				p2Vec += p2Selection;
+				//moving at 300 meaningless units a second
+				p1Vec += p1Selection * selectionScreenMovespeed * Time.deltaTime;
+				p2Vec += p2Selection * selectionScreenMovespeed * Time.deltaTime;
 
 				p1Cursor.GetComponent<RectTransform>().localPosition = p1Vec;
 				p2Cursor.GetComponent<RectTransform>().localPosition = p2Vec;
+				//Cursor no escape
+				Rect edges = selectionScreen.GetComponent<RectTransform>().rect;
+				if (p1Vec.x >= edges.xMax)
+					p1Vec.x = edges.xMax;
+				else if (p1Vec.x <= edges.xMin)
+					p1Vec.x = edges.xMin;
+				if (p1Vec.y >= edges.yMax)
+					p1Vec.y = edges.yMax;
+				else if (p1Vec.y <= edges.yMin)
+					p1Vec.y = edges.yMin;
+				//Cursor no escape 2
+				if (p2Vec.x >= edges.xMax)
+					p2Vec.x = edges.xMax;
+				else if (p2Vec.x <= edges.xMin)
+					p2Vec.x = edges.xMin;
+				if (p2Vec.y >= edges.yMax)
+					p2Vec.y = edges.yMax;
+				else if (p2Vec.y <= edges.yMin)
+					p2Vec.y = edges.yMin;
+
 				//P1 Poosh
 				if (XCI.GetButtonDown(XboxButton.A, p1XCtrl.controller))
 				{
@@ -232,6 +256,7 @@ public class MainMenu : MonoBehaviour
 						if (p2Selected != 1)
 						{
 							p1Selected = 1;
+							oChu.GetComponent<CanvasRenderer>().SetColor(Color.red);
 						}
 						else
 						{
@@ -244,6 +269,7 @@ public class MainMenu : MonoBehaviour
 						if (p2Selected != 2)
 						{
 							p1Selected = 2;
+							oSiz.GetComponent<CanvasRenderer>().SetColor(Color.red);
 						}
 						else
 						{
@@ -257,6 +283,12 @@ public class MainMenu : MonoBehaviour
 				}
 				else if (XCI.GetButtonDown(XboxButton.B, p1XCtrl.controller))
 				{
+					//Reset color to white
+					if(p1Selected == 1)
+						oChu.GetComponent<CanvasRenderer>().SetColor(Color.white);
+					else if(p1Selected == 2)
+						oSiz.GetComponent<CanvasRenderer>().SetColor(Color.white);
+					//Clear selected
 					p1Selected = -1;
 				}
 				//P2 Poosh
@@ -269,6 +301,7 @@ public class MainMenu : MonoBehaviour
 						if (p1Selected != 1)
 						{
 							p2Selected = 1;
+							oChu.GetComponent<CanvasRenderer>().SetColor(Color.blue);
 						}
 						else
 						{
@@ -281,6 +314,7 @@ public class MainMenu : MonoBehaviour
 						if (p1Selected != 2)
 						{
 							p2Selected = 2;
+							oSiz.GetComponent<CanvasRenderer>().SetColor(Color.blue);
 						}
 						else
 						{
@@ -294,6 +328,12 @@ public class MainMenu : MonoBehaviour
 				}
 				else if (XCI.GetButtonDown(XboxButton.B, p2XCtrl.controller))
 				{
+					//Reset color to white
+					if (p2Selected == 1)
+						oChu.GetComponent<CanvasRenderer>().SetColor(Color.white);
+					else if (p2Selected == 2)
+						oSiz.GetComponent<CanvasRenderer>().SetColor(Color.white);
+					//Clear selected
 					p2Selected = -1;
 				}
 			}

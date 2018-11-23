@@ -238,4 +238,10 @@ public class Spawner : MonoBehaviour
 
 		obj.GetComponent<Enemy>().Init();
 	}
+
+	//Activates an inactive spawn event element
+	public void Trigger(int _element)
+	{
+
+	}
 }
