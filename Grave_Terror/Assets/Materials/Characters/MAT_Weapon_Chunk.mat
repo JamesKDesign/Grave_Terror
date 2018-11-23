@@ -96,4 +96,4 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Emission_Colour: {r: 0.92549026, g: 0.48235297, b: 0.13333334, a: 1}
+    - _Emission_Colour: {r: 0.9705882, g: 0.44759688, b: 0.035683367, a: 1}
