@@ -117,7 +117,7 @@ public class MainMenu : MonoBehaviour
 
 		p1Vec = Vector2.zero;
 		p2Vec = Vector2.zero;
-
+		//Names of objects are important
 		foreach (Transform t in selectionScreen.transform)
 		{
 			if (t.gameObject.name == "ChunkSelection")
@@ -139,6 +139,9 @@ public class MainMenu : MonoBehaviour
 				p2Cursor = t.gameObject;
 			}
 		}
+
+		rChu.position -= new Vector2(oChu.transform.localPosition.x, oChu.transform.localPosition.y);
+		rSiz.position -= new Vector2(oSiz.transform.localPosition.x, oSiz.transform.localPosition.y);
 	}
 
 	//Dont break it...
@@ -214,7 +217,11 @@ public class MainMenu : MonoBehaviour
 				p1Selection.y = XCI.GetAxis(XboxAxis.LeftStickY, p1XCtrl.controller);
 
 				p2Selection.x = XCI.GetAxis(XboxAxis.LeftStickX, p2XCtrl.controller);
-				p2Selection.y = XCI.GetAxis(XboxAxis.LeftStickX, p2XCtrl.controller);
+				p2Selection.y = XCI.GetAxis(XboxAxis.LeftStickY, p2XCtrl.controller);
+
+				p1Selection.x = Input.GetAxis("Horizontal");
+				p1Selection.y = Input.GetAxis("Vertical");
+
 				//DEBUG just start
 				if (Input.GetKeyDown(KeyCode.Z))
 				{
@@ -249,13 +256,13 @@ public class MainMenu : MonoBehaviour
 					p2Vec.y = edges.yMin;
 
 				//P1 Poosh
-				if (XCI.GetButtonDown(XboxButton.A, p1XCtrl.controller))
+				if (XCI.GetButtonDown(XboxButton.A, p1XCtrl.controller) || Input.GetKeyDown(KeyCode.Q))
 				{
 					//P1 cursor hitboxes
 					if (p1Vec.x <= rChu.xMax && p1Vec.x >= rChu.xMin &&
 					p1Vec.y <= rChu.yMax && p1Vec.y >= rChu.yMin)
 					{
-						if (p2Selected != 1)
+						if (p2Selected != 1 && p1Selected != 2)
 						{
 							p1Selected = 1;
 							oChu.GetComponent<CanvasRenderer>().SetColor(Color.red);
@@ -268,7 +275,7 @@ public class MainMenu : MonoBehaviour
 					else if (p1Vec.x <= rSiz.xMax && p1Vec.x >= rSiz.xMin &&
 						p1Vec.y <= rSiz.yMax && p1Vec.y >= rSiz.yMin)
 					{
-						if (p2Selected != 2)
+						if (p2Selected != 2 && p1Selected != 1)
 						{
 							p1Selected = 2;
 							oSiz.GetComponent<CanvasRenderer>().SetColor(Color.red);
@@ -278,12 +285,8 @@ public class MainMenu : MonoBehaviour
 							//p1Selected = -1;
 						}
 					}
-					else
-					{
-						p1Selected = -1;
-					}
 				}
-				else if (XCI.GetButtonDown(XboxButton.B, p1XCtrl.controller))
+				else if (XCI.GetButtonDown(XboxButton.B, p1XCtrl.controller) || Input.GetKeyDown(KeyCode.E))
 				{
 					//Reset color to white
 					if(p1Selected == 1)
@@ -300,7 +303,7 @@ public class MainMenu : MonoBehaviour
 					if (p2Vec.x <= rChu.xMax && p2Vec.x >= rChu.xMin &&
 						p2Vec.y <= rChu.yMax && p2Vec.y >= rChu.yMin)
 					{
-						if (p1Selected != 1)
+						if (p1Selected != 1 && p2Selected != 2)
 						{
 							p2Selected = 1;
 							oChu.GetComponent<CanvasRenderer>().SetColor(Color.blue);
@@ -313,7 +316,7 @@ public class MainMenu : MonoBehaviour
 					else if (p2Vec.x <= rSiz.xMax && p2Vec.x >= rSiz.xMin &&
 						p2Vec.y <= rSiz.yMax && p2Vec.y >= rSiz.yMin)
 					{
-						if (p1Selected != 2)
+						if (p1Selected != 2 && p2Selected != 1)
 						{
 							p2Selected = 2;
 							oSiz.GetComponent<CanvasRenderer>().SetColor(Color.blue);
