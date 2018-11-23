@@ -62,6 +62,7 @@ public class PlayerShooting : MonoBehaviour
 
                             anim.SetBool("IsAttacking", true);
 
+
                             RaycastHit hit;
                             Ray rayCast = new Ray(transform.position, transform.forward);
                             if (Physics.Raycast(rayCast, out hit, range, layerMask))
@@ -98,7 +99,7 @@ public class PlayerShooting : MonoBehaviour
                         muzzleFlash.Stop();
                         bulletCasing.Stop();
 
-                        //anim.SetBool("IsAttacking", false);
+                        anim.SetBool("IsAttacking", false);
                     }
                 }
             }

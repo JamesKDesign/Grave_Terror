@@ -1143,8 +1143,8 @@ MonoBehaviour:
   attackDamage: 3
   attackDelay: 1
   attackRate: 1
-  movementSpeed: 6
-  movementSpeedVariance: 0
+  movementSpeed: 4
+  movementSpeedVariance: 2
   path: -1
   engaging: 1
   fireDamageOverTime: 0

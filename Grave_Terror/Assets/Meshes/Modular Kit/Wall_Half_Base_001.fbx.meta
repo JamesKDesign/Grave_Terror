@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 8bd8cf3c53751cb4586caf63a143c330
-timeCreated: 1542779273
+guid: 42d77acbceb01184bba8999fb27658ec
+timeCreated: 1542931405
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: lam_test
+    2100000: lambert4
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Wall_Half_Corner_Convex_001
+    4300000: Wall_Half_Base_001
   externalObjects: {}
   materials:
     importMaterials: 1
