@@ -204,6 +204,8 @@ public class MainMenu : MonoBehaviour
 		{
 			if (state == MENU_STATE.CHARACTER_SELECT)
 			{
+				selectionScreen.SetActive(true);
+
 				Vector2 p1Selection;
 				Vector2 p2Selection;
 				//First come first serve selection
@@ -220,7 +222,7 @@ public class MainMenu : MonoBehaviour
 					p2Selected = 2;
 					endPoints[current].call.Invoke();
 				}
-				//moving at 300 meaningless units a second
+				//moving at ???? meaningless units a second
 				p1Vec += p1Selection * selectionScreenMovespeed * Time.deltaTime;
 				p2Vec += p2Selection * selectionScreenMovespeed * Time.deltaTime;
 
@@ -534,7 +536,7 @@ public class MainMenu : MonoBehaviour
 	public void GotoCharacterSelection()
 	{
 		state = MENU_STATE.CHARACTER_SELECT;
-		selectionScreen.SetActive(true);
+		//selectionScreen.SetActive(true);
 	}
 
 	public void CharacterSelectComplete()
