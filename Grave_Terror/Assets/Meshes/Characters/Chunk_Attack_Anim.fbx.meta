@@ -116,62 +116,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: Chunk_Hips
-        weight: 0
-      - path: Chunk_Hips/Chunk_LeftUpLeg
-        weight: 0
-      - path: Chunk_Hips/Chunk_LeftUpLeg/Chunk_LeftLeg
-        weight: 0
-      - path: Chunk_Hips/Chunk_LeftUpLeg/Chunk_LeftLeg/Chunk_LeftFoot
-        weight: 0
-      - path: Chunk_Hips/Chunk_LeftUpLeg/Chunk_LeftLeg/Chunk_LeftFoot/Chunk_LeftToeBase
-        weight: 0
-      - path: Chunk_Hips/Chunk_RightUpLeg
-        weight: 0
-      - path: Chunk_Hips/Chunk_RightUpLeg/Chunk_RightLeg
-        weight: 0
-      - path: Chunk_Hips/Chunk_RightUpLeg/Chunk_RightLeg/Chunk_RightFoot
-        weight: 0
-      - path: Chunk_Hips/Chunk_RightUpLeg/Chunk_RightLeg/Chunk_RightFoot/Chunk_RightToeBase
-        weight: 0
-      - path: Chunk_Hips/Chunk_Spine
-        weight: 1
-      - path: Chunk_Hips/Chunk_Spine/Chunk_Spine1
-        weight: 1
-      - path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2
-        weight: 1
-      - path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_LeftShoulder
-        weight: 1
-      - path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_LeftShoulder/Chunk_LeftArm
-        weight: 1
-      - path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_LeftShoulder/Chunk_LeftArm/Chunk_LeftForeArm
-        weight: 1
-      - path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_LeftShoulder/Chunk_LeftArm/Chunk_LeftForeArm/Chunk_LeftHand
-        weight: 1
-      - path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_LeftShoulder/Chunk_LeftArm/Chunk_LeftForeArm/Chunk_LeftHand/Chunk_LeftPalm
-        weight: 1
-      - path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_Neck
-        weight: 1
-      - path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_Neck/Chunk_Head
-        weight: 1
-      - path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_RightShoulder
-        weight: 1
-      - path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_RightShoulder/Chunk_RightArm
-        weight: 1
-      - path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_RightShoulder/Chunk_RightArm/Chunk_RightForeArm
-        weight: 1
-      - path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_RightShoulder/Chunk_RightArm/Chunk_RightForeArm/Chunk_RightHand
-        weight: 1
-      - path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_RightShoulder/Chunk_RightArm/Chunk_RightForeArm/Chunk_RightHand/Chunk_RightPalm
-        weight: 1
-      - path: Weapon_Chunk
-        weight: 1
-      - path: Weapon_Chunk/Loc_Weapon_Handle
-        weight: 1
-      maskType: 0
+      transformMask: []
+      maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     isReadable: 1

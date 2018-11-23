@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Chunk_Upper_Mask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Chunk_Hips
+    m_Weight: 0
+  - m_Path: Chunk_Hips/Chunk_LeftUpLeg
+    m_Weight: 0
+  - m_Path: Chunk_Hips/Chunk_LeftUpLeg/Chunk_LeftLeg
+    m_Weight: 0
+  - m_Path: Chunk_Hips/Chunk_LeftUpLeg/Chunk_LeftLeg/Chunk_LeftFoot
+    m_Weight: 0
+  - m_Path: Chunk_Hips/Chunk_LeftUpLeg/Chunk_LeftLeg/Chunk_LeftFoot/Chunk_LeftToeBase
+    m_Weight: 0
+  - m_Path: Chunk_Hips/Chunk_RightUpLeg
+    m_Weight: 0
+  - m_Path: Chunk_Hips/Chunk_RightUpLeg/Chunk_RightLeg
+    m_Weight: 0
+  - m_Path: Chunk_Hips/Chunk_RightUpLeg/Chunk_RightLeg/Chunk_RightFoot
+    m_Weight: 0
+  - m_Path: Chunk_Hips/Chunk_RightUpLeg/Chunk_RightLeg/Chunk_RightFoot/Chunk_RightToeBase
+    m_Weight: 0
+  - m_Path: Chunk_Hips/Chunk_Spine
+    m_Weight: 1
+  - m_Path: Chunk_Hips/Chunk_Spine/Chunk_Spine1
+    m_Weight: 1
+  - m_Path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2
+    m_Weight: 1
+  - m_Path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_LeftShoulder
+    m_Weight: 1
+  - m_Path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_LeftShoulder/Chunk_LeftArm
+    m_Weight: 1
+  - m_Path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_LeftShoulder/Chunk_LeftArm/Chunk_LeftForeArm
+    m_Weight: 1
+  - m_Path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_LeftShoulder/Chunk_LeftArm/Chunk_LeftForeArm/Chunk_LeftHand
+    m_Weight: 1
+  - m_Path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_LeftShoulder/Chunk_LeftArm/Chunk_LeftForeArm/Chunk_LeftHand/Chunk_LeftPalm
+    m_Weight: 1
+  - m_Path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_Neck
+    m_Weight: 1
+  - m_Path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_Neck/Chunk_Head
+    m_Weight: 1
+  - m_Path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_RightShoulder
+    m_Weight: 1
+  - m_Path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_RightShoulder/Chunk_RightArm
+    m_Weight: 1
+  - m_Path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_RightShoulder/Chunk_RightArm/Chunk_RightForeArm
+    m_Weight: 1
+  - m_Path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_RightShoulder/Chunk_RightArm/Chunk_RightForeArm/Chunk_RightHand
+    m_Weight: 1
+  - m_Path: Chunk_Hips/Chunk_Spine/Chunk_Spine1/Chunk_Spine2/Chunk_RightShoulder/Chunk_RightArm/Chunk_RightForeArm/Chunk_RightHand/Chunk_RightPalm
+    m_Weight: 1
+  - m_Path: Chunk_low
+    m_Weight: 0
+  - m_Path: Weapon_Chunk
+    m_Weight: 1
+  - m_Path: Weapon_Chunk/Loc_Weapon_Handle
+    m_Weight: 1

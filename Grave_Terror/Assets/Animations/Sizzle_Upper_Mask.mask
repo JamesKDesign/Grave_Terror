@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Sizzle_Upper_Mask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Sizzle_Hips
+    m_Weight: 0
+  - m_Path: Sizzle_Hips/Sizzle_LeftUpLeg
+    m_Weight: 0
+  - m_Path: Sizzle_Hips/Sizzle_LeftUpLeg/Sizzle_LeftLeg
+    m_Weight: 0
+  - m_Path: Sizzle_Hips/Sizzle_LeftUpLeg/Sizzle_LeftLeg/Sizzle_LeftFoot
+    m_Weight: 0
+  - m_Path: Sizzle_Hips/Sizzle_LeftUpLeg/Sizzle_LeftLeg/Sizzle_LeftFoot/Sizzle_LeftToeBase
+    m_Weight: 0
+  - m_Path: Sizzle_Hips/Sizzle_RightUpLeg
+    m_Weight: 0
+  - m_Path: Sizzle_Hips/Sizzle_RightUpLeg/Sizzle_RightLeg
+    m_Weight: 0
+  - m_Path: Sizzle_Hips/Sizzle_RightUpLeg/Sizzle_RightLeg/Sizzle_RightFoot
+    m_Weight: 0
+  - m_Path: Sizzle_Hips/Sizzle_RightUpLeg/Sizzle_RightLeg/Sizzle_RightFoot/Sizzle_RightToeBase
+    m_Weight: 0
+  - m_Path: Sizzle_Hips/Sizzle_Spine
+    m_Weight: 1
+  - m_Path: Sizzle_Hips/Sizzle_Spine/Sizzle_Spine1
+    m_Weight: 1
+  - m_Path: Sizzle_Hips/Sizzle_Spine/Sizzle_Spine1/Sizzle_Spine2
+    m_Weight: 1
+  - m_Path: Sizzle_Hips/Sizzle_Spine/Sizzle_Spine1/Sizzle_Spine2/Sizzle_LeftShoulder
+    m_Weight: 1
+  - m_Path: Sizzle_Hips/Sizzle_Spine/Sizzle_Spine1/Sizzle_Spine2/Sizzle_LeftShoulder/Sizzle_LeftArm
+    m_Weight: 1
+  - m_Path: Sizzle_Hips/Sizzle_Spine/Sizzle_Spine1/Sizzle_Spine2/Sizzle_LeftShoulder/Sizzle_LeftArm/Sizzle_LeftForeArm
+    m_Weight: 1
+  - m_Path: Sizzle_Hips/Sizzle_Spine/Sizzle_Spine1/Sizzle_Spine2/Sizzle_LeftShoulder/Sizzle_LeftArm/Sizzle_LeftForeArm/Sizzle_LeftHand
+    m_Weight: 1
+  - m_Path: Sizzle_Hips/Sizzle_Spine/Sizzle_Spine1/Sizzle_Spine2/Sizzle_Neck
+    m_Weight: 1
+  - m_Path: Sizzle_Hips/Sizzle_Spine/Sizzle_Spine1/Sizzle_Spine2/Sizzle_Neck/Sizzle_Head
+    m_Weight: 1
+  - m_Path: Sizzle_Hips/Sizzle_Spine/Sizzle_Spine1/Sizzle_Spine2/Sizzle_RightShoulder
+    m_Weight: 1
+  - m_Path: Sizzle_Hips/Sizzle_Spine/Sizzle_Spine1/Sizzle_Spine2/Sizzle_RightShoulder/Sizzle_RightArm
+    m_Weight: 1
+  - m_Path: Sizzle_Hips/Sizzle_Spine/Sizzle_Spine1/Sizzle_Spine2/Sizzle_RightShoulder/Sizzle_RightArm/Sizzle_RightForeArm
+    m_Weight: 1
+  - m_Path: Sizzle_Hips/Sizzle_Spine/Sizzle_Spine1/Sizzle_Spine2/Sizzle_RightShoulder/Sizzle_RightArm/Sizzle_RightForeArm/Sizzle_RightHand
+    m_Weight: 1
+  - m_Path: Sizzle_Lowpoly
+    m_Weight: 0
