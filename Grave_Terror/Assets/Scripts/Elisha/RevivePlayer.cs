@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RevivePlayer : MonoBehaviour {
 
-    public float timer;
+    public float Revivetimer;
     PlayerHealth player;
     public GameObject player2;
     public float reviveHealth;
@@ -14,12 +14,12 @@ public class RevivePlayer : MonoBehaviour {
     private void Awake()
     {
         player = GetComponentInParent<PlayerHealth>();
-        timer = 5.0f;
+        Revivetimer = 5.0f;
     }
 
     private void Update()
     {
-        if (timer <= 0f)
+        if (Revivetimer <= 0f)
         {
             isRevived = true;
             player.playerState = PlayerHealth.PlayerState.ALIVE;
@@ -28,7 +28,7 @@ public class RevivePlayer : MonoBehaviour {
             player.reviveVolume.GetComponentInChildren<ParticleSystem>().Play();
             player.health = reviveHealth;
             player.currentHealth = player.health;
-            timer = 5f;
+            Revivetimer = 5f;
         }
 
         if(isRevived == true)
@@ -52,8 +52,11 @@ public class RevivePlayer : MonoBehaviour {
         {
             if (other.gameObject == player2)
             {
-                timer -= Time.deltaTime;
-                Debug.Log("timer" + timer);
+                Revivetimer -= Time.deltaTime;
+                ParticleSystem.MainModule revMainMod = player.reviveVolume.GetComponentInChildren<ParticleSystem>().main;
+                revMainMod.startColor = Color.green;
+                player.reviveVolume.GetComponentInChildren<ParticleSystem>().Play();
+                Debug.Log("timer" + Revivetimer);
             }
         }
     }

@@ -8,15 +8,15 @@ public class PlayerHealth : MonoBehaviour
     [Tooltip("The players current health state")]
     public float currentHealth;
     [Tooltip("How long the flash will run for when the player is hit")]
-    public float timer;
+    public float DeathTimer;
     PlayerMovement controls;
     public GameObject reviveVolume;
-    //public GameObject DeathScreen;
+    public GameObject DeathScreen;
     public Animator anim;
     public Tether Tet;
     public Transform player2;
 
-
+    // player states
     public enum PlayerState
     {
         ALIVE,
@@ -26,63 +26,80 @@ public class PlayerHealth : MonoBehaviour
 
     public PlayerState playerState;
 
-
     private void Awake()
     {
-        //DeathScreen.SetActive(false);
-        controls = GetComponent<PlayerMovement>();
         currentHealth = health;
+        DeathScreen.SetActive(false);
+        controls = GetComponent<PlayerMovement>();
     }
 
     public void Update()
     {
         playerHealth();
 
-        // Player state switch
+        // Player state switch statement
         switch(playerState)
         {
-            // Player alive with full functions
+            // Player alive state with all functions active
             case PlayerState.ALIVE:
                 print("In alive state");
-
                 anim.SetBool("IsDowned", false);
-                timer = 20f;
+                DeathTimer = 20f;
                 controls.Move();
                // controls.Dashing();
                 controls.Turning();
                 break;
+
             // Player revive state can rotate player and shoot 
             case PlayerState.REVIVE:
                 print("In revive state");
-
                 anim.SetBool("IsDowned", true);
-                // death timer hits 0 will kill the player 
-                if (timer == 0.0f)
-                {
+                // if the timer is 0 call dead state to kill the player permanently
+                if (DeathTimer <= 0.0f)
                     playerState = PlayerState.DEAD;
-                }
                 break;
+
             // Player dead state sets player to in-active
             case PlayerState.DEAD:
                 print("In death state");
                 break;
         }
 
-        if(player2.GetComponent<PlayerHealth>().playerState == PlayerState.DEAD && playerState == PlayerState.DEAD)
+        // checks if both players are in dead state to then spawn game over screen
+        if (player2.GetComponent<PlayerHealth>().playerState == PlayerState.DEAD && playerState == PlayerState.DEAD)
         {
-            //DeathScreen.SetActive(true);
+            DeathScreen.SetActive(true);
             player2.gameObject.SetActive(false);
             gameObject.SetActive(false);
         }
 
-        if (playerState == PlayerState.DEAD) {
+        // checks if both players are in revive state to spawn game over screen
+        if(player2.GetComponent<PlayerHealth>().playerState == PlayerState.REVIVE && playerState == PlayerState.REVIVE)
+        {
+            DeathScreen.SetActive(true);
+            player2.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+        }
+        // checks if one player is in dead state and if the other is in revive state to then spawn game over screen
+        else if(player2.GetComponent<PlayerHealth>().playerState == PlayerState.DEAD && playerState == PlayerState.REVIVE)
+        {
+            DeathScreen.SetActive(true);
+            gameObject.SetActive(false);
+        }
+
+        // if one player is dead then deactivate tether restriction
+        if (playerState == PlayerState.DEAD)
+        {
             Tet.maxDistance = float.PositiveInfinity;
             this.gameObject.SetActive(false);
         }
 
+        // if player is in revive state 
         if (playerState == PlayerState.REVIVE)
         {
-            timer -= Time.deltaTime;
+            // call the death timer
+            DeathTimer -= Time.deltaTime;
+            // spawn revive radius particle system
             if (reviveVolume != null)
             {
                 ParticleSystem.MainModule revMainMod = reviveVolume.GetComponentInChildren<ParticleSystem>().main;
@@ -92,13 +109,15 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    // damage to the player inflicted
     public void DamagePlayer(float amount)
     {
         currentHealth -= amount;
         print("Player health: " + currentHealth);
     }
 
-    void playerHealth ()
+    // player health management
+    void playerHealth()
     {
         if (currentHealth <= 0)
         {

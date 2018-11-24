@@ -23,12 +23,12 @@ public class DynamicCamera : MonoBehaviour {
     private void Update()
     {
         // if no players on the screen
-        if(players.Count == 0)
-            // dont do anything
+        if (players.Count == 0)
             return;
+
         MoveCamera();
         Zoom();
-    }
+    }  
 
     void Zoom()
     {
