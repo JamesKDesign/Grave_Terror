@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using XboxCtrlrInput;
 
 public class PlayerShooting : MonoBehaviour
@@ -23,9 +24,19 @@ public class PlayerShooting : MonoBehaviour
     public CameraController cameraController;
     public LayerMask layerMask;
 
+    public List<AudioClip> gunShots = new List<AudioClip>();
+    public List<AudioClip> shellCasings = new List<AudioClip>();
+    private AudioSource audioSource;
+    public float shotInterval = 0.5f;
+    private float shotTimer = 0.0f;
+    public float shellVolume = 0.0f;
+    
+
     void Start()
     {
         cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Raycasting
@@ -46,6 +57,8 @@ public class PlayerShooting : MonoBehaviour
                 {
                     if (XCI.GetAxis(XboxAxis.RightTrigger, xboxController.controller) > 0.1f)
                     {
+                        shotTimer += Time.deltaTime;
+
                         if (counter > delay)
                         {
                             //anim.SetBool("isShooting", true);
@@ -59,6 +72,15 @@ public class PlayerShooting : MonoBehaviour
 
                             anim.SetBool("IsAttacking", true);
 
+                            // play audio clips
+                            
+                            if (shotTimer >= shotInterval)
+                            {
+                                audioSource.PlayOneShot(gunShots[Random.Range(0, gunShots.Count)]);
+                                audioSource.PlayOneShot(shellCasings[Random.Range(0, shellCasings.Count)], shellVolume);
+
+                                Debug.Log("Bang bang");
+                            }
 
                             RaycastHit hit;
                             Ray rayCast = new Ray(transform.position, transform.forward);
@@ -95,6 +117,8 @@ public class PlayerShooting : MonoBehaviour
                     {
                         muzzleFlash.Stop();
                         bulletCasing.Stop();
+
+                        shotTimer = 0;
 
                         anim.SetBool("IsAttacking", false);
                     }
