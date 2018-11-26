@@ -26,10 +26,14 @@ public class PlayerShooting : MonoBehaviour
 
     public List<AudioClip> gunShots = new List<AudioClip>();
     public List<AudioClip> shellCasings = new List<AudioClip>();
+    public List<AudioClip> bulletImpact = new List<AudioClip>();
     private AudioSource audioSource;
     public float shotInterval = 0.5f;
     private float shotTimer = 0.0f;
     public float shellVolume = 0.0f;
+
+    public float minPitch = 0.0f;
+    public float maxPitch = 1.0f;
     
 
     void Start()
@@ -76,9 +80,10 @@ public class PlayerShooting : MonoBehaviour
                             
                             if (shotTimer >= shotInterval)
                             {
+                                audioSource.pitch = Random.Range(minPitch, maxPitch);
                                 audioSource.PlayOneShot(gunShots[Random.Range(0, gunShots.Count)]);
                                 audioSource.PlayOneShot(shellCasings[Random.Range(0, shellCasings.Count)], shellVolume);
-
+                                
                                 Debug.Log("Bang bang");
                             }
 
@@ -105,6 +110,10 @@ public class PlayerShooting : MonoBehaviour
                                 {
                                     obj.ObjectDamage(damageToGive);
                                     // blood
+
+                                    audioSource.pitch = Random.Range(minPitch, maxPitch);
+                                    audioSource.PlayOneShot(bulletImpact[Random.Range(0, bulletImpact.Count)]);
+
                                     holes = Instantiate(bulletHole, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                                     Destroy(holes, 0.2f);
                                     Debug.DrawLine(transform.position, hit.point, Color.red);

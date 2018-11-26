@@ -104,6 +104,7 @@ public class FlowFieldGenerator : MonoBehaviour
 
 	private void GenerateField()
 	{
+        Debug.Log("generate field");
 		//XZ to XY
 		size.x = (int)topRight.position.x - (int)bottomLeft.position.x;
 		size.y = (int)topRight.position.z - (int)bottomLeft.position.z;

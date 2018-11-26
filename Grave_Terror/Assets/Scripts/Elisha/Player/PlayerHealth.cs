@@ -16,6 +16,11 @@ public class PlayerHealth : MonoBehaviour
     public Tether Tet;
     public Transform player2;
 
+    private AudioSource audioSource;
+    public AudioClip chunkDownClip;
+    public AudioClip chunkReviveClip;
+    private bool chunkDowned = false;
+
     // player states
     public enum PlayerState
     {
@@ -31,6 +36,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = health;
         DeathScreen.SetActive(false);
         controls = GetComponent<PlayerMovement>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void Update()
@@ -54,6 +60,10 @@ public class PlayerHealth : MonoBehaviour
             case PlayerState.REVIVE:
                 print("In revive state");
                 anim.SetBool("IsDowned", true);
+
+                //TODO
+                //1audioSource.PlayOneShot(chunkDownClip);
+
                 // if the timer is 0 call dead state to kill the player permanently
                 if (DeathTimer <= 0.0f)
                     playerState = PlayerState.DEAD;
@@ -61,6 +71,9 @@ public class PlayerHealth : MonoBehaviour
 
             // Player dead state sets player to in-active
             case PlayerState.DEAD:
+
+                //TODO
+                //audioSource.PlayOneShot(chunkReviveClip);
                 print("In death state");
                 break;
         }
@@ -108,6 +121,7 @@ public class PlayerHealth : MonoBehaviour
             }
         }
     }
+
 
     // damage to the player inflicted
     public void DamagePlayer(float amount)
