@@ -22,6 +22,7 @@ public class FlameGaunletLeft : MonoBehaviour {
     private void FixedUpdate()
     {
         FlameShootingLeft();
+        Aim();
     }
 
     public void FlameShootingLeft()
