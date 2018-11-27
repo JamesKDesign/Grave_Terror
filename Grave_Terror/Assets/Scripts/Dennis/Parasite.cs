@@ -9,7 +9,7 @@ public class Parasite : MonoBehaviour
 	{
 		foreach (Vector2Int d in data)
 		{
-			//Do Stuff
+			FlowFieldGenerator.GetInstance().Regenerate(d);
 		}
 	}
 

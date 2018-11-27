@@ -129,17 +129,18 @@ public class FlowFieldGenerator : MonoBehaviour
 						continue;
 					}
 					//Obstruction but it might be destroyed in the future
-					if (false/*hit.transform.CompareTag("Blocker")*/)
+					else if (hit.transform.gameObject.GetComponent<DestructableObjects>() != null)
 					{
-						grid[x, y] = new Segment();
-						grid[x, y].direction[0] = Vector3.zero;
-						//Implant some leeches onto the obstruction if it doesn't already have a leech
-						//if (hit.transform.gameObject.GetComponent<ObstructingLeech>() == null)
-						//{
-							//ObstructingLeech leech = hit.transform.gameObject.AddComponent<ObstructingLeech>();
-						//}
-						////Seed the leech
-						//leech.Add(x, y);
+						//grid[x, y] = new Segment();
+						//grid[x, y].direction[0] = Vector3.zero;
+						Parasite para = hit.transform.gameObject.AddComponent<Parasite>();
+						//Put some data into the obstruction for when its destryed
+						if (para == null)
+						{
+							para = hit.transform.gameObject.AddComponent<Parasite>();
+						}
+						//Add data
+						para.Add(x, y);
 						//continue;
 					}
 				}
@@ -319,19 +320,63 @@ public class FlowFieldGenerator : MonoBehaviour
 		return -1;
 	}
 
+	//For parasites the where put on destructible objects during grid creation
 	//Recalculates if the tile is still valid (or if an invalid tile is now valid)
-	public void Regenerate(Vector3 _position, int _cascade = 0)
+	public void Regenerate(Vector2Int _data)
 	{
-		//Worldspace to gridspace
-		Vector2Int seg = new Vector2Int();
-		seg.x = (int)((FlowFieldGenerator.instance.bottomLeft.position.x * -1.0f) + _position.x);
-		seg.y = (int)((FlowFieldGenerator.instance.bottomLeft.position.z * -1.0f) + _position.z);
+		return; //void everything for now
+		//Dont allow data thats not in the grid
+		if (_data.x >= size.x || _data.y >= size.y ||
+			_data.x < 0 || _data.y < 0)
+			return;
 
-		while (_cascade >= 0)
+		//Dont do anything if its already existing
+		if (grid[_data.x, _data.y] != null)
+			return;
+
+		//Set segment
+		grid[_data.x, _data.y] = new Segment();
+		Segment seg = grid[_data.x, _data.y];
+
+		//0↑
+		if (_data.y != 0)
 		{
-
-
-			_cascade--;
+			grid[_data.x, _data.y].neighbours[0] = grid[_data.x, _data.y - 1];
+		}
+		//1↗
+		if (_data.x != size.x - 1 && _data.y != 0)
+		{
+			grid[_data.x, _data.y].neighbours[1] = grid[_data.x + 1, _data.y - 1];
+		}
+		//2→
+		if (_data.x != size.x - 1)
+		{
+			grid[_data.x, _data.y].neighbours[2] = grid[_data.x + 1, _data.y];
+		}
+		//3↘
+		if (_data.x != size.x - 1 && _data.y != size.y - 1)
+		{
+			grid[_data.x, _data.y].neighbours[3] = grid[_data.x + 1, _data.y + 1];
+		}
+		//4↓
+		if (_data.y != size.y - 1)
+		{
+			grid[_data.x, _data.y].neighbours[4] = grid[_data.x, _data.y + 1];
+		}
+		//5↙
+		if (_data.x != 0 && _data.y != size.y - 1)
+		{
+			grid[_data.x, _data.y].neighbours[5] = grid[_data.x - 1, _data.y + 1];
+		}
+		//6←
+		if (_data.x != 0)
+		{
+			grid[_data.x, _data.y].neighbours[6] = grid[_data.x - 1, _data.y];
+		}
+		//7↖
+		if (_data.x != 0 && _data.y != 0)
+		{
+			grid[_data.x, _data.y].neighbours[7] = grid[_data.x - 1, _data.y - 1];
 		}
 	}
 
