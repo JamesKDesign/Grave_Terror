@@ -31828,13 +31828,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1196032567}
-  m_LocalRotation: {x: -0.0024391664, y: -0.46317625, z: 0.71209764, w: 0.52761614}
+  m_LocalRotation: {x: -0.0020312176, y: -0.6183555, z: 0.67460227, w: 0.40316775}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 550004218}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 401.078, y: -400.767, z: 91.078}
+  m_LocalEulerAnglesHint: {x: 416.372, y: -424.861, z: 80.66701}
 --- !u!1 &1197396085
 GameObject:
   m_ObjectHideFlags: 0
@@ -35919,6 +35919,16 @@ Prefab:
     - target: {fileID: 1402084952837190, guid: 501c54c08f05fd34f9b1d85de9acc6e8, type: 2}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114951522553553858, guid: 501c54c08f05fd34f9b1d85de9acc6e8,
+        type: 2}
+      propertyPath: maxHealth
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 114951522553553858, guid: 501c54c08f05fd34f9b1d85de9acc6e8,
+        type: 2}
+      propertyPath: currentHealth
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 501c54c08f05fd34f9b1d85de9acc6e8, type: 2}
@@ -47092,6 +47102,16 @@ Prefab:
         type: 2}
       propertyPath: maxSpawns
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615809387727424, guid: 86f78aff4dfc1e14ebf245687a747990,
+        type: 2}
+      propertyPath: maxHealth
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615809387727424, guid: 86f78aff4dfc1e14ebf245687a747990,
+        type: 2}
+      propertyPath: currentHealth
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 86f78aff4dfc1e14ebf245687a747990, type: 2}
