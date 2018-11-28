@@ -4,8 +4,6 @@ public class EnemyHealth : MonoBehaviour
 {
     public int health;
     public float currentHealth;
-    public ScoreBoard chunkKills;
-    public ScoreBoard SizzleKills;
 
     private void Awake()
     {
@@ -18,6 +16,7 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             gameObject.GetComponent<Enemy>().Dead();
+       
             print("enemy dead");
         }
     }

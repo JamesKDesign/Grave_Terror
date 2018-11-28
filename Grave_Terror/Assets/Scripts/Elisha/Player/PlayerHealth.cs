@@ -84,6 +84,7 @@ public class PlayerHealth : MonoBehaviour
             DeathScreen.SetActive(true);
             player2.gameObject.SetActive(false);
             gameObject.SetActive(false);
+            Time.timeScale = 0f;
         }
 
         // checks if both players are in revive state to spawn game over screen

@@ -10,11 +10,13 @@ public class GameManager : MonoBehaviour {
     public void RestartGame()
     {
         SceneManager.LoadScene(1);
+        Time.timeScale = 1f;
     }
 
     public void Quit()
     {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
     }
 
 

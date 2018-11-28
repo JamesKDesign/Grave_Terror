@@ -37,15 +37,10 @@ public class ScoreBoard : MonoBehaviour
         ChunkDowns = 0;
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    public void Update()
     {
+        ChunkScoreBoard();
         SizzleScoreBoard();
-        ChunkScoreBoard();     
-    }
-
-    private void Update()
-    {
         if (XboxController.useController == true)
         {
             // bringing up the score board
@@ -59,56 +54,25 @@ public class ScoreBoard : MonoBehaviour
                 scoreBoard.SetActive(false);
             }
         }
+
     }
 
     void SizzleScoreBoard()
     {
-        if (sizzlehealth.playerState == PlayerHealth.PlayerState.REVIVE && CheckMe == true)
+        if (sizzleShooting.currentHealth <= 0)
         {
-            CheckMe = false;
-            SizzleDowns += 1;
-            SizzleD.text = SizzleDowns.ToString();
-        }
-        else if (sizzlehealth.playerState != PlayerHealth.PlayerState.REVIVE && CheckMe == false)
-        {
-            CheckMe = true;
-        }
-
-        if (sizzleShooting.currentHealth <= 0 && CheckMe == true)
-        {
-            CheckMe = false;
             SizzleScore += 1;
             Sizzle.text = SizzleScore.ToString();
-        }
-        else if (sizzleShooting.currentHealth != 0f && CheckMe == false)
-        {
-            CheckMe = true;
         }
 
     }
     void ChunkScoreBoard()
     {
-
-        if (chunkhealth.playerState == PlayerHealth.PlayerState.REVIVE && CheckMe == true)
+        Debug.Log(chunkShooting.target.currentHealth);
+        if (chunkShooting.target.currentHealth <= 0.0f)
         {
-            CheckMe = false;
-            ChunkDowns += 1;
-            ChunkD.text = ChunkDowns.ToString();
-        }
-        else if (chunkhealth.playerState != PlayerHealth.PlayerState.REVIVE && CheckMe == false)
-        {
-            CheckMe = true;
-        }
-
-        if (chunkShooting.target.health <= 0f && CheckMe == true)
-        {
-            CheckMe = false;
             ChunkScore += 1;
             chunk.text = ChunkScore.ToString();
-        }
-        else if (chunkShooting.target.health != 0f && CheckMe == false)
-        {
-            CheckMe = true;
         }
     }
 }
