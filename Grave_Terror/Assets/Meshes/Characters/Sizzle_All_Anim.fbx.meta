@@ -89,7 +89,7 @@ ModelImporter:
       name: Sizzle_Walk
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 28
+      lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -116,8 +116,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Sizzle_Idle
       takeName: Take 001
-      firstFrame: 31
-      lastFrame: 59
+      firstFrame: 32
+      lastFrame: 58
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -144,8 +144,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Sizzle_Attack
       takeName: Take 001
-      firstFrame: 61
-      lastFrame: 89
+      firstFrame: 62
+      lastFrame: 88
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -172,7 +172,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Sizzle_Strafe_Right
       takeName: Take 001
-      firstFrame: 91
+      firstFrame: 92
       lastFrame: 119
       wrapMode: 0
       orientationOffsetY: 0
@@ -201,7 +201,7 @@ ModelImporter:
       name: Sizzle_Strafe_Left
       takeName: Take 001
       firstFrame: 121
-      lastFrame: 149
+      lastFrame: 148
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
