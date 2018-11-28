@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4372182457578640}
   - component: {fileID: 33947062004227290}
   - component: {fileID: 23168117956663108}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Floor_Stamp_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

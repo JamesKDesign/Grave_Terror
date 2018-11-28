@@ -100,13 +100,13 @@ public class Enemy : MonoBehaviour
     public float deadTimer = 1.0f;
     private float originalDeadTimer;
 
-    private new SkinnedMeshRenderer renderer;
+    private new Renderer renderer;
 
 	private void Awake()
 	{
 		originalMove = movementSpeed;
 
-        renderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        renderer = GetComponentInChildren<Renderer>();
 
         originalDeadTimer = deadTimer;
 	}
