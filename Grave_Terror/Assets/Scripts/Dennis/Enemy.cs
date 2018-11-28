@@ -97,9 +97,18 @@ public class Enemy : MonoBehaviour
 
     public Animator anim;
 
+    public float deadTimer = 1.0f;
+    private float originalDeadTimer;
+
+    private new SkinnedMeshRenderer renderer;
+
 	private void Awake()
 	{
 		originalMove = movementSpeed;
+
+        renderer = GetComponentInChildren<SkinnedMeshRenderer>();
+
+        originalDeadTimer = deadTimer;
 	}
 
 	// Use this for initialization
@@ -140,6 +149,20 @@ public class Enemy : MonoBehaviour
                 break;
         }
 
+        //----
+        if(!alive)
+        {
+            deadTimer -= Time.deltaTime;
+            if(deadTimer <= 0.0f)
+            {
+                spawner.Despawn(gameObject);
+            }
+
+            renderer.material.SetFloat("Dissolve_Value", (deadTimer * -1.0f) + 1.0f);
+            acceleration = Vector3.zero;
+            velocity = Vector3.zero;
+            return;
+        }
 
         //If we have no path get one
         if (path == -1)
@@ -278,7 +301,9 @@ public class Enemy : MonoBehaviour
 	//Newly spawned or just respawned
 	public void Init()
 	{
+        GetComponent<Collider>().enabled = true;
 		alive = true;
+        deadTimer = originalDeadTimer;
         health = GetComponent<EnemyHealth>();
         health.currentHealth = health.health;
         //Randomize speed
@@ -293,13 +318,15 @@ public class Enemy : MonoBehaviour
 	//Actor died
 	public void Dead()
 	{
-		//Prevents this from being called twice
-		if (alive)
-		{
-			alive = false;
+        //Prevents this from being called twice
+        if (alive)
+        {
+            alive = false;
 
-			//EnemyController.instance.DeregisterEnemy(this);
-			spawner.Despawn(gameObject);
+            anim.SetBool("IsDead", true);
+
+            GetComponent<Collider>().enabled = false;
+            //spawner.Despawn(gameObject);
 		}
 	}
 

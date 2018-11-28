@@ -89,6 +89,7 @@ public class FlowFieldGenerator : MonoBehaviour
 
 	private void Update()
 	{
+        timer -= Time.deltaTime;
 		if (timer <= 0.0f)
 		{
 			//Only update them one at a time
