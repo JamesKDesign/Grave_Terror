@@ -1124,6 +1124,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 50
   currentHealth: 50
+  chunkKills: {fileID: 0}
+  SizzleKills: {fileID: 0}
 --- !u!114 &114958883241139986
 MonoBehaviour:
   m_ObjectHideFlags: 1
