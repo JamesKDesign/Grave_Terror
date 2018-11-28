@@ -12,7 +12,7 @@ public class PlayerShooting : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public ParticleSystem bulletCasing;
     public XboxControllerManager xboxController;
-    private GameObject bullet;
+   // private GameObject bullet;
     public float delay;
     public float counter = 0f;
     public int damageToGive;
@@ -71,7 +71,7 @@ public class PlayerShooting : MonoBehaviour
 
                             // bullets
                             //anim.SetBool("IsAttacking", true);
-                            bullet = Instantiate(particleProjectile, transform.position, chunkRotation.transform.rotation);
+                           GameObject bullet = Instantiate(particleProjectile, transform.position, chunkRotation.transform.rotation);
                             counter = 0f;
 
                             anim.SetBool("IsAttacking", true);

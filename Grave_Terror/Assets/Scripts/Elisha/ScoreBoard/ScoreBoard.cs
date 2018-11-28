@@ -16,7 +16,8 @@ public class ScoreBoard : MonoBehaviour
     private int ChunkDowns;
     private int Placeholder;
     public GameObject scoreBoard;
-    public XboxControllerManager XboxController;
+    public XboxControllerManager XboxController1;
+    public XboxControllerManager XboxController2;
     // references
     public PlayerHealth sizzlehealth;
     public PlayerHealth chunkhealth;
@@ -41,20 +42,19 @@ public class ScoreBoard : MonoBehaviour
     {
         ChunkScoreBoard();
         SizzleScoreBoard();
-        if (XboxController.useController == true)
+        if (XboxController1.useController == true && XboxController2.useController == true)
         {
             // bringing up the score board
-            if (XCI.GetButtonDown(XboxButton.Back, XboxController.controller))
+            if (XCI.GetButtonDown(XboxButton.Back, XboxController1.controller) || XCI.GetButtonDown(XboxButton.Back, XboxController2.controller))
             {
                 print("working controller");
                 scoreBoard.SetActive(true);
             }
-            else if (XCI.GetButtonUp(XboxButton.Back, XboxController.controller))
+            else if( XCI.GetButtonUp(XboxButton.Back, XboxController1.controller) || XCI.GetButtonUp(XboxButton.Back, XboxController2.controller))
             {
                 scoreBoard.SetActive(false);
             }
         }
-
     }
 
     void SizzleScoreBoard()
@@ -65,6 +65,12 @@ public class ScoreBoard : MonoBehaviour
             Sizzle.text = SizzleScore.ToString();
         }
 
+        if (sizzlehealth.currentHealth <= 0)
+        {
+            SizzleDowns += 1;
+            Sizzle.text = SizzleDowns.ToString();
+        }
+
     }
     void ChunkScoreBoard()
     {
@@ -73,6 +79,12 @@ public class ScoreBoard : MonoBehaviour
         {
             ChunkScore += 1;
             chunk.text = ChunkScore.ToString();
+        }
+
+        if (chunkhealth.currentHealth <= 0)
+        {
+            ChunkDowns += 1;
+            chunk.text = ChunkDowns.ToString();
         }
     }
 }
