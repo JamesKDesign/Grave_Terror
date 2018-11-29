@@ -18,11 +18,11 @@ public class PlayerHealth : MonoBehaviour
     [HideInInspector]
     public bool isReviving = false;
 
-    public AudioSource ChunkaudioSource;
-    public AudioSource SizzleaudioSource;
+    //public AudioSource ChunkaudioSource;
+    //public AudioSource SizzleaudioSource;
 
-    public AudioSource ChunkdeathSource;
-    public AudioSource SizzledeathSource;
+    //public AudioSource ChunkdeathSource;
+    //public AudioSource SizzledeathSource;
     [HideInInspector]
     public bool chunkDowned = false;
     [HideInInspector]
@@ -84,7 +84,7 @@ public class PlayerHealth : MonoBehaviour
                     camera.players.Remove(this.gameObject.transform);
                 }
                 //TODO
-                ChunkdeathSource.Play();
+               // ChunkdeathSource.Play();
 
                 //ChunkaudioSource.clip = chunkReviveClip;
                 //ChunkaudioSource.playOnAwake = false;
@@ -115,6 +115,7 @@ public class PlayerHealth : MonoBehaviour
         {
             DeathScreen.SetActive(true);
             gameObject.SetActive(false);
+            Time.timeScale = 0f;
         }
 
         // if one player is dead then deactivate tether restriction
@@ -155,7 +156,6 @@ public class PlayerHealth : MonoBehaviour
                 playerState = PlayerState.DEAD;
             else
                 playerState = PlayerState.REVIVE;
-
         }
         else
         {

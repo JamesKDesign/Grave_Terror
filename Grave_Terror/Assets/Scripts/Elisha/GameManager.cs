@@ -6,9 +6,9 @@ using XboxCtrlrInput;
 
 public class GameManager : MonoBehaviour {
 
-    [HideInInspector]
+   // [HideInInspector]
     public PlayerHealth gameOver;
-    [HideInInspector]
+    //[HideInInspector]
     public BossKilled gameWin;
     public XboxControllerManager xboxController1;
     public XboxControllerManager xboxController2;
@@ -16,11 +16,13 @@ public class GameManager : MonoBehaviour {
     public void RestartGame()
     {
        SceneManager.LoadScene(1);
+        Time.timeScale = 1.0f;
     }
 
     public void Quit()
     {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1.0f;
     }
 
     public void Update()

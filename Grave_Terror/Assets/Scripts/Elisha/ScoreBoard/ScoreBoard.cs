@@ -24,7 +24,6 @@ public class ScoreBoard : MonoBehaviour
     public PlayerHealth chunkhealth;
     public PlayerShooting chunkShooting;
     public FlameMovement sizzleShooting;
-    private bool CheckMe = false;
 
     // Use this for initialization
     void Awake()
@@ -59,15 +58,6 @@ public class ScoreBoard : MonoBehaviour
 
     void SizzleScoreBoard()
     {
-
-        //if (sizzleShooting.enemy != null)
-        //{
-        //    if (sizzleShooting.enemy.GetComponent<EnemyHealth>().currentHealth <= 0.0f && sizzleShooting.enemy.GetComponent<Enemy>().alive)
-        //    {
-        //        SizzleScore += 1;
-        //        Sizzle.text = SizzleScore.ToString();
-        //    }
-        //}
         if (sizzlehealth.currentHealth <= 0f && !sizzlehealth.sizzleDowned)
         {
             SizzleDowns += 1;
