@@ -15,6 +15,11 @@ public class DestructibleSpawner : MonoBehaviour
 	[Tooltip("Limit spawn amount")]
 	public int maxSpawns = int.MaxValue;
 
+	private AudioSource audioSource;
+	public AudioClip coffinOpen;
+	public float minPitch = 0.95f;
+	public float maxPitch = 1.05f;
+
 	private float timer;
 	// Use this for initialization
 	void Start ()
@@ -22,6 +27,8 @@ public class DestructibleSpawner : MonoBehaviour
 		spawner = Spawner.instance;
 
 		timer = spawnDelay;
+
+		audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -44,5 +51,8 @@ public class DestructibleSpawner : MonoBehaviour
 	public void Trigger()
 	{
 		active = true;
+
+		audioSource.pitch = Random.Range(minPitch, maxPitch);
+		audioSource.PlayOneShot(coffinOpen);
 	}
 }
