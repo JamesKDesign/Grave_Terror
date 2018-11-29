@@ -6,7 +6,6 @@ public class FlameMovement : MonoBehaviour {
     public float flameLife;
     public float flameDamage;
     private GameObject scoreboard;
-    //public float damageTimer;
 
     private void Start()
     {
@@ -35,9 +34,7 @@ public class FlameMovement : MonoBehaviour {
                 scoreboard.GetComponent<ScoreBoard>().Sizzle.text = scoreboard.GetComponent<ScoreBoard>().SizzleScore.ToString();
             }
             other.gameObject.GetComponent<Enemy>().Ignite(flameDamage);
-            print("Damaging enemy " + flameDamage);
         }
-
         else if (other.gameObject)
         {
             Destroy(gameObject);

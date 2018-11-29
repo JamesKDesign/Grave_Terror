@@ -1,44 +1,33 @@
-﻿ using UnityEngine;
+﻿// Author: Elisha Anagnostakis
+// Date Modified: 16/11/18
+// Purpose: This script allows chunk to destroy any object that has this sript on it 
+
+using UnityEngine;
 
 public class DestructableObjects : MonoBehaviour {
 
+    // prop health
     public int maxHealth;
     public int currentHealth;
-    //private Renderer rend;
-    //private Color colour;
-    //public float FlashLength;
-    //private float flashCounter = 1f;
 
     private void Awake()
     {
         currentHealth = maxHealth;
-        //rend = GetComponent<Renderer>();
-        //colour = rend.material.GetColor("_Color");
     }
-
 
    public void FixedUpdate()
     {
+        // checks if the health is 0
         if (currentHealth <= 0)
         {
+            // and destroys the object from the scene
             Destroy(obj: gameObject);
         }
-
-        //if (flashCounter >= 0)
-        //{
-        //    flashCounter -= Time.deltaTime;
-        //    if (flashCounter <= 0)
-        //    {
-        //        rend.material.SetColor("_Color", Color.grey);
-        //    }
-        //}
     }
-
+   
+    // damage
    public void ObjectDamage(int _amount)
     {
         currentHealth -= _amount;
-        //flashCounter = FlashLength;
-        //rend.material.SetColor("_Color", Color.red);
-        Debug.Log("Objects health: " + currentHealth);
     }
 }

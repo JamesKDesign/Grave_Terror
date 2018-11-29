@@ -3,12 +3,8 @@
 public class ObjectOnFire : MonoBehaviour {
 
     public GameObject onFireEffect;
-   // public ParticleSystem particle;
     private float timer;
-    public float burnTime = 4.0f;
-
-	//private AudioSource 
-    
+    public float burnTime = 4.0f; 
 
 	// Use this for initialization
 	void Awake () {

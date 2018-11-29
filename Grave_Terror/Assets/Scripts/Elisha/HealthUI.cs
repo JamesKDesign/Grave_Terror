@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class HealthUI : MonoBehaviour {
 
+    [HideInInspector]
     public float uvRectW1 = 0f;
     public RawImage sizzle;
     public RawImage chunk;

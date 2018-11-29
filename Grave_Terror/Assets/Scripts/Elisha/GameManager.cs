@@ -6,12 +6,16 @@ using XboxCtrlrInput;
 
 public class GameManager : MonoBehaviour {
 
-   // [HideInInspector]
+    [HideInInspector]
     public PlayerHealth gameOver;
-    //[HideInInspector]
+    [HideInInspector]
     public BossKilled gameWin;
+    [HideInInspector]
     public XboxControllerManager xboxController1;
+    [HideInInspector]
     public XboxControllerManager xboxController2;
+    [HideInInspector]
+    public UIPauseMenu pause;
 
     public void RestartGame()
     {

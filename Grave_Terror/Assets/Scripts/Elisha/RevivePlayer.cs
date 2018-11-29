@@ -47,7 +47,6 @@ public class RevivePlayer : MonoBehaviour {
     // If player enters this trigger it will revive the player
     void OnTriggerStay(Collider other)
     {
-        Debug.Log("Activated");
         if (player.playerState == PlayerHealth.PlayerState.REVIVE)
         {
             if (other.gameObject == player2 && player.isReviving == false)
@@ -60,7 +59,6 @@ public class RevivePlayer : MonoBehaviour {
                     ParticleSystem.MainModule revMainMod = player.reviveVolume.GetComponentInChildren<ParticleSystem>().main;
                     revMainMod.startColor = Color.green;
                     player.reviveVolume.GetComponentInChildren<ParticleSystem>().Play();
-                    Debug.Log("timer" + Revivetimer);
                 }
                
             }

@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿// Author: Elisha Anagnostakis
+// Date Modified: 28/11/18
+// Purpose: This script managers the enemies health 
+
+using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -12,18 +16,16 @@ public class EnemyHealth : MonoBehaviour
 
     private void Update()
     {
+        // if enemy health is 0
         if (currentHealth <= 0)
         {
+            // call dead function from enemy script
             gameObject.GetComponent<Enemy>().Dead();
-       
-            print("enemy dead");
         }
     }
-
+    // damage the enemy takes constantly
     public void DamageHealth(float amount)
     {
         currentHealth -= amount;
-
-        print("Enemy health is " + currentHealth);
     }
 }

@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿// Author: Elisha Anagnostakis
+// Date Modified: 29/11/18
+// Purpose: This script managers both chunk and sizzles health and player states such as ALIVE, REVIVE and DEAD states and what each state does.
+
+using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
@@ -9,24 +13,25 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealth;
     [Tooltip("How long the flash will run for when the player is hit")]
     public float DeathTimer;
-    PlayerMovement controls;
+    [Tooltip("Access to players controls")]
+    private PlayerMovement controls;
+    [Tooltip("The particle amount that is within the revive radius")]
     public GameObject reviveVolume;
+    [Tooltip("The game over screen that pops up when both players are dead")]
     public GameObject DeathScreen;
+    [Tooltip("players animation references")]
     public Animator anim;
+    [Tooltip("Tether script reference")]
     public Tether Tet;
+    [Tooltip("Player 2 tranform to check whos at what state exaclty")]
     public Transform player2;
     [HideInInspector]
     public bool isReviving = false;
-
-    //public AudioSource ChunkaudioSource;
-    //public AudioSource SizzleaudioSource;
-
-    //public AudioSource ChunkdeathSource;
-    //public AudioSource SizzledeathSource;
     [HideInInspector]
     public bool chunkDowned = false;
     [HideInInspector]
     public bool sizzleDowned = false;
+    [Tooltip("Reference to the camera to realocate the cameras focus on the last player standing")]
     public DynamicCamera camera;
 
     // player states
@@ -55,41 +60,28 @@ public class PlayerHealth : MonoBehaviour
         {
             // Player alive state with all functions active
             case PlayerState.ALIVE:
-                print("In alive state");
                 chunkDowned = false;
                 sizzleDowned = false;
                 anim.SetBool("IsDowned", false);
                 DeathTimer = 20f;
                 controls.Move();
                 controls.Turning();
-               // controls.Dashing();
                 break;
 
             // Player revive state can rotate player and shoot 
             case PlayerState.REVIVE:
-                print("In revive state");
                 anim.SetBool("IsDowned", true);
-                //TODO
-                //ChunkaudioSource.Play();
-
-                //ChunkaudioSource.clip = chunkReviveClip;
-                //ChunkaudioSource.playOnAwake = false;
-                //ChunkaudioSource.Play()
                 break;
 
             // Player dead state sets player to in-active
             case PlayerState.DEAD:
+                // deletes the player from the game
+                gameObject.SetActive(false);
+                // pops off the player thats dead from the camera to then focus on the remaining player alive
                 if(camera.players.Count > 0)
                 {
                     camera.players.Remove(this.gameObject.transform);
                 }
-                //TODO
-               // ChunkdeathSource.Play();
-
-                //ChunkaudioSource.clip = chunkReviveClip;
-                //ChunkaudioSource.playOnAwake = false;
-                //ChunkaudioSource.Play()
-                print("In death state");
                 break;
         }
 
@@ -144,7 +136,6 @@ public class PlayerHealth : MonoBehaviour
     public void DamagePlayer(float amount)
     {
         currentHealth -= amount;
-        print("Player health: " + currentHealth);
     }
 
     // player health management
@@ -153,9 +144,14 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             if (DeathTimer <= 0.0f)
+            {
                 playerState = PlayerState.DEAD;
+            }
             else
+            {
                 playerState = PlayerState.REVIVE;
+            }
+                
         }
         else
         {
