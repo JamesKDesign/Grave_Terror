@@ -45,6 +45,7 @@ public class UIPauseMenu : MonoBehaviour
 	public void QuitClick()
 	{
         SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
 	}
 
 	private void TogglePause()
