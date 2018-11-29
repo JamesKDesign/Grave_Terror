@@ -115,7 +115,7 @@ public class Enemy : MonoBehaviour
 	public float groanVariance;
 	private float groanTimer;
 
-	private void Awake()
+    private void Awake()
 	{
 		//Movespeed
 		originalMove = movementSpeed;
@@ -124,6 +124,7 @@ public class Enemy : MonoBehaviour
 		//Death
         originalDeadTimer = deadTimer;
 		//Sound
+		audio = gameObject.GetComponent<AudioSource>();
 		if(audio == null)
 			audio = gameObject.AddComponent<AudioSource>();
 
@@ -239,6 +240,8 @@ public class Enemy : MonoBehaviour
             if (target == null)
             {
                 engaging = false;
+                attackTimer = 0.0f;
+                attackRecov = 0.0f;
                 return;
             }
             //Move directly towards our target
@@ -256,14 +259,15 @@ public class Enemy : MonoBehaviour
                     //Set the time for cooldown between attacks
                     attackRecov = attackRate;
                 }
-            }
-            else
-            {
-                anim.SetBool("IsAttacking", false);
+                else
+                {
+                    attackRecov += Time.deltaTime;
+                }
             }
         }
         else //Behaviours
         {
+            anim.SetBool("IsAttacking", false);
             //Deadlock prevention!
             attackLocked = false;
 
@@ -339,6 +343,9 @@ public class Enemy : MonoBehaviour
 	//Newly spawned or just respawned
 	public void Init()
 	{
+        if (originalMove == 0)
+            originalMove = movementSpeed;
+
         GetComponent<Collider>().enabled = true;
 		alive = true;
         deadTimer = originalDeadTimer;

@@ -20,6 +20,9 @@ public class DestructibleSpawner : MonoBehaviour
 	public float minPitch = 0.95f;
 	public float maxPitch = 1.05f;
 
+	public float minDelay = 0.0f;
+	public float maxDelay = 1.0f;
+
 	private float timer;
 	// Use this for initialization
 	void Start ()
@@ -53,6 +56,7 @@ public class DestructibleSpawner : MonoBehaviour
 		active = true;
 
 		audioSource.pitch = Random.Range(minPitch, maxPitch);
+//		audioSource.PlayDelayed = Random.Range(minDelay, maxDelay);
 		audioSource.PlayOneShot(coffinOpen);
 	}
 }

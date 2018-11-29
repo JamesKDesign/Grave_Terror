@@ -240,8 +240,8 @@ public class Spawner : MonoBehaviour
 	}
 
 	//Activates an inactive spawn event element
-	public void Trigger(int _element)
+	public void SpawnBoss(GameObject _boss)
 	{
-
+		_boss.GetComponent<Enemy>().Init();
 	}
 }

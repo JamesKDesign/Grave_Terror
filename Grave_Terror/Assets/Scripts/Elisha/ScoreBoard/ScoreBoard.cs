@@ -10,6 +10,7 @@ public class ScoreBoard : MonoBehaviour
     public Text chunk;
     public Text SizzleD;
     public Text ChunkD;
+	[HideInInspector]
     public int SizzleScore;
     private int SizzleDowns;
     private int ChunkScore;
@@ -23,7 +24,6 @@ public class ScoreBoard : MonoBehaviour
     public PlayerHealth chunkhealth;
     public PlayerShooting chunkShooting;
     public FlameMovement sizzleShooting;
-    public Enemy sizzleShot;
     private bool CheckMe = false;
 
     // Use this for initialization

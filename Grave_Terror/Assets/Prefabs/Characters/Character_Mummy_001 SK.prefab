@@ -1069,13 +1069,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 204
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1238,6 +1238,12 @@ MonoBehaviour:
   wanderWeight: 0.1
   anim: {fileID: 95450648867920754}
   deadTimer: 1
+  groan1: {fileID: 8300000, guid: 2628db55e50fe41cc9879051d359847a, type: 3}
+  groan2: {fileID: 8300000, guid: c5e72c14120434b7d8c3248afc4851b6, type: 3}
+  attack: {fileID: 8300000, guid: 9cff8a619ef7941ad9b7c695de6ed45f, type: 3}
+  pitchVariance: 0.3
+  groanDelay: 4
+  groanVariance: 2
 --- !u!135 &135074607204276566
 SphereCollider:
   m_ObjectHideFlags: 1

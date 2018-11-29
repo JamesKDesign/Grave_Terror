@@ -7,6 +7,8 @@ using XboxCtrlrInput;
 public class GameManager : MonoBehaviour {
 
     public XboxControllerManager xboxController1;
+    public XboxControllerManager xboxController2;
+    [HideInInspector]
     public PlayerHealth gameOver;
 
     public void RestartGame()
@@ -20,15 +22,14 @@ public class GameManager : MonoBehaviour {
     public void Quit()
     {
         
-         SceneManager.LoadScene(0);
-         
+         SceneManager.LoadScene(0);  
     }
 
     public void Update()
     {
         if (gameOver.DeathScreen.activeInHierarchy == true)
         {
-            if (xboxController1.useController == true)
+            if (xboxController1.useController == true || xboxController2.useController == true)
             {
                 if (XCI.GetButtonDown(XboxButton.A))
                 {
@@ -41,5 +42,7 @@ public class GameManager : MonoBehaviour {
                 }
             }
         }
+
+
     }
 }

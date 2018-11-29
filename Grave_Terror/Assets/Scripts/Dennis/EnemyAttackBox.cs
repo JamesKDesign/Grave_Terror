@@ -53,6 +53,7 @@ public class EnemyAttackBox : MonoBehaviour
 		if (other.CompareTag("Player"))
 		{
 			target = null;
+            parent.engaging = true;
 		}
 	}
 }
