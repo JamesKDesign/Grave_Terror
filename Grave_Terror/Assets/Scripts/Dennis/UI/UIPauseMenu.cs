@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
-
+using UnityEngine.SceneManagement;
 public class UIPauseMenu : MonoBehaviour
 {
 	bool paused = false;
@@ -44,7 +44,7 @@ public class UIPauseMenu : MonoBehaviour
 
 	public void QuitClick()
 	{
-		Application.Quit();
+        SceneManager.LoadScene(0);
 	}
 
 	private void TogglePause()
