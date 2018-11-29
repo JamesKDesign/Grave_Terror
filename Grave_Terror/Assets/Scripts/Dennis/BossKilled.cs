@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
 public class BossKilled : MonoBehaviour
 {
     public UnityEvent triggers;
+    public GameObject winGameScreen;
+    public ScoreBoard scoreBoard;
+
+    private void Awake()
+    {
+        winGameScreen.SetActive(false);
+    }
 
     private void Update()
     {
@@ -14,6 +20,9 @@ public class BossKilled : MonoBehaviour
         {
             triggers.Invoke();
             Destroy(this);
+
+            winGameScreen.SetActive(true);
+            scoreBoard.scoreBoard.SetActive(true);
         }
     }
 }

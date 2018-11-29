@@ -108,6 +108,7 @@ public class PlayerHealth : MonoBehaviour
             DeathScreen.SetActive(true);
             player2.gameObject.SetActive(false);
             gameObject.SetActive(false);
+            Time.timeScale = 0f;
         }
         // checks if one player is in dead state and if the other is in revive state to then spawn game over screen
         else if(player2.GetComponent<PlayerHealth>().playerState == PlayerState.DEAD && playerState == PlayerState.REVIVE)

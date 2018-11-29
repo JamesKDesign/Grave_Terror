@@ -6,23 +6,21 @@ using XboxCtrlrInput;
 
 public class GameManager : MonoBehaviour {
 
-    public XboxControllerManager xboxController1;
-    public XboxControllerManager xboxController2;
     [HideInInspector]
     public PlayerHealth gameOver;
+    [HideInInspector]
+    public BossKilled gameWin;
+    public XboxControllerManager xboxController1;
+    public XboxControllerManager xboxController2;
 
     public void RestartGame()
     {
-        
-      
        SceneManager.LoadScene(1);
-       
     }
 
     public void Quit()
     {
-        
-         SceneManager.LoadScene(0);  
+        SceneManager.LoadScene(0);
     }
 
     public void Update()
@@ -42,7 +40,15 @@ public class GameManager : MonoBehaviour {
                 }
             }
         }
-
-
+        else if(gameWin.winGameScreen.activeInHierarchy == true)
+        {
+            if (xboxController1.useController == true || xboxController2.useController == true)
+            {
+                if (XCI.GetButtonDown(XboxButton.B))
+                {
+                    Quit();
+                }
+            }
+        }
     }
 }
