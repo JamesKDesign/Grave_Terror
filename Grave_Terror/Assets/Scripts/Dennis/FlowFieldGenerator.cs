@@ -43,6 +43,9 @@ public class FlowFieldGenerator : MonoBehaviour
 
 	public Transform bottomLeft, topRight;
 	public float rayHeight;
+	[Tooltip("How accurately it checks if the cell is obstructed\nDefault is 0.2")]
+	[Range(0.01f,0.5f)]
+	public float width = 0.2f;
 	//what layers to query when generating the field
 	[Tooltip("Only colliders with the FLOOR tag are valid hits")]
 	public LayerMask layers;
@@ -120,7 +123,7 @@ public class FlowFieldGenerator : MonoBehaviour
 				//See if we can place a grid segment here
 				RaycastHit hit;
 				//if (Physics.Raycast(point, Vector3.down, out hit, rayHeight + 1.0f, layers))
-				if(Physics.BoxCast(point, new Vector3(0.4f, 0.4f, 0.4f), Vector3.down, out hit, Quaternion.Euler(0,0,0), rayHeight + 1.0f, layers))
+				if(Physics.BoxCast(point, new Vector3(width, width, width), Vector3.down, out hit, Quaternion.Euler(0,0,0), rayHeight + 1.0f, layers))
 				{
 					//Valid object hit
 					if (hit.transform.gameObject.layer == 8)
@@ -134,7 +137,7 @@ public class FlowFieldGenerator : MonoBehaviour
 					{
 						//grid[x, y] = new Segment();
 						//grid[x, y].direction[0] = Vector3.zero;
-						Parasite para = hit.transform.gameObject.AddComponent<Parasite>();
+						Parasite para = hit.transform.gameObject.GetComponent<Parasite>();
 						//Put some data into the obstruction for when its destryed
 						if (para == null)
 						{
@@ -325,7 +328,7 @@ public class FlowFieldGenerator : MonoBehaviour
 	//Recalculates if the tile is still valid (or if an invalid tile is now valid)
 	public void Regenerate(Vector2Int _data)
 	{
-		return; //void everything for now
+		//return; //void everything for now
 		//Dont allow data thats not in the grid
 		if (_data.x >= size.x || _data.y >= size.y ||
 			_data.x < 0 || _data.y < 0)
@@ -342,42 +345,67 @@ public class FlowFieldGenerator : MonoBehaviour
 		//0↑
 		if (_data.y != 0)
 		{
-			grid[_data.x, _data.y].neighbours[0] = grid[_data.x, _data.y - 1];
+			seg.neighbours[0] = grid[_data.x, _data.y - 1];
+			//and back
+			if(grid[_data.x, _data.y - 1] != null)
+				grid[_data.x, _data.y - 1].neighbours[4] = seg;
+
 		}
 		//1↗
 		if (_data.x != size.x - 1 && _data.y != 0)
 		{
-			grid[_data.x, _data.y].neighbours[1] = grid[_data.x + 1, _data.y - 1];
+			seg.neighbours[1] = grid[_data.x + 1, _data.y - 1];
+			//and back
+			if(grid[_data.x + 1, _data.y - 1] != null)
+				grid[_data.x + 1, _data.y - 1].neighbours[5] = seg;
 		}
 		//2→
 		if (_data.x != size.x - 1)
 		{
-			grid[_data.x, _data.y].neighbours[2] = grid[_data.x + 1, _data.y];
+			seg.neighbours[2] = grid[_data.x + 1, _data.y];
+			//and back
+			if(grid[_data.x + 1, _data.y] != null)
+				grid[_data.x + 1, _data.y].neighbours[6] = seg;
 		}
 		//3↘
 		if (_data.x != size.x - 1 && _data.y != size.y - 1)
 		{
-			grid[_data.x, _data.y].neighbours[3] = grid[_data.x + 1, _data.y + 1];
+			seg.neighbours[3] = grid[_data.x + 1, _data.y + 1];
+			//and back
+			if(grid[_data.x + 1, _data.y + 1] != null)
+				grid[_data.x + 1, _data.y + 1].neighbours[7] = seg;
 		}
 		//4↓
 		if (_data.y != size.y - 1)
 		{
-			grid[_data.x, _data.y].neighbours[4] = grid[_data.x, _data.y + 1];
+			seg.neighbours[4] = grid[_data.x, _data.y + 1];
+			//and back
+			if(grid[_data.x, _data.y + 1] != null)
+				grid[_data.x, _data.y + 1].neighbours[0] = seg;
 		}
 		//5↙
 		if (_data.x != 0 && _data.y != size.y - 1)
 		{
-			grid[_data.x, _data.y].neighbours[5] = grid[_data.x - 1, _data.y + 1];
+			seg.neighbours[5] = grid[_data.x - 1, _data.y + 1];
+			//and back
+			if(grid[_data.x - 1, _data.y + 1] != null)
+				grid[_data.x - 1, _data.y + 1].neighbours[1] = seg;
 		}
 		//6←
 		if (_data.x != 0)
 		{
-			grid[_data.x, _data.y].neighbours[6] = grid[_data.x - 1, _data.y];
+			seg.neighbours[6] = grid[_data.x - 1, _data.y];
+			//and back
+			if(grid[_data.x - 1, _data.y] != null)
+				grid[_data.x - 1, _data.y].neighbours[2] = seg;
 		}
 		//7↖
 		if (_data.x != 0 && _data.y != 0)
 		{
-			grid[_data.x, _data.y].neighbours[7] = grid[_data.x - 1, _data.y - 1];
+			seg.neighbours[7] = grid[_data.x - 1, _data.y - 1];
+			//and back
+			if(grid[_data.x - 1, _data.y - 1] != null)
+				grid[_data.x - 1, _data.y - 1].neighbours[3] = seg;
 		}
 	}
 

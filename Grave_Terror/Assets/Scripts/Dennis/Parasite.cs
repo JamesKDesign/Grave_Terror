@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Parasite : MonoBehaviour
 {
-	private List<Vector2Int> data = new List<Vector2Int>(5);
+	public List<Vector2Int> data = new List<Vector2Int>(5);
 	private void OnDestroy()
 	{
 		foreach (Vector2Int d in data)
