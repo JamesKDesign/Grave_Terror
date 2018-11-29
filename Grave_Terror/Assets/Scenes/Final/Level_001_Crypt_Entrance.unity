@@ -12113,9 +12113,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1666916044659ce47b5f322b066568a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOver: {fileID: 577109599}
+  gameWin: {fileID: 0}
   xboxController1: {fileID: 577109602}
   xboxController2: {fileID: 129268009}
-  gameOver: {fileID: 577109599}
 --- !u!1001 &326117470
 Prefab:
   m_ObjectHideFlags: 0
@@ -25047,6 +25048,8 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  winGameScreen: {fileID: 0}
+  scoreBoard: {fileID: 0}
 --- !u!4 &661203503 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4838868834273982, guid: e051544f8fb040d4dbd306d57798b49b,
