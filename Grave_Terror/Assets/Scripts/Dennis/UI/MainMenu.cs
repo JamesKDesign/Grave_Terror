@@ -447,8 +447,8 @@ public class MainMenu : MonoBehaviour
 			player[0] = players[0].GetComponent<PlayerHealth>();
 			player[1] = players[1].GetComponent<PlayerHealth>();
 
-			ogreScreen = GameObject.Find("GameOverScreen");
-			ogreScreen.SetActive(false);
+			//ogreScreen = GameObject.Find("GameOverScreen");
+			//ogreScreen.SetActive(false);
 
 			timer = 0.0f;
 			moving = false;
@@ -481,7 +481,7 @@ public class MainMenu : MonoBehaviour
 				MainMenuUpdate();
 				break;
 			case MENU_STATE.GAME:
-				GameUpdate();
+				//GameUpdate();
 				break;
 		}
 	}

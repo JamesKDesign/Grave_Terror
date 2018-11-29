@@ -102,13 +102,34 @@ public class Enemy : MonoBehaviour
 
     private new Renderer renderer;
 
+	[Header("Sound")] //Sound
+	public AudioClip groan1;
+	public AudioClip groan2;
+	public AudioClip attack;
+	private new AudioSource audio;
+
+	public float pitchVariance;
+	private float originalPitch;
+
+	public float groanDelay;
+	public float groanVariance;
+	private float groanTimer;
+
 	private void Awake()
 	{
+		//Movespeed
 		originalMove = movementSpeed;
-
+		//Something with rendering
         renderer = GetComponentInChildren<Renderer>();
-
+		//Death
         originalDeadTimer = deadTimer;
+		//Sound
+		if(audio == null)
+			audio = gameObject.AddComponent<AudioSource>();
+
+		groanTimer = groanDelay + Random.Range(-1.0f, 1.0f);
+
+		originalPitch = audio.pitch;
 	}
 
 	// Use this for initialization
@@ -149,7 +170,7 @@ public class Enemy : MonoBehaviour
                 break;
         }
 
-        //----
+        //Delayed death, use the dead() method for anything needing to happen on kill
         if(!alive)
         {
             deadTimer -= Time.deltaTime;
@@ -163,6 +184,23 @@ public class Enemy : MonoBehaviour
             velocity = Vector3.zero;
             return;
         }
+
+		//Sound
+		groanTimer -= Time.deltaTime;
+		if (groanTimer <= 0.0f)
+		{
+			//Randomize the pitch
+			audio.pitch = originalPitch + (Random.Range(-1.0f, 1.0f) * pitchVariance);
+
+			//Play a sound at random
+			if (Random.value >= 0.5f)
+				audio.PlayOneShot(groan1);
+			else
+				audio.PlayOneShot(groan2);
+
+			//Countdown till next groan
+			groanTimer = groanDelay + (Random.Range(-1.0f, 1.0f) * groanVariance);
+		}
 
         //If we have no path get one
         if (path == -1)
@@ -209,10 +247,10 @@ public class Enemy : MonoBehaviour
             attackTimer -= Time.deltaTime;
             if (attackLocked)
             {
-                if (attackTimer <= 0.0f && attackRecov <= 0.0f)
+				anim.SetBool("IsAttacking", true);
+				if (attackTimer <= 0.0f && attackRecov <= 0.0f)
                 {
                     Attack();
-                    anim.SetBool("IsAttacking", true);
                     //Allow movement and rotation again
                     attackLocked = false;
                     //Set the time for cooldown between attacks
@@ -363,7 +401,6 @@ public class Enemy : MonoBehaviour
 	public void Attack()
 	{
 		action = E_ACTION.ATTACK;
-        anim.SetBool("IsAttacking", true);
         //If there is no valid target in the attackbox then the attack is missed
         if (attackHitbox.target != null)
 		{
@@ -377,10 +414,6 @@ public class Enemy : MonoBehaviour
 			//transform.Find("AttackEffect").GetComponent<ParticleSystem>().Play();
 			Debug.Log("attacking " + attackHitbox.target.name);
 		}
-        else
-        {
-            anim.SetBool("IsAttacking", false);
-        }
     }
 
 	//private void OnDrawGizmos()
