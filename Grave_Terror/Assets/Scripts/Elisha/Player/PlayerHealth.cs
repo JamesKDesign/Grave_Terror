@@ -15,11 +15,14 @@ public class PlayerHealth : MonoBehaviour
     public Animator anim;
     public Tether Tet;
     public Transform player2;
+    [HideInInspector]
     public bool isReviving = false;
 
-    private AudioSource audioSource;
-    public AudioClip chunkDownClip;
-    public AudioClip chunkReviveClip;
+    public AudioSource ChunkaudioSource;
+    public AudioSource SizzleaudioSource;
+
+    public AudioSource ChunkdeathSource;
+    public AudioSource SizzledeathSource;
     [HideInInspector]
     public bool chunkDowned = false;
     [HideInInspector]
@@ -41,7 +44,6 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = health;
         DeathScreen.SetActive(false);
         controls = GetComponent<PlayerMovement>();
-        audioSource = GetComponent<AudioSource>();
     }
 
     public void Update()
@@ -68,7 +70,11 @@ public class PlayerHealth : MonoBehaviour
                 print("In revive state");
                 anim.SetBool("IsDowned", true);
                 //TODO
-                //1audioSource.PlayOneShot(chunkDownClip);
+                //ChunkaudioSource.Play();
+
+                //ChunkaudioSource.clip = chunkReviveClip;
+                //ChunkaudioSource.playOnAwake = false;
+                //ChunkaudioSource.Play()
                 break;
 
             // Player dead state sets player to in-active
@@ -78,7 +84,11 @@ public class PlayerHealth : MonoBehaviour
                     camera.players.Remove(this.gameObject.transform);
                 }
                 //TODO
-                //audioSource.PlayOneShot(chunkReviveClip);
+                ChunkdeathSource.Play();
+
+                //ChunkaudioSource.clip = chunkReviveClip;
+                //ChunkaudioSource.playOnAwake = false;
+                //ChunkaudioSource.Play()
                 print("In death state");
                 break;
         }
@@ -127,7 +137,6 @@ public class PlayerHealth : MonoBehaviour
             }
         }
     }
-
 
     // damage to the player inflicted
     public void DamagePlayer(float amount)

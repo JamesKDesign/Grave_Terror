@@ -13,11 +13,12 @@ public class FlameGaunletLeft : MonoBehaviour {
     public Animator anim;
     public PlayerHealth health;
     Vector3 hitLocation = Vector3.zero;
-
+    public ScoreBoard score;
 	private AudioSource audioSource;
 	public AudioClip flameAudio;
 	public float minPitch = 0.0f;
 	public float maxPitch = 1.0f;
+    public GameObject newFlame;
 
     private void Awake()
     {
@@ -41,9 +42,8 @@ public class FlameGaunletLeft : MonoBehaviour {
             {
                 if (counter > delay)
                 {
-                    GameObject newFlame = Instantiate(flameBallLeft, transform.position, sizzleRotation.transform.rotation);
+                    newFlame = Instantiate(flameBallLeft, transform.position, sizzleRotation.transform.rotation);
                     anim.SetBool("IsAttacking", true);
-
 					audioSource.pitch = Random.Range(minPitch, maxPitch);
 					audioSource.PlayOneShot(flameAudio);
 

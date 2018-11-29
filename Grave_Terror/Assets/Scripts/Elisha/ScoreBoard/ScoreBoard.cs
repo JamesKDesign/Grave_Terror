@@ -10,7 +10,7 @@ public class ScoreBoard : MonoBehaviour
     public Text chunk;
     public Text SizzleD;
     public Text ChunkD;
-    private int SizzleScore;
+    public int SizzleScore;
     private int SizzleDowns;
     private int ChunkScore;
     private int ChunkDowns;
@@ -22,7 +22,8 @@ public class ScoreBoard : MonoBehaviour
     public PlayerHealth sizzlehealth;
     public PlayerHealth chunkhealth;
     public PlayerShooting chunkShooting;
-    public EnemyHealth sizzleShooting;
+    public FlameMovement sizzleShooting;
+    public Enemy sizzleShot;
     private bool CheckMe = false;
 
     // Use this for initialization
@@ -58,12 +59,15 @@ public class ScoreBoard : MonoBehaviour
 
     void SizzleScoreBoard()
     {
-        if (sizzleShooting.currentHealth <= 0.0f && sizzleShooting.gameObject.GetComponent<Enemy>().alive)
-        {
-            SizzleScore += 1;
-            Sizzle.text = SizzleScore.ToString();
-        }
 
+        //if (sizzleShooting.enemy != null)
+        //{
+        //    if (sizzleShooting.enemy.GetComponent<EnemyHealth>().currentHealth <= 0.0f && sizzleShooting.enemy.GetComponent<Enemy>().alive)
+        //    {
+        //        SizzleScore += 1;
+        //        Sizzle.text = SizzleScore.ToString();
+        //    }
+        //}
         if (sizzlehealth.currentHealth <= 0f && !sizzlehealth.sizzleDowned)
         {
             SizzleDowns += 1;
@@ -76,7 +80,9 @@ public class ScoreBoard : MonoBehaviour
     {
         if (chunkShooting.target != null)
         {
-            if (chunkShooting.target.currentHealth <= 0.0f && chunkShooting.target.gameObject.GetComponent<Enemy>().alive)
+            if (chunkShooting.target.currentHealth <= 0.0f && 
+                chunkShooting.target.gameObject.GetComponent<Enemy>().alive && 
+                chunkShooting.target.gameObject.GetComponent<Enemy>().state != E_STATE.IGNITED)
             {
                 ChunkScore += 1;
                 chunk.text = ChunkScore.ToString();
