@@ -5,7 +5,8 @@ using XboxCtrlrInput;
 using UnityEngine.SceneManagement;
 public class UIPauseMenu : MonoBehaviour
 {
-	bool paused = false;
+    [HideInInspector]
+	public bool paused = false;
     public XboxController controller;
     public bool useController = false;
 

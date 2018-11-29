@@ -23,6 +23,7 @@ public class BossKilled : MonoBehaviour
 
             winGameScreen.SetActive(true);
             scoreBoard.scoreBoard.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 }
