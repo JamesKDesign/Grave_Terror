@@ -16,15 +16,14 @@ public class ScoreBoard : MonoBehaviour
     private int ChunkDowns;
     private int Placeholder;
     public GameObject scoreBoard;
+    // references
     public XboxControllerManager XboxController1;
     public XboxControllerManager XboxController2;
-    // references
     public PlayerHealth sizzlehealth;
     public PlayerHealth chunkhealth;
     public PlayerShooting chunkShooting;
     public EnemyHealth sizzleShooting;
     private bool CheckMe = false;
-
 
     // Use this for initialization
     void Awake()
@@ -40,12 +39,10 @@ public class ScoreBoard : MonoBehaviour
 
     public void Update()
     {
-        ChunkScoreBoard();
-        SizzleScoreBoard();
         if (XboxController1.useController == true && XboxController2.useController == true)
         {
             // bringing up the score board
-            if (XCI.GetButtonDown(XboxButton.Back, XboxController1.controller) || XCI.GetButtonDown(XboxButton.Back, XboxController2.controller))
+            if (XCI.GetButton(XboxButton.Back, XboxController1.controller) || XCI.GetButton(XboxButton.Back, XboxController2.controller))
             {
                 print("working controller");
                 scoreBoard.SetActive(true);
@@ -55,36 +52,42 @@ public class ScoreBoard : MonoBehaviour
                 scoreBoard.SetActive(false);
             }
         }
+        SizzleScoreBoard();
+        ChunkScoreBoard();
     }
 
     void SizzleScoreBoard()
     {
-        if (sizzleShooting.currentHealth <= 0)
+        if (sizzleShooting.currentHealth <= 0.0f && sizzleShooting.gameObject.GetComponent<Enemy>().alive)
         {
             SizzleScore += 1;
             Sizzle.text = SizzleScore.ToString();
         }
 
-        if (sizzlehealth.currentHealth <= 0)
+        if (sizzlehealth.currentHealth <= 0f && !sizzlehealth.sizzleDowned)
         {
             SizzleDowns += 1;
-            Sizzle.text = SizzleDowns.ToString();
+            sizzlehealth.sizzleDowned = true;
+            SizzleD.text = SizzleDowns.ToString();
         }
 
     }
     void ChunkScoreBoard()
     {
-        Debug.Log(chunkShooting.target.currentHealth);
-        if (chunkShooting.target.currentHealth <= 0.0f)
+        if (chunkShooting.target != null)
         {
-            ChunkScore += 1;
-            chunk.text = ChunkScore.ToString();
+            if (chunkShooting.target.currentHealth <= 0.0f && chunkShooting.target.gameObject.GetComponent<Enemy>().alive)
+            {
+                ChunkScore += 1;
+                chunk.text = ChunkScore.ToString();
+            }
         }
 
-        if (chunkhealth.currentHealth <= 0)
+        if (chunkhealth.currentHealth <= 0f && !chunkhealth.chunkDowned)
         {
             ChunkDowns += 1;
-            chunk.text = ChunkDowns.ToString();
+            chunkhealth.chunkDowned = true;
+            ChunkD.text = ChunkDowns.ToString();
         }
     }
 }

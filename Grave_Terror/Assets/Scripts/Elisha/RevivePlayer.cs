@@ -50,13 +50,23 @@ public class RevivePlayer : MonoBehaviour {
         Debug.Log("Activated");
         if (player.playerState == PlayerHealth.PlayerState.REVIVE)
         {
-            if (other.gameObject == player2)
+            if (other.gameObject == player2 && player.isReviving == false)
             {
-                Revivetimer -= Time.deltaTime;
-                ParticleSystem.MainModule revMainMod = player.reviveVolume.GetComponentInChildren<ParticleSystem>().main;
-                revMainMod.startColor = Color.green;
-                player.reviveVolume.GetComponentInChildren<ParticleSystem>().Play();
-                Debug.Log("timer" + Revivetimer);
+                player.isReviving = true;
+
+                if(player.isReviving == true)
+                {
+                    Revivetimer -= Time.deltaTime;
+                    ParticleSystem.MainModule revMainMod = player.reviveVolume.GetComponentInChildren<ParticleSystem>().main;
+                    revMainMod.startColor = Color.green;
+                    player.reviveVolume.GetComponentInChildren<ParticleSystem>().Play();
+                    Debug.Log("timer" + Revivetimer);
+                }
+               
+            }
+            else
+            {
+                player.isReviving = false;
             }
         }
     }

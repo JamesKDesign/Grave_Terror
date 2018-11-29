@@ -15,11 +15,16 @@ public class PlayerHealth : MonoBehaviour
     public Animator anim;
     public Tether Tet;
     public Transform player2;
+    public bool isReviving = false;
 
     private AudioSource audioSource;
     public AudioClip chunkDownClip;
     public AudioClip chunkReviveClip;
-    private bool chunkDowned = false;
+    [HideInInspector]
+    public bool chunkDowned = false;
+    [HideInInspector]
+    public bool sizzleDowned = false;
+    public DynamicCamera camera;
 
     // player states
     public enum PlayerState
@@ -49,29 +54,29 @@ public class PlayerHealth : MonoBehaviour
             // Player alive state with all functions active
             case PlayerState.ALIVE:
                 print("In alive state");
+                chunkDowned = false;
+                sizzleDowned = false;
                 anim.SetBool("IsDowned", false);
                 DeathTimer = 20f;
                 controls.Move();
-               // controls.Dashing();
                 controls.Turning();
+               // controls.Dashing();
                 break;
 
             // Player revive state can rotate player and shoot 
             case PlayerState.REVIVE:
                 print("In revive state");
                 anim.SetBool("IsDowned", true);
-
                 //TODO
                 //1audioSource.PlayOneShot(chunkDownClip);
-
-                // if the timer is 0 call dead state to kill the player permanently
-                if (DeathTimer <= 0.0f)
-                    playerState = PlayerState.DEAD;
                 break;
 
             // Player dead state sets player to in-active
             case PlayerState.DEAD:
-
+                if(camera.players.Count > 0)
+                {
+                    camera.players.Remove(this.gameObject.transform);
+                }
                 //TODO
                 //audioSource.PlayOneShot(chunkReviveClip);
                 print("In death state");
@@ -109,7 +114,7 @@ public class PlayerHealth : MonoBehaviour
         }
 
         // if player is in revive state 
-        if (playerState == PlayerState.REVIVE)
+        if (playerState == PlayerState.REVIVE && isReviving == false)
         {
             // call the death timer
             DeathTimer -= Time.deltaTime;
@@ -136,7 +141,11 @@ public class PlayerHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            playerState = PlayerState.REVIVE;         
+            if (DeathTimer <= 0.0f)
+                playerState = PlayerState.DEAD;
+            else
+                playerState = PlayerState.REVIVE;
+
         }
         else
         {

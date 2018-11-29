@@ -5,19 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-    XboxControllerManager xboxController;
-
     public void RestartGame()
     {
         SceneManager.LoadScene(1);
-        Time.timeScale = 1f;
     }
 
     public void Quit()
     {
         SceneManager.LoadScene(0);
-        Time.timeScale = 1f;
     }
-
-
 }

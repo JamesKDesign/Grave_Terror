@@ -8,7 +8,6 @@ public class EnemyHealth : MonoBehaviour
     private void Awake()
     {
         currentHealth = health;
-        print("Enemy health is " + currentHealth);
     }
 
     private void Update()
