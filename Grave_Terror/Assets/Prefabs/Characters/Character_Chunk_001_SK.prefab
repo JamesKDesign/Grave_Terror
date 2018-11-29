@@ -50,6 +50,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4620594353170892}
   - component: {fileID: 114561985952147910}
+  - component: {fileID: 82044410222504962}
   m_Layer: 0
   m_Name: Bullet_Spawn
   m_TagString: Untagged
@@ -132,7 +133,7 @@ GameObject:
   - component: {fileID: 4588669372540748}
   - component: {fileID: 108462230808371436}
   m_Layer: 0
-  m_Name: Torch_Light
+  m_Name: Chunk_Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -482,6 +483,7 @@ GameObject:
   - component: {fileID: 114085461531092194}
   - component: {fileID: 143972363455436890}
   - component: {fileID: 23314875570504930}
+  - component: {fileID: 82287090508325244}
   m_Layer: 10
   m_Name: Character_Chunk_001_SK
   m_TagString: Player
@@ -546,7 +548,7 @@ GameObject:
   - component: {fileID: 4127583485666624}
   - component: {fileID: 108478049363497306}
   m_Layer: 0
-  m_Name: Spotlight
+  m_Name: Chunk_Torchlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1165,7 +1167,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1611395107103194}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.7090313, y: 0, z: -54.531017}
+  m_LocalPosition: {x: -20.41, y: 0, z: -46.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4335901252939500}
@@ -1308,6 +1310,166 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1154331893645108}
   m_Mesh: {fileID: 4300002, guid: 57ab4a9c461974c4faece082f30ade53, type: 3}
+--- !u!82 &82044410222504962
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1022810525264358}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.3
+  m_Pitch: 0
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &82287090508325244
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1611395107103194}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.25
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 63
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95041727192482204
 Animator:
   serializedVersion: 3
@@ -1334,8 +1496,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 0
-  m_Color: {r: 0.14987026, g: 0.46323532, b: 0.3749888, a: 1}
-  m_Intensity: 4
+  m_Color: {r: 0.15706098, g: 0.6102941, b: 0.51652163, a: 1}
+  m_Intensity: 7
   m_Range: 2.5
   m_SpotAngle: 90
   m_CookieSize: 10
@@ -1356,7 +1518,7 @@ Light:
     m_Bits: 4294967290
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 2
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -1447,6 +1609,18 @@ MonoBehaviour:
   maxSpeed: 5
   cam: {fileID: 0}
   anim: {fileID: 95041727192482204}
+  footSteps:
+  - {fileID: 8300000, guid: 9a468b47419366b4fabb5745cbbdccc5, type: 3}
+  - {fileID: 8300000, guid: 601152bd0bcc52c41a878f033dbf5e52, type: 3}
+  - {fileID: 8300000, guid: 4601b105f37623d4aba9f671b74fa159, type: 3}
+  - {fileID: 8300000, guid: 928fb9543e16643459892e7c3462ecf9, type: 3}
+  - {fileID: 8300000, guid: 63d0b08f024fedc4db575da14b6699ad, type: 3}
+  - {fileID: 8300000, guid: 07281c70b055dd74e91e3037fc35b777, type: 3}
+  - {fileID: 8300000, guid: d72dd35bce32a2f4d999b690b2791ef3, type: 3}
+  - {fileID: 8300000, guid: 24f1d52c14440fc4192dd612f50ba920, type: 3}
+  stepInterval: 0.3
+  minPitch: 0.95
+  maxPitch: 1.05
 --- !u!114 &114561985952147910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1478,6 +1652,20 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 2049
+  gunShots:
+  - {fileID: 8300000, guid: 4b54438693a169a4facb39d00df1c9e3, type: 3}
+  shellCasings:
+  - {fileID: 8300000, guid: 18c50be84a5fe60418a047689b52d029, type: 3}
+  - {fileID: 8300000, guid: 117279fed78b03a4e891d65c040e8c82, type: 3}
+  - {fileID: 8300000, guid: f07ba72058587b14d9c7ea102ead2535, type: 3}
+  bulletImpact:
+  - {fileID: 8300000, guid: 17df0ac84ec6f4a4a8a8b1a198ded346, type: 3}
+  - {fileID: 8300000, guid: d5c0b18f7af983a4aa6db04c81073489, type: 3}
+  - {fileID: 8300000, guid: e0be79b8978229d43b1f93b13fa88078, type: 3}
+  shotInterval: 0
+  shellVolume: 0.1
+  minPitch: 0.95
+  maxPitch: 1.05
 --- !u!114 &114952065573182530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1489,7 +1677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f684bceadbeff498a4be3e7732d8be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 5
+  Revivetimer: 0
   player2: {fileID: 0}
   reviveHealth: 5
   deleteTimer: 2
@@ -1506,11 +1694,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   currentHealth: 7
-  timer: 30
+  DeathTimer: 0
   reviveVolume: {fileID: 1608149284222670}
+  DeathScreen: {fileID: 0}
   anim: {fileID: 95041727192482204}
   Tet: {fileID: 0}
   player2: {fileID: 0}
+  chunkDownClip: {fileID: 8300000, guid: 5c90642b377e1fd4a89a326971b0fb5c, type: 3}
+  chunkReviveClip: {fileID: 8300000, guid: 2deb464d37c71314cbb9e62e5c59a937, type: 3}
   playerState: 0
 --- !u!120 &120028584809780558
 LineRenderer:
@@ -14502,7 +14693,7 @@ ParticleSystem:
   LightsModule:
     enabled: 0
     ratio: 1
-    light: {fileID: 108669505604802116, guid: fdacf0a93609ac0409ece54597db685c, type: 2}
+    light: {fileID: 0}
     randomDistribution: 1
     color: 1
     range: 1
@@ -24637,7 +24828,7 @@ ParticleSystem:
   LightsModule:
     enabled: 0
     ratio: 1
-    light: {fileID: 108669505604802116, guid: fdacf0a93609ac0409ece54597db685c, type: 2}
+    light: {fileID: 0}
     randomDistribution: 1
     color: 1
     range: 1

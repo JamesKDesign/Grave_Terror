@@ -14,8 +14,15 @@ public class FlameGaunletLeft : MonoBehaviour {
     public PlayerHealth health;
     Vector3 hitLocation = Vector3.zero;
 
+	private AudioSource audioSource;
+	public AudioClip flameAudio;
+	public float minPitch = 0.0f;
+	public float maxPitch = 1.0f;
+
     private void Awake()
     {
+		audioSource = GetComponent<AudioSource>();
+
         playerRotation = GetComponent<PlayerMovement>();
     }
 
@@ -36,6 +43,10 @@ public class FlameGaunletLeft : MonoBehaviour {
                 {
                     GameObject newFlame = Instantiate(flameBallLeft, transform.position, sizzleRotation.transform.rotation);
                     anim.SetBool("IsAttacking", true);
+
+					audioSource.pitch = Random.Range(minPitch, maxPitch);
+					audioSource.PlayOneShot(flameAudio);
+
                     counter = 0.0f;
                 }
             }

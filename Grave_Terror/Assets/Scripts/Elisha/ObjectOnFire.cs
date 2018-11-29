@@ -6,6 +6,8 @@ public class ObjectOnFire : MonoBehaviour {
    // public ParticleSystem particle;
     private float timer;
     public float burnTime = 4.0f;
+
+	//private AudioSource 
     
 
 	// Use this for initialization
