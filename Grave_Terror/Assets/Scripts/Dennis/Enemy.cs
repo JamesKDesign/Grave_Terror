@@ -259,12 +259,12 @@ public class Enemy : MonoBehaviour
                     //Set the time for cooldown between attacks
                     attackRecov = attackRate;
                 }
-                else
-                {
-                    attackRecov += Time.deltaTime;
-                }
             }
-        }
+			else
+			{
+				attackRecov -= Time.deltaTime;
+			}
+		}
         else //Behaviours
         {
             anim.SetBool("IsAttacking", false);

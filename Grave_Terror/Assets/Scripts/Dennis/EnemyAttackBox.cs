@@ -45,6 +45,7 @@ public class EnemyAttackBox : MonoBehaviour
 		{
 			target = other.gameObject;
 			parent.AttackSignal();
+			parent.engaging = true;
 		}
 	}
 
@@ -53,7 +54,6 @@ public class EnemyAttackBox : MonoBehaviour
 		if (other.CompareTag("Player"))
 		{
 			target = null;
-            parent.engaging = true;
 		}
 	}
 }
