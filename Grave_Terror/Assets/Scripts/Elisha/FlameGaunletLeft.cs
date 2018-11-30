@@ -1,24 +1,33 @@
-﻿using UnityEngine;
+﻿// Author: Elisha Anagnostakis
+// Date Modified: 20/11/18
+// Purpose: This script handles sizzles left flame thrower. The shooting of the flame mechanics.
+
+using UnityEngine;
 using XboxCtrlrInput;
-
-
 public class FlameGaunletLeft : MonoBehaviour {
 
+    // references
     PlayerMovement playerRotation;
-    public GameObject sizzleRotation;
-    public float counter;
-    public float delay;
-    public GameObject flameBallLeft;
     public XboxControllerManager xboxController;
     public Animator anim;
-    public PlayerHealth health;
-    Vector3 hitLocation = Vector3.zero;
     public ScoreBoard score;
-	private AudioSource audioSource;
-	public AudioClip flameAudio;
+    public PlayerHealth health;
+
+    // game objects components
+    public GameObject flameBallLeft;
+    public GameObject sizzleRotation;
+    public GameObject newFlame;
+
+    // player targeting enemies location
+    Vector3 hitLocation = Vector3.zero;
+
+    // audio
+    public float counter;
+    public float delay;
 	public float minPitch = 0.0f;
 	public float maxPitch = 1.0f;
-    public GameObject newFlame;
+	private AudioSource audioSource;
+	public AudioClip flameAudio;
 
     private void Awake()
     {
@@ -35,13 +44,18 @@ public class FlameGaunletLeft : MonoBehaviour {
 
     public void FlameShootingLeft()
     {
+        // counter starts counting
         counter += Time.deltaTime;
+        // checks if player is alive so they can shoot
         if(health.playerState == PlayerHealth.PlayerState.ALIVE)
         {
+            // if player presses the left trigger 
             if (XCI.GetAxis(XboxAxis.LeftTrigger, xboxController.controller) > 0.1f)
             {
+                // sizzle will shoot her left gauntlet
                 if (counter > delay)
                 {
+                    // instantiates the flame at the 
                     newFlame = Instantiate(flameBallLeft, transform.position, sizzleRotation.transform.rotation);
                     anim.SetBool("IsAttacking", true);
 					audioSource.pitch = Random.Range(minPitch, maxPitch);

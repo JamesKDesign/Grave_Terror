@@ -1,10 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿// Author: Elisha Anagnostakis
+// Date Modified: 20/11/18
+// Purpose: This script managers the two UI portraits of chunk and sizzle. When a player gets hit the portrait will 
+// change which shows the state at which the player is at
+
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthUI : MonoBehaviour {
 
+    // references to the canvas
     [HideInInspector]
     public float uvRectW1 = 0f;
     public RawImage sizzle;
@@ -34,7 +38,7 @@ public class HealthUI : MonoBehaviour {
     }
 
     void SizzleChange() {
-
+        // checks if the health is less than 3 to then change the UV of the portrait to snap to the more hurt image
         if (Sizhealth.currentHealth < 3) {
             rect.x = 0.247f;
             sizzle.uvRect = rect;
@@ -61,7 +65,7 @@ public class HealthUI : MonoBehaviour {
 
     void ChunkChange()
     {
-
+        // checks if the health is less than 3 to then change the UV of the portrait to snap to the more hurt image
         if (Chuhealth.currentHealth < 3)
         {
             rect.x = 0.247f;
