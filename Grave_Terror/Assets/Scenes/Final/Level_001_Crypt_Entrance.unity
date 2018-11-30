@@ -17602,6 +17602,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ca789ad50faea294cb0e3ecb6df5d195, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &449411603 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1670659802011328, guid: 41a1e0067c6cdf44cbdd455d4447a163,
+    type: 2}
+  m_PrefabInternal: {fileID: 1999811144}
 --- !u!1001 &451262142
 Prefab:
   m_ObjectHideFlags: 0
@@ -18101,6 +18106,17 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1095419993}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1162939692}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -31557,6 +31573,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4521930319855620, guid: b0a935ad99282974ebaf02bc96e3090c,
     type: 2}
   m_PrefabInternal: {fileID: 868473308}
+--- !u!1 &869155529 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1670659802011328, guid: 41a1e0067c6cdf44cbdd455d4447a163,
+    type: 2}
+  m_PrefabInternal: {fileID: 643720435}
 --- !u!1001 &869338687
 Prefab:
   m_ObjectHideFlags: 0
@@ -34602,6 +34623,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 449411603}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1001 &958061798
@@ -34858,6 +34890,17 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 1.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1799156825}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -40653,6 +40696,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4521930319855620, guid: b0a935ad99282974ebaf02bc96e3090c,
     type: 2}
   m_PrefabInternal: {fileID: 1158621504}
+--- !u!1 &1162939692 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1198187797516030, guid: 99a06dfb4785c6645b42a2553807ae15,
+    type: 2}
+  m_PrefabInternal: {fileID: 1912403390}
 --- !u!1001 &1164294660
 Prefab:
   m_ObjectHideFlags: 0
@@ -46870,6 +46918,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1018573997}
     m_Modifications:
+    - target: {fileID: 114615356125769540, guid: e28780c901f01544db990dbcc525579a,
+        type: 2}
+      propertyPath: triggers.m_PersistentCalls.m_Calls.Array.size
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4055573855212522, guid: e28780c901f01544db990dbcc525579a, type: 2}
       propertyPath: m_LocalPosition.x
       value: -8.96
@@ -46977,6 +47030,31 @@ Prefab:
     - target: {fileID: 1503491463135300, guid: e28780c901f01544db990dbcc525579a, type: 2}
       propertyPath: m_Name
       value: Statue_Trigger_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615356125769540, guid: e28780c901f01544db990dbcc525579a,
+        type: 2}
+      propertyPath: triggers.m_PersistentCalls.m_Calls.Array.data[6].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615356125769540, guid: e28780c901f01544db990dbcc525579a,
+        type: 2}
+      propertyPath: triggers.m_PersistentCalls.m_Calls.Array.data[6].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615356125769540, guid: e28780c901f01544db990dbcc525579a,
+        type: 2}
+      propertyPath: triggers.m_PersistentCalls.m_Calls.Array.data[6].m_Target
+      value: 
+      objectReference: {fileID: 869155529}
+    - target: {fileID: 114615356125769540, guid: e28780c901f01544db990dbcc525579a,
+        type: 2}
+      propertyPath: triggers.m_PersistentCalls.m_Calls.Array.data[6].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615356125769540, guid: e28780c901f01544db990dbcc525579a,
+        type: 2}
+      propertyPath: triggers.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e28780c901f01544db990dbcc525579a, type: 2}
@@ -60373,6 +60451,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4162494624612232, guid: fda02899eba321341adceb5cdb50991c,
     type: 2}
   m_PrefabInternal: {fileID: 972723856}
+--- !u!1 &1799156825 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1670659802011328, guid: 41a1e0067c6cdf44cbdd455d4447a163,
+    type: 2}
+  m_PrefabInternal: {fileID: 407510627}
 --- !u!1001 &1800486607
 Prefab:
   m_ObjectHideFlags: 0
@@ -64150,6 +64233,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3f7a7ea9a9ad3e347a588923cc434d40, type: 2}
+    - target: {fileID: 1198187797516030, guid: 99a06dfb4785c6645b42a2553807ae15, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 99a06dfb4785c6645b42a2553807ae15, type: 2}
   m_IsPrefabParent: 0
